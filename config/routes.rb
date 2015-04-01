@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :user_levels
+
   resources :companies
 
   resources :networks

@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Level:</strong>
+  <%= @user_level.level %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @user_level.user %>
+</p>
+
+<%= link_to 'Edit', edit_user_level_path(@user_level) %> |
+<%= link_to 'Back', user_levels_path %>
