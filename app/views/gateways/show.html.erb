@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Ip:</strong>
+  <%= @gateway.ip %>
+</p>
+
+<p>
+  <strong>Url connection:</strong>
+  <%= @gateway.url_connection %>
+</p>
+
+<%= link_to 'Edit', edit_gateway_path(@gateway) %> |
+<%= link_to 'Back', gateways_path %>
