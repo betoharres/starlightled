@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @product.name %>
+</p>
+
+<p>
+  <strong>Model:</strong>
+  <%= @product.model %>
+</p>
+
+<p>
+  <strong>Serial number:</strong>
+  <%= @product.serial_number %>
+</p>
+
+<p>
+  <strong>Mac address:</strong>
+  <%= @product.mac_address %>
+</p>
+
+<p>
+  <strong>Product code:</strong>
+  <%= @product.product_code %>
+</p>
+
+<p>
+  <strong>Fabrication date:</strong>
+  <%= @product.fabrication_date %>
+</p>
+
+<p>
+  <strong>Tension operation:</strong>
+  <%= @product.tension_operation %>
+</p>
+
+<p>
+  <strong>Node:</strong>
+  <%= @product.node %>
+</p>
+
+<%= link_to 'Edit', edit_product_path(@product) %> |
+<%= link_to 'Back', products_path %>
