@@ -9,6 +9,7 @@ class CreateProducts < ActiveRecord::Migration
       t.date :fabrication_date
       t.integer :tension_operation
       t.references :node, index: true
+      t.references :productable, polymorphic: true, index: true
 
       t.timestamps
     end
