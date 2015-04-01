@@ -1,14 +1,24 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Network -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Network %></h1>
+</div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @network.name %>
-</p>
+<div class="fieldset">
+  <dl>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:name) %></dt>
+      <dd><pre class="prettyprint"><%= @network.name %></pre></dd>
+  </dl>
+</div>
 
-<p>
-  <strong>Company:</strong>
-  <%= @network.company %>
-</p>
+<div class="form-group">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              networks_path, :class => 'btn btn-default'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_network_path(@network), :class => 'btn btn-default' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              network_path(@network),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
 
-<%= link_to 'Edit', edit_network_path(@network) %> |
-<%= link_to 'Back', networks_path %>
