@@ -1,0 +1,13 @@
+<%= simple_form_for(@lamp) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :font_type %>
+    <%= f.input :font_subtype %>
+    <%= f.association :product %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
