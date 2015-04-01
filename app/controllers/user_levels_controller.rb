@@ -29,6 +29,7 @@ class UserLevelsController < ApplicationController
   # POST /user_levels.json
   def create
     @user_level = UserLevel.new(user_level_params)
+    @user_level.user = current_user
 
     respond_to do |format|
       if @user_level.save
