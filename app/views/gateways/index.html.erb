@@ -1,27 +1,38 @@
-<h1>Listing gateways</h1>
-
-<table>
+<%- model_class = Gateway -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Gateway %></h1>
+</div>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Ip</th>
-      <th>Url connection</th>
-      <th colspan="3"></th>
+      <th>ID</th>
+      <th><%= model_class.human_attribute_name(:ip) %></th>
+      <th><%= model_class.human_attribute_name(:url_connection) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-
   <tbody>
     <% @gateways.each do |gateway| %>
       <tr>
+        <td><%= gateway.id %></td>
         <td><%= gateway.ip %></td>
         <td><%= gateway.url_connection %></td>
-        <td><%= link_to 'Show', gateway %></td>
-        <td><%= link_to 'Edit', edit_gateway_path(gateway) %></td>
-        <td><%= link_to 'Destroy', gateway, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%=l gateway.created_at, format: :long %></td>
+        <td>
+          <%= link_to gateway_path(gateway), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
+            <%= glyph 'info-sign' %>
+            <%= glyph 'pencil' %>
+          <%- end -%>
+          <%= link_to gateway_path(gateway), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
+            <%= glyph 'remove' %>
+          <%- end -%>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Gateway', new_gateway_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_gateway_path,
+            :class => 'btn btn-primary' %>

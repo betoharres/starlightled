@@ -1,6 +1,5 @@
-<h1>Editing gateway</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @gateway %> |
-<%= link_to 'Back', gateways_path %>
+<%- model_class = Gateway -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => Gateway %></h1>
+</div>
+<%= render :partial => 'form' %>
