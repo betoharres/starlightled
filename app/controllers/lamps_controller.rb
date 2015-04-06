@@ -25,6 +25,7 @@ class LampsController < ApplicationController
   # POST /lamps.json
   def create
     @lamp = Lamp.new(lamp_params)
+    # abort lamp_params
 
     respond_to do |format|
       if @lamp.save
@@ -69,6 +70,6 @@ class LampsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def lamp_params
-      params.require(:lamp).permit(:font_type, :font_subtype, :product_id)
+      params.require(:lamp).permit(:font_type, :font_subtype, product_attributes: [:name, :model, :serial_number, :mac_address, :product_code, :fabrication_date, :tension_operation])
     end
 end
