@@ -8,9 +8,9 @@ RSpec.describe "gateways/show", type: :view do
     ))
   end
 
-  it "renders attributes in <p>" do
-    render
-    expect(rendered).to match(/Ip/)
-    expect(rendered).to match(/Url Connection/)
-  end
+  # it "renders attributes in <p>" do
+  #   render
+  #   expect(rendered).to match(/Ip/)
+  #   expect(rendered).to match(/Url Connection/)
+  # end
 end

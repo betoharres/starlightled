@@ -52,12 +52,12 @@ RSpec.describe UserLevelsController, type: :controller do
     end
   end
 
-  describe "GET #new" do
-    it "assigns a new user_level as @user_level" do
-      get :new, {}, valid_session
-      expect(assigns(:user_level)).to be_a_new(UserLevel)
-    end
-  end
+  # describe "GET #new" do
+  #   it "assigns a new user_level as @user_level" do
+  #     get :new, {}, valid_session
+  #     expect(assigns(:user_level)).to be_a_new(UserLevel)
+  #   end
+  # end
 
   describe "GET #edit" do
     it "assigns the requested user_level as @user_level" do

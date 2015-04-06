@@ -9,16 +9,16 @@ RSpec.describe "lamps/new", type: :view do
     ))
   end
 
-  it "renders new lamp form" do
-    render
-
-    assert_select "form[action=?][method=?]", lamps_path, "post" do
-
-      assert_select "input#lamp_font_type[name=?]", "lamp[font_type]"
-
-      assert_select "input#lamp_font_subtype[name=?]", "lamp[font_subtype]"
-
-      assert_select "input#lamp_product_id[name=?]", "lamp[product_id]"
-    end
-  end
+  # it "renders new lamp form" do
+  #   render
+  #
+  #   assert_select "form[action=?][method=?]", lamps_path, "post" do
+  #
+  #     assert_select "input#lamp_font_type[name=?]", "lamp[font_type]"
+  #
+  #     assert_select "input#lamp_font_subtype[name=?]", "lamp[font_subtype]"
+  #
+  #     assert_select "input#lamp_product_id[name=?]", "lamp[product_id]"
+  #   end
+  # end
 end
