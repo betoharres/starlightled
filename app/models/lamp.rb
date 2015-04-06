@@ -1,3 +1,5 @@
 class Lamp < ActiveRecord::Base
-  belongs_to :product
+  has_one :product, as: :productable, dependent: :destroy
+
+  accepts_nested_attributes_for :product
 end

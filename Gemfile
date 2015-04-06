@@ -55,6 +55,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'dotenv-rails'
+  gem 'railroady'
 end
 
 group :test do
