@@ -39,12 +39,9 @@ ActiveRecord::Schema.define(version: 20150401202102) do
   create_table "lamps", force: :cascade do |t|
     t.string   "font_type"
     t.string   "font_subtype"
-    t.integer  "product_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "lamps", ["product_id"], name: "index_lamps_on_product_id", using: :btree
 
   create_table "networks", force: :cascade do |t|
     t.string   "name"
