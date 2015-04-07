@@ -5,6 +5,25 @@
 
 <div class="fieldset">
   <dl>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:name) %></dt>
+      <dd><pre class="prettyprint"><%= @product.name %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:model) %></dt>
+      <dd><pre class="prettyprint"><%= @product.model %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:serial_number) %></dt>
+      <dd><pre class="prettyprint"><%= @product.serial_number %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:mac_address) %></dt>
+      <dd><pre class="prettyprint"><%= @product.mac_address %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:product_code) %></dt>
+      <dd><pre class="prettyprint"><%= @product.product_code %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:fabrication_date) %></dt>
+      <dd><pre class="prettyprint"><%= @product.fabrication_date %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:tension_operation) %></dt>
+      <dd><pre class="prettyprint"><%= @product.tension_operation %></pre></dd>
+  </dl>
+</div>
+
+<div class="fieldset">
+  <dl>
       <dt class="label label-default"><%= model_class.human_attribute_name(:font_type) %></dt>
       <dd><pre class="prettyprint"><%= @lamp.font_type %></pre></dd>
       <dt class="label label-default"><%= model_class.human_attribute_name(:font_subtype) %></dt>

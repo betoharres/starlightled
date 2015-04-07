@@ -10,6 +10,7 @@ class GatewaysController < ApplicationController
   # GET /gateways/1
   # GET /gateways/1.json
   def show
+    @product = @gateway.product
   end
 
   # GET /gateways/new
