@@ -114,6 +114,7 @@ RSpec.describe LampsController, type: :controller do
         put :update, {:id => lamp.to_param, :lamp => new_attributes}, valid_session
         lamp.reload
         expect(lamp.font_subtype).to eq("Fonte sub")
+        expect(assigns(:lamp).product).to be_an_instance_of(Product)
       end
 
       it "assigns the requested lamp as @lamp" do
