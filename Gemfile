@@ -48,8 +48,7 @@ gem 'bootstrap-sass', github: 'twbs/bootstrap-sass'
 gem 'bootstrap-sass-extras'
 gem 'rails_config'
 gem 'devise', github: 'plataformatec/devise'
-gem 'omniauth'
-gem 'omniauth-facebook'
+gem 'faker'
 
 group :development, :test do
   gem 'rspec-rails'

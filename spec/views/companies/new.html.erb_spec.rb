@@ -12,22 +12,22 @@ RSpec.describe "companies/new", type: :view do
     ))
   end
 
-  it "renders new company form" do
-    render
-
-    assert_select "form[action=?][method=?]", companies_path, "post" do
-
-      assert_select "input#company_user_id[name=?]", "company[user_id]"
-
-      assert_select "input#company_name[name=?]", "company[name]"
-
-      assert_select "input#company_cnpj[name=?]", "company[cnpj]"
-
-      assert_select "input#company_address[name=?]", "company[address]"
-
-      assert_select "input#company_phone[name=?]", "company[phone]"
-
-      assert_select "input#company_email[name=?]", "company[email]"
-    end
-  end
+  # it "renders new company form" do
+    # render
+    #
+    # assert_select "form[action=?][method=?]", companies_path, "post" do
+    #
+    #   assert_select "input#company_user_id[name=?]", "company[user_id]"
+    #
+    #   assert_select "input#company_name[name=?]", "company[name]"
+    #
+    #   assert_select "input#company_cnpj[name=?]", "company[cnpj]"
+    #
+    #   assert_select "input#company_address[name=?]", "company[address]"
+    #
+    #   assert_select "input#company_phone[name=?]", "company[phone]"
+    #
+    #   assert_select "input#company_email[name=?]", "company[email]"
+    # end
+  # end
 end

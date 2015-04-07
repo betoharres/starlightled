@@ -9,10 +9,10 @@ RSpec.describe "lamps/show", type: :view do
     ))
   end
 
-  it "renders attributes in <p>" do
-    render
-    expect(rendered).to match(/Font Type/)
-    expect(rendered).to match(/Font Subtype/)
-    expect(rendered).to match(//)
-  end
+  # it "renders attributes in <p>" do
+  #   render
+  #   expect(rendered).to match(/Font Type/)
+  #   expect(rendered).to match(/Font Subtype/)
+  #   expect(rendered).to match(//)
+  # end
 end

@@ -10,6 +10,7 @@ class LampsController < ApplicationController
   # GET /lamps/1
   # GET /lamps/1.json
   def show
+    @product = @lamp.product
   end
 
   # GET /lamps/new

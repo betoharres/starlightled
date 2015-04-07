@@ -9,16 +9,16 @@ RSpec.describe "nodes/new", type: :view do
     ))
   end
 
-  it "renders new node form" do
-    render
-
-    assert_select "form[action=?][method=?]", nodes_path, "post" do
-
-      assert_select "input#node_identifier[name=?]", "node[identifier]"
-
-      assert_select "input#node_latitude[name=?]", "node[latitude]"
-
-      assert_select "input#node_longitude[name=?]", "node[longitude]"
-    end
-  end
+  # it "renders new node form" do
+  #   render
+  #
+  #   assert_select "form[action=?][method=?]", nodes_path, "post" do
+  #
+  #     assert_select "input#node_identifier[name=?]", "node[identifier]"
+  #
+  #     assert_select "input#node_latitude[name=?]", "node[latitude]"
+  #
+  #     assert_select "input#node_longitude[name=?]", "node[longitude]"
+  #   end
+  # end
 end
