@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   resources :lamps
   resources :gateways
   resources :products
-  resources :user_levels
   resources :companies
   resources :networks
 
