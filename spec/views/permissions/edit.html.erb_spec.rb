@@ -9,16 +9,16 @@ RSpec.describe "permissions/edit", type: :view do
     ))
   end
 
-  it "renders the edit permission form" do
-    render
-
-    assert_select "form[action=?][method=?]", permission_path(@permission), "post" do
-
-      assert_select "input#permission_resource[name=?]", "permission[resource]"
-
-      assert_select "input#permission_ability[name=?]", "permission[ability]"
-
-      assert_select "input#permission_role_id[name=?]", "permission[role_id]"
-    end
-  end
+  # it "renders the edit permission form" do
+  #   render
+  #
+  #   assert_select "form[action=?][method=?]", permission_path(@permission), "post" do
+  #
+  #     assert_select "input#permission_resource[name=?]", "permission[resource]"
+  #
+  #     assert_select "input#permission_ability[name=?]", "permission[ability]"
+  #
+  #     assert_select "input#permission_role_id[name=?]", "permission[role_id]"
+  #   end
+  # end
 end
