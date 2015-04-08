@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :roles
   get 'landings/index'
 
   resources :nodes
