@@ -1,7 +1,18 @@
 FactoryGirl.define do
   factory :permission do
-    ability 1
+    ability 15
     role
+
+    # User can manage every resource of the app if the ability gives him permission
+    # Even the Role and Permission's resource can be manage by other User
+    # e.g.: a manager
+    trait :role do
+      resource 'Role'
+    end
+
+    trait :permission do
+      resource 'Permission'
+    end
 
     trait :user do
       resource 'User'
