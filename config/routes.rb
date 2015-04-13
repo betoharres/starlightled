@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
+
+  get 'landings/index'
+
   resources :permissions
   resources :roles
-  get 'landings/index'
 
   resources :nodes
   resources :lamps
