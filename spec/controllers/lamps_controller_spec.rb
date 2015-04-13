@@ -22,6 +22,7 @@ require 'active_support/core_ext/hash'
 # is no simpler way to get a handle on the object needed for the example.
 # Message expectations are only used when there is no simpler way to specify
 # that an instance is receiving a specific message.
+require 'support/controller_helpers'
 
 RSpec.describe LampsController, type: :controller do
 
@@ -41,12 +42,28 @@ RSpec.describe LampsController, type: :controller do
   # LampsController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
+  before :each do
+    sign_in
+  end
+
   describe "GET #index" do
     it "assigns all lamps as @lamps" do
       lamp = Lamp.create! valid_attributes
       get :index, {}, valid_session
       expect(assigns(:lamps)).to eq([lamp])
     end
+
+    it "allow authenticated access" do
+      get :index
+      expect(response).to be_success
+    end
+
+    it "blocks unauthenticated access" do
+      sign_in nil
+      get :index
+      expect(response).to redirect_to(root_url)
+    end
+
   end
 
   describe "GET #show" do
