@@ -1,5 +1,6 @@
 class LampsController < ApplicationController
   before_action :set_lamp, only: [:show, :edit, :update, :destroy]
+  before_filter :require_user_signed_in
 
   # GET /lamps
   # GET /lamps.json
