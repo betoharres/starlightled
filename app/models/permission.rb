@@ -7,11 +7,11 @@ class Permission < ActiveRecord::Base
   UPDATE = 2
   DELETE = 1
   enum ability: {
-                 read: READ                     , create: CREATE                 ,
-                 update: UPDATE                 , delete: DELETE                 ,
-                 read_create: READ + CREATE     , read_update: READ + UPDATE     ,
-                 read_delete: READ + DELETE     , create_update: CREATE + UPDATE ,
-                 create_delete: CREATE + DELETE , update_delete: UPDATE + DELETE
+                 reads: READ                     , creates: CREATE                 ,
+                 updates: UPDATE                 , deletes: DELETE                 ,
+                 read_creates: READ + CREATE     , read_updates: READ + UPDATE     ,
+                 read_deletes: READ + DELETE     , create_updates: CREATE + UPDATE ,
+                 create_deletes: CREATE + DELETE , update_deletes: UPDATE + DELETE
                 }
 
 end
