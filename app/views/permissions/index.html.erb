@@ -17,7 +17,7 @@
       <tr>
         <td><%= permission.resource %></td>
         <td><%= permission.ability %></td>
-        <td><%= permission.role %></td>
+        <td><%= permission.role.name %></td>
         <td><%= link_to 'Show', permission %></td>
         <td><%= link_to 'Edit', edit_permission_path(permission) %></td>
         <td><%= link_to 'Destroy', permission, method: :delete, data: { confirm: 'Are you sure?' } %></td>
