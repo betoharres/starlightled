@@ -24,11 +24,11 @@ RSpec.describe PermissionsController, type: :controller do
   # Permission. As you add validations to Permission, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    {resource: "Lamp", ability: :admin}
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    {resource: 'saudhduis', ability: :reads}
   }
 
   # This should return the minimal set of values that should be in the session
@@ -103,14 +103,14 @@ RSpec.describe PermissionsController, type: :controller do
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        {resource: "Gateway", ability: :reads}
       }
 
       it "updates the requested permission" do
         permission = Permission.create! valid_attributes
         put :update, {:id => permission.to_param, :permission => new_attributes}, valid_session
         permission.reload
-        skip("Add assertions for updated state")
+        expect(permission.resource).to eq("Gateway")
       end
 
       it "assigns the requested permission as @permission" do
