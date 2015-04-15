@@ -6,12 +6,12 @@ RSpec.describe "permissions/index", type: :view do
     assign(:permissions, [
       Permission.create!(
         :resource => "Lamp",
-        :ability => :reads,
+        :ability => :can_read,
         :role => @role
       ),
       Permission.create!(
         :resource => "Gateway",
-        :ability => :admin,
+        :ability => :can_all,
         :role => @role
       )
     ])
@@ -21,8 +21,8 @@ RSpec.describe "permissions/index", type: :view do
     render
     expect(rendered).to match(/Lamp/)
     expect(rendered).to match(/Gateway/)
-    expect(rendered).to match(/reads/)
-    expect(rendered).to match(/admin/)
+    expect(rendered).to match(/can_read/)
+    expect(rendered).to match(/can_all/)
     expect(rendered).to match(/#{@role.name}/)
     # assert_select "tr>td", :text => "Lamp".to_s, :count => 2
     # assert_select "tr>td", :text => Role.first.to_s, :count => 2
