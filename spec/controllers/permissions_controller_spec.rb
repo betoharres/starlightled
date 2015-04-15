@@ -24,11 +24,11 @@ RSpec.describe PermissionsController, type: :controller do
   # Permission. As you add validations to Permission, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    {resource: "Lamp", ability: :admin}
+    {resource: "Lamp", ability: :can_all}
   }
 
   let(:invalid_attributes) {
-    {resource: 'saudhduis', ability: :reads}
+    {resource: 'saudhduis', ability: nil}
   }
 
   # This should return the minimal set of values that should be in the session
@@ -103,7 +103,7 @@ RSpec.describe PermissionsController, type: :controller do
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-        {resource: "Gateway", ability: :reads}
+        {resource: "Gateway", ability: :can_read}
       }
 
       it "updates the requested permission" do
