@@ -9,20 +9,26 @@ class Permission < ActiveRecord::Base
   CREATE = 4
   UPDATE = 2
   DELETE = 1
+  NONE   = 0
+
+  # The keys are in plural because these words were reserved by rails
   enum ability: {
-                 admin: READ + CREATE + UPDATE + DELETE,
-                 reads: READ                     , creates: CREATE                 ,
-                 updates: UPDATE                 , deletes: DELETE                 ,
-                 read_creates: READ + CREATE     , read_updates: READ + UPDATE     ,
-                 read_deletes: READ + DELETE     , create_updates: CREATE + UPDATE ,
-                 create_deletes: CREATE + DELETE , update_deletes: UPDATE + DELETE
+                 can_all: READ + CREATE + UPDATE + DELETE,
+
+                 can_read:   READ                        , can_create: READ + CREATE             ,
+                 can_update: READ + UPDATE               , can_delete: READ + DELETE             ,
+
+                 cannot_update: READ + CREATE + DELETE   , cannot_delete: READ + UPDATE + CREATE ,
+                 cannot_create: READ + UPDATE + DELETE   ,
+
+                 can_none: NONE
                 }
 
   def resource_exists
     Rails.application.eager_load! if Rails.env.test? || Rails.env.development?
 
     unless ActiveRecord::Base.descendants.map(&:name).include?(resource)
-      errors.add(:resource, "Not a valid resource")
+      errors.add(:resource, "invalid. You must select a resource that rails can identify.")
     end
   end
 
