@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
+
   get 'landings/index'
+
+  resources :permissions
+  resources :roles
 
   resources :nodes
   resources :lamps
   resources :gateways
   resources :products
-  resources :user_levels
   resources :companies
   resources :networks
 

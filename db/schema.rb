@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150401202102) do
+ActiveRecord::Schema.define(version: 20150408141229) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,6 +70,16 @@ ActiveRecord::Schema.define(version: 20150401202102) do
     t.datetime "updated_at"
   end
 
+  create_table "permissions", force: :cascade do |t|
+    t.string   "resource"
+    t.integer  "ability"
+    t.integer  "role_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "permissions", ["role_id"], name: "index_permissions_on_role_id", using: :btree
+
   create_table "products", force: :cascade do |t|
     t.string   "name"
     t.string   "model"
@@ -87,6 +97,15 @@ ActiveRecord::Schema.define(version: 20150401202102) do
 
   add_index "products", ["node_id"], name: "index_products_on_node_id", using: :btree
   add_index "products", ["productable_type", "productable_id"], name: "index_products_on_productable_type_and_productable_id", using: :btree
+
+  create_table "roles", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "roles", ["user_id"], name: "index_roles_on_user_id", using: :btree
 
   create_table "user_levels", force: :cascade do |t|
     t.integer  "level"
@@ -118,4 +137,6 @@ ActiveRecord::Schema.define(version: 20150401202102) do
 
   add_foreign_key "networks_nodes", "networks"
   add_foreign_key "networks_nodes", "nodes"
+  add_foreign_key "permissions", "roles"
+  add_foreign_key "roles", "users"
 end

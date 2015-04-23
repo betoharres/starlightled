@@ -7,7 +7,7 @@ FactoryGirl.define do
     product_code "MyString"
     fabrication_date "2015-04-01"
     tension_operation 1
-    node nil
+    node
   end
 
 end

@@ -1,0 +1,12 @@
+<%= simple_form_for(@role) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :name %>
+    <%= f.association :user, as: :select, collection: User.all.map { |l| ["#{l.id} - #{l.email}", l.id] }, include_blank: false %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
