@@ -1,6 +1,7 @@
 FactoryGirl.define do
   factory :permission do
-    ability 15
+    resource 'Lamp'
+    ability :can_all
     role
 
     # User can manage every resource of the app if the ability gives him permission

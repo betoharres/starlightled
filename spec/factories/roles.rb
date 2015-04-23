@@ -1,5 +1,6 @@
 FactoryGirl.define do
   factory :role do
+    name 'TestRole'
     user
 
     trait :admin do
