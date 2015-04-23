@@ -37,8 +37,15 @@ RSpec.describe LampsController, type: :controller do
   # LampsController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
+  before :all do
+    permission = FactoryGirl.create(:permission)
+    @authorized_user = permission.role.user
+    permission = FactoryGirl.create(:permission, ability: :can_none)
+    @unauthorized_user = permission.role.user
+  end
+
   before :each do
-    sign_in
+    sign_in @authorized_user
   end
 
   describe "GET #index" do
@@ -57,6 +64,18 @@ RSpec.describe LampsController, type: :controller do
       sign_in nil
       get :index
       expect(response).to redirect_to(root_url)
+    end
+
+    it "blocks unauthorized user" do
+      sign_in @authorized_user
+      get :index
+      expect(response).to be_success
+    end
+
+    it "blocks unauthorized user" do
+      sign_in @unauthorized_user
+      get :index
+      expect(response).to be_redirect
     end
 
   end
@@ -82,6 +101,14 @@ RSpec.describe LampsController, type: :controller do
       get :edit, {:id => lamp.to_param}, valid_session
       expect(assigns(:lamp)).to eq(lamp)
     end
+
+    it "blocks unauthorized user" do
+      lamp = Lamp.create! valid_attributes
+      sign_in @unauthorized_user
+      get :edit, {:id => lamp.to_param}, valid_session
+      expect(response).to be_redirect
+    end
+
   end
 
   describe "POST #create" do
@@ -120,6 +147,7 @@ RSpec.describe LampsController, type: :controller do
 
   describe "PUT #update" do
     context "with valid params" do
+
       let(:new_attributes) {
         {font_type: "Fonte Type", font_subtype: "Fonte sub", product_attributes: {name: "Product", model: "ModelLamp", serial_number: "ABI-200-XSA", mac_address: "000-XXX-XDA", product_code: "FFF", fabrication_date: Date.today, tension_operation: 50}}
       }
@@ -128,7 +156,7 @@ RSpec.describe LampsController, type: :controller do
         lamp = Lamp.create! valid_attributes
         put :update, {:id => lamp.to_param, :lamp => new_attributes}, valid_session
         lamp.reload
-        expect(lamp.font_subtype).to eq("Fonte sub")
+        expect(lamp.font_subtype).to eql new_attributes[:font_subtype]
         expect(assigns(:lamp).product).to be_an_instance_of(Product)
       end
 
@@ -172,6 +200,101 @@ RSpec.describe LampsController, type: :controller do
       lamp = Lamp.create! valid_attributes
       delete :destroy, {:id => lamp.to_param}, valid_session
       expect(response).to redirect_to(lamps_url)
+    end
+  end
+
+  describe "all actions" do
+    let(:new_attributes) {
+      {font_type: "Fonte Type", font_subtype: "Fonte sub", product_attributes: {name: "Product", model: "ModelLamp", serial_number: "ABI-200-XSA", mac_address: "000-XXX-XDA", product_code: "FFF", fabrication_date: Date.today, tension_operation: 50}}
+      }
+
+    actions = ['show', 'new', 'create', 'edit', 'update', 'destroy']
+
+      context "with authorized user" do
+        actions.each do |action|
+          it "redirects to root when access #{action}" do
+            sign_in @authorized_user
+
+            case action
+
+              when 'show'
+                lamp = Lamp.create! valid_attributes
+                get :show, {:id => lamp.to_param}, valid_session
+                expect(response).to be_success
+
+              when 'new'
+                get :new, {}, valid_session
+                expect(response).to be_success
+
+              when 'edit'
+                lamp = Lamp.create! valid_attributes
+                get :edit, {:id => lamp.to_param}, valid_session
+                expect(response).to be_success
+
+              when 'create'
+                expect {
+                  post :create, {:lamp => valid_attributes}, valid_session
+                }.to change(Lamp, :count).by(1)
+
+              when 'update'
+                lamp = Lamp.create! valid_attributes
+                put :update, {:id => lamp.to_param, :lamp => new_attributes}, valid_session
+                lamp.reload
+                expect(lamp.font_subtype).to eql new_attributes[:font_subtype]
+
+              when 'destroy'
+                expect {
+                  lamp = Lamp.create! valid_attributes
+                  delete :destroy, {:id => lamp.to_param}, valid_session
+                }.to change(Lamp, :count).by(-1)
+
+            end
+          end
+      end
+
+      context "with unauthorized user" do
+        actions.each do |action|
+          it "redirects to root when access #{action}" do
+            sign_in @unauthorized_user
+
+            case action
+
+              when 'show'
+                lamp = Lamp.create! valid_attributes
+                get :show, {:id => lamp.to_param}, valid_session
+                expect(response).to be_redirect
+
+              when 'new'
+                get :new, {}, valid_session
+                expect(response).to be_redirect
+
+              when 'edit'
+                lamp = Lamp.create! valid_attributes
+                get :edit, {:id => lamp.to_param}, valid_session
+                expect(response).to be_redirect
+
+              when 'create'
+                expect {
+                  post :create, {:lamp => valid_attributes}, valid_session
+                }.to change(Lamp, :count).by(0)
+
+              when 'update'
+                lamp = Lamp.create! valid_attributes
+                put :update, {:id => lamp.to_param, :lamp => new_attributes}, valid_session
+                lamp.reload
+                expect(lamp.font_subtype).to eql valid_attributes[:font_subtype]
+
+              when 'destroy'
+                expect {
+                lamp = Lamp.create! valid_attributes
+                delete :destroy, {:id => lamp.to_param}, valid_session
+                }.to change(Lamp, :count).by(0)
+
+            end
+          end
+        end
+      end
+
     end
   end
 
