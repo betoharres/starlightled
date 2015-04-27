@@ -40,7 +40,7 @@ class ApplicationController < ActionController::Base
             deny_access unless [10, 11, 14, 15].include?(ability_number)
           when 'update'
             deny_access unless [10, 11, 14, 15].include?(ability_number)
-          when 'delete'
+          when 'destroy'
             deny_access unless [9, 11, 13, 15].include?(ability_number)
         end
     end
