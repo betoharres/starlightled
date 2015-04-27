@@ -49,6 +49,7 @@ gem 'bootstrap-sass-extras'
 gem 'rails_config'
 gem 'devise', github: 'plataformatec/devise'
 gem 'faker'
+gem "audited-activerecord", "~> 4.0"
 
 group :development, :test do
   gem 'rspec-rails'
