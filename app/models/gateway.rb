@@ -7,6 +7,6 @@ class Gateway < ActiveRecord::Base
   accepts_nested_attributes_for :product
 
   # https://github.com/collectiveidea/audited
-  audited
+  audited allow_mass_assignment: true
 
 end
