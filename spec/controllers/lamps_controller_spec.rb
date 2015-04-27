@@ -40,6 +40,7 @@ RSpec.describe LampsController, type: :controller do
   before :all do
     permission = FactoryGirl.create(:permission)
     @authorized_user = permission.role.user
+
     permission = FactoryGirl.create(:permission, ability: :can_none)
     @unauthorized_user = permission.role.user
   end
@@ -205,14 +206,14 @@ RSpec.describe LampsController, type: :controller do
 
   describe "all actions" do
     let(:new_attributes) {
-      {font_type: "Fonte Type", font_subtype: "Fonte sub", product_attributes: {name: "Product", model: "ModelLamp", serial_number: "ABI-200-XSA", mac_address: "000-XXX-XDA", product_code: "FFF", fabrication_date: Date.today, tension_operation: 50}}
+        {font_subtype: "Fonte sub"}
       }
 
     actions = ['show', 'new', 'create', 'edit', 'update', 'destroy']
 
       context "with authorized user" do
         actions.each do |action|
-          it "redirects to root when access #{action}" do
+          it "be able to request #{action}" do
             sign_in @authorized_user
 
             case action
@@ -243,22 +244,22 @@ RSpec.describe LampsController, type: :controller do
                 expect(lamp.font_subtype).to eql new_attributes[:font_subtype]
 
               when 'destroy'
+                lamp = Lamp.create! valid_attributes
                 expect {
-                  lamp = Lamp.create! valid_attributes
                   delete :destroy, {:id => lamp.to_param}, valid_session
                 }.to change(Lamp, :count).by(-1)
 
             end
           end
+        end
       end
 
       context "with unauthorized user" do
         actions.each do |action|
-          it "redirects to root when access #{action}" do
+          it "to not be able to request #{action}" do
             sign_in @unauthorized_user
 
             case action
-
               when 'show'
                 lamp = Lamp.create! valid_attributes
                 get :show, {:id => lamp.to_param}, valid_session
@@ -285,17 +286,17 @@ RSpec.describe LampsController, type: :controller do
                 expect(lamp.font_subtype).to eql valid_attributes[:font_subtype]
 
               when 'destroy'
-                expect {
                 lamp = Lamp.create! valid_attributes
-                delete :destroy, {:id => lamp.to_param}, valid_session
+                expect {
+                  delete :destroy, {:id => lamp.to_param}, valid_session
                 }.to change(Lamp, :count).by(0)
 
             end
+
           end
         end
       end
 
-    end
   end
 
 end
