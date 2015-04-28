@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 20150427135958) do
   add_index "audits", ["user_id", "user_type"], name: "user_index", using: :btree
 
   create_table "companies", force: :cascade do |t|
-    t.integer  "user_id"
+    t.integer  "user_id",    null: false
     t.string   "name"
     t.string   "cnpj"
     t.string   "address"
@@ -130,15 +130,6 @@ ActiveRecord::Schema.define(version: 20150427135958) do
 
   add_index "roles", ["user_id"], name: "index_roles_on_user_id", using: :btree
 
-  create_table "user_levels", force: :cascade do |t|
-    t.integer  "level"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "user_levels", ["user_id"], name: "index_user_levels_on_user_id", using: :btree
-
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -150,11 +141,13 @@ ActiveRecord::Schema.define(version: 20150427135958) do
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
+    t.integer  "company_id"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.string   "name"
   end
 
+  add_index "users", ["company_id"], name: "index_users_on_company_id", using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
