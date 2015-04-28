@@ -1,7 +1,7 @@
 class CreateCompanies < ActiveRecord::Migration
   def change
     create_table :companies do |t|
-      t.references :user, index: true
+      t.references :user, index: true, null: false
       t.string :name
       t.string :cnpj
       t.string :address
