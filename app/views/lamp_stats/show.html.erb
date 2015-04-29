@@ -1,0 +1,129 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Serialnum:</strong>
+  <%= @lamp_stat.serialNum %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @lamp_stat.date %>
+</p>
+
+<p>
+  <strong>Pwr:</strong>
+  <%= @lamp_stat.pwr %>
+</p>
+
+<p>
+  <strong>Current:</strong>
+  <%= @lamp_stat.current %>
+</p>
+
+<p>
+  <strong>Volts:</strong>
+  <%= @lamp_stat.volts %>
+</p>
+
+<p>
+  <strong>Tcom:</strong>
+  <%= @lamp_stat.tCom %>
+</p>
+
+<p>
+  <strong>Tled1:</strong>
+  <%= @lamp_stat.tLed1 %>
+</p>
+
+<p>
+  <strong>Tled2:</strong>
+  <%= @lamp_stat.tLed2 %>
+</p>
+
+<p>
+  <strong>Slum:</strong>
+  <%= @lamp_stat.sLum %>
+</p>
+
+<p>
+  <strong>Rssidev:</strong>
+  <%= @lamp_stat.rssiDev %>
+</p>
+
+<p>
+  <strong>Lqidev:</strong>
+  <%= @lamp_stat.lqiDev %>
+</p>
+
+<p>
+  <strong>Sentpkts:</strong>
+  <%= @lamp_stat.sentPkts %>
+</p>
+
+<p>
+  <strong>Rcvpkts:</strong>
+  <%= @lamp_stat.rcvPkts %>
+</p>
+
+<p>
+  <strong>Lastreboot:</strong>
+  <%= @lamp_stat.lastReboot %>
+</p>
+
+<p>
+  <strong>Txpwr:</strong>
+  <%= @lamp_stat.txPwr %>
+</p>
+
+<p>
+  <strong>Ctrlrestart:</strong>
+  <%= @lamp_stat.ctrlRestart %>
+</p>
+
+<p>
+  <strong>Vfirmware:</strong>
+  <%= @lamp_stat.vFirmware %>
+</p>
+
+<p>
+  <strong>Vcmd:</strong>
+  <%= @lamp_stat.vCmd %>
+</p>
+
+<p>
+  <strong>Ckscfg:</strong>
+  <%= @lamp_stat.cksCfg %>
+</p>
+
+<p>
+  <strong>Appckserr:</strong>
+  <%= @lamp_stat.appCksErr %>
+</p>
+
+<p>
+  <strong>Cmdnotimp:</strong>
+  <%= @lamp_stat.cmdNotImp %>
+</p>
+
+<p>
+  <strong>Online:</strong>
+  <%= @lamp_stat.online %>
+</p>
+
+<p>
+  <strong>Communicating:</strong>
+  <%= @lamp_stat.communicating %>
+</p>
+
+<p>
+  <strong>Sunrise:</strong>
+  <%= @lamp_stat.sunrise %>
+</p>
+
+<p>
+  <strong>Sunset:</strong>
+  <%= @lamp_stat.sunset %>
+</p>
+
+<%= link_to 'Edit', edit_lamp_stat_path(@lamp_stat) %> |
+<%= link_to 'Back', lamp_stats_path %>

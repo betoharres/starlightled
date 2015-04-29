@@ -1,0 +1,35 @@
+<%= simple_form_for(@lamp_stat) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :serialNum %>
+    <%= f.input :date %>
+    <%= f.input :pwr %>
+    <%= f.input :current %>
+    <%= f.input :volts %>
+    <%= f.input :tCom %>
+    <%= f.input :tLed1 %>
+    <%= f.input :tLed2 %>
+    <%= f.input :sLum %>
+    <%= f.input :rssiDev %>
+    <%= f.input :lqiDev %>
+    <%= f.input :sentPkts %>
+    <%= f.input :rcvPkts %>
+    <%= f.input :lastReboot %>
+    <%= f.input :txPwr %>
+    <%= f.input :ctrlRestart %>
+    <%= f.input :vFirmware %>
+    <%= f.input :vCmd %>
+    <%= f.input :cksCfg %>
+    <%= f.input :appCksErr %>
+    <%= f.input :cmdNotImp %>
+    <%= f.input :online %>
+    <%= f.input :communicating %>
+    <%= f.input :sunrise %>
+    <%= f.input :sunset %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :lamp_stats
   get 'landings/index'
 
   resources :permissions
