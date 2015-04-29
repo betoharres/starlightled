@@ -7,10 +7,10 @@ RSpec.describe "lamp_stats/index", type: :view do
         :serialNum => 1,
         :pwr => 2,
         :current => 1.5,
-        :volts => 1.5,
-        :tCom => 1.5,
-        :tLed1 => 1.5,
-        :tLed2 => 1.5,
+        :volts => 1.6,
+        :tCom => 1.7,
+        :tLed1 => 1.8,
+        :tLed2 => 1.9,
         :sLum => 3,
         :rssiDev => 4,
         :lqiDev => 5,
@@ -24,7 +24,7 @@ RSpec.describe "lamp_stats/index", type: :view do
         :cksCfg => 13,
         :appCksErr => 14,
         :cmdNotImp => 15,
-        :online => false,
+        :online => true,
         :communicating => false,
         :sunrise => "Sunrise",
         :sunset => "Sunset"
@@ -33,10 +33,10 @@ RSpec.describe "lamp_stats/index", type: :view do
         :serialNum => 1,
         :pwr => 2,
         :current => 1.5,
-        :volts => 1.5,
-        :tCom => 1.5,
-        :tLed1 => 1.5,
-        :tLed2 => 1.5,
+        :volts => 1.6,
+        :tCom => 1.7,
+        :tLed1 => 1.8,
+        :tLed2 => 1.9,
         :sLum => 3,
         :rssiDev => 4,
         :lqiDev => 5,
@@ -50,7 +50,7 @@ RSpec.describe "lamp_stats/index", type: :view do
         :cksCfg => 13,
         :appCksErr => 14,
         :cmdNotImp => 15,
-        :online => false,
+        :online => true,
         :communicating => false,
         :sunrise => "Sunrise",
         :sunset => "Sunset"
@@ -63,10 +63,10 @@ RSpec.describe "lamp_stats/index", type: :view do
     assert_select "tr>td", :text => 1.to_s, :count => 2
     assert_select "tr>td", :text => 2.to_s, :count => 2
     assert_select "tr>td", :text => 1.5.to_s, :count => 2
-    assert_select "tr>td", :text => 1.5.to_s, :count => 2
-    assert_select "tr>td", :text => 1.5.to_s, :count => 2
-    assert_select "tr>td", :text => 1.5.to_s, :count => 2
-    assert_select "tr>td", :text => 1.5.to_s, :count => 2
+    assert_select "tr>td", :text => 1.6.to_s, :count => 2
+    assert_select "tr>td", :text => 1.7.to_s, :count => 2
+    assert_select "tr>td", :text => 1.8.to_s, :count => 2
+    assert_select "tr>td", :text => 1.9.to_s, :count => 2
     assert_select "tr>td", :text => 3.to_s, :count => 2
     assert_select "tr>td", :text => 4.to_s, :count => 2
     assert_select "tr>td", :text => 5.to_s, :count => 2
