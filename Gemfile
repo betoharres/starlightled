@@ -50,11 +50,11 @@ gem 'rails_config'
 gem 'devise', github: 'plataformatec/devise'
 gem 'faker'
 gem "audited-activerecord", "~> 4.0"
+gem 'dotenv-rails'
 
 group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
-  gem 'dotenv-rails'
   gem 'railroady'
 end
 
