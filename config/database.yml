@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: starlight_production
-  username: starlight
+  username: starlightled
   password: <%= ENV['STARLIGHT_DATABASE_PASSWORD'] %>
