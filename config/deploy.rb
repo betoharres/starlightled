@@ -22,6 +22,8 @@ task :setup => :environment do
     queue! %[#{echo_cmd %{ssh-keyscan -H github.com > ~/.ssh/known_hosts}}]
     queue! %[#{echo_cmd %{ssh-keyscan -H codeplane.com >> ~/.ssh/known_hosts}}]
     queue! %[#{echo_cmd %{ssh-keyscan -H bitbucket.com >> ~/.ssh/known_hosts}}]
+    queue! %[mkdir -p "#{deploy_to}/shared/pids"]
+    queue! %[chmod g+rwx,u+rwx "#{deploy_to}/shared/pids"]
     queue! %[mkdir -p "#{deploy_to}/shared/tmp"]
     queue! %[chmod g+rwx,u+rwx "#{deploy_to}/shared/tmp"]
     queue! %[mkdir -p "#{deploy_to}/shared/log"]
