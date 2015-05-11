@@ -1,0 +1,75 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Lamp Stats</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Serialnum</th>
+      <th>Date</th>
+      <th>Pwr</th>
+      <th>Current</th>
+      <th>Volts</th>
+      <th>Tcom</th>
+      <th>Tled1</th>
+      <th>Tled2</th>
+      <th>Slum</th>
+      <th>Rssidev</th>
+      <th>Lqidev</th>
+      <th>Sentpkts</th>
+      <th>Rcvpkts</th>
+      <th>Lastreboot</th>
+      <th>Txpwr</th>
+      <th>Ctrlrestart</th>
+      <th>Vfirmware</th>
+      <th>Vcmd</th>
+      <th>Ckscfg</th>
+      <th>Appckserr</th>
+      <th>Cmdnotimp</th>
+      <th>Online</th>
+      <th>Communicating</th>
+      <th>Sunrise</th>
+      <th>Sunset</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @lamp_stats.each do |lamp_stat| %>
+      <tr>
+        <td><%= lamp_stat.serialNum %></td>
+        <td><%= lamp_stat.date %></td>
+        <td><%= lamp_stat.pwr %></td>
+        <td><%= lamp_stat.current %></td>
+        <td><%= lamp_stat.volts %></td>
+        <td><%= lamp_stat.tCom %></td>
+        <td><%= lamp_stat.tLed1 %></td>
+        <td><%= lamp_stat.tLed2 %></td>
+        <td><%= lamp_stat.sLum %></td>
+        <td><%= lamp_stat.rssiDev %></td>
+        <td><%= lamp_stat.lqiDev %></td>
+        <td><%= lamp_stat.sentPkts %></td>
+        <td><%= lamp_stat.rcvPkts %></td>
+        <td><%= lamp_stat.lastReboot %></td>
+        <td><%= lamp_stat.txPwr %></td>
+        <td><%= lamp_stat.ctrlRestart %></td>
+        <td><%= lamp_stat.vFirmware %></td>
+        <td><%= lamp_stat.vCmd %></td>
+        <td><%= lamp_stat.cksCfg %></td>
+        <td><%= lamp_stat.appCksErr %></td>
+        <td><%= lamp_stat.cmdNotImp %></td>
+        <td><%= lamp_stat.online %></td>
+        <td><%= lamp_stat.communicating %></td>
+        <td><%= lamp_stat.sunrise %></td>
+        <td><%= lamp_stat.sunset %></td>
+        <td><%= link_to 'Show', lamp_stat %></td>
+        <td><%= link_to 'Edit', edit_lamp_stat_path(lamp_stat) %></td>
+        <td><%= link_to 'Destroy', lamp_stat, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Lamp stat', new_lamp_stat_path %>

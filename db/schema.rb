@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150427135958) do
+ActiveRecord::Schema.define(version: 20150429134850) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,36 @@ ActiveRecord::Schema.define(version: 20150427135958) do
     t.string   "url_connection"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "lamp_stats", force: :cascade do |t|
+    t.integer  "serialNum"
+    t.datetime "date"
+    t.integer  "pwr"
+    t.float    "current"
+    t.float    "volts"
+    t.float    "tCom"
+    t.float    "tLed1"
+    t.float    "tLed2"
+    t.integer  "sLum"
+    t.integer  "rssiDev"
+    t.integer  "lqiDev"
+    t.integer  "sentPkts"
+    t.integer  "rcvPkts"
+    t.integer  "lastReboot"
+    t.integer  "txPwr"
+    t.integer  "ctrlRestart"
+    t.integer  "vFirmware"
+    t.integer  "vCmd"
+    t.integer  "cksCfg"
+    t.integer  "appCksErr"
+    t.integer  "cmdNotImp"
+    t.boolean  "online"
+    t.boolean  "communicating"
+    t.string   "sunrise"
+    t.string   "sunset"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "lamps", force: :cascade do |t|
