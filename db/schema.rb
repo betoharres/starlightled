@@ -60,9 +60,9 @@ ActiveRecord::Schema.define(version: 20150429134850) do
   end
 
   create_table "lamp_stats", force: :cascade do |t|
-    t.integer  "serialNum"
+    t.integer  "serialNum",      limit: 8
     t.datetime "date"
-    t.integer  "pwr"
+    t.integer  "pwr",            limit: 2
     t.float    "current"
     t.float    "volts"
     t.float    "tCom"
@@ -71,11 +71,15 @@ ActiveRecord::Schema.define(version: 20150429134850) do
     t.integer  "sLum"
     t.integer  "rssiDev"
     t.integer  "lqiDev"
-    t.integer  "sentPkts"
-    t.integer  "rcvPkts"
-    t.integer  "lastReboot"
+    t.integer  "correlationDev"
+    t.integer  "rssi"
+    t.integer  "lqi"
+    t.integer  "correlation"
+    t.integer  "sentPkts",       limit: 8
+    t.integer  "rcvPkts",        limit: 8
+    t.integer  "lastReboot",     limit: 8
     t.integer  "txPwr"
-    t.integer  "ctrlRestart"
+    t.integer  "ctrlRestart",    limit: 8
     t.integer  "vFirmware"
     t.integer  "vCmd"
     t.integer  "cksCfg"
@@ -83,10 +87,10 @@ ActiveRecord::Schema.define(version: 20150429134850) do
     t.integer  "cmdNotImp"
     t.boolean  "online"
     t.boolean  "communicating"
-    t.string   "sunrise"
-    t.string   "sunset"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.string   "sunrise",        limit: 50
+    t.string   "sunset",         limit: 50
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   create_table "lamps", force: :cascade do |t|
