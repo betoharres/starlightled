@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150429134850) do
+ActiveRecord::Schema.define(version: 20150513205424) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,15 @@ ActiveRecord::Schema.define(version: 20150429134850) do
   end
 
   add_index "companies", ["user_id"], name: "index_companies_on_user_id", using: :btree
+
+  create_table "firmwares", force: :cascade do |t|
+    t.string   "filename"
+    t.string   "content_type"
+    t.binary   "file_content"
+    t.string   "checksum"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
 
   create_table "gateways", force: :cascade do |t|
     t.string   "ip"
