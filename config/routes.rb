@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :firmwares
   resources :lamp_stats
   get 'landings/index'
 
