@@ -78,29 +78,31 @@ ActiveRecord::Schema.define(version: 20150513205424) do
     t.float    "tLed1"
     t.float    "tLed2"
     t.integer  "sLum"
-    t.integer  "rssiDev"
-    t.integer  "lqiDev"
-    t.integer  "correlationDev"
-    t.integer  "rssi"
-    t.integer  "lqi"
-    t.integer  "correlation"
+    t.integer  "rssiDev",        limit: 2
+    t.integer  "lqiDev",         limit: 2
+    t.integer  "correlationDev", limit: 2
+    t.integer  "rssi",           limit: 2
+    t.integer  "lqi",            limit: 2
+    t.integer  "correlation",    limit: 2
     t.integer  "sentPkts",       limit: 8
     t.integer  "rcvPkts",        limit: 8
     t.integer  "lastReboot",     limit: 8
-    t.integer  "txPwr"
+    t.integer  "txPwr",          limit: 2
     t.integer  "ctrlRestart",    limit: 8
-    t.integer  "vFirmware"
+    t.integer  "vFirmware",      limit: 2
     t.integer  "vCmd"
     t.integer  "cksCfg"
     t.integer  "appCksErr"
     t.integer  "cmdNotImp"
     t.boolean  "online"
     t.boolean  "communicating"
-    t.string   "sunrise",        limit: 50
-    t.string   "sunset",         limit: 50
+    t.string   "sunrise",        limit: 40
+    t.string   "sunset",         limit: 40
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
   end
+
+  add_index "lamp_stats", ["serialNum"], name: "index_lamp_stats_on_serialNum", using: :btree
 
   create_table "lamps", force: :cascade do |t|
     t.string   "font_type"
