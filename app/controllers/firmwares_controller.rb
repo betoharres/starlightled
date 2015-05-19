@@ -10,6 +10,14 @@ class FirmwaresController < ApplicationController
   # GET /firmwares/1
   # GET /firmwares/1.json
   def show
+    # This will send the entire file stored in the database if no params is sent,
+    # or it will interact byte by byte if a range is declared in the params as "s"
+    # to start and "e" to end.
+    # Then it will "pack" it to binary again and serve as a downloadable file so
+    # the gateway can read it.
+    #
+    # TODO: Check about Streaming and see if it can be refactored
+    # http://api.rubyonrails.org/classes/ActionController/Streaming.html
     if params[:s] && params[:e]
       c = @firmware.file_content
       a = []
