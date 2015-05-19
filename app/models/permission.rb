@@ -29,9 +29,7 @@ class Permission < ActiveRecord::Base
   # This method validates if the resource Rails is saving matches with the one in
   # the array in ActiveRecord::Base.descendants.map(&:name)
   def resource_exists
-    Rails.application.eager_load! if Rails.env.test? || Rails.env.development?
-
-    unless ActiveRecord::Base.descendants.map(&:name).include?(resource)
+    unless MANAGEABLE_RESOURCES.include?(resource)
       errors.add(:resource, "invalid. You must select a resource that rails can identify.")
     end
   end
