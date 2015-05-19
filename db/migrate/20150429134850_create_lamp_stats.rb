@@ -1,7 +1,7 @@
 class CreateLampStats < ActiveRecord::Migration
   def change
     create_table :lamp_stats do |t|
-      t.bigint :serialNum
+      t.bigint :serialNum, index: true, unique: true
       t.datetime :date
       t.integer :pwr, limit: 2 # limit: 2 for 2 bytes
       t.float :current
