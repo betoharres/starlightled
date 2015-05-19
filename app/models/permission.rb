@@ -11,6 +11,7 @@ class Permission < ActiveRecord::Base
   DELETE = 1
   NONE   = 0
 
+  # TODO: make a test for this
   # The keys are in plural because these words were reserved by rails
   enum ability: {
                  can_all: READ + CREATE + UPDATE + DELETE,
@@ -24,6 +25,9 @@ class Permission < ActiveRecord::Base
                  can_none: NONE
                 }
 
+  # TODO: make a test for this
+  # This method validates if the resource Rails is saving matches with the one in
+  # the array in ActiveRecord::Base.descendants.map(&:name)
   def resource_exists
     Rails.application.eager_load! if Rails.env.test? || Rails.env.development?
 
