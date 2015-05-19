@@ -24,7 +24,12 @@ RSpec.describe FirmwaresController, type: :controller do
   # Firmware. As you add validations to Firmware, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    {
+     filename: "example.bin",
+     content_type: "application/binary",
+     file_content: "<\x7F\x00 5\x04\"\x00I\x04\"\x00M\x04\"\x00Q\x04\"\x00Q\x04\"\x00Q\x04\"\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00Q\x04\"\x00Q\x04\"",
+     checksum: Digest::SHA1.hexdigest("<\x7F\x00 5\x04\"\x00I\x04\"\x00M\x04\"\x00Q\x04\"\x00Q\x04\"\x00Q\x04\"\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00Q\x04\"\x00Q\x04\"")
+    }
   }
 
   let(:invalid_attributes) {
