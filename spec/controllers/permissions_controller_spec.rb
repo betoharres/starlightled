@@ -36,6 +36,12 @@ RSpec.describe PermissionsController, type: :controller do
   # PermissionsController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
+  # For some reason there's some Permission records in the db that were affecting
+  # the tests
+  before :all do
+    Permission.delete_all
+  end
+
   describe "GET #index" do
     it "assigns all permissions as @permissions" do
       permission = Permission.create! valid_attributes
