@@ -169,10 +169,12 @@ ActiveRecord::Schema.define(version: 20150513205424) do
   create_table "roles", force: :cascade do |t|
     t.string   "name"
     t.integer  "user_id"
+    t.integer  "company_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  add_index "roles", ["company_id"], name: "index_roles_on_company_id", using: :btree
   add_index "roles", ["user_id"], name: "index_roles_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
@@ -199,5 +201,6 @@ ActiveRecord::Schema.define(version: 20150513205424) do
   add_foreign_key "networks_nodes", "networks"
   add_foreign_key "networks_nodes", "nodes"
   add_foreign_key "permissions", "roles"
+  add_foreign_key "roles", "companies"
   add_foreign_key "roles", "users"
 end

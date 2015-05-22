@@ -3,6 +3,7 @@ class CreateRoles < ActiveRecord::Migration
     create_table :roles do |t|
       t.string :name
       t.references :user, index: true, foreign_key: true
+      t.references :company, index: true, foreign_key: true
 
       t.timestamps null: false
     end
