@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "lamp_stats/edit", type: :view do
   before(:each) do
     @lamp_stat = assign(:lamp_stat, LampStat.create!(
-      :serialNum => 1,
+      :serial_num => 1,
       :pwr => 1,
       :current => 1.5,
       :volts => 1.5,
@@ -35,7 +35,7 @@ RSpec.describe "lamp_stats/edit", type: :view do
 
     assert_select "form[action=?][method=?]", lamp_stat_path(@lamp_stat), "post" do
 
-      assert_select "input#lamp_stat_serialNum[name=?]", "lamp_stat[serialNum]"
+      assert_select "input#lamp_stat_serial_num[name=?]", "lamp_stat[serial_num]"
 
       assert_select "input#lamp_stat_pwr[name=?]", "lamp_stat[pwr]"
 

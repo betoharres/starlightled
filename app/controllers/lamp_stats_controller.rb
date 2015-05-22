@@ -69,6 +69,6 @@ class LampStatsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def lamp_stat_params
-      params.require(:lamp_stat).permit(:serialNum, :date, :pwr, :current, :volts, :tCom, :tLed1, :tLed2, :sLum, :rssiDev, :lqiDev, :rssi, :lqi, :correlationDev, :correlation, :sentPkts, :rcvPkts, :lastReboot, :txPwr, :ctrlRestart, :vFirmware, :vCmd, :cksCfg, :appCksErr, :cmdNotImp, :online, :communicating, :sunrise, :sunset)
+      params.require(:lamp_stat).permit(:serial_num, :date, :pwr, :current, :volts, :tCom, :tLed1, :tLed2, :sLum, :rssiDev, :lqiDev, :rssi, :lqi, :correlationDev, :correlation, :sentPkts, :rcvPkts, :lastReboot, :txPwr, :ctrlRestart, :vFirmware, :vCmd, :cksCfg, :appCksErr, :cmdNotImp, :online, :communicating, :sunrise, :sunset)
     end
 end
