@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "lamp_stats/show", type: :view do
   before(:each) do
     @lamp_stat = assign(:lamp_stat, LampStat.create!(
-      :serialNum => 1,
+      :serial_num => 1,
       :pwr => 2,
       :current => 1.5,
       :volts => 1.5,

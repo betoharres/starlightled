@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :lamp_stat do
-    serialNum 1
+    serial_num 1
 date "2015-04-29 10:48:50"
 pwr 1
 current 1.5

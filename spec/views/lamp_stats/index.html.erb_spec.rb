@@ -4,7 +4,7 @@ RSpec.describe "lamp_stats/index", type: :view do
   before(:each) do
     assign(:lamp_stats, [
       LampStat.create!(
-        :serialNum => 1,
+        :serial_num => 1,
         :pwr => 2,
         :current => 1.5,
         :volts => 1.6,
@@ -30,7 +30,7 @@ RSpec.describe "lamp_stats/index", type: :view do
         :sunset => "Sunset"
       ),
       LampStat.create!(
-        :serialNum => 1,
+        :serial_num => 1,
         :pwr => 2,
         :current => 1.5,
         :volts => 1.6,
