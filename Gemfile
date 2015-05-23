@@ -56,6 +56,8 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'railroady'
+  gem 'guard-spork'
+  gem 'guard-rspec'
 end
 
 group :test do
