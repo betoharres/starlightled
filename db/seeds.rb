@@ -14,4 +14,4 @@ role = Role.create! name: 'SuperUser', company: company
 MANAGEABLE_RESOURCES.each do |resource_name|
   role.permissions << Permission.create!(ability: :can_all, resource: resource_name)
 end
-user.role = role
+role.user = user
