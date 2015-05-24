@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
 
   has_many :companies
   belongs_to :company
-  has_one :role
+  belongs_to :role
 
   # https://github.com/collectiveidea/audited
   audited allow_mass_assignment: true

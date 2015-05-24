@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(version: 20150513205424) do
   end
 
   create_table "lamp_stats", force: :cascade do |t|
-    t.integer  "serialNum",      limit: 8
+    t.integer  "serial_num",     limit: 8
     t.datetime "date"
     t.integer  "pwr",            limit: 2
     t.float    "current"
@@ -102,7 +102,7 @@ ActiveRecord::Schema.define(version: 20150513205424) do
     t.datetime "updated_at",                null: false
   end
 
-  add_index "lamp_stats", ["serialNum"], name: "index_lamp_stats_on_serialNum", using: :btree
+  add_index "lamp_stats", ["serial_num"], name: "index_lamp_stats_on_serial_num", using: :btree
 
   create_table "lamps", force: :cascade do |t|
     t.string   "font_type"
@@ -168,14 +168,12 @@ ActiveRecord::Schema.define(version: 20150513205424) do
 
   create_table "roles", force: :cascade do |t|
     t.string   "name"
-    t.integer  "user_id"
     t.integer  "company_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   add_index "roles", ["company_id"], name: "index_roles_on_company_id", using: :btree
-  add_index "roles", ["user_id"], name: "index_roles_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -189,6 +187,7 @@ ActiveRecord::Schema.define(version: 20150513205424) do
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
     t.integer  "company_id"
+    t.integer  "role_id"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.string   "name"
@@ -197,10 +196,12 @@ ActiveRecord::Schema.define(version: 20150513205424) do
   add_index "users", ["company_id"], name: "index_users_on_company_id", using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["role_id"], name: "index_users_on_role_id", using: :btree
 
   add_foreign_key "networks_nodes", "networks"
   add_foreign_key "networks_nodes", "nodes"
   add_foreign_key "permissions", "roles"
   add_foreign_key "roles", "companies"
-  add_foreign_key "roles", "users"
+  add_foreign_key "users", "companies"
+  add_foreign_key "users", "roles"
 end
