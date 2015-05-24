@@ -11,8 +11,7 @@ user = User.create!(email: 'admin@admin.com', password: 'password',
                     password_confirmation: 'password')
 company = Company.create!(name: 'StarlightLED', email: 'starlight@gmail.com', user: user)
 user.company = company
-role = Role.create! name: 'SuperUser', company: user.company
+role = Role.create! name: 'SuperUser', company: user.company, users: [user]
 MANAGEABLE_RESOURCES.each do |resource_name|
   role.permissions << Permission.create!(ability: :can_all, resource: resource_name)
 end
-role.user = user

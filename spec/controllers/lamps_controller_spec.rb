@@ -39,10 +39,10 @@ RSpec.describe LampsController, type: :controller do
 
   before :all do
     permission = FactoryGirl.create(:permission)
-    @authorized_user = permission.role.user
+   @authorized_user = FactoryGirl.create(:user, role: permission.role)
 
     permission = FactoryGirl.create(:permission, ability: :can_none)
-    @unauthorized_user = permission.role.user
+    @unauthorized_user = FactoryGirl.create(:user, role: permission.role)
   end
 
   before :each do
