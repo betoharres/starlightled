@@ -3,7 +3,7 @@ class CreateProducts < ActiveRecord::Migration
     create_table :products do |t|
       t.string :name
       t.string :model
-      t.string :serial_number
+      t.bigint :serial_number, null: false
       t.string :mac_address
       t.string :product_code
       t.date :fabrication_date
@@ -13,5 +13,6 @@ class CreateProducts < ActiveRecord::Migration
 
       t.timestamps
     end
+    add_index :products, :serial_number, unique: true
   end
 end
