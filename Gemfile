@@ -58,6 +58,7 @@ group :development, :test do
   gem 'railroady'
   gem 'guard-spork'
   gem 'guard-rspec'
+  gem 'rspec-nc'
 end
 
 group :test do
