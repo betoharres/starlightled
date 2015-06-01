@@ -34,7 +34,7 @@ guard :spork, :cucumber_env => { 'RAILS_ENV' => 'test' }, :rspec_env => { 'RAILS
   watch(%r{features/support/}) { :cucumber }
 end
 
-guard :rspec, cmd: 'bundle exec rspec' do
+guard :rspec, cmd: 'bundle exec rspec --format=doc --format=Nc' do
   watch('spec/spec_helper.rb')                        { "spec" }
   watch('config/routes.rb')                           { "spec/routing" }
   watch('app/controllers/application_controller.rb')  { "spec/controllers" }
