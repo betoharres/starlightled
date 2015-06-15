@@ -4,7 +4,7 @@ class CreateGateways < ActiveRecord::Migration
       t.string :ip
       t.string :url_connection
 
-      t.timestamps
+      t.timestamps null: false
     end
   end
 end

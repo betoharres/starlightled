@@ -1,17 +1,57 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-  <title>Starlight</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-<meta name="viewport" content="width=device-width, initial-scale=1"/></head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+   <meta name="description" content="Bootstrap Admin App + Ruby on Rails">
+   <meta name="keywords" content="app, responsive, jquery, bootstrap, dashboard, admin">
+   <title>Angle - Bootstrap Admin Template</title>
+   <!-- =============== VENDOR STYLES ===============-->
+   <%= stylesheet_link_tag 'base' %>
+   <!-- =============== VIEW VENDOR STYLES ===============-->
+   <%= stylesheet_link_tag params[:controller] %>
+   <!-- =============== APP STYLES ===============-->
+   <%= stylesheet_link_tag 'application', media: 'all', id: "maincss" %>
+   <script src="https://maps.googleapis.com/maps/api/js"></script>
+   <%= csrf_meta_tags %>
+</head>
+
 <body>
-<%= render partial: "elements/navbar" %>
-<%= bootstrap_flash %>
+   <div class="wrapper">
+      <!-- top navbar-->
+      <header class="topnavbar-wrapper">
+         <%= render partial: "layouts/partials/topnavbar" %>
+      </header>
+      <!-- sidebar-->
+      <aside class="aside">
+         <%= render partial: "layouts/partials/sidebar" %>
+      </aside>
+      <!-- offsidebar-->
+      <aside class="offsidebar">
+         <%= render partial: "layouts/partials/offsidebar" %>
+      </aside>
+      <!-- Main section-->
+      <section>
+         <!-- Page content-->
+         <div class="content-wrapper">
+            <%= yield %>
+         </div>
+      </section>
+      <!-- Page footer-->
+      <footer>
+         <%= render partial: "layouts/partials/footer" %>
+      </footer>
+   </div>
+   <!-- =============== VENDOR SCRIPTS ===============-->
+   <%= javascript_include_tag 'base' %>
+   <!-- =============== VIEW VENDOR SCRIPTS ===============-->
+   <%= javascript_include_tag params[:controller] %>
+   <!-- =============== APP SCRIPTS ===============-->
+   <%= javascript_include_tag 'application' %>
 
-
-<%= yield %>
+   <%= yield :body_area %>
 
 </body>
+
 </html>

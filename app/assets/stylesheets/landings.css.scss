@@ -1,3 +1,21 @@
 // Place all the styles related to the Landings controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+body, html, section, div.wrapper, div.content-wrapper {
+  height: 100%;
+  width: 100%;
+}
+
+.content-wrapper {
+  width: 120%;
+  height: 110%;
+  margin-top: -10.2%;
+  margin-left: -20.2%;
+}
+
+#map-canvas {
+  margin-top: -10.2%;
+  width: 120%;
+  height: 120%;
+}

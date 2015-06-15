@@ -1,6 +1,7 @@
 <%- model_class = Network -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => Network %></h1>
+  <!-- <h1><%=t '.title', :default => Network %></h1> -->
+  <h1>Rede</h1>
 </div>
 
 <div class="fieldset">
@@ -22,3 +23,4 @@
               :class => 'btn btn-danger' %>
 </div>
 
+<%= render partial: 'nodes/index' %>

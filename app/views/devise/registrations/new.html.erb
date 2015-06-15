@@ -1,44 +1,46 @@
-<div class="page-header">
-  <h1><%=t ".title", default: "Sign Up" %></h1>
+
+<div class="block-center mt-xl wd-xl">
+   <!-- START panel-->
+   <div class="panel panel-dark panel-flat">
+      <div class="panel-heading text-center">
+         <a href="#">
+            <img src="<%= image_path('angle/logo.png') %>" alt="Image" class="block-center img-rounded" />
+         </a>
+      </div>
+      <div class="panel-body">
+         <p class="text-center pv">Crie uma conta para ter acesso.</p>
+         <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: "mb-lg"}) do |f| %>
+            <div class="form-group has-feedback">
+                <%= f.label :email, class: "text-muted" %>
+                <%= f.email_field :email, class: "text-field form-control", placeholder: 'E-mail', required: 'required', spellcheck: "false" %>
+               <span class="fa fa-envelope form-control-feedback text-muted"></span>
+            </div>
+            <div class="form-group has-feedback">
+                <%= f.label :password, 'Senha', class: "text-muted" %>
+               <%= f.password_field :password, class: "form-control", placeholder: 'Senha', html: {autocomplete: "off"} %>
+               <span class="fa fa-lock form-control-feedback text-muted"></span>
+            </div>
+            <div class="form-group has-feedback">
+               <%= f.label :password_confirmation, 'Confirme sua senha', class: "text-muted" %>
+               <%= f.password_field :password_confirmation, data: {parsley_equalto: ''}, class: "form-control", html: {autocomplete: "off", required: 'required'} %>
+               <span class="fa fa-lock form-control-feedback text-muted"></span>
+            </div>
+            <div class="clearfix">
+               <!-- <div class="checkbox c&#45;checkbox pull&#45;left mt0"> -->
+               <!--    <label> -->
+               <!--       <input type="checkbox" value="" required="required" name="agreed" /> -->
+               <!--       <span class="fa fa&#45;check"></span>I agree with the <a href="#">terms</a> -->
+               <!--    </label> -->
+               <!-- </div> -->
+            </div>
+            <div class="form-group mb">
+               <%= f.label :role_id, 'Cargo', class: "text-muted" %>
+              <%= f.select :role_id, Role.all.collect {|role| [ role.name, role.id ] }, {}, {class: 'chosen-select input-md form-control'} %>
+            </div><br />
+            <%= f.submit "Criar uma conta", class: "btn btn-block btn-primary mt-lg" %>
+         <% end %>
+         <p class="pt-lg text-center">Já possui uma conta?</p><a href="<%= new_session_path(resource_name) %>" class="btn btn-block btn-default">Login</a>
+      </div>
+   </div>
+   <!-- END panel-->
 </div>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: "form-horizontal form-user"}) do |f| %>
-  <%= devise_error_messages! %>
-
-  
-
-  <div class="form-group">
-    <%= f.label :email, class: "control-label col-md-4" %>
-    <div class="col-md-8">
-      <%= f.email_field :email, class: "text-field form-control", html: {spellcheck: "false"} %>
-    </div>
-  </div>
-    
-  <div class="form-group">
-    <%= f.label :password, class: "control-label col-md-4" %>
-    <div class="col-md-8">
-      <%= f.password_field :password, class: "text-field form-control", html: {autocomplete: "off"} %>
-    </div>
-  </div>
-     
-  <div class="form-group">
-    <%= f.label :password_confirmation, "Password Confirmation", class: "control-label col-md-4" %>
-    <div class="col-md-8">
-      <%= f.password_field :password_confirmation, class: "text-field form-control", html: {autocomplete: "off"} %>
-    </div>
-  </div>
-     
-  <div class="form-group">
-    <div class="col-md-offset-4 col-md-8">
-      <%= f.submit "Sign Up", class: "btn btn-primary" %>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <div class="col-md-offset-4 col-md-8">
-      <%= render "devise/shared/links" %>
-    </div>
-  </div>
-
-<% end %>
-
