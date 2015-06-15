@@ -4,7 +4,7 @@ class CreateNetworks < ActiveRecord::Migration
       t.string :name
       t.references :company, index: true
 
-      t.timestamps
+      t.timestamps null: false
     end
   end
 end

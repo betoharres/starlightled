@@ -11,7 +11,7 @@ class CreateProducts < ActiveRecord::Migration
       t.references :node, index: true
       t.references :productable, polymorphic: true, index: true
 
-      t.timestamps
+      t.timestamps null: false
     end
     add_index :products, :serial_number, unique: true
   end

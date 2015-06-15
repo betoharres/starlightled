@@ -4,7 +4,7 @@ class CreateLamps < ActiveRecord::Migration
       t.string :font_type
       t.string :font_subtype
 
-      t.timestamps
+      t.timestamps null: false
     end
   end
 end
