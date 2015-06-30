@@ -4,8 +4,7 @@ FactoryGirl.define do
     cnpj "MyString"
     address "MyString"
     phone "MyString"
-    email "company@email.com"
-    user
+    email { Faker::Internet.email }
   end
 
 end
