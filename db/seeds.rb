@@ -19,6 +19,8 @@ user3 = User.create!(email: 'operador@starlightled.com.br', password: 'password'
 
 company = Company.create!(name: 'StarlightLED', email: 'starlight@gmail.com', user: user)
 user.company = company
+user2.company = company
+user3.company = company
 role = Role.create! name: 'Admin', company: user.company, users: [user]
 role2 = Role.create! name: 'Gerente', company: user.company, users: [user2]
 role3 = Role.create! name: 'Operador', company: user.company, users: [user3]

@@ -40,12 +40,12 @@ ActiveRecord::Schema.define(version: 20150513205424) do
   add_index "audits", ["user_id", "user_type"], name: "user_index", using: :btree
 
   create_table "companies", force: :cascade do |t|
-    t.integer  "user_id",    null: false
     t.string   "name"
     t.string   "cnpj"
     t.string   "address"
     t.string   "phone"
     t.string   "email"
+    t.integer  "user_id",    null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 20150513205424) do
     t.string   "content_type"
     t.binary   "file_content"
     t.string   "checksum"
+    t.float    "version"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
@@ -123,8 +124,10 @@ ActiveRecord::Schema.define(version: 20150513205424) do
   create_table "nodes", force: :cascade do |t|
     t.string   "identifier"
     t.integer  "network_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.decimal  "latitude",   precision: 10, scale: 6
+    t.decimal  "longitude",  precision: 10, scale: 6
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
   end
 
   add_index "nodes", ["network_id"], name: "index_nodes_on_network_id", using: :btree
@@ -144,16 +147,19 @@ ActiveRecord::Schema.define(version: 20150513205424) do
     t.string   "model"
     t.integer  "serial_number",     limit: 8, null: false
     t.string   "mac_address"
-    t.string   "product_code"
+    t.integer  "product_code"
+    t.integer  "product_revision"
     t.date     "fabrication_date"
     t.integer  "tension_operation"
     t.integer  "node_id"
+    t.integer  "company_id",                  null: false
     t.integer  "productable_id"
     t.string   "productable_type"
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
   end
 
+  add_index "products", ["company_id"], name: "index_products_on_company_id", using: :btree
   add_index "products", ["node_id"], name: "index_products_on_node_id", using: :btree
   add_index "products", ["productable_type", "productable_id"], name: "index_products_on_productable_type_and_productable_id", using: :btree
   add_index "products", ["serial_number"], name: "index_products_on_serial_number", unique: true, using: :btree
