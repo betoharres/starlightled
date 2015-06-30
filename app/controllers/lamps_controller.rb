@@ -12,6 +12,7 @@ class LampsController < ApplicationController
   # GET /lamps/1.json
   def show
     @product = @lamp.product
+    LampStat.where()
   end
 
   # GET /lamps/new
@@ -27,7 +28,7 @@ class LampsController < ApplicationController
   # POST /lamps.json
   def create
     @lamp = Lamp.new(lamp_params)
-    # abort lamp_params
+    @lamp.product.company_id = current_user.company.id if @lamp.product
 
     respond_to do |format|
       if @lamp.save
@@ -44,7 +45,9 @@ class LampsController < ApplicationController
   # PATCH/PUT /lamps/1.json
   def update
     respond_to do |format|
-      if @lamp.update(lamp_params)
+      hash = lamp_params
+      hash[:product_attributes].merge!(company_id: current_user.company.id) if hash[:product_attributes]
+      if @lamp.update(hash)
         format.html { redirect_to @lamp, notice: 'Lamp was successfully updated.' }
         format.json { render :show, status: :ok, location: @lamp }
       else

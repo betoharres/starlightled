@@ -26,6 +26,7 @@ class GatewaysController < ApplicationController
   # POST /gateways.json
   def create
     @gateway = Gateway.new(gateway_params)
+    @gateway.product.company_id = current_user.company.id if @gateway.product
 
     respond_to do |format|
       if @gateway.save
@@ -42,7 +43,9 @@ class GatewaysController < ApplicationController
   # PATCH/PUT /gateways/1.json
   def update
     respond_to do |format|
-      if @gateway.update(gateway_params)
+      hash = gateway_params
+      hash[:product_attributes].merge!(company_id: current_user.company.id) if hash[:product_attributes]
+      if @gateway.update(hash)
         format.html { redirect_to @gateway, notice: 'Gateway was successfully updated.' }
         format.json { render :show, status: :ok, location: @gateway }
       else
