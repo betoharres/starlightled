@@ -7,16 +7,12 @@
   <dl>
       <dt class="label label-default"><%= model_class.human_attribute_name(:identifier) %></dt>
       <dd><pre class="prettyprint"><%= @node.identifier %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:latitude) %></dt>
-      <dd><pre class="prettyprint"><%= @node.latitude %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:longitude) %></dt>
-      <dd><pre class="prettyprint"><%= @node.longitude %></pre></dd>
   </dl>
 </div>
 
 <div class="form-group">
   <%= link_to t('.back', :default => t("helpers.links.back")),
-              nodes_path, :class => 'btn btn-default'  %>
+              network_path(@node), :class => 'btn btn-default'  %>
   <%= link_to t('.edit', :default => t("helpers.links.edit")),
               edit_node_path(@node), :class => 'btn btn-default' %>
   <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
