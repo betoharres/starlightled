@@ -17,16 +17,13 @@ require 'rails_helper'
 # is no simpler way to get a handle on the object needed for the example.
 # Message expectations are only used when there is no simpler way to specify
 # that an instance is receiving a specific message.
-require 'support/controller_helpers'
 
 RSpec.describe LampsController, type: :controller do
 
   # This should return the minimal set of attributes required to create a valid
   # Lamp. As you add validations to Lamp, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) {
-    {font_type: "Fonte Type", font_subtype: "Fonte subtype", product_attributes: {name: "Product", model: "ModelLamp", serial_number: "ABI-200-XSA", mac_address: "000-XXX-XDA", product_code: "FFF", fabrication_date: Date.today, tension_operation: 50}}
-  }
+
 
   let(:invalid_attributes) {
     {font_type: nil, font_subtype: nil}
@@ -35,19 +32,19 @@ RSpec.describe LampsController, type: :controller do
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # LampsController. Be sure to keep this updated too.
-  let(:valid_session) { {} }
+  let(:valid_session) {}
 
   before :all do
-    permission = FactoryGirl.create(:permission)
-   @authorized_user = FactoryGirl.create(:user, role: permission.role)
-
-    permission = FactoryGirl.create(:permission, ability: :can_none)
-    @unauthorized_user = FactoryGirl.create(:user, role: permission.role)
+    @authorized_user = auth_user(:can_all)
+    @unauthorized_user = auth_user(:can_none)
   end
-
   before :each do
     sign_in @authorized_user
   end
+
+  let(:valid_attributes) {
+    {font_type: "Fonte Type", font_subtype: "Fonte subtype", product_attributes: {name: "Product", model: "ModelLamp", serial_number: "ABI-200-XSA", mac_address: "000-XXX-XDA", product_code: "FFF", fabrication_date: Date.today, tension_operation: 50, company_id: FactoryGirl.create(:company, user: @authorized_user).id}}
+  }
 
   describe "GET #index" do
     it "assigns all lamps as @lamps" do
@@ -62,7 +59,7 @@ RSpec.describe LampsController, type: :controller do
     end
 
     it "blocks unauthenticated access" do
-      sign_in nil
+      sign_in @unauthorized_user
       get :index
       expect(response).to redirect_to(root_url)
     end
@@ -104,8 +101,8 @@ RSpec.describe LampsController, type: :controller do
     end
 
     it "blocks unauthorized user" do
-      lamp = Lamp.create! valid_attributes
       sign_in @unauthorized_user
+      lamp = Lamp.create! valid_attributes
       get :edit, {:id => lamp.to_param}, valid_session
       expect(response).to be_redirect
     end

@@ -21,11 +21,19 @@ require 'active_support/core_ext/hash'
 
 RSpec.describe GatewaysController, type: :controller do
 
+  before :all do
+    @authorized_user = auth_user(:can_all)
+    @unauthorized_user = auth_user(:can_none)
+  end
+  before :each do
+    sign_in @authorized_user
+  end
+
   # This should return the minimal set of attributes required to create a valid
   # Gateway. As you add validations to Gateway, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    {ip: "70.11.214.35", url_connection: "localhost", product_attributes: {name: "Product", model: "ModelGateway", serial_number: "ABI-200-XSA", mac_address: "000-XXX-XDA", product_code: "FFF", fabrication_date: Date.today, tension_operation: 50}}
+    {ip: "70.11.214.35", url_connection: "localhost", product_attributes: {name: "Product", model: "ModelGateway", serial_number: "ABI-200-XSA", mac_address: "000-XXX-XDA", product_code: "FFF", fabrication_date: Date.today, tension_operation: 50, company_id: FactoryGirl.create(:company, user: @authorized_user).id}}
   }
 
   let(:invalid_attributes) {
