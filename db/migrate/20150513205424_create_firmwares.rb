@@ -5,6 +5,7 @@ class CreateFirmwares < ActiveRecord::Migration
       t.string :content_type
       t.binary :file_content
       t.string :checksum
+      t.float :version
 
       t.timestamps null: false
     end

@@ -1,5 +1,6 @@
 class FirmwaresController < ApplicationController
   before_action :set_firmware, only: [:show, :edit, :update, :destroy]
+  after_action :filter_header, only: :show
 
   # GET /firmwares
   # GET /firmwares.json
@@ -19,21 +20,22 @@ class FirmwaresController < ApplicationController
     # TODO: Check about Streaming and see if it can be refactored
     # http://api.rubyonrails.org/classes/ActionController/Streaming.html
     if params[:s] && params[:e]
-      c = @firmware.file_content
       a = []
-      c.each_byte do |b| a << b end
+      # append each byte of the firmware in a field of the array
+      @firmware.file_content.each_byte do |byte|
+        a << byte
+      end
+      # stores in a variable the range that was requested
       selected_content = a[params[:s].to_i..params[:e].to_i]
-
+      # transforms the selected range back to binary
       selected_content = selected_content.pack('c*')
-      send_data(selected_content,
-                type: @firmware.content_type,
-                filename: @firmware.filename)
-
-    else
-      send_data(@firmware.file_content,
-                type: @firmware.content_type,
-                filename: @firmware.filename)
+      response.headers['PARTIAL-CHECKSUM'] = Digest::SHA1.hexdigest(selected_content)
     end
+    # if the selected_content was not set, use the entire file
+    selected_content ||= @firmware.file_content
+    send_data(selected_content,
+              type: @firmware.content_type,
+              filename: @firmware.filename)
   end
 
   # GET /firmwares/new
@@ -52,7 +54,7 @@ class FirmwaresController < ApplicationController
 
     respond_to do |format|
       if @firmware.save
-        format.html { redirect_to @firmware, notice: 'Firmware was successfully created.' }
+        format.html { redirect_to firmwares_path, notice: 'Firmware was successfully created.' }
         format.json { render :show, status: :created, location: @firmware }
       else
         format.html { render :new }
@@ -66,7 +68,7 @@ class FirmwaresController < ApplicationController
   def update
     respond_to do |format|
       if @firmware.update(firmware_params)
-        format.html { redirect_to @firmware, notice: 'Firmware was successfully updated.' }
+        format.html { redirect_to firmwares_path, notice: 'Firmware was successfully updated.' }
         format.json { render :show, status: :ok, location: @firmware }
       else
         format.html { render :edit }
@@ -94,5 +96,13 @@ class FirmwaresController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def firmware_params
       params.require(:firmware).permit(:file)
+    end
+
+    def filter_header
+      white_list = %w(CHECKSUM PARTIAL-CHECKSUM)
+      response.headers.delete_if{|key| !white_list.include? key}
+      response.headers['CHECKSUM'] = Digest::SHA1.hexdigest(@firmware.file_content)
+      response.headers['SIZE'] = @firmware.file_content.size
+      # abort response.headers.to_s
     end
 end
