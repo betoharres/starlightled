@@ -1,13 +1,27 @@
 class Firmware < ActiveRecord::Base
+
+  def update(params = {})
+    file = params.delete(:file)
+    if file
+      self.filename = sanitize_filename(file.original_filename)
+      self.content_type = file.content_type
+      self.checksum = Digest::SHA1.hexdigest(file.content_type)
+      self.file_content = file.read
+    end
+    super
+  end
+
   def initialize(params = {})
     file = params.delete(:file)
     super
     if file
       self.filename = sanitize_filename(file.original_filename)
       self.content_type = file.content_type
+      self.checksum = Digest::SHA1.hexdigest(file.content_type)
       self.file_content = file.read
     end
   end
+
   private
     def sanitize_filename(filename)
       # Get only the filename, not the whole path (for IE)
