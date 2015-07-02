@@ -6,6 +6,7 @@
   <thead>
     <tr>
       <th>ID</th>
+	  <!--
       <th><%= model_class.human_attribute_name(:name) %></th>
       <th><%= model_class.human_attribute_name(:model) %></th>
       <th><%= model_class.human_attribute_name(:serial_number) %></th>
@@ -15,6 +16,16 @@
       <th><%= model_class.human_attribute_name(:tension_operation) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
+	  -->
+	  <th>Nome</th>
+      <th>Modelo</th>
+      <th>Número serial</th>
+      <th>Endereço MAC</th>
+      <th>Código do produto</th>
+      <th>Data de fabricação</th>
+      <th>Tensão de operação</th>
+      <th>Criado em</th>
+      <th>Ações</th>
     </tr>
   </thead>
   <tbody>
@@ -30,6 +41,7 @@
         <td><%= product.tension_operation %></td>
         <td><%=l product.created_at, format: :long %></td>
         <td>
+		  <!--
           <%= link_to product_path(product), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
             <%= glyph 'info-sign' %>
             <%= glyph 'pencil' %>
@@ -37,12 +49,26 @@
           <%= link_to product_path(product), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
             <%= glyph 'remove' %>
           <%- end -%>
+		  -->
+		  
+		  <%= link_to product_path(product), :class => 'btn btn-xs', :title => "Mostrar" do %>
+            <%= glyph 'info-sign' %>
+            <%= glyph 'pencil' %>
+          <%- end -%>
+          <%= link_to product_path(product), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Confirmar?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => "Excluir") }" do %>
+            <%= glyph 'remove' %>
+          <%- end -%>
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
+<!--
 <%= link_to t('.new', :default => t("helpers.links.new")),
+            new_product_path,
+            :class => 'btn btn-primary' %>
+-->
+
+<%= link_to t('.new', :default => "Novo"),
             new_product_path,
             :class => 'btn btn-primary' %>

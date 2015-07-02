@@ -1,18 +1,18 @@
 <%- model_class = Company -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => Company %></h1>
+  <h1><!--<%=t '.title', :default => Company %>-->Empresas</h1>
 </div>
 <table class="table table-striped">
   <thead>
     <tr>
       <th>ID</th>
-      <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:cnpj) %></th>
-      <th><%= model_class.human_attribute_name(:address) %></th>
-      <th><%= model_class.human_attribute_name(:phone) %></th>
-      <th><%= model_class.human_attribute_name(:email) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+      <th><!--<%= model_class.human_attribute_name(:name) %>-->Nome</th>
+      <th><!--<%= model_class.human_attribute_name(:cnpj) %>-->CNPJ</th>
+      <th><!--<%= model_class.human_attribute_name(:address) %>-->Endereço</th>
+      <th><!--<%= model_class.human_attribute_name(:phone) %>-->Telefone</th>
+      <th><!--<%= model_class.human_attribute_name(:email) %>-->Email</th>
+      <th><!--<%= model_class.human_attribute_name(:created_at) %>-->Criado em</th>
+      <th><!--<%=t '.actions', :default => t("helpers.actions") %>-->Ações</th>
     </tr>
   </thead>
   <tbody>
@@ -26,11 +26,18 @@
         <td><%= company.email %></td>
         <td><%=l company.created_at, format: :long %></td>
         <td>
-          <%= link_to company_path(company), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
+          <!--<%= link_to company_path(company), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
+            <%= glyph 'info-sign' %>
+            <%= glyph 'pencil' %>
+          <%- end -%>-->
+		  <%= link_to company_path(company), :class => 'btn btn-xs', :title => "#{ t('.show', :default => 'Mostrar') }" do %>
             <%= glyph 'info-sign' %>
             <%= glyph 'pencil' %>
           <%- end -%>
-          <%= link_to company_path(company), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
+          <!--<%= link_to company_path(company), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
+            <%= glyph 'remove' %>
+          <%- end -%>-->
+		  <%= link_to company_path(company), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Confirmar?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => 'Excluir') }" do %>
             <%= glyph 'remove' %>
           <%- end -%>
         </td>
@@ -39,6 +46,9 @@
   </tbody>
 </table>
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
+<!--<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_company_path,
+            :class => 'btn btn-primary' %>-->
+<%= link_to t('.new', :default => 'Nova'),
             new_company_path,
             :class => 'btn btn-primary' %>
