@@ -1,49 +1,42 @@
 <%= form_for @product, :html => { :class => 'form-horizontal form-model' } do |f| %>
   <div class="form-group">
-    <!--<%= f.label :name, :class => 'control-label col-md-2' %>-->
-	<label class="control-label col-md-2" text="Nome" for="product_name">Nome</label>
+    <%= f.label :name, :class => 'control-label col-md-2' %>
     <div class="col-md-10">
       <%= f.text_field :name, :class => 'text-field form-control' %>
     </div>
   </div>
   <div class="form-group">
-    <!--<%= f.label :model, :class => 'control-label col-md-2' %>-->
-	<label class="control-label col-md-2" for="product_model">Modelo</label>
+    <%= f.label :model, :class => 'control-label col-md-2' %>
     <div class="col-md-10">
       <%= f.text_field :model, :class => 'text-field form-control' %>
     </div>
   </div>
   <div class="form-group">
-    <!--<%= f.label :serial_number, :class => 'control-label col-md-2' %>-->
-	<label class="control-label col-md-2" for="product_serial_number">Número serial</label>
+    <%= f.label :serial_number, :class => 'control-label col-md-2' %>
     <div class="col-md-10">
       <%= f.text_field :serial_number, :class => 'text-field form-control' %>
     </div>
   </div>
   <div class="form-group">
-    <!--<%= f.label :mac_address, :class => 'control-label col-md-2' %>-->
-	<label class="control-label col-md-2" for="product_mac_address">Endereço MAC</label>
+    <%= f.label :mac_address, :class => 'control-label col-md-2' %>
     <div class="col-md-10">
       <%= f.text_field :mac_address, :class => 'text-field form-control' %>
     </div>
   </div>
   <div class="form-group">
-    <!--<%= f.label :product_code, :class => 'control-label col-md-2' %>-->
-	<label class="control-label col-md-2" for="product_product_code">Código do produto</label>
+    <%= f.label :product_code, :class => 'control-label col-md-2' %>
     <div class="col-md-10">
       <%= f.text_field :product_code, :class => 'text-field form-control' %>
     </div>
   </div>
   <div class="form-group">
-    <!--<%= f.label :fabrication_date, :class => 'control-label col-md-2' %>-->
-	<label class="control-label col-md-2" for="product_fabrication_date">Data de fabricação</label>
+    <%= f.label :fabrication_date, :class => 'control-label col-md-2' %>
     <div class="col-md-10">
       <%= f.date_select :fabrication_date, :class => 'text-field form-control' %>
     </div>
   </div>
   <div class="form-group">
-    <!--<%= f.label :tension_operation, :class => 'control-label col-md-2' %>-->
-	<label class="control-label col-md-2" for="product_tension_operation">Tensão de operação</label>
+    <%= f.label :tension_operation, :class => 'control-label col-md-2' %>
     <div class="col-md-10">
       <%= f.number_field :tension_operation, :class => 'text-field form-control' %>
     </div>
@@ -51,14 +44,8 @@
 
   <div class="form-group">
     <div class='col-md-offset-2 col-md-10'>
-	  <!--
       <%= f.submit nil, :class => 'btn btn-primary' %>
       <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                  products_path, :class => 'btn btn-default' %>
-	  -->
-		
-	  <%= f.submit nil, :value => 'Salvar', :class => 'btn btn-primary' %>
-      <%= link_to t('.cancel', :default => "Cancelar"),
                   products_path, :class => 'btn btn-default' %>
     </div>
   </div>

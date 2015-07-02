@@ -5,25 +5,24 @@
 
 <div class="fieldset">
   <dl>
-      <dt class="label label-default"><!--<%= model_class.human_attribute_name(:name) %>-->Nome</dt>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:name) %></dt>
       <dd><pre class="prettyprint"><%= @product.name %></pre></dd>
-      <dt class="label label-default"><!--<%= model_class.human_attribute_name(:model) %>-->Modelo</dt>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:model) %></dt>
       <dd><pre class="prettyprint"><%= @product.model %></pre></dd>
-      <dt class="label label-default"><!--<%= model_class.human_attribute_name(:serial_number) %>-->Número serial</dt>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:serial_number) %></dt>
       <dd><pre class="prettyprint"><%= @product.serial_number %></pre></dd>
-      <dt class="label label-default"><!--<%= model_class.human_attribute_name(:mac_address) %>-->Endereço MAC</dt>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:mac_address) %></dt>
       <dd><pre class="prettyprint"><%= @product.mac_address %></pre></dd>
-      <dt class="label label-default"><!--<%= model_class.human_attribute_name(:product_code) %>-->Código do produto</dt>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:product_code) %></dt>
       <dd><pre class="prettyprint"><%= @product.product_code %></pre></dd>
-      <dt class="label label-default"><!--<%= model_class.human_attribute_name(:fabrication_date) %>-->Data de fabricação</dt>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:fabrication_date) %></dt>
       <dd><pre class="prettyprint"><%= @product.fabrication_date %></pre></dd>
-      <dt class="label label-default"><!--<%= model_class.human_attribute_name(:tension_operation) %>-->Tensão de operação</dt>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:tension_operation) %></dt>
       <dd><pre class="prettyprint"><%= @product.tension_operation %></pre></dd>
   </dl>
 </div>
 
 <div class="form-group">
-  <!--
   <%= link_to t('.back', :default => t("helpers.links.back")),
               products_path, :class => 'btn btn-default'  %>
   <%= link_to t('.edit', :default => t("helpers.links.edit")),
@@ -32,17 +31,6 @@
               product_path(@product),
               :method => 'delete',
               :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-              :class => 'btn btn-danger' %>
-  -->
-			  
-  <%= link_to t('.back', :default => "Voltar"),
-              products_path, :class => 'btn btn-default'  %>
-  <%= link_to t('.edit', :default => "Editar"),
-              edit_product_path(@product), :class => 'btn btn-default' %>
-  <%= link_to t('.destroy', :default => "Excluir"),
-              product_path(@product),
-              :method => 'delete',
-              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Confirmar?')) },
               :class => 'btn btn-danger' %>
 </div>
 

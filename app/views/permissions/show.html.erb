@@ -1,19 +1,19 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Recurso:</strong>
+  <strong>Resource:</strong>
   <%= @permission.resource %>
 </p>
 
 <p>
-  <strong>Habilidade:</strong>
+  <strong>Ability:</strong>
   <%= @permission.ability %>
 </p>
 
 <p>
-  <strong>Função:</strong>
+  <strong>Role:</strong>
   <%= @permission.role %>
 </p>
 
-<%= link_to 'Editar', edit_permission_path(@permission) %> |
-<%= link_to 'Voltar', permissions_path %>
+<%= link_to 'Edit', edit_permission_path(@permission) %> |
+<%= link_to 'Back', permissions_path %>

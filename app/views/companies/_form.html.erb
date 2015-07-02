@@ -1,28 +1,24 @@
 <%= form_for @company, :html => { :class => 'form-horizontal form-model' } do |f| %>
   <div class="form-group">
-    <!--<%= f.label :name, :class => 'control-label col-md-2' %>-->
-	<label class="control-label col-md-2" for="company_name">Nome</label>
+    <%= f.label :name, :class => 'control-label col-md-2' %>
     <div class="col-md-10">
       <%= f.text_field :name, :class => 'text-field form-control' %>
     </div>
   </div>
   <div class="form-group">
-    <!--<%= f.label :cnpj, :class => 'control-label col-md-2' %>-->
-	<label class="control-label col-md-2" for="company_cnpj">CNPJ</label>
+    <%= f.label :cnpj, :class => 'control-label col-md-2' %>
     <div class="col-md-10">
       <%= f.text_field :cnpj, :class => 'text-field form-control' %>
     </div>
   </div>
   <div class="form-group">
-    <!--<%= f.label :address, :class => 'control-label col-md-2' %>-->
-	<label class="control-label col-md-2" for="company_address">Endereço</label>
+    <%= f.label :address, :class => 'control-label col-md-2' %>
     <div class="col-md-10">
       <%= f.text_field :address, :class => 'text-field form-control' %>
     </div>
   </div>
   <div class="form-group">
-    <!--<%= f.label :phone, :class => 'control-label col-md-2' %>-->
-	<label class="control-label col-md-2" for="company_phone">Telefone</label>
+    <%= f.label :phone, :class => 'control-label col-md-2' %>
     <div class="col-md-10">
       <%= f.text_field :phone, :class => 'text-field form-control' %>
     </div>
@@ -36,11 +32,8 @@
 
   <div class="form-group">
     <div class='col-md-offset-2 col-md-10'>
-      <!--<%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= f.submit nil, :class => 'btn btn-primary' %>
       <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                  companies_path, :class => 'btn btn-default' %>-->
-	  <%= f.submit nil, :value => 'Salvar', :class => 'btn btn-primary' %>
-      <%= link_to t('.cancel', :default => t("Cancelar")),
                   companies_path, :class => 'btn btn-default' %>
     </div>
   </div>
