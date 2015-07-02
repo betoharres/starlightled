@@ -1,14 +1,20 @@
 <%- model_class = Node -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => Node %></h1>
+  <!-- <h1><%=t '.title', :default => Node %></h1> -->
+  <h1>Nodo</h1>
 </div>
 <table class="table table-striped">
   <thead>
     <tr>
       <th>ID</th>
-      <th><%= model_class.human_attribute_name(:identifier) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+      <!-- <th><%= model_class.human_attribute_name(:identifier) %></th> -->
+      <!-- <th><%= model_class.human_attribute_name(:created_at) %></th> -->
+      <!-- <th><%=t '.actions', :default => t("helpers.actions") %></th> -->
+      <th>Identificador</th>
+      <th>Latitude</th>
+      <th>Longitude</th>
+      <th>Criado em</th>
+      <th>Ações</th>
     </tr>
   </thead>
   <tbody>
@@ -16,6 +22,10 @@
       <tr>
         <td><%= node.id %></td>
         <td><%= node.identifier %></td>
+        <!--
+          <td><%= node.latitude %></td>
+          <td><%= node.longitude %></td>
+        -->
         <td><%=l node.created_at, format: :long %></td>
         <td>
           <%= link_to node_path(node), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
@@ -31,6 +41,10 @@
   </tbody>
 </table>
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
+<%# <%= link_to t('.new', :default => t("helpers.links.new")),
+<%#             new_network_node_path(@network),
+<%#             :class => 'btn btn-primary' %>
+
+<%= link_to t('.new', :default => "Novo"),
             new_network_node_path(@network),
             :class => 'btn btn-primary' %>
