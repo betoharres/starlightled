@@ -7,14 +7,12 @@ Rails.application.routes.draw do
   resources :permissions
   resources :roles
 
+  resources :nodes
   resources :lamps
   resources :gateways
   resources :products
   resources :companies
-
-  resources :networks, shallow: true do
-    resources :nodes
-  end
+  resources :networks
 
   devise_for :users, controllers: {registrations: "users/registrations", sessions: "users/sessions", passwords: "users/passwords"}, skip: [:sessions, :registrations]
   # The priority is based upon order of creation: first created -> highest priority.
