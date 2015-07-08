@@ -41,7 +41,7 @@ end
 
 desc "Restart Rails app"
 task :restart => :environment do
-  queue! "touch #{deploy_to}/shared/tmp/restart.txt"
+  queue! 'kill -USR1 `cat /home/starlightled/app/shared/pids/puma.pid`'
 end
 
 desc 'Deploys the current version to the server.'
