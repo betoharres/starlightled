@@ -29,6 +29,7 @@ class LampsController < ApplicationController
   def create
     @lamp = Lamp.new(lamp_params)
     @lamp.product.company_id = current_user.company.id if @lamp.product
+    @lamp.product.node_id = params[:node_id] if params[:node_id]
 
     respond_to do |format|
       if @lamp.save
@@ -75,6 +76,6 @@ class LampsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def lamp_params
-      params.require(:lamp).permit(:font_type, :font_subtype, product_attributes: [:name, :model, :serial_number, :mac_address, :product_code, :fabrication_date, :tension_operation])
+      params.require(:lamp).permit(:font_type, :font_subtype, product_attributes: [:name, :model, :serial_number, :mac_address, :product_code, :fabrication_date, :tension_operation, :node_id])
     end
 end
