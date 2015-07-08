@@ -1,13 +1,14 @@
 Rails.application.routes.draw do
 
   resources :firmwares
-  resources :lamp_stats
   get 'landings/index'
 
   resources :permissions
   resources :roles
 
-  resources :lamps
+  resources :lamps, shallow: true do
+    resources :lamp_stats
+  end
   resources :gateways
   resources :products
   resources :companies

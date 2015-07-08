@@ -1,1 +1,1 @@
-json.extract! @node, :id, :identifier, :latitude, :longitude, :created_at, :updated_at
+json.extract! @node, :id, :identifier, :latitude, :longitude, :network, :created_at, :updated_at, :products

@@ -3,5 +3,32 @@
   <!--<h1><%=t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => Product %></h1>-->
   <h1>Novo Produto</h1>
 </div>
-<%= render :partial => 'form' %>
-
+<%# <%= render :partial => 'form' %>
+<div id="panelPortlet15" class="panel widget" role="option" aria-grabbed="false">
+  <div class="portlet-handler" draggable="true">
+      <div class="row row-table row-flush">
+        <div class="col-xs-12">
+            <div class="panel-body text-center bg-primary">
+              <a href="<%= new_lamp_path %>">
+                <em class="icon-bulb text-white"></em>
+                <p class="mb0 text-white">Nova Luminária</p>
+              </a>
+            </div>
+        </div>
+      </div>
+  </div>
+</div>
+<div id="panelPortlet15" class="panel widget" role="option" aria-grabbed="false">
+  <div class="portlet-handler" draggable="true">
+      <div class="row row-table row-flush">
+        <div class="col-xs-12">
+            <div class="panel-body text-center bg-warning">
+              <a href="<%= new_gateway_path %>">
+                <em class="icon-feed text-white"></em>
+                <p class="mb0 text-white">Novo Gateway</p>
+              </a>
+            </div>
+        </div>
+      </div>
+  </div>
+</div>

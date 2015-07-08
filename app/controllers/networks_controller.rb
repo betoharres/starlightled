@@ -4,7 +4,7 @@ class NetworksController < ApplicationController
   # GET /networks
   # GET /networks.json
   def index
-    @networks = Network.all
+    @networks = Network.all.includes(nodes: :products).where(company: current_user.company)
   end
 
   # GET /networks/1
@@ -26,6 +26,7 @@ class NetworksController < ApplicationController
   # POST /networks.json
   def create
     @network = Network.new(network_params)
+    @network.company = current_user.company
 
     respond_to do |format|
       if @network.save

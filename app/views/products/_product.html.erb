@@ -1,4 +1,10 @@
 <div class="form-group">
+  <%= ff.label :node_id, 'Nodo', :class => 'control-label col-md-2' %>
+  <div class="col-md-10">
+    <%= ff.select :node_id, Node.all.collect {|node| [ node.identifier, node.id ] }, {include_blank: 'Selecione um Nodo'}, {class: 'chosen-select input-md form-control'} %>
+  </div>
+</div>
+<div class="form-group">
   <!--<%= ff.label :name, :class => 'control-label col-md-2' %>-->
   <%= ff.label "Nome", :class => 'control-label col-md-2' %>
   <div class="col-md-10">
