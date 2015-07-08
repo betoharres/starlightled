@@ -10,6 +10,7 @@ class NodesController < ApplicationController
   # GET /nodes/1
   # GET /nodes/1.json
   def show
+    @products = @node.products
   end
 
   # GET /nodes/new
@@ -25,7 +26,7 @@ class NodesController < ApplicationController
   # POST /nodes.json
   def create
     @node = Node.new(node_params)
-    # TODO: fix this line below
+    # TODO: fix this line below, use strong params
     @node.network_id = params[:network_id]
 
     respond_to do |format|
