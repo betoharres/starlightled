@@ -1,5 +1,6 @@
 <%= form_for @lamp, :html => { :class => 'form-horizontal form-model' } do |f| %>
 
+
   <%= f.fields_for :product_attributes, @lamp.product||Product.new do |ff| %>
     <%= render partial: 'products/product', locals: {ff: ff} %>
   <% end %>
@@ -24,8 +25,8 @@
       <!--<%= f.submit nil, :class => 'btn btn-primary' %>
       <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                   lamps_path, :class => 'btn btn-default' %>-->
-				  
-	  <%= f.submit nil, :value => 'Salvar', :class => 'btn btn-primary' %>
+
+    <%= f.submit nil, :value => 'Salvar', :class => 'btn btn-primary' %>
       <%= link_to t('.cancel', :default => t("Cancelar")),
                   lamps_path, :class => 'btn btn-default' %>
     </div>
