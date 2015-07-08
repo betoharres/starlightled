@@ -34,7 +34,7 @@
                <!-- </div> -->
             </div>
             <div class="form-group mb">
-               <%= f.label :role_id, 'Cargo', class: "text-muted" %>
+              <%= f.label :role_id, 'Cargo', class: "text-muted" %>
               <%= f.select :role_id, Role.all.collect {|role| [ role.name, role.id ] }, {}, {class: 'chosen-select input-md form-control'} %>
             </div><br />
             <%= f.submit "Criar uma conta", class: "btn btn-block btn-primary mt-lg" %>
