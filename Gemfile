@@ -16,7 +16,7 @@ gem 'coffee-rails', '~> 4.0.0'
 # gem 'therubyracer',  platforms: :ruby
 
 # Use jquery as the JavaScript library (requested from bower)
-# gem 'jquery-rails'
+gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 # gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -50,6 +50,7 @@ gem "audited-activerecord", "~> 4.0"
 gem 'dotenv-rails'
 gem "bower-rails", "~> 0.9.2"
 gem 'bootstrap-glyphicons'
+gem 'chosen-rails'
 
 group :development, :test do
   gem 'rspec-rails'
