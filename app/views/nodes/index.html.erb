@@ -22,10 +22,8 @@
       <tr>
         <td><%= node.id %></td>
         <td><%= node.identifier %></td>
-        <!--
-          <td><%= node.latitude %></td>
-          <td><%= node.longitude %></td>
-        -->
+        <td><%= node.latitude %></td>
+        <td><%= node.longitude %></td>
         <td><%=l node.created_at, format: :long %></td>
         <td>
           <%= link_to node_path(node), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
