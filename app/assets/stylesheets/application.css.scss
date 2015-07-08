@@ -10,7 +10,9 @@
  * 
  *= require fonts
  *= require vendor.assets
+ *= require chosen
  *
  */
 
 @import 'bootstrap/glyphicons';
+#stat-btn {text-decoration: none;}
