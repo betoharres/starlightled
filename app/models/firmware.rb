@@ -3,10 +3,11 @@ class Firmware < ActiveRecord::Base
   def update(params = {})
     file = params.delete(:file)
     if file
+      content = file.read
       self.filename = sanitize_filename(file.original_filename)
       self.content_type = file.content_type
-      self.checksum = Digest::SHA1.hexdigest(file.content_type)
-      self.file_content = file.read
+      self.checksum = Digest::SHA1.hexdigest(content)
+      self.file_content = content
     end
     super
   end
@@ -15,10 +16,11 @@ class Firmware < ActiveRecord::Base
     file = params.delete(:file)
     super
     if file
+      content = file.read
       self.filename = sanitize_filename(file.original_filename)
       self.content_type = file.content_type
-      self.checksum = Digest::SHA1.hexdigest(file.content_type)
-      self.file_content = file.read
+      self.checksum = Digest::SHA1.hexdigest(content)
+      self.file_content = content
     end
   end
 
