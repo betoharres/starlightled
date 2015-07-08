@@ -3,9 +3,24 @@
   <!-- <h1><%=t '.title', :default => Lamp %></h1> -->
   <h1>Luminárias</h1>
 </div>
-
+<div id="panelPortlet15" class="panel widget" role="option" aria-grabbed="false">
+  <div class="portlet-handler" draggable="true">
+      <div class="row row-table row-flush">
+        <div class="col-xs-12">
+          <a href="<%= new_lamp_path %>" id="stat-btn">
+            <div class="panel-body text-center bg-info">
+                <em class="icon-graph text-white"></em>
+                <p class="mb0 text-white">Status da Luminária</p>
+            </div>
+          </a>
+        </div>
+      </div>
+  </div>
+</div>
 <div class="fieldset">
   <dl>
+      <dt class="label label-default"><!--<%= model_class.human_attribute_name(:node) %>-->Nodo</dt>
+      <dd><pre class="prettyprint"><%= @product.node.identifier %></pre></dd>
       <dt class="label label-default"><!--<%= model_class.human_attribute_name(:name) %>-->Nome</dt>
       <dd><pre class="prettyprint"><%= @product.name %></pre></dd>
       <dt class="label label-default"><!--<%= model_class.human_attribute_name(:model) %>-->Modelo</dt>
@@ -42,8 +57,7 @@
               :method => 'delete',
               :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
               :class => 'btn btn-danger' %>
-	-->		  
-			  
+  -->
   <%= link_to t('.back', :default => "Voltar"),
               lamps_path, :class => 'btn btn-default'  %>
   <%= link_to t('.edit', :default => "Editar"),
