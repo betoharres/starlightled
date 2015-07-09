@@ -1,6 +1,7 @@
 <%- model_class = Product -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => Product %></h1>
+  <!-- <h1><%=t '.title', :default => Product %></h1> -->
+  <h1>Produtos</h1>
 </div>
 <table class="table table-striped">
   <thead>
@@ -33,7 +34,7 @@
   <tbody>
     <% @products.each do |product| %>
       <tr>
-        <td><%= product.id %></td>
+        <td><%= product.productable_id %></td>
         <td><%= t(product.productable_type) %></td>
         <td><%= product.name %></td>
         <td><%= product.model %></td>
@@ -43,7 +44,10 @@
         <td><%= product.fabrication_date %></td>
         <%# revisar ideia da tabela de status nao ter uma abstrata %>
         <td><%=l product.created_at, format: :long %></td>
-        <td><a href="<%= '/' + product.productable_type.pluralize.downcase + '/' + product.productable_id.to_s %>"><button type="button" class="btn btn-oval btn-primary"><%= glyph 'info-sign' %></button></a></td>
+        <td><%= product_link product, class: 'btn btn-primary' do %>
+          <%= glyph 'info-sign' %>
+        <% end %>
+        </td>
         <td>
     <!--
           <%= link_to product_path(product), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
