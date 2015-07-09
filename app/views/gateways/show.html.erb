@@ -4,6 +4,8 @@
 </div>
 <div class="fieldset">
   <dl>
+      <dt class="label label-default"><!--<%= model_class.human_attribute_name(:node) %>-->Nodo</dt>
+      <dd><pre class="prettyprint"><%= link_to @product.node.identifier, url_for(@product.node)%></pre></dd>
       <dt class="label label-default"><%= model_class.human_attribute_name(:name) %></dt>
       <dd><pre class="prettyprint"><%= @product.name %></pre></dd>
       <dt class="label label-default"><%= model_class.human_attribute_name(:model) %></dt>
