@@ -73,6 +73,6 @@ class GatewaysController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def gateway_params
-      params.require(:gateway).permit(:ip, :url_connection, product_attributes: [:name, :model, :serial_number, :mac_address, :product_code, :fabrication_date, :tension_operation])
+      params.require(:gateway).permit(:ip, :url_connection, product_attributes: [:name, :model, :serial_number, :mac_address, :product_code, :fabrication_date, :tension_operation, :node_id])
     end
 end
