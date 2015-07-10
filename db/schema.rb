@@ -162,7 +162,7 @@ ActiveRecord::Schema.define(version: 20150513205424) do
   add_index "products", ["company_id"], name: "index_products_on_company_id", using: :btree
   add_index "products", ["node_id"], name: "index_products_on_node_id", using: :btree
   add_index "products", ["productable_type", "productable_id"], name: "index_products_on_productable_type_and_productable_id", using: :btree
-  add_index "products", ["serial_number"], name: "index_products_on_serial_number", unique: true, using: :btree
+  add_index "products", ["serial_number"], name: "index_products_on_serial_number", using: :btree
 
   create_table "roles", force: :cascade do |t|
     t.string   "name"
