@@ -19,7 +19,7 @@ module Starlight
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
-    
+
     # setup bower components folder for lookup
     config.assets.paths << Rails.root.join('vendor', 'assets', 'bower_components')
     # fonts
@@ -42,29 +42,25 @@ module Starlight
     # Controller assets
     config.assets.precompile += [
                                  # Scripts
-                                 'charts.js',
-                                 'dashboard.js',
-                                 'documentation.js',
-                                 'elements.js',
-                                 'extras.js',
-                                 'forms.js',
-                                 'maps.js',
-                                 'multilevel.js',
-                                 'pages.js',
-                                 'tables.js',
-                                 'widgets.js',
+                                 'permissions.js',
+                                 'roles.js',
+                                 'nodes.js',
+                                 'gateways.js',
+                                 'company.js',
+                                 'lamps.js',
+                                 'networks.js',
+                                 'landings.js',
+                                 'registrations.js',
                                  # Stylesheets
-                                 'charts.css',
-                                 'dashboard.css',
-                                 'documentation.css',
-                                 'elements.css',
-                                 'extras.css',
-                                 'forms.css',
-                                 'maps.css',
-                                 'multilevel.css',
-                                 'pages.css',
-                                 'tables.css',
-                                 'widgets.css'
+                                 'permissions.css',
+                                 'roles.css',
+                                 'nodes.css',
+                                 'gateways.css',
+                                 'company.css',
+                                 'lamps.css',
+                                 'networks.css',
+                                 'registrations.css',
+                                 'landings.css'
                                 ]
 
 
