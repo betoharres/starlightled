@@ -60,7 +60,7 @@ module Starlight
                                  'lamps.css',
                                  'networks.css',
                                  'registrations.css',
-                                 'landings.css.scss'
+                                 'landings.css'
                                 ]
 
 
