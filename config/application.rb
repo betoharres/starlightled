@@ -47,10 +47,10 @@ module Starlight
                                  'nodes.js',
                                  'gateways.js',
                                  'company.js',
-                                 'lamps.js',
                                  'networks.js',
                                  'landings.js',
                                  'registrations.js',
+                                 'lamps.js.coffee',
                                  # Stylesheets
                                  'permissions.css',
                                  'roles.css',
@@ -60,7 +60,7 @@ module Starlight
                                  'lamps.css',
                                  'networks.css',
                                  'registrations.css',
-                                 'landings.css'
+                                 'landings.css.scss'
                                 ]
 
 
