@@ -2,9 +2,9 @@
  * jQuery ClassyLoader
  * vox.SPACE
  *
- * Written by Marius Stanciu - Sergiu <marius@class.pm>
- * Licensed under the MIT license http://vox.SPACE/LICENSE-MIT
- * Version 1.2.0
+ * Written by Marius Stanciu - Sergiu <marius@vox.space>
+ * Licensed under the MIT license https://vox.SPACE/LICENSE-MIT
+ * Version 1.2.1
  *
  */
 
