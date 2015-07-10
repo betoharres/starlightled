@@ -17,7 +17,7 @@ user2 = User.create!(email: 'gerente@starlightled.com.br', password: 'password',
 user3 = User.create!(email: 'operador@starlightled.com.br', password: 'password',
                     password_confirmation: 'password')
 
-company = Company.create!(name: 'StarlightLED', email: 'starlight@gmail.com', user: user)
+company = Company.create!(name: 'StarlightLED', email: 'starlight@starlightled.com.br', user: user)
 user.company = company
 user2.company = company
 user3.company = company
