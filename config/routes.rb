@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'audits/index'
+
+  get 'audits/show'
+
   resources :firmwares
   get 'landings/index'
 
