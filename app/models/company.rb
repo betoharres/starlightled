@@ -6,4 +6,6 @@ class Company < ActiveRecord::Base
 
   has_many :networks
   validates_formatting_of :email, using: :email
+
+  has_associated_audits
 end
