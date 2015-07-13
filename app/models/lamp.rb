@@ -5,6 +5,6 @@ class Lamp < ActiveRecord::Base
   accepts_nested_attributes_for :product
 
   # https://github.com/collectiveidea/audited
-  audited allow_mass_assignment: true
+  audited allow_mass_assignment: true, associated_with: :company
 
 end
