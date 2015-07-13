@@ -1,2 +1,39 @@
-<h1>Audits#index</h1>
-<p>Find me in app/views/audits/index.html.erb</p>
+<%# <% @logs.each do |log| %>
+<%#   <p><%= log.inspect %></p>
+<%# <% end %>
+
+<div class="page-header">
+  <!-- <h1><%=t '.title', :default => 'Audit' %></h1> -->
+  <h1>Logs de <%= current_user.company.name %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Usuario</th>
+      <th>Tipo</th>
+      <th>Açao</th>
+      <th><!--<%=t '.actions', :default => t("helpers.actions") %>-->Conteudo</th>
+      <th><!--<%=t '.actions', :default => t("helpers.actions") %>-->Criado em</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @logs.each do |log| %>
+      <tr>
+        <td><%= log.user.name %></td>
+        <td><%= log.auditable_type %></td>
+        <td><%=  t log.action %></td>
+        <td><%= log.audited_changes %></td>
+        <td><%=l log.created_at, format: :long %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<!--
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_network_path,
+            :class => 'btn btn-primary' %>
+-->
+
+<%= link_to t('.new', :default => "Nova"),
+            new_network_path,
+            :class => 'btn btn-primary' %>
