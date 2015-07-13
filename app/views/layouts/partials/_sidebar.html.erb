@@ -10,7 +10,7 @@
                   <!-- User picture-->
                   <div class="user-block-picture">
                      <div class="user-block-status">
-                        <img src="<%= image_path('angle/user/02.jpg') %>" alt="Avatar" width="60" height="60" class="img-thumbnail img-circle" />
+                        <img src="" alt="Avatar" width="60" height="60" class="img-thumbnail img-circle" />
                         <div class="circle circle-success circle-lg"></div>
                      </div>
                   </div>
@@ -34,7 +34,7 @@
                <span data-localize="sidebar.nav.DASHBOARD">Inicio</span>
             </a>
          </li>
-         <li class="<%= 'active' if controller?('widgets') && action?('index') %>">
+         <li class="<%= 'active' if controller?('networks') %>">
             <a href="#network" title="Redes">
                <em class="icon-vector"></em>
                <span data-localize="sidebar.nav.WIDGETS">Redes</span>
@@ -54,7 +54,7 @@
             </ul>
          </li>
 
-         <li class="<%= 'active' if controller?('lamps') && action?('index') %>">
+         <li class="<%= 'active' if controller?('lamps') %>">
             <a href="#lamps" title="Luminarias">
                <em class="icon-bulb"></em>
                <span data-localize="sidebar.nav.WIDGETS">Luminárias</span>
@@ -73,7 +73,7 @@
                </li>
             </ul>
          </li>
-        <li class="<%= 'active' if controller?('gateways') && action?('index') %>">
+        <li class="<%= 'active' if controller?('gateways') %>">
             <a href="#gateways" title="Gateways">
                <em class="icon-feed"></em>
                <span data-localize="sidebar.nav.WIDGETS">Gateways</span>
