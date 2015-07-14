@@ -5,8 +5,4 @@ class Gateway < ActiveRecord::Base
   validates_formatting_of :ip, using: :ip_address_v4
 
   accepts_nested_attributes_for :product
-
-  # https://github.com/collectiveidea/audited
-  audited allow_mass_assignment: true, associated_with: :company
-
 end
