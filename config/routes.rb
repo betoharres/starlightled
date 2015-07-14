@@ -1,12 +1,9 @@
 Rails.application.routes.draw do
-
-  get 'audits/index'
-
-  get 'audits/show'
+  get 'landings/index'
+  get 'audits', to: 'audits#index'
+  get 'audits/:id', to: 'audits#show'
 
   resources :firmwares
-  get 'landings/index'
-
   resources :permissions
   resources :roles
 
