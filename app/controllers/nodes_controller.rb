@@ -26,8 +26,10 @@ class NodesController < ApplicationController
   # POST /nodes.json
   def create
     @node = Node.new(node_params)
-    # TODO: fix this line below, use strong params
-    @node.network_id = params[:network_id]
+
+    if current_user.company.networks.map(&:id).include?(params[:network_id].to_i)
+      @node.network_id = params[:network_id]
+    end
 
     respond_to do |format|
       if @node.save
@@ -59,7 +61,7 @@ class NodesController < ApplicationController
   def destroy
     @node.destroy
     respond_to do |format|
-      format.html { redirect_to nodes_url, notice: 'Node was successfully destroyed.' }
+      format.html { redirect_to networks_url, notice: 'Node was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
