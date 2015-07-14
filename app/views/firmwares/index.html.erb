@@ -2,9 +2,10 @@
 
 <h1>Listing Firmwares</h1>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
+      <th>ID</th>
       <th>Filename</th>
       <th>Content type</th>
       <th>File content</th>
@@ -16,12 +17,13 @@
   <tbody>
     <% @firmwares.each do |firmware| %>
       <tr>
+        <td><%= firmware.id %></td>
         <td><%= firmware.filename %></td>
         <td><%= firmware.content_type %></td>
         <td><%= firmware.checksum %></td>
-        <td><%= link_to 'Show', firmware %></td>
-        <td><%= link_to 'Edit', edit_firmware_path(firmware) %></td>
-        <td><%= link_to 'Destroy', firmware, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Baixar', firmware %></td>
+        <td><%= link_to 'Editar', edit_firmware_path(firmware), class: 'btn btn-warning' %></td>
+        <td><%= link_to 'Deletar', firmware, method: :delete, data: { confirm: 'Tem certeza?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -29,4 +31,4 @@
 
 <br>
 
-<%= link_to 'New Firmware', new_firmware_path %>
+<%= link_to 'Novo Firmware', new_firmware_path, class: 'btn btn-lg btn-primary' %>

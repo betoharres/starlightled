@@ -5,7 +5,7 @@ class FirmwaresController < ApplicationController
   # GET /firmwares
   # GET /firmwares.json
   def index
-    @firmwares = Firmware.all
+    @firmwares = Firmware.all.order(:id)
   end
 
   # GET /firmwares/1

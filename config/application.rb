@@ -51,6 +51,7 @@ module Starlight
                                  'landings.js',
                                  'registrations.js',
                                  'lamps.js',
+                                 'firmwares.js',
                                  'audits.js',
                                  # Stylesheets
                                  'permissions.css',
@@ -62,6 +63,7 @@ module Starlight
                                  'networks.css',
                                  'registrations.css',
                                  'landings.css',
+                                 'firmwares.css',
                                  'audits.css'
                                 ]
 
