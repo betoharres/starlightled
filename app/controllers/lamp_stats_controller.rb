@@ -1,10 +1,12 @@
 class LampStatsController < ApplicationController
   before_action :set_lamp_stat, only: [:show, :edit, :update, :destroy]
+  before_action :set_lamp     , only: [:index]
 
   # GET /lamp_stats
   # GET /lamp_stats.json
   def index
-    @lamp_stats = LampStat.all
+    # @lamp_stats = LampStat.all.where(serial_num: @lamp.product.serial_number, created_at: 1.month.ago..Date.today )
+    @lamp_stats = LampStat.where(serial_num: @lamp.product.serial_number).order(:created_at)
   end
 
   # GET /lamp_stats/1
@@ -65,6 +67,10 @@ class LampStatsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_lamp_stat
       @lamp_stat = LampStat.find(params[:id])
+    end
+
+    def set_lamp
+      @lamp = Lamp.find(params[:lamp_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
