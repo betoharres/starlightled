@@ -7,7 +7,7 @@
   <div class="portlet-handler" draggable="true">
       <div class="row row-table row-flush">
         <div class="col-xs-12">
-          <a href="<%= new_lamp_path %>" id="stat-btn">
+          <a href="<%= lamp_lamp_stats_path(@lamp) %>" id="stat-btn">
             <div class="panel-body text-center bg-info">
                 <em class="icon-graph text-white"></em>
                 <p class="mb0 text-white">Status da Luminária</p>
@@ -21,7 +21,7 @@
   <dl>
       <% if @product.node %>
         <dt class="label label-default"><!--<%= model_class.human_attribute_name(:node) %>-->Nodo</dt>
-        <dd><pre class="prettyprint"><%= link_to @product.node.identifier, url_for(@product.node)%></pre></dd>
+        <dd><pre class="prettyprint"><%= link_to @product.node.identifier, url_for('/networks/'+@product.node.network.id.to_s+'/nodes/'+@product.node.id.to_s)%></pre></dd>
       <% end %>
       <dt class="label label-default"><!--<%= model_class.human_attribute_name(:name) %>-->Nome</dt>
       <dd><pre class="prettyprint"><%= @product.name %></pre></dd>
