@@ -53,6 +53,8 @@ module Starlight
                                  'lamps.js',
                                  'firmwares.js',
                                  'audits.js',
+                                 'products.js',
+                                 'lamp_stats.js',
                                  # Stylesheets
                                  'permissions.css',
                                  'roles.css',
@@ -64,7 +66,9 @@ module Starlight
                                  'registrations.css',
                                  'landings.css',
                                  'firmwares.css',
-                                 'audits.css'
+                                 'audits.css',
+                                 'products.css',
+                                 'lamp_stats.css'
                                 ]
 
 
