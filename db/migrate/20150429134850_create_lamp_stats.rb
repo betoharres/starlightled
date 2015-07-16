@@ -3,6 +3,7 @@ class CreateLampStats < ActiveRecord::Migration
     create_table :lamp_stats do |t|
       # bigint was needed because the lamps are going to use serial number from 0
      # to 4 billion; Also, we didn't use serial because it's autoincrementing
+     # TODO change serial_num to serial_number
       t.bigint :serial_num      , index: true
       t.datetime :date
       t.integer :pwr            , limit: 2 # limit: 2 for 2 bytes
