@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   resources :products
   resources :companies
 
-  resources :networks do
+  resources :networks, shallow: true do
     resources :nodes
   end
 

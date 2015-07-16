@@ -15,9 +15,9 @@
 <%= link_to t('.back', :default => "Voltar"),
               network_path(@node.network), :class => 'btn btn-default'  %>
   <%= link_to t('.edit', :default => "Editar"),
-              edit_network_node_path(params[:network_id], @node), :class => 'btn btn-default' %>
+              edit_node_path(@node, network_id: @node.network_id), :class => 'btn btn-default' %>
   <%= link_to t('.destroy', :default => "Excluir"),
-              edit_network_node_path(params[:network_id], @node),
+              @node,
               :method => 'delete',
               :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Tem certeza?')) },
               :class => 'btn btn-danger' %>

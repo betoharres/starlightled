@@ -1,4 +1,4 @@
-<%= form_for :node, url: {controller: 'nodes', action: 'create'}, :html => { :class => 'form-horizontal form-model' } do |f| %>
+<%= form_for @node, url: route, :html => { :class => 'form-horizontal form-model' } do |f| %>
   <div class="form-group">
     <!--<%= f.label :identifier, :class => 'control-label col-md-2' %>-->
   <label class="control-label col-md-2" for="node_identifier">Identificador</label>
@@ -23,15 +23,14 @@
 
   <div class="form-group">
     <div class='col-md-offset-2 col-md-10'>
-  <!--
-      <%= f.submit nil, :class => 'btn btn-primary' %>
-      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                  network_path(params[:network_id]), :class => 'btn btn-default' %>
-  -->
-
-    <%= f.submit nil, :value => 'Salvar', :class => 'btn btn-primary' %>
-      <%= link_to t('.cancel', :default => "Cancelar"),
-                  network_path(params[:network_id]), :class => 'btn btn-default' %>
+      <%= f.submit nil, :value => 'Salvar', :class => 'btn btn-primary' %>
+      <% if action?('new') %>
+        <%= link_to t('.cancel', :default => "Cancelar"),
+          network_path(params[:network_id], network_id: params[:network_id]), :class => 'btn btn-default' %>
+        <% else %>
+        <%= link_to t('.cancel', :default => "Cancelar"),
+          node_path(network_id: params[:network_id]), :class => 'btn btn-default' %>
+      <% end %>
     </div>
   </div>
 <% end %>
