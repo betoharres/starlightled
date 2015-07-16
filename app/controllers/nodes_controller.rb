@@ -69,6 +69,7 @@ class NodesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_node
+      # TODO check security issue. Someone can send any id here
       @node = Node.find(params[:id])
     end
 
