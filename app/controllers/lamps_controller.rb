@@ -12,7 +12,6 @@ class LampsController < ApplicationController
   # GET /lamps/1.json
   def show
     @product = @lamp.product
-    LampStat.where()
   end
 
   # GET /lamps/new

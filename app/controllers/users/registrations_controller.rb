@@ -1,7 +1,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   include ApplicationHelper
 
-  layout 'pages'
+  layout 'pages', except: :edit
 
   def create
     @user = User.new(user_params)

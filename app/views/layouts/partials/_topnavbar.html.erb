@@ -30,7 +30,7 @@
          <li>
             <!-- Button used to collapse the left sidebar. Only visible on tablet and desktops-->
             <a id="user-block-toggle" href="#user-block" data-toggle="collapse">
-               <em class="icon-user"></em>
+               <em class="icon-<%= current_user ? 'user' : 'lock' %>"></em>
             </a>
          </li>
          <!-- END User avatar toggle-->
