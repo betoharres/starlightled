@@ -31,7 +31,7 @@ initialize = ->
             productsText = productsText
           else
             productsText = ''
-          nodeBallon.push '<h3>Nodo:</h3><div class="info_content">' + '<a href="networks/'+network.id+'/nodes/' + node.id + '"><h4>' + node.identifier + '</h4></a>'+ productsText
+          nodeBallon.push '<h3>Nodo:</h3><div class="info_content">' + '<a href="/nodes/' + node.id + '"><h4>' + node.identifier + '</h4></a>'+ productsText
           allNodes.push nodesArray
           allBallon.push nodeBallon
           return
