@@ -4,10 +4,10 @@
    <div class="navbar-header">
       <a href="#/" class="navbar-brand">
          <div class="brand-logo">
-            <img src="<%= image_path('angle/logo.png') %>" alt="App Logo" class="img-responsive" />
+            <img src="<%= image_path('angle/StarlightLED2.png') %>" width="100" height="35" alt="App Logo" class="img-responsive shadowed" />
          </div>
          <div class="brand-logo-collapsed">
-            <img src="<%= image_path('angle/logo-single.png') %>" alt="App Logo" class="img-responsive" />
+            <img src="<%= image_path('angle/StarlightLED2.png') %>" width="100" height="35" alt="App Logo" class="img-responsive shadowed" />
          </div>
       </a>
    </div>
@@ -30,7 +30,11 @@
          <li>
             <!-- Button used to collapse the left sidebar. Only visible on tablet and desktops-->
             <a id="user-block-toggle" href="#user-block" data-toggle="collapse">
-               <em class="icon-<%= current_user ? 'user' : 'lock' %>"></em>
+              <% if current_user %>
+               <em class="icon-user"></em>
+               <% else %>
+                <em class="icon-lock"> Login</em>
+              <% end %>
             </a>
          </li>
          <!-- END User avatar toggle-->
