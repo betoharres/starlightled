@@ -27,24 +27,24 @@
          <li class="nav-heading">
             <span>Menu</span>
          </li>
-         <li class="<%= 'active' if controller?('gateways')%>">
-            <a href="#gateways" title="Dashboard" data-toggle="collapse">
-               <em class="icon-feed"></em>
+         <li class="<%= 'active' if controller?('networks')%>">
+            <a href="#networks" title="Dashboard" data-toggle="collapse">
+               <em class="icon-vector"></em>
                <!-- <div class="label label&#45;info pull&#45;right">3</div> -->
-               <span data-localize="sidebar.nav.DASHBOARD">Gateway</span>
+               <span data-localize="sidebar.nav.DASHBOARD">Rede</span>
             </a>
-            <ul id="gateways" class="nav sidebar-subnav collapse">
-               <li class="sidebar-subnav-header">Gateways</li>
-               <li class="<%= 'active' if controller?('gateways') && action?('index') %>">
-                 <%= link_to gateways_path do %>
+            <ul id="networks" class="nav sidebar-subnav collapse">
+               <li class="sidebar-subnav-header">Rede</li>
+               <li class="<%= 'active' if controller?('networks') && action?('index') %>">
+                 <%= link_to networks_path do %>
                   <em class="icon-list"></em>
                   <span>Listar</span>
                  <% end %>
                </li>
-               <li class="<%= 'active' if controller?('gateways') && action?('new') %>">
-                  <%= link_to new_gateway_path do %>
+               <li class="<%= 'active' if controller?('networks') && action?('new') %>">
+                  <%= link_to new_network_path do %>
                     <em class="icon-plus"></em>
-                    <span>Novo Gateway</span>
+                    <span>Nova Rede</span>
                   <% end %>
                </li>
             </ul>
@@ -67,6 +67,28 @@
                   <%= link_to new_lamp_path do %>
                     <em class="icon-plus"></em>
                     <span>Nova Luminaria</span>
+                  <% end %>
+               </li>
+            </ul>
+          </li>
+          <li class="<%= 'active' if controller?('gateways')%>">
+            <a href="#gateways" title="Dashboard" data-toggle="collapse">
+               <em class="icon-feed"></em>
+               <!-- <div class="label label&#45;info pull&#45;right">3</div> -->
+               <span data-localize="sidebar.nav.DASHBOARD">Gateway</span>
+            </a>
+            <ul id="gateways" class="nav sidebar-subnav collapse">
+               <li class="sidebar-subnav-header">Gateways</li>
+               <li class="<%= 'active' if controller?('gateways') && action?('index') %>">
+                 <%= link_to gateways_path do %>
+                  <em class="icon-list"></em>
+                  <span>Listar</span>
+                 <% end %>
+               </li>
+               <li class="<%= 'active' if controller?('gateways') && action?('new') %>">
+                  <%= link_to new_gateway_path do %>
+                    <em class="icon-plus"></em>
+                    <span>Novo Gateway</span>
                   <% end %>
                </li>
             </ul>
