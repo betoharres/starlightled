@@ -1,5 +1,6 @@
 class NodesController < ApplicationController
   before_action :set_node, only: [:show, :edit, :update, :destroy]
+  before_filter :require_user_signed_in
 
   # GET /nodes
   # GET /nodes.json
