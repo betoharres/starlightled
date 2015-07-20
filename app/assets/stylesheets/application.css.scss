@@ -17,3 +17,8 @@
 @import 'bootstrap/glyphicons';
 #stat-btn {text-decoration: none;}
 .label-default{color: black;}
+.brand-logo-collapsed{width: 100px;}
+.shadowed{
+  -webkit-filter: drop-shadow(1px 1px 1px #a6a6a6);
+  filter: drop-shadow(1px 1px 1px #a6a6a6);
+}

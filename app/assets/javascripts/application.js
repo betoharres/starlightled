@@ -7,6 +7,7 @@
 //= require chosen-jquery
 //= require_tree ./angle/
 
+$("body").addClass("aside-float");
 // function initialize() {
 //   var mapCanvas = document.getElementById('map-canvas');
 //

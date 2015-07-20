@@ -12,9 +12,9 @@ class ApplicationController < ActionController::Base
     if request.env['HTTP_REFERER']
       fallback_redirect = new_user_session_path # :back
     elsif defined?(root_path)
-      fallback_redirect = new_user_session # root_path
+      fallback_redirect = new_user_session_path # root_path
     else
-      fallback_redirect = new_user_session # "/"
+      fallback_redirect = new_user_session_path # "/"
     end
 
     redirect_to fallback_redirect, flash: {error: "You must be in signed or have permissions to view this page."}
