@@ -1,5 +1,6 @@
 class GatewaysController < ApplicationController
   before_action :set_gateway, only: [:show, :edit, :update, :destroy]
+  before_filter :require_user_signed_in
 
   # GET /gateways
   # GET /gateways.json
