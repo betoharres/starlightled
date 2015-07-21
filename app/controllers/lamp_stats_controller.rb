@@ -14,6 +14,10 @@ class LampStatsController < ApplicationController
   def show
   end
 
+  def william
+    render json: LampStat.last
+  end
+
   # GET /lamp_stats/new
   def new
     @lamp_stat = LampStat.new
