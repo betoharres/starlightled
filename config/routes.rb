@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   resources :permissions
   resources :roles
 
+  get '/600milluminarias', to: 'lamp_stats#william', format: :json
+
   resources :lamp_stats, only: :create
   resources :lamps, shallow: true do
     resources :lamp_stats
