@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :permissions
   resources :roles
 
+  resources :lamp_stats, only: :create
   resources :lamps, shallow: true do
     resources :lamp_stats
   end
