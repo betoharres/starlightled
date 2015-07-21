@@ -31,8 +31,15 @@
          <li class="nav-heading">
             <span>Menu</span>
          </li>
+          <li class="<%= 'active' if controller?('landings')%>">
+            <a href="#landings" title="Dashboard" data-toggle="collapse">
+               <em class="icon-home"></em>
+               <!-- <div class="label label&#45;info pull&#45;right">3</div> -->
+               <span data-localize="sidebar.nav.DASHBOARD">Inicio</span>
+            </a>
+         </li>
          <li class="<%= 'active' if controller?('networks')%>">
-            <a href="#networks" title="Dashboard" data-toggle="collapse">
+            <a href="#networks" title="Redes" data-toggle="collapse">
                <em class="icon-vector"></em>
                <!-- <div class="label label&#45;info pull&#45;right">3</div> -->
                <span data-localize="sidebar.nav.DASHBOARD">Rede</span>
@@ -54,13 +61,13 @@
             </ul>
          </li>
          <li class="<%= 'active' if controller?('lamps')%>">
-            <a href="#lamps" title="Dashboard" data-toggle="collapse">
+            <a href="#lamps" title="Luminaria" data-toggle="collapse">
                <em class="icon-bulb"></em>
                <!-- <div class="label label&#45;info pull&#45;right">3</div> -->
                <span data-localize="sidebar.nav.DASHBOARD">Luminaria</span>
             </a>
             <ul id="lamps" class="nav sidebar-subnav collapse">
-               <li class="sidebar-subnav-header">Gateways</li>
+               <li class="sidebar-subnav-header">Luminaria</li>
                <li class="<%= 'active' if controller?('lamps') && action?('index') %>">
                  <%= link_to lamps_path do %>
                   <em class="icon-list"></em>
@@ -76,7 +83,7 @@
             </ul>
           </li>
           <li class="<%= 'active' if controller?('gateways')%>">
-            <a href="#gateways" title="Dashboard" data-toggle="collapse">
+            <a href="#gateways" title="Gateway" data-toggle="collapse">
                <em class="icon-feed"></em>
                <!-- <div class="label label&#45;info pull&#45;right">3</div> -->
                <span data-localize="sidebar.nav.DASHBOARD">Gateway</span>
