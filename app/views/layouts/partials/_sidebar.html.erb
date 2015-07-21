@@ -17,11 +17,12 @@
                     </div>
                     <!-- Name and Job-->
                     <div class="user-block-info">
-                      <span class="user-block-name"><%= current_user ? current_user.name : "" %></span>
+                      <span class="user-block-name"><%= current_user ? link_to(current_user.name, edit_user_registration_path) : "" %></span>
                       <span class="user-block-role"><%= current_user ? current_user.role.name : "" %></span>
+                      <a class="btn btn-link btn-lg btn-block" href="/signout">Sair</a>
                     </div>
                     <% else %>
-                          <a class="btn btn-primary btn-lg btn-block" href="/login">Login</a>
+                      <a class="btn btn-primary btn-lg btn-block" href="/login">Login</a>
                 <% end %>
                </div>
             </div>

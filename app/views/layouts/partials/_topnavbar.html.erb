@@ -29,13 +29,15 @@
          <!-- START User avatar toggle-->
          <li>
             <!-- Button used to collapse the left sidebar. Only visible on tablet and desktops-->
-            <a id="user-block-toggle" href="#user-block" data-toggle="collapse">
-              <% if current_user %>
-               <em class="icon-user"></em>
-               <% else %>
+            <% if current_user %>
+              <a id="user-block-toggle" href="#user-block" data-toggle="collapse">
+                <em class="icon-user"></em>
+              </a>
+              <% else %>
+              <a href="/login" >
                 <em class="icon-lock"> Login</em>
-              <% end %>
-            </a>
+              </a>
+            <% end %>
          </li>
          <!-- END User avatar toggle-->
       </ul>
