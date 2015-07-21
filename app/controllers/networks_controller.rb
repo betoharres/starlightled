@@ -1,5 +1,6 @@
 class NetworksController < ApplicationController
   before_action :set_network, only: [:show, :edit, :update, :destroy]
+  before_filter :require_user_signed_in
 
   # GET /networks
   # GET /networks.json
