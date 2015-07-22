@@ -1,7 +1,9 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   include ApplicationHelper
+  before_filter :configure_permitted_parameters
 
   layout 'pages', except: :edit
+  layout 'application', only: :edit
 
   def create
     @user = User.new(user_params)
@@ -23,6 +25,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def edit
     super
+  end
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.for(:account_update).push(:name)
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
