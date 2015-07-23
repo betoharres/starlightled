@@ -4,7 +4,7 @@ class Permission < ActiveRecord::Base
   validates_presence_of :ability
   validate :resource_exists
 
-  audited allow_mass_assignment: true, associated_with: :company
+  audited allow_mass_assignment: true
 
   # like UNIX permissions
   READ   = 8
