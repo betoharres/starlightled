@@ -12,7 +12,7 @@ var chart = AmCharts.makeChart("chartdiv", {
       "theme": "light",
       pathToImages: "http://www.amcharts.com/lib/3/images/",
       categoryAxesSettings: {
-        minPeriod: "ss",
+        minPeriod: "mm",
         dataDateFormat: 'YYYY-MM-DD JJ:NN:SS',
         // parseDates: true
       },
@@ -29,7 +29,7 @@ var chart = AmCharts.makeChart("chartdiv", {
           toField: "volume"
         }],
         dataProvider: chartData,
-        categoryField: "created_at"
+        categoryField: "date"
       },
 
       {
@@ -43,7 +43,7 @@ var chart = AmCharts.makeChart("chartdiv", {
           toField: "volume"
         }],
         dataProvider: chartData,
-        categoryField: "created_at"
+        categoryField: "date"
       },
 
       {
@@ -56,7 +56,7 @@ var chart = AmCharts.makeChart("chartdiv", {
           toField: "volume"
         }],
         dataProvider: chartData,
-        categoryField: "created_at"
+        categoryField: "date"
       }
     ],
 
@@ -81,7 +81,7 @@ var chart = AmCharts.makeChart("chartdiv", {
         stockLegend: {
           periodValueTextComparing: "[[value.close]]",
           periodValueTextRegular: "[[value.close]]",
-          position: 'right'
+          position: 'top'
         },
       // categoryAxis: {
       //     labelFunction: function (valueText, value, valueAxis) {
@@ -127,7 +127,7 @@ var chart = AmCharts.makeChart("chartdiv", {
       inputFieldWidth: 150,
       position: "bottom",
       periods: [{
-        period: "ss",
+        period: "mm",
         selected: true,
         count: 48,
         label: "48 horas"
@@ -140,6 +140,6 @@ var chart = AmCharts.makeChart("chartdiv", {
     },
 
     dataSetSelector: {
-      position: "right"
+      position: "top"
     }
   });
