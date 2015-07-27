@@ -127,7 +127,7 @@ var chart = AmCharts.makeChart("chartdiv", {
       inputFieldWidth: 150,
       position: "bottom",
       periods: [{
-        period: "mm",
+        period: "hh",
         selected: true,
         count: 48,
         label: "48 horas"
