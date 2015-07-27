@@ -1,0 +1,39 @@
+<h1>Listing Lamp Stats</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Serialnum</th>
+      <th>Date</th>
+      <th>Pwr</th>
+      <th>Current</th>
+      <th>Volts</th>
+      <th>Tcom</th>
+      <th>Tled1</th>
+      <th>Tled2</th>
+      <th>Slum</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @list.each do |lamp_stat| %>
+      <tr>
+        <td><%= lamp_stat.serial_num %></td>
+        <td><%= lamp_stat.date %></td>
+        <td><%= lamp_stat.pwr %></td>
+        <td><%= lamp_stat.current %></td>
+        <td><%= lamp_stat.volts %></td>
+        <td><%= lamp_stat.tCom %></td>
+        <td><%= lamp_stat.tLed1 %></td>
+        <td><%= lamp_stat.tLed2 %></td>
+        <td><%= lamp_stat.sLum %></td>
+        <td><%= link_to 'Show', lamp_stat %></td>
+        <td><%= link_to 'Edit', edit_lamp_stat_path(lamp_stat) %></td>
+        <td><%= link_to 'Destroy', lamp_stat, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
