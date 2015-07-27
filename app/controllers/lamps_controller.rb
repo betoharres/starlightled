@@ -12,6 +12,10 @@ class LampsController < ApplicationController
   # GET /lamps/1.json
   def show
     @product = @lamp.product
+    @chart = LampStat.where(serial_num: @product.serial_number)
+                     .where(date: 2.day.ago..DateTime.now)
+                     .order(:date)
+                     .map(&:to_chart)
   end
 
   # GET /lamps/new
