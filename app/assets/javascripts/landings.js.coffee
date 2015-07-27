@@ -38,6 +38,7 @@ initialize = ->
         return
       # console.log(allBallon);
       setAllMap map, allNodes, allBallon
+      map.setCenter(new google.maps.LatLng(allNodes[(allNodes.length - 1)][1], allNodes[(allNodes.length - 1)][2]))
       return
     return
   return
