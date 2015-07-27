@@ -1,6 +1,7 @@
 //=require amcharts/amcharts.js
 //=require amcharts/serial.js
 //=require amcharts/amstock.js
+//=require amcharts/pt.js
 
 var chartData = $('#chart-temp-data').data('device');
 
@@ -9,14 +10,14 @@ AmCharts.useUTC = true;
 
 var chart = AmCharts.makeChart("chartdiv", {
     type: "stock",
-      "theme": "light",
-      pathToImages: "http://www.amcharts.com/lib/3/images/",
-      categoryAxesSettings: {
-        minPeriod: "mm",
-        dataDateFormat: 'YYYY-MM-DD JJ:NN:SS',
-        // parseDates: true
-      },
-      language: 'pt',
+    "theme": "light",
+    pathToImages: "http://www.amcharts.com/lib/3/images/",
+    categoryAxesSettings: {
+      minPeriod: "mm",
+      dataDateFormat: 'YYYY-MM-DD JJ:NN:SS',
+      // parseDates: true
+    },
+    language: 'pt',
 
     dataSets: [{
       title: "Temperatura LED 1",
