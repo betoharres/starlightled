@@ -8,7 +8,7 @@ class LampStatsController < ApplicationController
     # @lamp_stats = LampStat.all.where(serial_num: @lamp.product.serial_number, created_at: 1.month.ago..Date.today )
     @lamp_stats = LampStat.where(serial_num: @lamp.product.serial_number)
                   .order(:date)
-                  .reverse_order
+                  # .reverse_order
   end
 
   # GET /lamp_stats/1
