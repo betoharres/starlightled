@@ -1,27 +1,20 @@
 <%- model_class = Lamp -%>
 <div class="page-header">
   <!-- <h1><%=t '.title', :default => Lamp %></h1> -->
-  <h1>Luminárias</h1>
+  <h1>Luminária #<%= @lamp.id %></h1>
 </div>
-<div id="panelPortlet15" class="panel widget" role="option" aria-grabbed="false">
-  <div class="portlet-handler" draggable="true">
-      <div class="row row-table row-flush">
-        <div class="col-xs-12">
-          <a href="<%= lamp_lamp_stats_path(@lamp) %>" id="stat-btn">
-            <div class="panel-body text-center bg-info">
-                <em class="icon-graph text-white"></em>
-                <p class="mb0 text-white">Status da Luminária</p>
-            </div>
-          </a>
-        </div>
-      </div>
-  </div>
+<%= render 'lamp_stats/chart' %>
+<div class="col-xs-12">
+  <a href="<%= lamp_lamp_stats_path(@lamp) %>" id="stat-btn" class="btn btn-link btn-block">
+    <em class="icon-graph text-black"></em>
+    <p class="mb0 text-black">Status da Luminária</p>
+  </a>
 </div>
 <div class="fieldset">
   <dl>
       <% if @product.node %>
         <dt class="label label-default"><!--<%= model_class.human_attribute_name(:node) %>-->Nodo</dt>
-        <dd><pre class="prettyprint"><%= link_to @product.node.identifier, url_for('/networks/'+@product.node.network.id.to_s+'/nodes/'+@product.node.id.to_s)%></pre></dd>
+        <dd><pre class="prettyprint"><%= link_to @product.node.identifier, @product.node%></pre></dd>
       <% end %>
       <dt class="label label-default"><!--<%= model_class.human_attribute_name(:name) %>-->Nome</dt>
       <dd><pre class="prettyprint"><%= @product.name %></pre></dd>
