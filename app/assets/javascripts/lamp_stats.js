@@ -49,7 +49,7 @@ var chart = AmCharts.makeChart("chartdiv", {
       {
         title: "Temperatura Fonte",
         fieldMappings: [{
-          fromField: "temp3",
+          fromField: "tCom",
           toField: "value"
         }, {
           fromField: "pwr",
