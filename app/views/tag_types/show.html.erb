@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @tag_type.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @tag_type.description %>
+</p>
+
+<p>
+  <strong>Exclusive:</strong>
+  <%= @tag_type.exclusive %>
+</p>
+
+<p>
+  <strong>Ability:</strong>
+  <%= @tag_type.ability %>
+</p>
+
+<p>
+  <strong>Company:</strong>
+  <%= @tag_type.company %>
+</p>
+
+<%= link_to 'Edit', edit_tag_type_path(@tag_type) %> |
+<%= link_to 'Back', tag_types_path %>
