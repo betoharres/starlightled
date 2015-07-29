@@ -5,4 +5,5 @@ class Lamp < ActiveRecord::Base
   accepts_nested_attributes_for :product
 
   audited allow_mass_assignment: true
+  acts_as_taggable
 end

@@ -3,4 +3,5 @@ class Network < ActiveRecord::Base
   has_many :nodes
 
   audited allow_mass_assignment: true, associated_with: :company
+  acts_as_taggable
 end
