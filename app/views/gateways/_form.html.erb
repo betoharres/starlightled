@@ -1,5 +1,7 @@
 <%= form_for @gateway, :html => { :class => 'form-horizontal form-model' } do |f| %>
 
+  <%= render 'tags/tag', f: f, model: @gateway %>
+
   <%= f.fields_for :product_attributes, @gateway.product||Product.new do |ff| %>
     <%= render partial: 'products/product', locals: {ff: ff} %>
   <% end %>
