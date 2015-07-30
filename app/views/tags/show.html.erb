@@ -1,0 +1,26 @@
+<% tags = {network: [], node: [], lamp: [], gateway: []} %>
+<% @tagged_resources.each do |resource| %>
+  <% case resource.taggable_type
+      when 'Network' then tags[:network] << resource
+      when 'Node' then tags[:node] << resource
+      when 'Lamp' then tags[:lamp] << resource
+      when 'Gateway' then tags[:gateway] << resource %>
+  <% end %>
+<% end %>
+
+<% tags[:network].each do |tag| %>
+  <h2>Redes</h2>
+  <p><%= link_to tagging_related_name(tag), tagging_related_path(tag) %></p>
+<% end %>
+<% tags[:node].each do |tag| %>
+  <h2>Nodos</h2>
+  <p><%= link_to tagging_related_name(tag), tagging_related_path(tag) %></p>
+<% end %>
+<% tags[:lamp].each do |tag| %>
+  <h2>Luminarias</h2>
+  <p><%= link_to tagging_related_name(tag), tagging_related_path(tag) %></p>
+<% end %>
+<% tags[:gateway].each do |tag| %>
+  <h2>Luminarias</h2>
+  <p><%= link_to tagging_related_name(tag), tagging_related_path(tag) %></p>
+<% end %>

@@ -1,0 +1,7 @@
+<div class="form-group">
+<label class="control-label col-md-2" for="latitude">Grupos</label>
+  <div class="col-md-10">
+    <%= f.text_field :tag_list, :class => 'text-field form-control', value: model.tag_list.join(', ') %>
+    <%= f.label :password_confirmation, '* separados por virgula (, )', class: "text-muted" %>
+  </div>
+</div>
