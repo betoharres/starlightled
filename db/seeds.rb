@@ -6,10 +6,10 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-user = User.create!(email: 'admin@dc_park.com.br', password: 'synergy',
+user = User.create!(email: 'admin@dcpark.com.br', password: 'synergy',
                     password_confirmation: 'synergy')
 
-user.company = Company.create!(name: 'DC Park', email: 'empresa@dc_park.com.br', user: user)
+user.company = Company.create!(name: 'DC Park', email: 'empresa@dcpark.com.br', user: user)
 
 role = Role.create! name: 'Admin', company: user.company, users: [user]
 
