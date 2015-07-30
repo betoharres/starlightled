@@ -5,7 +5,7 @@ class LampsController < ApplicationController
   # GET /lamps
   # GET /lamps.json
   def index
-    @lamps = Lamp.all
+    @lamps = Product.all.where(company: current_user.company, productable_type: 'Lamp')
   end
 
   # GET /lamps/1

@@ -5,7 +5,7 @@ class GatewaysController < ApplicationController
   # GET /gateways
   # GET /gateways.json
   def index
-    @gateways = Gateway.all
+    @gateways = Product.all.where(company: current_user.company, productable_type: 'Gateway')
   end
 
   # GET /gateways/1

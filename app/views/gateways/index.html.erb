@@ -6,24 +6,38 @@
   <thead>
     <tr>
       <th>ID</th>
-      <th><%= model_class.human_attribute_name(:ip) %></th>
-      <th><%= model_class.human_attribute_name(:url_connection) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+      <th>Nome</th>
+      <th>Modelo</th>
+      <th>Número serial</th>
+      <th>Endereço MAC</th>
+      <th>Código do produto</th>
+      <th>Data de fabricação</th>
+      <!-- <th><%= model_class.human_attribute_name(:ip) %></th> -->
+      <!-- <th><%= model_class.human_attribute_name(:url_connection) %></th> -->
+      <!-- <th><%= model_class.human_attribute_name(:created_at) %></th> -->
+      <th><!--<%=t '.actions', :default => t("helpers.actions") %>-->Visualizar</th>
+      <th><!--<%=t '.actions', :default => t("helpers.actions") %>-->Remover</th>
     </tr>
   </thead>
   <tbody>
     <% @gateways.each do |gateway| %>
       <tr>
-        <td><%= gateway.id %></td>
-        <td><%= gateway.ip %></td>
-        <td><%= gateway.url_connection %></td>
-        <td><%=l gateway.created_at, format: :long %></td>
+        <td><%= gateway.productable_id %></td>
+        <td><%= gateway.name %></td>
+        <td><%= gateway.model %></td>
+        <td><%= gateway.serial_number %></td>
+        <td><%= gateway.mac_address %></td>
+        <td><%= gateway.product_code %></td>
+        <td><%= gateway.fabrication_date %></td>
+        <!-- <td><%# gateway.id %></td> -->
+        <!-- <td><%# gateway.ip %></td> -->
+        <!-- <td><%# gateway.url_connection %></td> -->
+        <!-- <td><%#l gateway.created_at, format: :long %></td> -->
+        <td><%= product_link gateway, class: 'btn btn-primary' do %>
+          <%= glyph 'info-sign' %>
+        <% end %>
+        </td>
         <td>
-          <%= link_to gateway_path(gateway), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
-            <%= glyph 'info-sign' %>
-            <%= glyph 'pencil' %>
-          <%- end -%>
           <%= link_to gateway_path(gateway), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
             <%= glyph 'remove' %>
           <%- end -%>
@@ -33,6 +47,6 @@
   </tbody>
 </table>
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
+<%= link_to t('.new', :default => 'Novo'),
             new_gateway_path,
             :class => 'btn btn-primary' %>
