@@ -39,27 +39,12 @@
                <span data-localize="sidebar.nav.DASHBOARD">Inicio</span>
             </a>
          </li>
-          <li class="<%= 'active' if controller?('tags')%>">
-            <a href="#gateways" title="Gateway" data-toggle="collapse">
+         <li class="<%= 'active' if controller?('tags')%>">
+            <a href="/tags" title="Dashboard">
                <em class="icon-grid"></em>
                <!-- <div class="label label&#45;info pull&#45;right">3</div> -->
                <span data-localize="sidebar.nav.DASHBOARD">Grupos</span>
             </a>
-            <ul id="gateways" class="nav sidebar-subnav collapse">
-               <li class="sidebar-subnav-header">Grupos</li>
-               <li class="<%= 'active' if controller?('tags') && action?('index') %>">
-                 <%= link_to '#' do %>
-                  <em class="icon-list"></em>
-                  <span>Listar</span>
-                 <% end %>
-               </li>
-               <li class="<%= 'active' if controller?('tags') && action?('new') %>">
-                  <%= link_to new_gateway_path do %>
-                    <em class="icon-plus"></em>
-                    <span>Novo Grupo</span>
-                  <% end %>
-               </li>
-            </ul>
          </li>
          <li class="<%= 'active' if controller?('networks')%>">
             <a href="#networks" title="Redes" data-toggle="collapse">
