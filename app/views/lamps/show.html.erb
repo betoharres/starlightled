@@ -3,19 +3,28 @@
   <!-- <h1><%=t '.title', :default => Lamp %></h1> -->
   <h1>Luminária #<%= @lamp.id %></h1>
 </div>
-<%= render 'lamp_stats/chart' %>
-<div class="col-xs-12">
-  <a href="<%= lamp_lamp_stats_path(@lamp) %>" id="stat-btn" class="btn btn-link btn-block">
-    <em class="icon-graph text-black"></em>
-    <p class="mb0 text-black">Status da Luminária</p>
-  </a>
-</div>
+<% if @chart.any? %>
+  <%= render 'lamp_stats/chart' %>
+  <div class="col-xs-1j">
+    <a href="<%= lamp_lamp_stats_path(@lamp) %>" id="stat-btn" class="btn btn-link btn-block">
+      <em class="icon-graph text-black"></em>
+      <p class="mb0 text-black">Status da Luminária</p>
+    </a>
+  </div>
+<% end %>
 <div class="fieldset">
   <dl>
       <% if @product.node %>
+        <h3 class="text-muted">Dados Relacionados a Luminária</h3>
+        <hr>
         <dt class="label label-default"><!--<%= model_class.human_attribute_name(:node) %>-->Nodo</dt>
         <dd><pre class="prettyprint"><%= link_to @product.node.identifier, @product.node%></pre></dd>
       <% end %>
+      <dt class="label label-default"><!--<%= model_class.human_attribute_name(:name) %>-->Grupos</dt>
+      <%# This logic should be in a helper %>
+      <dd><pre class="prettyprint"><% @lamp.tags.each do |t| %><%= link_to(t.name, t.id.to_s, class: "btn btn-#{%w(primary danger warning info)[rand(0..3)]} btn-xs") %><% end %></pre></dd>
+      <h3 class="text-muted">Cadastro da Luminária</h3>
+      <hr>
       <dt class="label label-default"><!--<%= model_class.human_attribute_name(:name) %>-->Nome</dt>
       <dd><pre class="prettyprint"><%= @product.name %></pre></dd>
       <dt class="label label-default"><!--<%= model_class.human_attribute_name(:model) %>-->Modelo</dt>
