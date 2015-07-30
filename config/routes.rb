@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'tags/', to: 'tags#index'
+  get 'tags/:id', to: 'tags#show'
+
   resources :tag_types
   get 'landings/index'
   get 'audits', to: 'audits#index'
