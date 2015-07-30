@@ -7,7 +7,7 @@
     </div>
   </div>
 
-  <%= render 'tags/tag', f: f, model: @network %>
+  <%= render partial: 'tags/tag', locals: {f: f, model: @network} %>
 
   <div class="form-group">
     <div class='col-md-offset-2 col-md-10'>
