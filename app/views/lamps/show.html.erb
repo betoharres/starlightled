@@ -22,7 +22,7 @@
       <% end %>
       <dt class="label label-default"><!--<%= model_class.human_attribute_name(:name) %>-->Grupos</dt>
       <%# This logic should be in a helper %>
-      <dd><pre class="prettyprint"><% @lamp.tags.each do |t| %><%= link_to(t.name, t.id.to_s, class: "btn btn-#{%w(primary danger warning info)[rand(0..3)]} btn-xs") %><% end %></pre></dd>
+      <dd><pre class="prettyprint"><% @lamp.tags.each do |t| %><%= link_to(t.name, '/tags/'+t.id.to_s, class: "btn btn-#{%w(primary danger warning info)[rand(0..3)]} btn-xs") %><% end %></pre></dd>
       <h3 class="text-muted">Cadastro da Luminária</h3>
       <hr>
       <dt class="label label-default"><!--<%= model_class.human_attribute_name(:name) %>-->Nome</dt>
