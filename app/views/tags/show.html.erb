@@ -21,7 +21,6 @@
 <% end %>
 
 <% tags[:node].each do |tag| %>
-  <h2>Nodos</h2>
   <p><%= link_to tagging_related_name(tag), tagging_related_path(tag) %></p>
 <% end %>
 
