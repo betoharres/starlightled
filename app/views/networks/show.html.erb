@@ -9,6 +9,7 @@
       <!--<dt class="label label-default"><%= model_class.human_attribute_name(:name) %></dt>-->
     <dt class="label label-default">Nome</dt>
       <dd><pre class="prettyprint"><%= @network.name %></pre></dd>
+      <%= render partial: 'tags/tags_list', locals: {model_object: @network}%>
   </dl>
 </div>
 

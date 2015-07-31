@@ -1,0 +1,2 @@
+<dt class="label label-default">Grupos</dt>
+<dd><pre class="prettyprint"><% model_object.tags.each do |t| %><%= link_to(t.name, '/tags/'+t.id.to_s, class: "btn btn-#{%w(primary danger warning info)[rand(0..3)]} btn-xs") %><% end %></pre></dd>
