@@ -13,6 +13,8 @@ module TagsHelper
         Node.find(resource.taggable_id).identifier
       when 'Lamp'
         Lamp.find(resource.taggable_id).product.name
+      when 'Gateway'
+        Gateway.find(resource.taggable_id).product.name
     end
   end
 end
