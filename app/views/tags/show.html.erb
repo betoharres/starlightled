@@ -8,19 +8,35 @@
   <% end %>
 <% end %>
 
-<% tags[:network].each do |tag| %>
+<% if tags[:network].any? %>
   <h2>Redes</h2>
+<% end %>
+
+<% tags[:network].each do |tag| %>
   <p><%= link_to tagging_related_name(tag), tagging_related_path(tag) %></p>
 <% end %>
+
+<% if tags[:node].any? %>
+  <h2>Nodos</h2>
+<% end %>
+
 <% tags[:node].each do |tag| %>
   <h2>Nodos</h2>
   <p><%= link_to tagging_related_name(tag), tagging_related_path(tag) %></p>
 <% end %>
+
+<% if tags[:lamp].any? %>
+  <h2>Luminárias</h2>
+<% end %>
+
 <% tags[:lamp].each do |tag| %>
-  <h2>Luminarias</h2>
   <p><%= link_to tagging_related_name(tag), tagging_related_path(tag) %></p>
 <% end %>
+
+<% if tags[:gateway].any? %>
+  <h2>Gateway</h2>
+<% end %>
+
 <% tags[:gateway].each do |tag| %>
-  <h2>Luminarias</h2>
   <p><%= link_to tagging_related_name(tag), tagging_related_path(tag) %></p>
 <% end %>
