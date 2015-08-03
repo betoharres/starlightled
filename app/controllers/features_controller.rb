@@ -1,6 +1,6 @@
 class FeaturesController < ApplicationController
   def time
-    render text: Time.now
+    render text: DateTime.now.in_time_zone("Brasilia").to_datetime.to_s
   end
 
   def last_record
