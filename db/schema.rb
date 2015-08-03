@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150728173659) do
+ActiveRecord::Schema.define(version: 20150803165752) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -101,6 +101,8 @@ ActiveRecord::Schema.define(version: 20150728173659) do
     t.string   "sunset",         limit: 40
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
+    t.integer  "alerts",         limit: 2
+    t.integer  "errors",         limit: 2
   end
 
   add_index "lamp_stats", ["serial_num"], name: "index_lamp_stats_on_serial_num", using: :btree
