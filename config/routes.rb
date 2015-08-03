@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'features/time'
+
+  get 'features/last_record'
+
   get 'tags/', to: 'tags#index'
   get 'tags/:id', to: 'tags#show'
 
@@ -11,7 +15,7 @@ Rails.application.routes.draw do
   resources :permissions
   resources :roles
 
-  get '/600milluminarias', to: 'lamp_stats#william', format: :json
+  get '/600milluminarias', to: 'features#last_record', format: :json
 
   resources :lamp_stats, only: :create
   resources :lamps, shallow: true do
