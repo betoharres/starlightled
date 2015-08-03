@@ -102,7 +102,7 @@ ActiveRecord::Schema.define(version: 20150803165752) do
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
     t.integer  "alerts",         limit: 2
-    t.integer  "errors",         limit: 2
+    t.integer  "errorsDev",      limit: 2
   end
 
   add_index "lamp_stats", ["serial_num"], name: "index_lamp_stats_on_serial_num", using: :btree
