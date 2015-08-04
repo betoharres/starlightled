@@ -1,0 +1,145 @@
+<div id="panelDemo1" class="panel panel-primary">
+            <div class="panel-heading">Programação Luminária
+               <a href="#" data-tool="panel-collapse" data-toggle="tooltip" title="Expandir" class="pull-right">
+                  <em class="fa fa-minus"></em>
+               </a>
+            </div>
+         	<div class="panel-wrapper collapse in">
+               <div class="panel-body">
+<%= form_tag do %>
+
+<div id="panelChanges" class="panel panel-default">
+	<div class="panel-heading">Plano <%= select_tag :plano, options_for_select(1..16), :class => "form-control inline", :style => "width:70px" %></div>
+	<div class="panel-body">
+		<div class="form-group">
+			<%= label_tag :dimerization, "Dimerização", :class => "control-label col-md-2" %>
+			<div class="input-group m-b col-md-2">
+				<%= number_field_tag :dimerization, nil, in: 50..100, :class => "form-control" %>
+				<span class="input-group-addon">%</span>
+			</div>
+		</div>
+		<div class="form-group">
+			<%= label_tag :delay, "Defasagem", :class => "col-md-2 control-label" %>
+			<div class="input-group m-b col-md-2">
+				<%= number_field_tag :delay, nil, in: 0..254, :class => "form-control" %>
+				<span class="input-group-addon">seg</span>
+			</div>
+		</div>
+		<div class="form-group">
+			<%= label_tag nil, "Desabilitar Periféricos", :class => "col-md-2" %>
+			<div class="col-md-10">
+				<div class="checkbox c-checkbox">
+					<label>
+					<%= check_box_tag(:sensor1) %>
+					<span class="fa fa-check"></span>Sensor de temperatura da placa LED 1</label>
+				</div>
+				<div class="checkbox c-checkbox">
+					<label>
+					<%= check_box_tag(:sensor2) %>
+					<span class="fa fa-check"></span>Sensor de temperatura da placa LED 2</label>
+				</div>
+				<div class="checkbox c-checkbox">
+					<label>
+					<%= check_box_tag(:sensor3) %>
+					<span class="fa fa-check"></span>Sensor de temperatura da placa fonte</label>
+				</div>
+				<div class="checkbox c-checkbox">
+					<label>
+					<%= check_box_tag(:sensor4) %>
+					<span class="fa fa-check"></span>Sensor de luminosidade</label>
+				</div>
+				<div class="checkbox c-checkbox">
+					<label>
+					<%= check_box_tag(:sensor4) %>
+					<span class="fa fa-check"></span>Memória externa</label>
+				</div>
+				<div class="checkbox c-checkbox">
+					<label>
+					<%= check_box_tag(:sensor4) %>
+					<span class="fa fa-check"></span>Microcontrolador da placa LED 1</label>
+				</div>
+				<div class="checkbox c-checkbox">
+					<label>
+					<%= check_box_tag(:sensor4) %>
+					<span class="fa fa-check"></span>Microcontrolador da placa LED 2</label>
+				</div>
+			</div>
+        </div>
+	</div>
+</div>
+
+
+<div id="panelTrocas" class="panel panel-default">
+	 <div class="panel-heading">Trocas de Planos</div>
+	 <div class="panel-body">
+	 	<div style="width:900px">
+		<table class="table table-striped">
+		  <thead>
+		    <tr>
+		      <th style="padding:6px">#</th>
+		      <th style="padding:6px">Plano</th>
+		      <th style="padding:6px">Modo Operação</th>
+		      <th style="padding:6px">Dias da semana</th>
+			  <th style="padding:6px">Hora</th>
+			  <th style="padding:6px">Data Especial</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <% for c in 1..16 do %>
+		      <tr>
+		        <td style="padding:6px"><%= c %></td>
+		        <td style="padding:6px"><%= select_tag "change_#{c}_plan", options_for_select(1..16), :class => "form-control", :style => "padding:6px" %></td>
+				<td style="padding:6px"><%= select_tag "change_#{c}_mode", options_for_select([ ['Coordenado',1], ['Isolado',2], ['Atuado',3] ]), :class => "form-control", :style => "padding:6px" %></td>
+				<td style="padding:6px">
+					<button type="button" class="btn btn-oval btn-default btn-sm" style="padding:6px 10px">Todos</button>
+					<div class="btn-group">
+						<div data-toggle="buttons" class="btn-group">
+							<label class="btn btn-default btn-sm">
+							<%= check_box_tag("change_#{c}_sun") %>D</label>
+							<label class="btn btn-default btn-sm">
+							<%= check_box_tag("change_#{c}_mon") %>S</label>
+							<label class="btn btn-default btn-sm">
+							<%= check_box_tag("change_#{c}_tue") %>T</label>
+							<label class="btn btn-default btn-sm">
+							<%= check_box_tag("change_#{c}_wed") %>Q</label>
+							<label class="btn btn-default btn-sm">
+							<%= check_box_tag("change_#{c}_thu") %>Q</label>
+							<label class="btn btn-default btn-sm">
+							<%= check_box_tag("change_#{c}_fri") %>S</label>
+							<label class="btn btn-default btn-sm">
+							<%= check_box_tag("change_#{c}_sat") %>S</label>
+						</div>
+					</div>
+				</td>
+				<td style="padding:6px">
+					<div class="input-group m-b col-sm-2">
+						<%= number_field(:change, :hour, in: 0..23, :class => "form-control", :style => "width:45px; padding:6px" ) %>
+						<span class="input-group-addon" style="padding:6px">:</span>
+						<%= number_field(:change, :minute, in: 0..59, :class => "form-control", :style => "width:45px; padding:6px" ) %>
+						<span class="input-group-addon" style="padding:6px">:</span>
+						<%= number_field(:change, :secound, in: 0..59, :class => "form-control", :style => "width:45px; padding:6px" ) %>
+					</div>
+				</td>
+				<td style="padding:6px">
+					<div class="input-group m-b col-sm-2">
+						<span class="input-group-addon" style="width:5px; padding:6px"><%= check_box_tag(:change_day) %></span>
+						<%= number_field(:change, :day, in: 1..31, :class => "form-control", :style => "width:45px; padding:6px" ) %>
+						<span class="input-group-addon" style="padding:6px">/</span>
+						<%= number_field(:change, :month, in: 1..12, :class => "form-control", :style => "width:45px; padding:6px" ) %>
+						<span class="input-group-addon" style="padding:6px">/</span>
+						<%= number_field(:change, :year, in: 2015..2099, :class => "form-control", :style => "width:60px; padding:6px" ) %>
+					</div>
+				</td>
+		      </tr>
+		    <% end %>
+		  </tbody>
+		</table>
+		</div>
+	</div>
+</div>
+
+<% end %>
+</div>
+               <div class="panel-footer"><%= submit_tag "Salvar Programação", :class => 'btn btn-primary' %></div>
+            </div>
+         </div>
