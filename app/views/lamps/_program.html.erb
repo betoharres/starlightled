@@ -69,28 +69,28 @@
 </div>
 
 
-<div id="panelTrocas" class="panel panel-default">
+<div id="panelChanges" class="panel panel-default">
 	 <div class="panel-heading">Trocas de Planos</div>
 	 <div class="panel-body">
-	 	<div style="width:900px">
+	 	<div id="resize-table-changes">
 		<table class="table table-striped">
 		  <thead>
 		    <tr>
-		      <th style="padding:6px">#</th>
-		      <th style="padding:6px">Plano</th>
-		      <th style="padding:6px">Modo Operação</th>
-		      <th style="padding:6px">Dias da semana</th>
-			  <th style="padding:6px">Hora</th>
-			  <th style="padding:6px">Data Especial</th>
+		      <th>#</th>
+		      <th>Plano</th>
+		      <th>Modo Operação</th>
+		      <th>Dias da semana</th>
+			  <th>Hora</th>
+			  <th>Data Especial</th>
 		    </tr>
 		  </thead>
 		  <tbody>
 		    <% for c in 1..16 do %>
 		      <tr>
-		        <td style="padding:6px"><%= c %></td>
-		        <td style="padding:6px"><%= select_tag "change_#{c}_plan", options_for_select(1..16), :class => "form-control", :style => "padding:6px" %></td>
-				<td style="padding:6px"><%= select_tag "change_#{c}_mode", options_for_select([ ['Coordenado',1], ['Isolado',2], ['Atuado',3] ]), :class => "form-control", :style => "padding:6px" %></td>
-				<td style="padding:6px">
+		        <td><%= c %></td>
+		        <td><%= select_tag "change_#{c}_plan", options_for_select(1..16), :class => "form-control", :style => "padding:6px" %></td>
+				<td><%= select_tag "change_#{c}_mode", options_for_select([ ['Coordenado',1], ['Isolado',2], ['Atuado',3] ]), :class => "form-control", :style => "padding:6px" %></td>
+				<td>
 					<button type="button" class="btn btn-oval btn-default btn-sm" style="padding:6px 10px">Todos</button>
 					<div class="btn-group">
 						<div data-toggle="buttons" class="btn-group">
@@ -111,7 +111,7 @@
 						</div>
 					</div>
 				</td>
-				<td style="padding:6px">
+				<td>
 					<div class="input-group m-b col-sm-2">
 						<%= number_field(:change, :hour, in: 0..23, :class => "form-control", :style => "width:45px; padding:6px" ) %>
 						<span class="input-group-addon" style="padding:6px">:</span>
@@ -120,7 +120,7 @@
 						<%= number_field(:change, :secound, in: 0..59, :class => "form-control", :style => "width:45px; padding:6px" ) %>
 					</div>
 				</td>
-				<td style="padding:6px">
+				<td>
 					<div class="input-group m-b col-sm-2">
 						<span class="input-group-addon" style="width:5px; padding:6px"><%= check_box_tag(:change_day) %></span>
 						<%= number_field(:change, :day, in: 1..31, :class => "form-control", :style => "width:45px; padding:6px" ) %>
