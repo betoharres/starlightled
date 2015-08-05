@@ -88,26 +88,35 @@
 		    <% for c in 1..16 do %>
 		      <tr>
 		        <td><%= c %></td>
-		        <td><%= select_tag "change_#{c}_plan", options_for_select(1..16), :class => "form-control", :style => "padding:6px" %></td>
-				<td><%= select_tag "change_#{c}_mode", options_for_select([ ['Coordenado',1], ['Isolado',2], ['Atuado',3] ]), :class => "form-control", :style => "padding:6px" %></td>
+		        <td>
+		        	<div class="plan-size">
+		        		<%= select_tag "change_#{c}_plan", options_for_select(1..16), :class => "form-control", :style => "padding:6px" %>
+					</div>
+				</td>
 				<td>
-					<button type="button" class="btn btn-oval btn-default btn-sm" style="padding:6px 10px">Todos</button>
-					<div class="btn-group">
-						<div data-toggle="buttons" class="btn-group">
-							<label class="btn btn-default btn-sm">
-							<%= check_box_tag("change_#{c}_sun") %>D</label>
-							<label class="btn btn-default btn-sm">
-							<%= check_box_tag("change_#{c}_mon") %>S</label>
-							<label class="btn btn-default btn-sm">
-							<%= check_box_tag("change_#{c}_tue") %>T</label>
-							<label class="btn btn-default btn-sm">
-							<%= check_box_tag("change_#{c}_wed") %>Q</label>
-							<label class="btn btn-default btn-sm">
-							<%= check_box_tag("change_#{c}_thu") %>Q</label>
-							<label class="btn btn-default btn-sm">
-							<%= check_box_tag("change_#{c}_fri") %>S</label>
-							<label class="btn btn-default btn-sm">
-							<%= check_box_tag("change_#{c}_sat") %>S</label>
+					<div class="mode-size">
+						<%= select_tag "change_#{c}_mode", options_for_select([ ['Coordenado',1], ['Isolado',2], ['Atuado',3] ]), :class => "form-control", :style => "padding:6px" %></td>
+					</div>
+				<td>
+					<div class="week-size">
+						<button type="button" class="btn btn-oval btn-default btn-sm" style="padding:6px 10px">Todos</button>
+						<div class="btn-group">
+							<div data-toggle="buttons" class="btn-group">
+								<label class="btn btn-default btn-sm">
+								<%= check_box_tag("change_#{c}_sun") %>D</label>
+								<label class="btn btn-default btn-sm">
+								<%= check_box_tag("change_#{c}_mon") %>S</label>
+								<label class="btn btn-default btn-sm">
+								<%= check_box_tag("change_#{c}_tue") %>T</label>
+								<label class="btn btn-default btn-sm">
+								<%= check_box_tag("change_#{c}_wed") %>Q</label>
+								<label class="btn btn-default btn-sm">
+								<%= check_box_tag("change_#{c}_thu") %>Q</label>
+								<label class="btn btn-default btn-sm">
+								<%= check_box_tag("change_#{c}_fri") %>S</label>
+								<label class="btn btn-default btn-sm">
+								<%= check_box_tag("change_#{c}_sat") %>S</label>
+							</div>
 						</div>
 					</div>
 				</td>
