@@ -6,6 +6,6 @@ class FeaturesController < ApplicationController
   end
 
   def last_record
-    render json: LampStat.last
+    render json: LampStat.where(serial_num: Lamp.find(params[:lamp_id]).product.serial_number).last
   end
 end
