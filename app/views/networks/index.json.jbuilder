@@ -10,6 +10,7 @@ json.networks @networks do |network|
 
     json.products node.products do |product|
       json.id product.id
+      json.name product.name
       json.productable_type t(product.productable_type)
       json.productable_id product.productable_id
       json.url product_to_child_url(product)
