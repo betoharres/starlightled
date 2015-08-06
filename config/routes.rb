@@ -15,10 +15,9 @@ Rails.application.routes.draw do
   resources :permissions
   resources :roles
 
-  get '/600milluminarias', to: 'features#last_record', format: :json
-
   resources :lamp_stats, only: :create
   resources :lamps, shallow: true do
+    get '/600milluminarias', to: 'features#last_record', format: :json
     resources :lamp_stats
   end
   resources :gateways
