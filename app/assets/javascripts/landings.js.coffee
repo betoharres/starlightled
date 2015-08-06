@@ -24,8 +24,7 @@ initialize = ->
           nodesArray.push node.longitude
           $.each node.products, (n, product) ->
             productsText += '<a href="'+product.url+'"><h4>' +
-            product.productable_type + ' #' +
-            product.productable_id+'</h4></a>'
+            product.name+'</h4></a>'
             return
           if node.products.length > 0
             productsText = productsText
