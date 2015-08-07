@@ -28,6 +28,7 @@ class NetworksController < ApplicationController
   def create
     @network = Network.new(network_params)
     @network.company = current_user.company
+    current_user.company.tag(@network, with: network_params[:tag_list], on: current_user.company.name.parameterize.underscore.to_sym)
 
     respond_to do |format|
       if @network.save
@@ -43,6 +44,7 @@ class NetworksController < ApplicationController
   # PATCH/PUT /networks/1
   # PATCH/PUT /networks/1.json
   def update
+    current_user.company.tag(@network, with: network_params[:tag_list], on: current_user.company.name.parameterize.underscore.to_sym)
     respond_to do |format|
       if @network.update(network_params)
         format.html { redirect_to @network, notice: 'Network was successfully updated.' }

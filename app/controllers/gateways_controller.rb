@@ -28,6 +28,7 @@ class GatewaysController < ApplicationController
   def create
     @gateway = Gateway.new(gateway_params)
     @gateway.product.company_id = current_user.company.id if @gateway.product
+    current_user.company.tag(@gateway, with: gateway_params[:tag_list], on: current_user.company.name.parameterize.underscore.to_sym)
 
     respond_to do |format|
       if @gateway.save
@@ -43,6 +44,7 @@ class GatewaysController < ApplicationController
   # PATCH/PUT /gateways/1
   # PATCH/PUT /gateways/1.json
   def update
+    current_user.company.tag(@gateway, with: gateway_params[:tag_list], on: current_user.company.name.parameterize.underscore.to_sym)
     respond_to do |format|
       hash = gateway_params
       hash[:product_attributes].merge!(company_id: current_user.company.id) if hash[:product_attributes]

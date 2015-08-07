@@ -8,4 +8,5 @@ class Company < ActiveRecord::Base
   validates_formatting_of :email, using: :email
 
   has_associated_audits
+  acts_as_tagger
 end
