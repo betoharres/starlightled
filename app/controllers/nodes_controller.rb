@@ -27,6 +27,7 @@ class NodesController < ApplicationController
   # POST /nodes.json
   def create
     @node = Node.new(node_params)
+    current_user.company.tag(@node, with: node_params[:tag_list], on: current_user.company.name.parameterize.underscore.to_sym)
 
     if current_user.company.networks.map(&:id).include?(params[:network_id].to_i)
       @node.network_id = params[:network_id]
@@ -46,6 +47,7 @@ class NodesController < ApplicationController
   # PATCH/PUT /nodes/1
   # PATCH/PUT /nodes/1.json
   def update
+    current_user.company.tag(@node, with: node_params[:tag_list], on: current_user.company.name.parameterize.underscore.to_sym)
     respond_to do |format|
       if @node.update(node_params)
         format.html { redirect_to @node, notice: 'Node was successfully updated.' }

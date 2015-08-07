@@ -33,6 +33,7 @@ class LampsController < ApplicationController
     @lamp = Lamp.new(lamp_params)
     @lamp.product.company_id = current_user.company.id if @lamp.product
     @lamp.product.node_id = params[:node_id] if params[:node_id]
+    current_user.company.tag(@lamp, with: lamp_params[:tag_list], on: current_user.company.name.parameterize.underscore.to_sym)
 
     respond_to do |format|
       if @lamp.save
@@ -48,9 +49,11 @@ class LampsController < ApplicationController
   # PATCH/PUT /lamps/1
   # PATCH/PUT /lamps/1.json
   def update
+    hash = lamp_params
+    hash[:product_attributes].merge!(company_id: current_user.company.id) if hash[:product_attributes]
+    current_user.company.tag(@lamp, with: lamp_params[:tag_list], on: current_user.company.name.parameterize.underscore.to_sym)
+
     respond_to do |format|
-      hash = lamp_params
-      hash[:product_attributes].merge!(company_id: current_user.company.id) if hash[:product_attributes]
       if @lamp.update(hash)
         format.html { redirect_to @lamp, notice: 'Lamp was successfully updated.' }
         format.json { render :show, status: :ok, location: @lamp }
