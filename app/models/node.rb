@@ -1,5 +1,5 @@
 class Node < ActiveRecord::Base
-  has_one :products
+  has_one :product
 
   belongs_to :network
   validates  :network, presence: true
