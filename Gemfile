@@ -52,6 +52,7 @@ gem "bower-rails", "~> 0.9.2"
 gem 'bootstrap-glyphicons'
 gem 'chosen-rails'
 gem 'acts-as-taggable-on', '~> 3.4'
+gem 'aasm'
 
 group :development, :test do
   gem 'rspec-rails'
