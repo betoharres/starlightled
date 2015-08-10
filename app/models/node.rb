@@ -1,5 +1,6 @@
 class Node < ActiveRecord::Base
   has_one :product
+  has_many :tasks
 
   belongs_to :network
   validates  :network, presence: true
