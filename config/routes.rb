@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :tasks
   get 'features/time'
 
   get 'features/last_record'
