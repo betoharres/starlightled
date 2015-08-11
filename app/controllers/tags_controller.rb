@@ -5,6 +5,6 @@ class TagsController < ApplicationController
   end
 
   def show
-    @tagged_resources = ActsAsTaggableOn::Tagging.all.includes(:tag).where(tagger_id: params[:id])
+    @tagged_resources = ActsAsTaggableOn::Tagging.all.includes(:tag).where(tagger_id: current_user.company.id)
   end
 end
