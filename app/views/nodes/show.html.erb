@@ -42,16 +42,49 @@
               :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Tem certeza?')) },
               :class => 'btn btn-danger' %>
 
-<%= render template: 'products/index' %>
+  <div class="page-header">
+    <h2>Produto</h2>
+  </div>
+  <% if @node.product %>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Tipo</th>
+          <th>Nome</th>
+          <th>Modelo</th>
+          <th>Número serial</th>
+          <th>Endereço MAC</th>
+          <th>Código do produto</th>
+          <th>Data de fabricação</th>
+          <th>Criado em</th>
+          <th>Visualizar</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <td><%= @node.product.productable_id %></td>
+            <td><%= t(@node.product.productable_type) %></td>
+            <td><%= @node.product.name %></td>
+            <td><%= @node.product.model %></td>
+            <td><%= @node.product.serial_number %></td>
+            <td><%= @node.product.mac_address %></td>
+            <td><%= @node.product.product_code %></td>
+            <td><%= @node.product.fabrication_date %></td>
+            <%# revisar ideia da tabela de status nao ter uma abstrata %>
+            <td><%=l @node.product.created_at, format: :long %></td>
+            <td>
+              <%= product_link @node.product, class: 'btn btn-primary' do %>
+                <%= glyph 'info-sign' %>
+              <% end %>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
-  <%# <%= link_to t('.back', :default => t("helpers.links.back")),
-  <%#             network_path(@node), :class => 'btn btn-default'  %>
-  <%# <%= link_to t('.edit', :default => t("helpers.links.edit")),
-  <%#             edit_node_path(@node), :class => 'btn btn-default' %>
-  <%# <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-  <%#             node_path(@node),
-  <%#             :method => 'delete',
-  <%#             :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-  <%#             :class => 'btn btn-danger' %>
+  <% end %>
+    <%= link_to t('.new', :default => "Novo"),
+                new_product_path,
+                :class => 'btn btn-primary' %>
 </div>
 

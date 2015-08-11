@@ -22,11 +22,9 @@ initialize = ->
           nodesArray.push node.identifier
           nodesArray.push node.latitude
           nodesArray.push node.longitude
-          $.each node.products, (n, product) ->
-            productsText += '<a href="'+product.url+'"><h4>' +
-            product.name+'</h4></a>'
-            return
-          if node.products.length > 0
+          productsText += '<a href="'+node.product_url+'"><h4>' +
+          node.product.name+'</h4></a>'
+          if node.product
             productsText = productsText
           else
             productsText = ''
