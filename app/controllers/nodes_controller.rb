@@ -11,7 +11,7 @@ class NodesController < ApplicationController
   # GET /nodes/1
   # GET /nodes/1.json
   def show
-    @products = @node.products
+    @products = @node.product
   end
 
   # GET /nodes/new

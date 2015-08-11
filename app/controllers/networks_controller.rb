@@ -5,7 +5,7 @@ class NetworksController < ApplicationController
   # GET /networks
   # GET /networks.json
   def index
-    @networks = Network.all.includes(nodes: :products).where(company: current_user.company)
+    @networks = Network.all.includes(nodes: :product).where(company: current_user.company)
   end
 
   # GET /networks/1
