@@ -3,6 +3,7 @@ class CreateTasks < ActiveRecord::Migration
     create_table :tasks do |t|
       t.datetime :execute_at
       t.integer :code, limit: 2
+      t.integer :priority, limit: 2
       t.integer :progress, default: 0
       t.string :aasm_state
       t.string :description
