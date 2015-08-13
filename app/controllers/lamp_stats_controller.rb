@@ -37,8 +37,7 @@ class LampStatsController < ApplicationController
     respond_to do |format|
       if @lamp_stat.save
         format.html { redirect_to @lamp_stat, notice: 'Lamp stat was successfully created.' }
-        format.json { head :no_content }
-        # format.json { render :show, status: :created, location: @lamp_stat }
+        @tasks ? format.json {render json: @tasks, status: :created} : format.json {head :no_content}
       else
         format.html { render :new }
         format.json { render json: @lamp_stat.errors, status: :unprocessable_entity }
