@@ -31,6 +31,8 @@ class LampStatsController < ApplicationController
   # POST /lamp_stats.json
   def create
     @lamp_stat = LampStat.new(lamp_stat_params)
+    time = DateTime.now.utc
+    @tasks = Task.where(execute_at: time..(time + 1.day)).last
 
     respond_to do |format|
       if @lamp_stat.save
