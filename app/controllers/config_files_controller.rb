@@ -26,7 +26,6 @@ class ConfigFilesController < ApplicationController
   def create
     @config_file = ConfigFile.new(config_file_params)
     @config_file.company = current_user.company
-    @config_file.checksum = Digest::SHA1.hexdigest(@config_file.content)
     @config_file.version = @config_file.content["programacao"]["versao"]
 
     respond_to do |format|
