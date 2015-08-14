@@ -56,6 +56,7 @@ module Starlight
                                  'products.js',
                                  'lamp_stats.js',
                                  'tags.js',
+                                 'config_files.js',
                                  # Stylesheets
                                  'permissions.css',
                                  'roles.css',
@@ -70,7 +71,8 @@ module Starlight
                                  'audits.css',
                                  'products.css',
                                  'lamp_stats.css',
-                                 'tags.css'
+                                 'tags.css',
+                                 'config_files.css'
                                 ]
 
 
