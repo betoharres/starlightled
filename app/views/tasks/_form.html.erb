@@ -2,7 +2,10 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.association :node, collection: Node.all.where(company: current_user.company) %>
+    <%= f.label :node_id, 'Nodo' %>
+    <p><%= f.select :node_id, Node.all.where(company: current_user.company).collect {|node| [ node.identifier, node.id ] }, {include_blank: 'Selecione um Nodo'}, {class: 'chosen-select input-md form-control'} %></p>
+    <%= f.label :attachable_id, 'Configuração' %>
+    <p><%= f.select :attachable_id, @config_files.collect {|config| [ config.name, config.id ] }, {include_blank: 'Selecione uma Configuração'}, {class: 'chosen-select input-md form-control'} %></p>
     <%= f.input :code %>
 
     <h3><%= f.label 'Data e Hora de execução' %></h3>
@@ -11,6 +14,6 @@
   <hr>
 
   <div class="form-actions">
-    <%= f.button :submit, value: 'Criar Tarefa' %>
+    <%= f.button :submit, value: 'Enviar' %>
   </div>
 <% end %>
