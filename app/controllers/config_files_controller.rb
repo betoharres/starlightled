@@ -30,7 +30,7 @@ class ConfigFilesController < ApplicationController
 
     respond_to do |format|
       if @config_file.save
-        format.html { redirect_to @config_file, notice: 'Config file was successfully created.' }
+        format.html { redirect_to @config_file, notice: 'Configuração foi criada com sucesso.' }
         format.json { render :show, status: :created, location: @config_file }
       else
         format.html { render :new }
@@ -44,7 +44,7 @@ class ConfigFilesController < ApplicationController
   def update
     respond_to do |format|
       if @config_file.update(config_file_params)
-        format.html { redirect_to @config_file, notice: 'Config file was successfully updated.' }
+        format.html { redirect_to @config_file, notice: 'Configuração foi atualizada com sucesso.' }
         format.json { render :show, status: :ok, location: @config_file }
       else
         format.html { render :edit }
@@ -58,7 +58,7 @@ class ConfigFilesController < ApplicationController
   def destroy
     @config_file.destroy
     respond_to do |format|
-      format.html { redirect_to config_files_url, notice: 'Config file was successfully destroyed.' }
+      format.html { redirect_to config_files_url, notice: 'Configuração foi apagada com sucesso.' }
       format.json { head :no_content }
     end
   end
