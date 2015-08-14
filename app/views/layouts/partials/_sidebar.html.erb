@@ -112,6 +112,38 @@
                </li>
             </ul>
          </li>
+          <li class="<%= 'active' if controller?('tasks')%>">
+            <a href="#tasks" title="Task" data-toggle="collapse">
+               <em class="icon-calendar"></em>
+               <!-- <div class="label label&#45;info pull&#45;right">3</div> -->
+               <span data-localize="sidebar.nav.DASHBOARD">Tarefa</span>
+            </a>
+            <ul id="tasks" class="nav sidebar-subnav collapse">
+               <li class="sidebar-subnav-header">Gateways</li>
+               <li class="<%= 'active' if controller?('tasks') && action?('new') %>">
+                  <%= link_to new_task_path do %>
+                    <em class="icon-plus"></em>
+                    <span>Nova Tarefa</span>
+                  <% end %>
+               </li>
+            </ul>
+         </li>
+          <li class="<%= 'active' if controller?('config_files')%>">
+            <a href="#config_files" title="Task" data-toggle="collapse">
+               <em class="icon-settings"></em>
+               <!-- <div class="label label&#45;info pull&#45;right">3</div> -->
+               <span data-localize="sidebar.nav.DASHBOARD">Configuração</span>
+            </a>
+            <ul id="config_files" class="nav sidebar-subnav collapse">
+               <li class="sidebar-subnav-header">Configuração</li>
+               <li class="<%= 'active' if controller?('config_files') && action?('new') %>">
+                  <%= link_to new_config_file_path do %>
+                    <em class="icon-plus"></em>
+                    <span>Nova Configuração</span>
+                  <% end %>
+               </li>
+            </ul>
+         </li>
       </ul>
       <!-- END sidebar nav-->
    </nav>
