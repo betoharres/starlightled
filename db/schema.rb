@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150810173258) do
+ActiveRecord::Schema.define(version: 20150814024123) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,19 @@ ActiveRecord::Schema.define(version: 20150810173258) do
   end
 
   add_index "companies", ["user_id"], name: "index_companies_on_user_id", using: :btree
+
+  create_table "config_files", force: :cascade do |t|
+    t.string   "name"
+    t.string   "checksum"
+    t.float    "version"
+    t.jsonb    "content",    default: {}, null: false
+    t.integer  "company_id"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  add_index "config_files", ["company_id"], name: "index_config_files_on_company_id", using: :btree
+  add_index "config_files", ["content"], name: "index_config_files_on_content", using: :gin
 
   create_table "firmwares", force: :cascade do |t|
     t.string   "filename"
@@ -130,8 +143,10 @@ ActiveRecord::Schema.define(version: 20150810173258) do
     t.decimal  "longitude",  precision: 10, scale: 6
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.integer  "company_id"
   end
 
+  add_index "nodes", ["company_id"], name: "index_nodes_on_company_id", using: :btree
   add_index "nodes", ["network_id"], name: "index_nodes_on_network_id", using: :btree
 
   create_table "permissions", force: :cascade do |t|
@@ -209,13 +224,21 @@ ActiveRecord::Schema.define(version: 20150810173258) do
 
   create_table "tasks", force: :cascade do |t|
     t.datetime "execute_at"
-    t.integer  "code"
+    t.integer  "code",           limit: 2
+    t.integer  "priority",       limit: 2
+    t.integer  "progress",                 default: 0
     t.string   "aasm_state"
+    t.string   "description"
+    t.string   "url"
     t.integer  "node_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "config_file_id"
+    t.integer  "company_id"
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
   end
 
+  add_index "tasks", ["company_id"], name: "index_tasks_on_company_id", using: :btree
+  add_index "tasks", ["config_file_id"], name: "index_tasks_on_config_file_id", using: :btree
   add_index "tasks", ["node_id"], name: "index_tasks_on_node_id", using: :btree
 
   create_table "users", force: :cascade do |t|
@@ -241,9 +264,13 @@ ActiveRecord::Schema.define(version: 20150810173258) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["role_id"], name: "index_users_on_role_id", using: :btree
 
+  add_foreign_key "config_files", "companies"
+  add_foreign_key "nodes", "companies"
   add_foreign_key "permissions", "roles"
   add_foreign_key "roles", "companies"
   add_foreign_key "tag_types", "companies"
+  add_foreign_key "tasks", "companies"
+  add_foreign_key "tasks", "config_files"
   add_foreign_key "tasks", "nodes"
   add_foreign_key "users", "companies"
   add_foreign_key "users", "roles"
