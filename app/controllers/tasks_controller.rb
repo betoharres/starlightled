@@ -16,6 +16,7 @@ class TasksController < ApplicationController
   # GET /tasks/new
   def new
     @task = Task.new
+    @config_files = ConfigFile.where(company: current_user.company)
   end
 
   # GET /tasks/1/edit
@@ -26,6 +27,7 @@ class TasksController < ApplicationController
   # POST /tasks.json
   def create
     @task = Task.new(task_params)
+    @task.attachable_type = 'ConfigFile'
 
     respond_to do |format|
       if @task.save
@@ -70,6 +72,6 @@ class TasksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
-      params.require(:task).permit(:execute_at, :code, :status, :aasm_state, :node_id)
+      params.require(:task).permit(:execute_at, :code, :progress, :attachable_type, :attachable_id, :node_id)
     end
 end
