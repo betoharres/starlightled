@@ -3,6 +3,7 @@ class Node < ActiveRecord::Base
   has_many :tasks
 
   belongs_to :network
+  belongs_to :company
   validates  :network, presence: true
   # validates :network_belongs_to_company
 
