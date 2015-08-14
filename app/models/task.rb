@@ -2,6 +2,7 @@ class Task < ActiveRecord::Base
   include AASM
   belongs_to :node
   belongs_to :company
+  belongs_to :attachable, polymorphic: true
   before_save :execute_at_to_utc
 
   aasm do
