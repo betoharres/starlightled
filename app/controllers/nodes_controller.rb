@@ -27,6 +27,7 @@ class NodesController < ApplicationController
   # POST /nodes.json
   def create
     @node = Node.new(node_params)
+    @node.company = current_user.company
     current_user.company.tag(@node, with: node_params[:tag_list], on: current_user.company.name.parameterize.underscore.to_sym)
 
     if current_user.company.networks.map(&:id).include?(params[:network_id].to_i)
