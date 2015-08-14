@@ -30,9 +30,12 @@ class LampStatsController < ApplicationController
   # POST /lamp_stats
   # POST /lamp_stats.json
   def create
+    # TODO: authorize this POST because it return the tasks from the given serial_num scoping it's company.
+    # So any POST with a valid serial_num will return it's tasks
     @lamp_stat = LampStat.new(lamp_stat_params)
     time = DateTime.now.utc
-    @tasks = Task.where(execute_at: time..(time + 1.day)).last
+    product = Product.find_by(serial_number: @lamp_stat.serial_num)
+    @tasks = Task.where(execute_at: time..(time + 1.day), company_id: product.company_id).order(:execute_at).last
 
     respond_to do |format|
       if @lamp_stat.save
