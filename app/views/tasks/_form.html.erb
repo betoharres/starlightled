@@ -2,13 +2,15 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :execute_at %>
+    <%= f.association :node, collection: Node.all.where(company: current_user.company) %>
     <%= f.input :code %>
-    <%= f.input :aasm_state %>
-    <%= f.association :node %>
+
+    <h3><%= f.label 'Data e Hora de execução' %></h3>
+    <%= f.datetime_select :execute_at  %>
   </div>
+  <hr>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, value: 'Criar Tarefa' %>
   </div>
 <% end %>
