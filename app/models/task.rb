@@ -5,6 +5,8 @@ class Task < ActiveRecord::Base
   belongs_to :attachable, polymorphic: true
   before_save :execute_at_to_utc
 
+  audited allow_mass_assignment: true, associated_with: :company
+
   aasm do
     state :waiting, :initial => true
     state :running
