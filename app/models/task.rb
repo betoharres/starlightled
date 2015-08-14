@@ -1,6 +1,7 @@
 class Task < ActiveRecord::Base
   include AASM
   belongs_to :node
+  belongs_to :company
   before_save :execute_at_to_utc
 
   aasm do
