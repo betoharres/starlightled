@@ -1,0 +1,9 @@
+<%= simple_form_for(@config_file) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :content, as: :hidden %>
+    <%= render :partial => 'lamps/program', locals: {f: f} %>
+  </div>
+
+<% end %>
