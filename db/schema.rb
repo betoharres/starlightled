@@ -54,12 +54,11 @@ ActiveRecord::Schema.define(version: 20150814024123) do
 
   create_table "config_files", force: :cascade do |t|
     t.string   "name"
-    t.string   "checksum"
-    t.float    "version"
-    t.jsonb    "content",    default: {}, null: false
+    t.integer  "version",    limit: 2
+    t.jsonb    "content",              default: {}, null: false
     t.integer  "company_id"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
   end
 
   add_index "config_files", ["company_id"], name: "index_config_files_on_company_id", using: :btree
@@ -224,21 +223,21 @@ ActiveRecord::Schema.define(version: 20150814024123) do
 
   create_table "tasks", force: :cascade do |t|
     t.datetime "execute_at"
-    t.integer  "code",           limit: 2
-    t.integer  "priority",       limit: 2
-    t.integer  "progress",                 default: 0
+    t.integer  "code",            limit: 2
+    t.integer  "priority",        limit: 2
+    t.integer  "progress",                  default: 0
     t.string   "aasm_state"
     t.string   "description"
-    t.string   "url"
     t.integer  "node_id"
-    t.integer  "config_file_id"
+    t.integer  "attachable_id"
+    t.string   "attachable_type"
     t.integer  "company_id"
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
   end
 
+  add_index "tasks", ["attachable_type", "attachable_id"], name: "index_tasks_on_attachable_type_and_attachable_id", using: :btree
   add_index "tasks", ["company_id"], name: "index_tasks_on_company_id", using: :btree
-  add_index "tasks", ["config_file_id"], name: "index_tasks_on_config_file_id", using: :btree
   add_index "tasks", ["node_id"], name: "index_tasks_on_node_id", using: :btree
 
   create_table "users", force: :cascade do |t|
@@ -270,7 +269,6 @@ ActiveRecord::Schema.define(version: 20150814024123) do
   add_foreign_key "roles", "companies"
   add_foreign_key "tag_types", "companies"
   add_foreign_key "tasks", "companies"
-  add_foreign_key "tasks", "config_files"
   add_foreign_key "tasks", "nodes"
   add_foreign_key "users", "companies"
   add_foreign_key "users", "roles"
