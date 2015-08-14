@@ -157,8 +157,12 @@
 
 </div>
                <div class="panel-footer">
-               	<button id="save_prog" class="btn btn-primary">Salvar Programação</button>
-				<button id="restore_prog" class="btn btn-default">Restaurar Programação</button>
+               	<a id="save_prog" class="btn btn-primary">Salvar Programação</a>
+				<a id="restore_prog" class="btn btn-default">Restaurar Programação</a>
+
+  <div class="form-actions">
+    <%= f.button :submit, value: 'Criar Configuração' %>
+  </div>
 				</div>
             </div>
          </div>

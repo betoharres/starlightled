@@ -9,6 +9,7 @@ class CreateTasks < ActiveRecord::Migration
       t.string :description
       t.string :url
       t.references :node, index: true, foreign_key: true
+      t.references :config_file, index: true, foreign_key: true
       t.references :company, index: true, foreign_key: true
 
       t.timestamps null: false

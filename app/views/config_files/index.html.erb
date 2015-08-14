@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Config Files</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Checksum</th>
+      <th>Version</th>
+      <th>Content</th>
+      <th>Company</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @config_files.each do |config_file| %>
+      <tr>
+        <td><%= config_file.name %></td>
+        <td><%= config_file.checksum %></td>
+        <td><%= config_file.version %></td>
+        <td><%= config_file.content %></td>
+        <td><%= config_file.company %></td>
+        <td><%= link_to 'Show', config_file %></td>
+        <td><%= link_to 'Edit', edit_config_file_path(config_file) %></td>
+        <td><%= link_to 'Destroy', config_file, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Config file', new_config_file_path %>

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :config_files
   resources :tasks
   get 'features/time'
 
