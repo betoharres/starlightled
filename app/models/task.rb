@@ -15,6 +15,10 @@ class Task < ActiveRecord::Base
   end
 
   def execute_at_to_utc
-    execute_at = execute_at.utc
+    # TODO: This must be fixed soon, it adds 3.hours because the user is setting
+    # a time imaginning the time in Brazil, but the app doesn't check where the device is.
+    # The app has to check where the Node is geolocated and get it's timezone and then
+    # add or substract the correct timezone
+    self.execute_at = (self.execute_at + 3.hours)
   end
 end

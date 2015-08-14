@@ -1,9 +1,8 @@
 class CreateTasks < ActiveRecord::Migration
   def change
     create_table :tasks do |t|
-      t.datetime :execute_at
+      t.datetime :execute_at, null: false
       t.integer :code, limit: 2
-      t.integer :priority, limit: 2
       t.integer :progress, default: 0, litmit: 2
       t.string :aasm_state
       t.string :description
