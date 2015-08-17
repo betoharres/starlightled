@@ -26,7 +26,7 @@ class ConfigFilesController < ApplicationController
   def create
     @config_file = ConfigFile.new(config_file_params)
     @config_file.company = current_user.company
-    @config_file.version = @config_file.content["programacao"]["versao"]
+    @config_file.version = @config_file.content["prog"]["ver"]
 
     respond_to do |format|
       if @config_file.save
