@@ -6,7 +6,7 @@ class LampStatsController < ApplicationController
   # GET /lamp_stats.json
   def index
     lamp_stats = LampStat.where(serial_num: @lamp.product.serial_number)
-                  .where(date: 2.day.ago..DateTime.now)
+                  .where(date: 6.days.ago..DateTime.now)
                   .order(:date)
 
     @chart = lamp_stats.map(&:to_chart)

@@ -136,7 +136,7 @@ var chart = AmCharts.makeChart("chartdiv", {
       {
         period: "DD",
         count: 6,
-        label: "1 Semana"
+        label: "6 dias"
       }]
     },
 
