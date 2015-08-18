@@ -12,33 +12,33 @@
   </tr>
 
   <tr>
-    <th class="row">Potência Consumida (W):</th>
-    <td><%= @lamp_stat.pwr %></td>
+    <th class="row">Potência Consumida:</th>
+    <td><%= @lamp_stat.pwr %> <strong>W</strong></td>
   </tr>
 
   <tr>
-    <th class="row">Corrente (A):</th>
-    <td><%= @lamp_stat.current %></td>
+    <th class="row">Corrente:</th>
+    <td><%= @lamp_stat.current %> <strong>A</strong></td>
   </tr>
 
   <tr>
-    <th class="row">Tensão (V):</th>
-    <td><%= @lamp_stat.volts %></td>
+    <th class="row">Tensão:</th>
+    <td><%= @lamp_stat.volts %> <strong>V</strong></td>
   </tr>
 
   <tr>
     <th class="row">Temperatura da placa fonte:</th>
-    <td><%= @lamp_stat.tCom %></td>
+    <td><%= @lamp_stat.tCom %> <strong>°C</strong></td>
   </tr>
 
   <tr>
     <th class="row">Temperatura da placa LED 1:</th>
-    <td><%= @lamp_stat.tLed1 %></td>
+    <td><%= @lamp_stat.tLed1 %> <strong>°C</strong></td>
   </tr>
 
   <tr>
     <th class="row">Temperatura da placa LED 2:</th>
-    <td><%= @lamp_stat.tLed2 %></td>
+    <td><%= @lamp_stat.tLed2 %> <strong>°C</strong></td>
   </tr>
 
   <tr>
@@ -48,7 +48,7 @@
 
   <tr>
     <th class="row">Intensidade do Sinal Recebido (RSSI):</th>
-    <td><%= @lamp_stat.rssiDev %></td>
+    <td><%= @lamp_stat.rssiDev %> <strong>dBm</strong></td>
   </tr>
 
   <tr>
@@ -67,13 +67,13 @@
   </tr>
 
   <tr>
-    <th class="row">Tempo de operação desde o último reset (segundos):</th>
-    <td><%= @lamp_stat.lastReboot %></td>
+    <th class="row">Tempo de operação desde o último reset:</th>
+    <td><%= formatted_seconds(@lamp_stat.lastReboot) %></td>
   </tr>
 
   <tr>
-    <th class="row">Potência de Transmissão RF (dBm):</th>
-    <td><%= @lamp_stat.txPwr %></td>
+    <th class="row">Potência de Transmissão RF:</th>
+    <td><%= @lamp_stat.txPwr %> <strong>dBm</strong></td>
   </tr>
 
   <tr>
@@ -108,12 +108,12 @@
 
   <tr>
     <th class="row">Conectado:</th>
-    <td><%= @lamp_stat.online %></td>
+    <td><%= @lamp_stat.online ? '<span style="color:green">OK</span>'.html_safe : '<span style="color:red">NOK</span>'.html_safe %></td>
   </tr>
 
   <tr>
     <th class="row">Comunicando:</th>
-    <td><%= @lamp_stat.communicating %></td>
+    <td><%= @lamp_stat.communicating ? '<span style="color:green">OK</span>'.html_safe : '<span style="color:red">NOK</span>'.html_safe %></td>
   </tr>
 
   <tr>
