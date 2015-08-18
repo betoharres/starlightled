@@ -1,3 +1,4 @@
 <p id="notice"><%= notice %></p>
+<h2><a href="<%= product_to_child_url(@lamp.product) %>"><em class='icon-bulb'></em> <%= @lamp.product.name %></a> > Listagem de Status</h2>
 <%= render 'chart' %>
 <%= render 'list' %>
