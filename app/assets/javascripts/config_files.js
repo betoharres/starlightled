@@ -1,42 +1,42 @@
 prog = {
-	programacao:
+	prog:
 	{
-		versao: "1",
-		planos:
+		ver: "1",
+		plans:
 		{
-			dimerizacao: [],
-			defasagem: [],
-			desabilitarPerifericos:
+			dimer: [],
+			delay: [],
+			off:
 			{
-				placaLed1: [],
-				placaLed2: [],
-				temperaturaFonte: [],
-				sensorLuminosidade: [],
-				memoriaExterna: [],
-				microcontroladorPlacaLed1: [],
-				microcontroladorPlacaLed2: []
+				boardLed1: [],
+				boardLed2: [],
+				sourceTemp: [],
+				lightSensor: [],
+				extMem: [],
+				ucontrolBoardLed1: [],
+				ucontrolBoardLed2: []
 			}
 		},
-		trocas:
+		changes:
 		{
-			plano: [],
-			modo: [],
-			diasSemana:
+			plan: [],
+			mode: [],
+			week:
 			{
-				domingo: [],
-				segunda: [],
-				terca: [],
-				quarta: [],
-				quinta: [],
-				sexta: [],
-				sabado: []
+				sun: [],
+				mon: [],
+				tue: [],
+				wed: [],
+				thu: [],
+				fri: [],
+				sat: []
 			},
-			hora: [],
-			minuto: [],
-			segundo: [],
-			diaMes: [],
-			mes: [],
-			ano: []
+			hou: [],
+			min: [],
+			sec: [],
+			day: [],
+			mon: [],
+			yea: []
 		}
 	}
 };
@@ -46,18 +46,32 @@ var $changes = $('#panelChanges');
 var $change = [];
 var LastPlan = $plan.find('#plan_id').val();
 
-for(var i=1; i<=16; i++){
+for(var i=1; i<=7; i++){
 	$change[i] = $changes.find("#change_"+i);
+}
+
+function replacer(key, value) {
+	if (value == null) {
+		return '';
+	}
+	return value;
 }
 
 function memo(elementId, $base){
 	var $orig = $base.find('#'+elementId);
+	var val;
 	if($orig.is(':checkbox')){
-		return $orig.prop('checked');
+		val = $orig.prop('checked');
 	}
 	else{
-		return $orig.val();
+		val = $orig.val();
 	}
+	
+	if($orig.prop('type')=="number" || $orig.prop('type')=="checkbox"){
+		val = Number(val);
+	}
+	
+	return val;
 }
 
 function restore(elementId, orig, $base){
@@ -71,119 +85,125 @@ function restore(elementId, orig, $base){
 }
 
 function memoPlan ( p ){
-	var o = prog.programacao.planos;
-	var des = o.desabilitarPerifericos;
+	var o = prog.prog.plans;
+	var des = o.off;
 	
-	o.dimerizacao[p] = memo( 'dimerization', $plan );
-	o.defasagem[p] = memo( 'delay', $plan );
-	des.placaLed1[p] = memo( 'sensor1', $plan );
-	des.placaLed2[p] = memo( 'sensor2', $plan );
-	des.temperaturaFonte[p] = memo( 'sensor3', $plan );
-	des.sensorLuminosidade[p] = memo( 'sensor4', $plan );
-	des.memoriaExterna[p] = memo( 'sensor5', $plan );
-	des.microcontroladorPlacaLed1[p] = memo( 'sensor6', $plan );
-	des.microcontroladorPlacaLed2[p] = memo( 'sensor7', $plan );
+	p--;
 	
-	o.desabilitarPerifericos = des;
-	prog.programacao.planos = o;
+	o.dimer[p]               = memo( 'dimerization', $plan );
+	o.delay[p]               = memo( 'delay', $plan );
+	des.boardLed1[p]         = memo( 'sensor1', $plan );
+	des.boardLed2[p]         = memo( 'sensor2', $plan );
+	des.sourceTemp[p]        = memo( 'sensor3', $plan );
+	des.lightSensor[p]       = memo( 'sensor4', $plan );
+	des.extMem[p]            = memo( 'sensor5', $plan );
+	des.ucontrolBoardLed1[p] = memo( 'sensor6', $plan );
+	des.ucontrolBoardLed2[p] = memo( 'sensor7', $plan );
+	
+	o.off = des;
+	prog.prog.plans = o;
 }
 
 function restorePlan( p ){
-	var o = prog.programacao.planos;
-	var des = o.desabilitarPerifericos;
+	var o = prog.prog.plans;
+	var des = o.off;
 	
-	restore('dimerization', o.dimerizacao[p], $plan );
-	restore('delay', o.defasagem[p], $plan );
-	restore('sensor1', des.placaLed1[p], $plan );
-	restore('sensor2', des.placaLed2[p], $plan );
-	restore('sensor3', des.temperaturaFonte[p], $plan );
-	restore('sensor4', des.sensorLuminosidade[p], $plan );
-	restore('sensor5', des.memoriaExterna[p], $plan );
-	restore('sensor6', des.microcontroladorPlacaLed1[p], $plan );
-	restore('sensor7', des.microcontroladorPlacaLed2[p], $plan );
+	p--;
+	
+	restore('dimerization', o.dimer[p], $plan );
+	restore('delay', o.delay[p], $plan );
+	restore('sensor1', des.boardLed1[p], $plan );
+	restore('sensor2', des.boardLed2[p], $plan );
+	restore('sensor3', des.sourceTemp[p], $plan );
+	restore('sensor4', des.lightSensor[p], $plan );
+	restore('sensor5', des.extMem[p], $plan );
+	restore('sensor6', des.ucontrolBoardLed1[p], $plan );
+	restore('sensor7', des.ucontrolBoardLed2[p], $plan );
 }
 
 function memoChanges (){
-	var o = prog.programacao.trocas;
-	var str;
+	var o = prog.prog.changes;
+	var str, i, t;
 	
-	for (var i = 1; i <= 16; i++) {
-		str = 'change_' + i + '_';
+	for (i = 0, t = 1; i < 7; i++, t++) {
+		str = 'change_' + t + '_';
 		
-		o.plano[i] = memo( str + 'plan', $change[i] );
-		o.modo[i]  = memo( str + 'mode', $change[i] );
+		o.plan[i] = Number(memo( str + 'plan', $change[t] ));
+		o.mode[i] = Number(memo( str + 'mode', $change[t] ));
 		
-		o.diasSemana.domingo[i] = memo( str + 'sun', $change[i] );
-		o.diasSemana.segunda[i] = memo( str + 'mon', $change[i] );
-		o.diasSemana.terca[i]   = memo( str + 'tue', $change[i] );
-		o.diasSemana.quarta[i]  = memo( str + 'wed', $change[i] );
-		o.diasSemana.quinta[i]  = memo( str + 'thu', $change[i] );
-		o.diasSemana.sexta[i]   = memo( str + 'fri', $change[i] );
-		o.diasSemana.sabado[i]  = memo( str + 'sat', $change[i] );
+		o.week.sun[i] = memo( str + 'sun', $change[t] );
+		o.week.mon[i] = memo( str + 'mon', $change[t] );
+		o.week.tue[i] = memo( str + 'tue', $change[t] );
+		o.week.wed[i] = memo( str + 'wed', $change[t] );
+		o.week.thu[i] = memo( str + 'thu', $change[t] );
+		o.week.fri[i] = memo( str + 'fri', $change[t] );
+		o.week.sat[i] = memo( str + 'sat', $change[t] );
 		
-		o.hora[i]    = memo(str + 'hour'   , $change[i] );
-		o.minuto[i]  = memo(str + 'minute' , $change[i] );
-		o.segundo[i] = memo(str + 'secound', $change[i] );
-		o.diaMes[i]  = memo(str + 'day'    , $change[i] );
-		o.mes[i]     = memo(str + 'month'  , $change[i] );
-		o.ano[i]     = memo(str + 'year'   , $change[i] );
+		o.hou[i] = memo(str + 'hour'   , $change[t] );
+		o.min[i] = memo(str + 'minute' , $change[t] );
+		o.sec[i] = memo(str + 'secound', $change[t] );
+		o.day[i] = memo(str + 'day'    , $change[t] );
+		o.mon[i] = memo(str + 'month'  , $change[t] );
+		o.yea[i] = memo(str + 'year'   , $change[t] );
 		
 	}
-	prog.programacao.trocas = o;
+	
+	prog.prog.changes = o;
 }
 
 function restoreChanges (){
-	var o = prog.programacao.trocas;
-	var str;
+	var o = prog.prog.changes;
+	var str, i, t;
 	
-	for (var i = 1; i <= 16; i++) {
-		str = 'change_' + i + '_';
+	for (i = 0, t = 1; i < 7; i++, t++) {
+		str = 'change_' + t + '_';
 		
-		restore(str + 'plan', o.plano[i], $change[i] );
-		restore(str + 'mode', o.modo[i] , $change[i] );
+		restore(str + 'plan', o.plan[i], $change[t] );
+		restore(str + 'mode', o.mode[i], $change[t] );
 		
-		restore(str + 'sun', o.diasSemana.domingo[i], $change[i] );
-		restore(str + 'mon', o.diasSemana.segunda[i], $change[i] );
-		restore(str + 'tue', o.diasSemana.terca[i]  , $change[i] );
-		restore(str + 'wed', o.diasSemana.quarta[i] , $change[i] );
-		restore(str + 'thu', o.diasSemana.quinta[i] , $change[i] );
-		restore(str + 'fri', o.diasSemana.sexta[i]  , $change[i] );
-		restore(str + 'sat', o.diasSemana.sabado[i] , $change[i] );
+		restore(str + 'sun', o.week.sun[i], $change[t] );
+		restore(str + 'mon', o.week.mon[i], $change[t] );
+		restore(str + 'tue', o.week.tue[i], $change[t] );
+		restore(str + 'wed', o.week.wed[i], $change[t] );
+		restore(str + 'thu', o.week.thu[i], $change[t] );
+		restore(str + 'fri', o.week.fri[i], $change[t] );
+		restore(str + 'sat', o.week.sat[i], $change[t] );
 		
-		restore(str + 'hour'   , o.hora[i]   , $change[i] );
-		restore(str + 'minute' , o.minuto[i] , $change[i] );
-		restore(str + 'secound', o.segundo[i], $change[i] );
-		restore(str + 'day'    , o.diaMes[i] , $change[i] );
-		restore(str + 'month'  , o.mes[i]    , $change[i] );
-		restore(str + 'year'   , o.ano[i]    , $change[i] );
+		restore(str + 'hour'   , o.hou[i], $change[t] );
+		restore(str + 'minute' , o.min[i], $change[t] );
+		restore(str + 'secound', o.sec[i], $change[t] );
+		restore(str + 'day'    , o.day[i], $change[t] );
+		restore(str + 'month'  , o.mon[i], $change[t] );
+		restore(str + 'year'   , o.yea[i], $change[t] );
 		
 	}
 	toggleChanges();
 }
 
 function toggleChanges(){
-	var $trocaAnterior=false;
-	var mostrarTodos = false;
+	var $lastChange=false;
+	var showAll = false;
 	var $esp;
-	for(var i=16; i>0; i--){
-		if($trocaAnterior){
-			if(mostrarTodos || $change[i].find(".week-control input:checked").not("[id$='_all']").length>0){
-				mostrarTodos = true;
-				$trocaAnterior.show();
-				$esp = $change[i].find("#change_"+i+"_especial_date");
-				if($esp.is(':checked')){
-					$esp.parent().siblings().show();
-				}
-				else{
-					$esp.parent().siblings().hide();
-				}
+	for(var i=7; i>0; i--){
+		if($lastChange){
+			if(showAll || $change[i].find(".week-control input:checked").not("[id$='_all']").length>0){
+				showAll = true;
+				$lastChange.show();
 			}
 			else{
-				$trocaAnterior.hide();
+				$lastChange.hide();
 			}
 		}
 		
-		$trocaAnterior = $change[i];
+		$esp = $change[i].find("#change_"+i+"_especial_date");
+		if($esp.is(':checked')){
+			$esp.parent().siblings().show();
+		}
+		else{
+			$esp.parent().siblings().hide();
+		}
+		
+		$lastChange = $change[i];
 	}
 }
 
@@ -216,19 +236,20 @@ $('#save_prog').click(function(e){
 	memoPlan( LastPlan );
 	memoChanges();
 	
-	$('#json').val( JSON.stringify(prog) );
-	$('#config_file_content').val( JSON.stringify(prog) );
+	$('#json').val( JSON.stringify(prog, replacer) );
+	$('#config_file_content').val( $('#json').val() );
 });
 
 $('#restore_prog').click(function(e){
-	prog = JSON.parse( $('#json').val() );
-  prog = JSON.parse( $('#config_file_content').val() );
+	prog = JSON.parse( $('#config_file_content').val() );
+	$('#json').val( $('#config_file_content').val() );
 	
 	restorePlan( LastPlan );
 	restoreChanges();
 });
 
+//$('#restore_prog').click();
 restorePlan( LastPlan );
 restoreChanges();
-$('#config_file_content').val( JSON.stringify(prog) );
-$('#json').val( JSON.stringify(prog) );
+$('#config_file_content').val( JSON.stringify(prog, replacer) );
+$('#json').val( $('#config_file_content').val() );

@@ -1,20 +1,13 @@
-<div id="panelDemo1" class="panel panel-primary">
-            <div class="panel-heading">Programação Luminária
-               <a href="#" data-tool="panel-collapse" data-toggle="tooltip" title="Expandir" class="pull-right">
-                  <em class="fa fa-minus"></em>
-               </a>
-            </div>
-         	<div class="panel-wrapper collapse in">
-               <div class="panel-body">
+<h2>Programação Luminária</h2>
 <%= form_tag do %>
 
 <div id="panelPlans" class="panel panel-default">
-	<div class="panel-heading">Plano <%= select_tag :plan_id, options_for_select(1..16), :class => "form-control inline", :style => "width:70px" %></div>
+	<div class="panel-heading">Plano <%= select_tag :plan_id, options_for_select(1..7), :class => "form-control inline", :style => "width:70px" %></div>
 	<div class="panel-body">
 		<div class="form-group">
 			<%= label_tag :dimerization, "Dimerização", :class => "control-label col-md-2" %>
 			<div class="input-group m-b col-md-2">
-				<%= number_field_tag :dimerization, nil, in: 50..100, :class => "form-control" %>
+				<%= number_field_tag :dimerization, nil, in: 0..50, :class => "form-control" %>
 				<span class="input-group-addon">%</span>
 			</div>
 		</div>
@@ -85,12 +78,12 @@
 		    </tr>
 		  </thead>
 		  <tbody>
-		    <% for c in 1..16 do %>
+		    <% for c in 1..7 do %>
 		      <tr id='<%="change_#{c}"%>'>
 		        <td><%= c %></td>
 		        <td>
 		        	<div class="plan-size">
-		        		<%= select_tag "change_#{c}_plan", options_for_select(1..16), :class => "form-control", :style => "padding:6px" %>
+		        		<%= select_tag "change_#{c}_plan", options_for_select(1..7), :class => "form-control", :style => "padding:6px" %>
 					</div>
 				</td>
 				<td>
@@ -136,7 +129,7 @@
 				</td>
 				<td>
 					<div class="input-group m-b col-sm-2">
-						<span class="input-group-addon especial_date" style="width:5px; padding:6px"><%= check_box_tag("change_#{c}_especial_date") %></span>
+						<span class="especial_date input-group-addon" style="width:5px; padding:6px"><%= check_box_tag("change_#{c}_especial_date") %></span>
 						<%= number_field_tag "change_#{c}_day", nil, in: 1..31, :class => "form-control", :style => "width:45px; padding:6px" %>
 						<span class="input-group-addon" style="padding:6px">/</span>
 						<%= number_field_tag "change_#{c}_month", nil, in: 1..12, :class => "form-control", :style => "width:45px; padding:6px" %>
@@ -155,17 +148,9 @@
 
 <% end %>
 
-</div>
-               <div class="panel-footer">
-               	<a id="save_prog" class="btn btn-primary">Salvar Programação</a>
-				<a id="restore_prog" class="btn btn-default">Restaurar Programação</a>
-
+<a id="save_prog" class="btn btn-primary">Salvar Programação</a>
+<a id="restore_prog" class="btn btn-default">Restaurar Programação</a>
+<hr>
   <div class="form-actions">
     <%= f.button :submit, value: 'Criar Configuração' %>
   </div>
-				</div>
-            </div>
-         </div>
-		 
-		 
-		 
