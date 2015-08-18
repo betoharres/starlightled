@@ -1,6 +1,7 @@
 <%- model_class = Gateway -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => Gateway %></h1>
+  <!-- <h1><%=t '.title', :default => Gateway %></h1> -->
+  <h1><%= link_to "<em class='icon-pointer'></em> #{@product.node.identifier}".html_safe, @product.node %> > <em class='icon-feed'></em> <%= @product.name %></h1>
 </div>
 <div class="fieldset">
   <dl>
