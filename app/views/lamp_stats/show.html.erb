@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+<h2><a href="<%= product_to_child_url(@product) %>"><em class='icon-bulb'></em> <%= @product.name %></a> > <%= link_to 'Listagem de Status', :back %> > Detalhes do Status</h2>
+
 <table class="table table-hover">
   <tr>
     <th class="row">Número de Série:</th>
