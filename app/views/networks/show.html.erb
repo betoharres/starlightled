@@ -1,16 +1,11 @@
 <%- model_class = Network -%>
 <div class="page-header">
   <!-- <h1><%=t '.title', :default => Network %></h1> -->
-  <h1>Rede</h1>
+  <h1><em class='icon-vector'></em> <%= @network.name %></h1>
 </div>
 
 <div class="fieldset">
-  <dl>
-      <!--<dt class="label label-default"><%= model_class.human_attribute_name(:name) %></dt>-->
-    <dt class="label label-default">Nome</dt>
-      <dd><pre class="prettyprint"><%= @network.name %></pre></dd>
       <%= render partial: 'tags/tags_list', locals: {model_object: @network}%>
-  </dl>
 </div>
 
 <div class="form-group">
@@ -26,8 +21,6 @@
               :class => 'btn btn-danger' %>
 -->
 
-  <%= link_to t('.back', :default => "Voltar"),
-              networks_path, :class => 'btn btn-default'  %>
   <%= link_to t('.edit', :default => "Editar"),
               edit_network_path(@network), :class => 'btn btn-default' %>
   <%= link_to t('.destroy', :default => "Excluir"),
