@@ -16,6 +16,7 @@ class LampStatsController < ApplicationController
   # GET /lamp_stats/1
   # GET /lamp_stats/1.json
   def show
+    @product = Product.find_by(serial_number: @lamp_stat.serial_num)
   end
 
   # GET /lamp_stats/new
