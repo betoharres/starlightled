@@ -13,7 +13,7 @@ class LampsController < ApplicationController
   def show
     @product = @lamp.product
     @chart = LampStat.where(serial_num: @product.serial_number)
-                     .where(date: 2.day.ago..DateTime.now)
+                     .where(date: 6.days.ago..DateTime.now)
                      .order(:date)
                      .map(&:to_chart)
   end
