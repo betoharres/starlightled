@@ -36,7 +36,8 @@ class LampStatsController < ApplicationController
     product = Product.find_by(serial_number: @lamp_stat.serial_num)
     @tasks = Task.where(aasm_state: :waiting, company_id: product.company_id).order(:execute_at).last
 
-    @tasks = @tasks.to_json(only: [:id, :code, :attachable_id, :attachable_type])
+    @tasks = @tasks.as_json(only: [:id, :code, :attachable_id, :attachable_type])
+                    .merge(serial: product.serial_number)
     respond_to do |format|
       if @lamp_stat.save
         format.html { redirect_to @lamp_stat, notice: 'Lamp stat was successfully created.' }
