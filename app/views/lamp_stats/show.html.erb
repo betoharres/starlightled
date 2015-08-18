@@ -2,127 +2,127 @@
 
 <table class="table table-hover">
   <tr>
-    <th class="row">Serialnum:</th>
+    <th class="row">Número de Série:</th>
     <td><%= @lamp_stat.serial_num %></td>
   </tr>
 
   <tr>
-    <th class="row">Date:</th>
-    <td><%= @lamp_stat.date %></td>
+    <th class="row">Data Atualização Status:</th>
+    <td><%= ((@lamp_stat.date).to_datetime).strftime("%d/%m/%Y às %H:%M:%S") %></td>
   </tr>
 
   <tr>
-    <th class="row">Pwr:</th>
+    <th class="row">Potência Consumida (W):</th>
     <td><%= @lamp_stat.pwr %></td>
   </tr>
 
   <tr>
-    <th class="row">Current:</th>
+    <th class="row">Corrente (A):</th>
     <td><%= @lamp_stat.current %></td>
   </tr>
 
   <tr>
-    <th class="row">Volts:</th>
+    <th class="row">Tensão (V):</th>
     <td><%= @lamp_stat.volts %></td>
   </tr>
 
   <tr>
-    <th class="row">Tcom:</th>
+    <th class="row">Temperatura da placa fonte:</th>
     <td><%= @lamp_stat.tCom %></td>
   </tr>
 
   <tr>
-    <th class="row">Tled1:</th>
+    <th class="row">Temperatura da placa LED 1:</th>
     <td><%= @lamp_stat.tLed1 %></td>
   </tr>
 
   <tr>
-    <th class="row">Tled2:</th>
+    <th class="row">Temperatura da placa LED 2:</th>
     <td><%= @lamp_stat.tLed2 %></td>
   </tr>
 
   <tr>
-    <th class="row">Slum:</th>
+    <th class="row">Leitura do Sensor do Luminosidade:</th>
     <td><%= @lamp_stat.sLum %></td>
   </tr>
 
   <tr>
-    <th class="row">Rssidev:</th>
+    <th class="row">Intensidade do Sinal Recebido (RSSI):</th>
     <td><%= @lamp_stat.rssiDev %></td>
   </tr>
 
   <tr>
-    <th class="row">Lqidev:</th>
+    <th class="row">Inidicador da Qualidade do Link (LQI):</th>
     <td><%= @lamp_stat.lqiDev %></td>
   </tr>
 
   <tr>
-    <th class="row">Sentpkts:</th>
+    <th class="row">Pacotes Enviados:</th>
     <td><%= @lamp_stat.sentPkts %></td>
   </tr>
 
   <tr>
-    <th class="row">Rcvpkts:</th>
+    <th class="row">Pacotes Recebidos:</th>
     <td><%= @lamp_stat.rcvPkts %></td>
   </tr>
 
   <tr>
-    <th class="row">Lastreboot:</th>
+    <th class="row">Tempo de operação desde o último reset (segundos):</th>
     <td><%= @lamp_stat.lastReboot %></td>
   </tr>
 
   <tr>
-    <th class="row">Txpwr:</th>
+    <th class="row">Potência de Transmissão RF (dBm):</th>
     <td><%= @lamp_stat.txPwr %></td>
   </tr>
 
   <tr>
-    <th class="row">Ctrlrestart:</th>
+    <th class="row">Controles de Operação:</th>
     <td><%= @lamp_stat.ctrlRestart %></td>
   </tr>
 
   <tr>
-    <th class="row">Vfirmware:</th>
+    <th class="row">Versão do Firmware:</th>
     <td><%= @lamp_stat.vFirmware %></td>
   </tr>
 
   <tr>
-    <th class="row">Vcmd:</th>
+    <th class="row">Versão Comando:</th>
     <td><%= @lamp_stat.vCmd %></td>
   </tr>
 
   <tr>
-    <th class="row">Ckscfg:</th>
+    <th class="row">Checksum Configuração:</th>
     <td><%= @lamp_stat.cksCfg %></td>
   </tr>
 
   <tr>
-    <th class="row">Appckserr:</th>
+    <th class="row">Total pacotes de aplicação recebidos com erro:</th>
     <td><%= @lamp_stat.appCksErr %></td>
   </tr>
 
   <tr>
-    <th class="row">Cmdnotimp:</th>
+    <th class="row">Total comandos recebidos e não reconhecidos:</th>
     <td><%= @lamp_stat.cmdNotImp %></td>
   </tr>
 
   <tr>
-    <th class="row">Online:</th>
+    <th class="row">Conectado:</th>
     <td><%= @lamp_stat.online %></td>
   </tr>
 
   <tr>
-    <th class="row">Communicating:</th>
+    <th class="row">Comunicando:</th>
     <td><%= @lamp_stat.communicating %></td>
   </tr>
 
   <tr>
-    <th class="row">Sunrise:</th>
+    <th class="row">Amanhecer (horário):</th>
     <td><%= @lamp_stat.sunrise %></td>
   </tr>
 
   <tr>
-    <th class="row">Sunset:</th>
+    <th class="row">Entardecer (horário):</th>
     <td><%= @lamp_stat.sunset %></td>
   </tr>
 </table>
