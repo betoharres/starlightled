@@ -34,11 +34,16 @@ class LampStatsController < ApplicationController
     # TODO: authorize this POST because it return the tasks from the given serial_num scoping it's company.
     # So any POST with a valid serial_num will return it's tasks
     @lamp_stat = LampStat.new(lamp_stat_params)
-    product = Product.find_by(serial_number: @lamp_stat.serial_num)
-    @tasks = Task.where(aasm_state: :waiting, company_id: product.company_id).order(:execute_at).last
 
-    @tasks = @tasks.as_json(only: [:id, :code, :attachable_id, :attachable_type])
-                    .merge(serial: product.serial_number) if @tasks
+    product = Product.find_by(serial_number: @lamp_stat.serial_num)
+    @tasks = Task.where(node: product.node,
+                        aasm_state: :waiting,
+                        company_id: product.company_id)
+                        .order(:execute_at)
+                        .last
+    @tasks = @tasks.as_json(only: [:id, :code, :attachable_id])
+                   .merge(serial: product.serial_number) if @tasks
+
     respond_to do |format|
       if @lamp_stat.save
         format.html { redirect_to @lamp_stat, notice: 'Lamp stat was successfully created.' }
