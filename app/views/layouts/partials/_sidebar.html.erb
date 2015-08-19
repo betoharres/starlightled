@@ -120,6 +120,12 @@
             </a>
             <ul id="tasks" class="nav sidebar-subnav collapse">
                <li class="sidebar-subnav-header">Tarefas</li>
+               <li class="<%= 'active' if controller?('tasks') && action?('index') %>">
+                 <%= link_to tasks_path do %>
+                  <em class="icon-list"></em>
+                  <span>Listar</span>
+                 <% end %>
+               </li>
                <li class="<%= 'active' if controller?('tasks') && action?('new') %>">
                   <%= link_to new_task_path do %>
                     <em class="icon-plus"></em>
@@ -136,6 +142,12 @@
             </a>
             <ul id="config_files" class="nav sidebar-subnav collapse">
                <li class="sidebar-subnav-header">Configuração</li>
+               <li class="<%= 'active' if controller?('config_files') && action?('index') %>">
+                 <%= link_to config_files_path do %>
+                  <em class="icon-list"></em>
+                  <span>Listar</span>
+                 <% end %>
+               </li>
                <li class="<%= 'active' if controller?('config_files') && action?('new') %>">
                   <%= link_to new_config_file_path do %>
                     <em class="icon-plus"></em>
