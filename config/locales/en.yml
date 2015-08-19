@@ -23,3 +23,7 @@ en:
   Lamp: "Luminária"
   update: "Atualizar"
   create: "Criar"
+  waiting: "Em Espera"
+  running: "Executando"
+  done: "Finalizada"
+  fail: "Erro"
