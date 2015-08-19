@@ -1,28 +1,29 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Tasks</h1>
+<h1>Tarefas</h1>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Execute at</th>
-      <th>Code</th>
-      <th>Aasm state</th>
-      <th>Node</th>
+      <th>Data e hora de execução</th>
+      <th>Código</th>
+      <th>Estado</th>
+      <th>Nodo</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
+    <% state_colors = {waiting: 'info', running: 'warning', done: 'success', fail: 'danger'} %>
     <% @tasks.each do |task| %>
       <tr>
         <td><%= task.execute_at %></td>
         <td><%= task.code %></td>
-        <td><%= task.aasm_state %></td>
-        <td><%= task.node %></td>
-        <td><%= link_to 'Show', task %></td>
-        <td><%= link_to 'Edit', edit_task_path(task) %></td>
-        <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= content_tag(:span, t(task.aasm_state) , class: "label label-#{state_colors[task.aasm_state.to_sym]}") %></td>
+        <td><%= task.node.identifier %></td>
+        <td><%= link_to 'Visualizar', task, class: 'btn btn-link' %></td>
+        <td><%= link_to 'Editar', edit_task_path(task), class: 'btn btn-warning' %></td>
+        <td><%= link_to 'Apagar', task, class: 'btn btn-link', method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +31,4 @@
 
 <br>
 
-<%= link_to 'New Task', new_task_path %>
+<%= link_to 'Nova Tarefa', new_task_path, class: 'btn btn-info' %>
