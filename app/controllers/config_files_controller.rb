@@ -19,6 +19,7 @@ class ConfigFilesController < ApplicationController
 
   # GET /config_files/1/edit
   def edit
+    @config_file.content = @config_file.content.to_json
   end
 
   # POST /config_files
