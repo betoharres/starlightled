@@ -40,7 +40,7 @@ class LampStatsController < ApplicationController
                         aasm_state: :waiting,
                         company_id: product.company_id)
                         .order(:execute_at)
-                        .last
+                        .first
     @tasks = @tasks.as_json(only: [:id, :code, :attachable_id])
                    .merge(serial: product.serial_number) if @tasks
 
