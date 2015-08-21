@@ -14,7 +14,7 @@
   </thead>
 
   <tbody>
-    <% state_colors = {waiting: 'info', running: 'warning', done: 'success', fail: 'danger'} %>
+    <% state_colors = {waiting: 'info', running: 'warning', done: 'success', failed: 'danger'} %>
     <% @tasks.each do |task| %>
       <tr>
         <td><%= task.execute_at %></td>
