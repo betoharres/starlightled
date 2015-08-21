@@ -90,7 +90,7 @@ function memoPlan ( p ){
 	
 	p--;
 	
-	o.dimer[p]               = memo( 'dimerization', $plan );
+	o.dimer[p]               = Number(memo( 'dimerization', $plan ));
 	o.delay[p]               = memo( 'delay', $plan );
 	des.boardLed1[p]         = memo( 'sensor1', $plan );
 	des.boardLed2[p]         = memo( 'sensor2', $plan );
@@ -172,11 +172,49 @@ function restoreChanges (){
 		restore(str + 'hour'   , o.hou[i], $change[t] );
 		restore(str + 'minute' , o.min[i], $change[t] );
 		restore(str + 'secound', o.sec[i], $change[t] );
+		
 		restore(str + 'day'    , o.day[i], $change[t] );
 		restore(str + 'month'  , o.mon[i], $change[t] );
 		restore(str + 'year'   , o.yea[i], $change[t] );
 		
+		if(o.day[i] >= 1 && o.mon[i] >= 1){
+			$change[t].find("#change_"+t+"_especial_date").prop('checked', true);
+		}
+		
+		$change[t].find(".week-control :checkbox").not("[id$='_all']").each(function(e){
+			if($(this).is(':checked')){
+				$(this).parent().addClass("active");
+			}
+			else{
+				$(this).parent().removeClass("active");
+			}
+		});
 	}
+	toggleChanges();
+}
+
+function memoProg(){
+	memoPlan( LastPlan );
+	memoChanges();
+	
+	$('#json').val( JSON.stringify(prog, replacer) );
+	$('#config_file_content').val( $('#json').val() );
+}
+
+function restoreProg(){
+	var aux = JSON.parse( $('#config_file_content').val() );
+	
+	if($.isEmptyObject(aux)){
+		memoProg();
+	}
+	else{
+		prog = aux;
+		$('#json').val( $('#config_file_content').val() );
+	
+		restorePlan( LastPlan );
+		restoreChanges();
+	}
+	
 	toggleChanges();
 }
 
@@ -200,7 +238,10 @@ function toggleChanges(){
 			$esp.parent().siblings().show();
 		}
 		else{
-			$esp.parent().siblings().hide();
+			$esp.parent().siblings().val(0).hide();
+//			$change[i].find("#change_"+i+"_day").val(0);
+//			$change[i].find("#change_"+i+"_month").val(0);
+//			$change[i].find("#change_"+i+"_year").val(0);
 		}
 		
 		$lastChange = $change[i];
@@ -217,39 +258,21 @@ $(".week-control input[id$='_all']").change(function(e) {
 	var marcado = $(this).is(':checked');
 	
 	$(this).parents(".week-control").find("input:checkbox").not("[id$='_all']").each(function(){
-		if($(this).is(':checked')){
-			if(!marcado){
-				$(this).prop('checked', marcado).click();
-			}
+		if(marcado){
+			$(this).prop('checked', marcado).parent().addClass("active");
 		}
-		else if(marcado){
-			$(this).prop('checked', marcado).click();
+		else{
+			$(this).prop('checked', marcado).parent().removeClass("active");
 		}
 	});
+	toggleChanges();
 });
 
 $changes.find(".week-control input:checkbox, .especial_date").not("[id$='_all']").change(function(e) {
 	toggleChanges();
 });
 
-$('#save_prog').click(function(e){
-	memoPlan( LastPlan );
-	memoChanges();
-	
-	$('#json').val( JSON.stringify(prog, replacer) );
-	$('#config_file_content').val( $('#json').val() );
-});
+$plan.on("change", "input, select", memoProg);
+$changes.on("change", "input, select", memoProg);
 
-$('#restore_prog').click(function(e){
-	prog = JSON.parse( $('#config_file_content').val() );
-	$('#json').val( $('#config_file_content').val() );
-	
-	restorePlan( LastPlan );
-	restoreChanges();
-});
-
-//$('#restore_prog').click();
-restorePlan( LastPlan );
-restoreChanges();
-$('#config_file_content').val( JSON.stringify(prog, replacer) );
-$('#json').val( $('#config_file_content').val() );
+restoreProg();

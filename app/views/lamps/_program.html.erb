@@ -1,5 +1,5 @@
 <h2>Programação Luminária</h2>
-<%= form_tag do %>
+
 
 <div id="panelPlans" class="panel panel-default">
 	<div class="panel-heading">Plano <%= select_tag :plan_id, options_for_select(1..7), :class => "form-control inline", :style => "width:70px" %></div>
@@ -7,7 +7,7 @@
 		<div class="form-group">
 			<%= label_tag :dimerization, "Dimerização", :class => "control-label col-md-2" %>
 			<div class="input-group m-b col-md-2">
-				<%= number_field_tag :dimerization, nil, in: 0..50, :class => "form-control" %>
+				<%= select_tag :dimerization, options_for_select([0,10,20,30,40,50]), :class => "form-control" %>
 				<span class="input-group-addon">%</span>
 			</div>
 		</div>
@@ -146,11 +146,8 @@
 	</div>
 </div>
 
-<% end %>
 
-<a id="save_prog" class="btn btn-primary">Salvar Programação</a>
-<a id="restore_prog" class="btn btn-default">Restaurar Programação</a>
-<hr>
+
   <div class="form-actions">
-    <%= f.button :submit, value: 'Criar Configuração' %>
+    <%= f.button :submit, value: 'Salvar Configuração', :class => "btn-primary" %>
   </div>
