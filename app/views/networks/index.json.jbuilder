@@ -10,7 +10,9 @@ json.networks @networks do |network|
 
     if node.product
       json.product node.product
-      json.status LampStat.where(serial_num: node.product.serial_number).last
+      if node.product.productable_type == 'Lamp'
+        json.status LampStat.where(serial_num: node.product.serial_number).last
+      end
       json.product_url product_to_child_url(node.product)
     end
 
