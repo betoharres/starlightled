@@ -26,8 +26,8 @@ initialize = ->
             productsText += '<a href="'+node.product_url+'"><h4>' +
             node.product.name+'</h4></a>'
             productsText = productsText
-            nodesArray.push node.status[0].communicating
-            nodesArray.push node.status[0].online
+            nodesArray.push node.status.communicating
+            nodesArray.push node.status.online
           else
             productsText = ''
           nodeBallon.push '<h3>Nodo:</h3><div class="info_content">' + '<a href="/nodes/' + node.id + '"><h4>' + node.identifier + '</h4></a>'+ productsText
