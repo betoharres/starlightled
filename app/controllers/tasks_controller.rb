@@ -21,6 +21,7 @@ class TasksController < ApplicationController
 
   # GET /tasks/1/edit
   def edit
+    @config_files = ConfigFile.where(company: current_user.company)
   end
 
   # POST /tasks
