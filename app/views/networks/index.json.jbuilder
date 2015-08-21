@@ -8,8 +8,13 @@ json.networks @networks do |network|
     json.latitude node.latitude
     json.longitude node.longitude
 
-    json.product node.product
-    json.product_url product_to_child_url(node.product)
+    if node.product
+      json.product node.product
+      if node.product.productable_type == 'Lamp'
+        json.status LampStat.where(serial_num: node.product.serial_number).last
+      end
+      json.product_url product_to_child_url(node.product)
+    end
 
   end
   json.url network_url(network, format: :json)
