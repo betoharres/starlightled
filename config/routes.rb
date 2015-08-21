@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'time/gmt'
+
+  get 'time/timezone'
+
   resources :config_files
   resources :tasks
   get 'features/time'

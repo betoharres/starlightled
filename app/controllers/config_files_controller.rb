@@ -4,7 +4,7 @@ class ConfigFilesController < ApplicationController
   # GET /config_files
   # GET /config_files.json
   def index
-    @config_files = ConfigFile.all
+    @config_files = ConfigFile.where(company: current_user.company)
   end
 
   # GET /config_files/1

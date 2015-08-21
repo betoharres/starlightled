@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150814024123) do
+ActiveRecord::Schema.define(version: 20150821163324) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,11 +54,12 @@ ActiveRecord::Schema.define(version: 20150814024123) do
 
   create_table "config_files", force: :cascade do |t|
     t.string   "name"
-    t.integer  "version",    limit: 2
-    t.jsonb    "content",              default: {}, null: false
+    t.string   "description"
+    t.integer  "version",     limit: 2
+    t.jsonb    "content",               default: {}, null: false
     t.integer  "company_id"
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
   end
 
   add_index "config_files", ["company_id"], name: "index_config_files_on_company_id", using: :btree
@@ -178,7 +179,7 @@ ActiveRecord::Schema.define(version: 20150814024123) do
   add_index "products", ["company_id"], name: "index_products_on_company_id", using: :btree
   add_index "products", ["node_id"], name: "index_products_on_node_id", using: :btree
   add_index "products", ["productable_type", "productable_id"], name: "index_products_on_productable_type_and_productable_id", using: :btree
-  add_index "products", ["serial_number"], name: "index_products_on_serial_number", using: :btree
+  add_index "products", ["serial_number"], name: "index_products_on_serial_number", unique: true, using: :btree
 
   create_table "roles", force: :cascade do |t|
     t.string   "name"
@@ -222,9 +223,8 @@ ActiveRecord::Schema.define(version: 20150814024123) do
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
   create_table "tasks", force: :cascade do |t|
-    t.datetime "execute_at"
+    t.datetime "execute_at",                            null: false
     t.integer  "code",            limit: 2
-    t.integer  "priority",        limit: 2
     t.integer  "progress",                  default: 0
     t.string   "aasm_state"
     t.string   "description"
