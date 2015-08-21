@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :require_user_signed_in
+  before_action :require_user_signed_in, except: [:update]
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   # GET /tasks
@@ -73,6 +73,6 @@ class TasksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
-      params.require(:task).permit(:execute_at, :code, :progress, :attachable_type, :attachable_id, :node_id)
+      params.require(:task).permit(:execute_at, :code, :progress, :attachable_type, :attachable_id, :node_id, :aasm_state)
     end
 end
