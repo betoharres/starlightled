@@ -219,29 +219,49 @@ function restoreProg(){
 }
 
 function toggleChanges(){
-	var $lastChange=false;
 	var showAll = false;
 	var $esp;
+	//var enabled;
+	var who;
 	for(var i=6; i>0; i--){
-		if($lastChange){
-			if(showAll || $change[i].find(".week-control input:checked").not("[id$='_all']").length>0){
+		//enabled =  ?
+		//          true : false;
+		
+		
+		
+		if(i==1){
+			showAll = true;
+		}
+		else if(showAll==false){
+			if (i == 6) {
+				if ($change[i].find(".week-control input:checked").not("[id$='_all']").length > 0) {
+					showAll = true;
+				}
+			}
+			
+			if ($change[i-1].find(".week-control input:checked").not("[id$='_all']").length > 0) {
 				showAll = true;
-				$lastChange.show();
+			}
+		}
+		
+		//if(i==1 || showAll || $change[who].find(".week-control input:checked").not("[id$='_all']").length>0){
+			
+		if(showAll){
+			$change[i].show();
+			
+			$esp = $change[i].find("#change_"+i+"_especial_date");
+			if($esp.is(':checked')){
+				$esp.parent().siblings().show();
 			}
 			else{
-				$lastChange.hide();
+				$esp.parent().siblings().val(0).hide();
 			}
 		}
-		
-		$esp = $change[i].find("#change_"+i+"_especial_date");
-		if($esp.is(':checked')){
-			$esp.parent().siblings().show();
-		}
 		else{
-			$esp.parent().siblings().val(0).hide();
+			$change[i].hide();
 		}
 		
-		$lastChange = $change[i];
+		
 	}
 }
 
