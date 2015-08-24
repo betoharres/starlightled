@@ -23,37 +23,37 @@
 			<div class="col-md-10">
 				<div class="checkbox c-checkbox">
 					<label>
-					<%= check_box_tag(:sensor1) %>
+					<%= check_box_tag :sensor1 , nil, nil, disabled:true %>
 					<span class="fa fa-check"></span>Sensor de temperatura da placa LED 1</label>
 				</div>
 				<div class="checkbox c-checkbox">
 					<label>
-					<%= check_box_tag(:sensor2) %>
+					<%= check_box_tag :sensor2 , nil, nil, disabled:true %>
 					<span class="fa fa-check"></span>Sensor de temperatura da placa LED 2</label>
 				</div>
 				<div class="checkbox c-checkbox">
 					<label>
-					<%= check_box_tag(:sensor3) %>
+					<%= check_box_tag :sensor3 , nil, nil, disabled:true %>
 					<span class="fa fa-check"></span>Sensor de temperatura da placa fonte</label>
 				</div>
 				<div class="checkbox c-checkbox">
 					<label>
-					<%= check_box_tag(:sensor4) %>
+					<%= check_box_tag :sensor4 , nil, nil, disabled:true %>
 					<span class="fa fa-check"></span>Sensor de luminosidade</label>
 				</div>
 				<div class="checkbox c-checkbox">
 					<label>
-					<%= check_box_tag(:sensor5) %>
+					<%= check_box_tag :sensor5 , nil, nil, disabled:true %>
 					<span class="fa fa-check"></span>Memória externa</label>
 				</div>
 				<div class="checkbox c-checkbox">
 					<label>
-					<%= check_box_tag(:sensor6) %>
+					<%= check_box_tag :sensor6 , nil, nil, disabled:true %>
 					<span class="fa fa-check"></span>Microcontrolador da placa LED 1</label>
 				</div>
 				<div class="checkbox c-checkbox">
 					<label>
-					<%= check_box_tag(:sensor7) %>
+					<%= check_box_tag :sensor7 , nil, nil, disabled:true %>
 					<span class="fa fa-check"></span>Microcontrolador da placa LED 2</label>
 				</div>
 			</div>
@@ -120,21 +120,21 @@
 				</td>
 				<td>
 					<div class="input-group m-b col-sm-2">
-						<%= number_field_tag "change_#{c}_hour", nil, in: 0..23, :class => "form-control", :style => "width:45px; padding:6px" %>
+						<%= select_tag "change_#{c}_hour", options_for_select(0..23), :class => "form-control", :style => "width:45px; padding:2px" %>
 						<span class="input-group-addon" style="padding:6px">:</span>
-						<%= number_field_tag "change_#{c}_minute", nil, in: 0..59, :class => "form-control", :style => "width:45px; padding:6px" %>
+						<%= select_tag "change_#{c}_minute", options_for_select(0..59), :class => "form-control", :style => "width:45px; padding:2px" %>
 						<span class="input-group-addon" style="padding:6px">:</span>
-						<%= number_field_tag "change_#{c}_secound", nil, in: 0..59, :class => "form-control", :style => "width:45px; padding:6px" %>
+						<%= select_tag "change_#{c}_secound", options_for_select(0..59), :class => "form-control", :style => "width:45px; padding:2px" %>
 					</div>
 				</td>
 				<td>
 					<div class="input-group m-b col-sm-2">
 						<span class="especial_date input-group-addon" style="width:5px; padding:6px"><%= check_box_tag("change_#{c}_especial_date") %></span>
-						<%= number_field_tag "change_#{c}_day", nil, in: 1..31, :class => "form-control", :style => "width:45px; padding:6px" %>
+						<%= select_tag "change_#{c}_day", options_for_select(1..31), :class => "form-control", :style => "width:45px; padding:2px" %>
 						<span class="input-group-addon" style="padding:6px">/</span>
-						<%= number_field_tag "change_#{c}_month", nil, in: 1..12, :class => "form-control", :style => "width:45px; padding:6px" %>
+						<%= select_tag "change_#{c}_month", options_for_select(1..12), :class => "form-control", :style => "width:45px; padding:2px" %>
 						<span class="input-group-addon" style="padding:6px">/</span>
-						<%= number_field_tag "change_#{c}_year", nil, in: 2015..2099, :class => "form-control", :style => "width:60px; padding:6px" %>
+						<%= select_tag "change_#{c}_year", options_for_select(15..99), :class => "form-control", :style => "width:45px; padding:1px" %>
 					</div>
 				</td>
 		      </tr>

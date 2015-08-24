@@ -139,12 +139,12 @@ function memoChanges (){
 		o.week.fri[i] = memo( str + 'fri', $change[t] );
 		o.week.sat[i] = memo( str + 'sat', $change[t] );
 		
-		o.hou[i] = memo(str + 'hour'   , $change[t] );
-		o.min[i] = memo(str + 'minute' , $change[t] );
-		o.sec[i] = memo(str + 'secound', $change[t] );
-		o.day[i] = memo(str + 'day'    , $change[t] );
-		o.mon[i] = memo(str + 'month'  , $change[t] );
-		o.yea[i] = memo(str + 'year'   , $change[t] );
+		o.hou[i] = Number(memo(str + 'hour'   , $change[t] ));
+		o.min[i] = Number(memo(str + 'minute' , $change[t] ));
+		o.sec[i] = Number(memo(str + 'secound', $change[t] ));
+		o.day[i] = Number(memo(str + 'day'    , $change[t] ));
+		o.mon[i] = Number(memo(str + 'month'  , $change[t] ));
+		o.yea[i] = Number(memo(str + 'year'   , $change[t] ));
 		
 	}
 	
@@ -221,14 +221,7 @@ function restoreProg(){
 function toggleChanges(){
 	var showAll = false;
 	var $esp;
-	//var enabled;
-	var who;
 	for(var i=6; i>0; i--){
-		//enabled =  ?
-		//          true : false;
-		
-		
-		
 		if(i==1){
 			showAll = true;
 		}
@@ -244,8 +237,6 @@ function toggleChanges(){
 			}
 		}
 		
-		//if(i==1 || showAll || $change[who].find(".week-control input:checked").not("[id$='_all']").length>0){
-			
 		if(showAll){
 			$change[i].show();
 			
@@ -285,13 +276,15 @@ $(".week-control input[id$='_all']").change(function(e) {
 	toggleChanges();
 });
 
-$changes.find(".week-control input:checkbox, .especial_date").not("[id$='_all']").change(function(e) {
-	//To enable selection by day of week
-	
-	//descoment the line above 
-	//toggleChanges();
-	
-	//and remove 2 lines above
+//To enable selection by day of week
+//descoment the line above 
+//$changes.find(".week-control input:checkbox, .especial_date").not("[id$='_all']").change(function(e) {
+//and remove the line above
+$changes.find(".especial_date").not("[id$='_all']").change(function(e) {
+	toggleChanges();
+});
+
+$changes.find(".week-control input:checkbox").not("[id$='_all']").change(function(e){
 	$(this).click();
 	return false;
 });
