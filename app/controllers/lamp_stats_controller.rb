@@ -36,7 +36,8 @@ class LampStatsController < ApplicationController
     @lamp_stat = LampStat.new(lamp_stat_params)
 
     product = Product.find_by(serial_number: @lamp_stat.serial_num)
-    @tasks = Task.where(node: product.node,
+    @tasks = Task.where("execute_at <= ?", DateTime.now.utc)
+                 .where(node: product.node,
                         aasm_state: :waiting,
                         company_id: product.company_id)
                         .order(:execute_at)
