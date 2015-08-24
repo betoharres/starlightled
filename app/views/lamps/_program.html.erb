@@ -78,7 +78,7 @@
 		    </tr>
 		  </thead>
 		  <tbody>
-		    <% for c in 1..7 do %>
+		    <% for c in 1..6 do %>
 		      <tr id='<%="change_#{c}"%>'>
 		        <td><%= c %></td>
 		        <td>
@@ -98,7 +98,7 @@
 								Todos
 							</label>
 						</div>
-						<div class="btn-group">
+						<div class="btn-group" title="Nesta versão não é possível selecionar dias da semana de forma individual.">
 							<div data-toggle="buttons" class="btn-group">
 								<label class="btn btn-default btn-sm">
 								<%= check_box_tag("change_#{c}_sun") %>D</label>

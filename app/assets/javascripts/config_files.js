@@ -46,7 +46,7 @@ var $changes = $('#panelChanges');
 var $change = [];
 var LastPlan = $plan.find('#plan_id').val();
 
-for(var i=1; i<=7; i++){
+for(var i=1; i<=6; i++){
 	$change[i] = $changes.find("#change_"+i);
 }
 
@@ -125,7 +125,7 @@ function memoChanges (){
 	var o = prog.prog.changes;
 	var str, i, t;
 	
-	for (i = 0, t = 1; i < 7; i++, t++) {
+	for (i = 0, t = 1; i < 6; i++, t++) {
 		str = 'change_' + t + '_';
 		
 		o.plan[i] = Number(memo( str + 'plan', $change[t] ));
@@ -155,7 +155,7 @@ function restoreChanges (){
 	var o = prog.prog.changes;
 	var str, i, t;
 	
-	for (i = 0, t = 1; i < 7; i++, t++) {
+	for (i = 0, t = 1; i < 6; i++, t++) {
 		str = 'change_' + t + '_';
 		
 		restore(str + 'plan', o.plan[i], $change[t] );
@@ -222,7 +222,7 @@ function toggleChanges(){
 	var $lastChange=false;
 	var showAll = false;
 	var $esp;
-	for(var i=7; i>0; i--){
+	for(var i=6; i>0; i--){
 		if($lastChange){
 			if(showAll || $change[i].find(".week-control input:checked").not("[id$='_all']").length>0){
 				showAll = true;
@@ -239,9 +239,6 @@ function toggleChanges(){
 		}
 		else{
 			$esp.parent().siblings().val(0).hide();
-//			$change[i].find("#change_"+i+"_day").val(0);
-//			$change[i].find("#change_"+i+"_month").val(0);
-//			$change[i].find("#change_"+i+"_year").val(0);
 		}
 		
 		$lastChange = $change[i];
@@ -269,7 +266,14 @@ $(".week-control input[id$='_all']").change(function(e) {
 });
 
 $changes.find(".week-control input:checkbox, .especial_date").not("[id$='_all']").change(function(e) {
-	toggleChanges();
+	//To enable selection by day of week
+	
+	//descoment the line above 
+	//toggleChanges();
+	
+	//and remove 2 lines above
+	$(this).click();
+	return false;
 });
 
 $plan.on("change", "input, select", memoProg);
