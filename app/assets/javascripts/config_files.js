@@ -46,7 +46,7 @@ var $changes = $('#panelChanges');
 var $change = [];
 var LastPlan = $plan.find('#plan_id').val();
 
-for(var i=1; i<=7; i++){
+for(var i=1; i<=6; i++){
 	$change[i] = $changes.find("#change_"+i);
 }
 
@@ -125,7 +125,7 @@ function memoChanges (){
 	var o = prog.prog.changes;
 	var str, i, t;
 	
-	for (i = 0, t = 1; i < 7; i++, t++) {
+	for (i = 0, t = 1; i < 6; i++, t++) {
 		str = 'change_' + t + '_';
 		
 		o.plan[i] = Number(memo( str + 'plan', $change[t] ));
@@ -139,12 +139,12 @@ function memoChanges (){
 		o.week.fri[i] = memo( str + 'fri', $change[t] );
 		o.week.sat[i] = memo( str + 'sat', $change[t] );
 		
-		o.hou[i] = memo(str + 'hour'   , $change[t] );
-		o.min[i] = memo(str + 'minute' , $change[t] );
-		o.sec[i] = memo(str + 'secound', $change[t] );
-		o.day[i] = memo(str + 'day'    , $change[t] );
-		o.mon[i] = memo(str + 'month'  , $change[t] );
-		o.yea[i] = memo(str + 'year'   , $change[t] );
+		o.hou[i] = Number(memo(str + 'hour'   , $change[t] ));
+		o.min[i] = Number(memo(str + 'minute' , $change[t] ));
+		o.sec[i] = Number(memo(str + 'secound', $change[t] ));
+		o.day[i] = Number(memo(str + 'day'    , $change[t] ));
+		o.mon[i] = Number(memo(str + 'month'  , $change[t] ));
+		o.yea[i] = Number(memo(str + 'year'   , $change[t] ));
 		
 	}
 	
@@ -155,7 +155,7 @@ function restoreChanges (){
 	var o = prog.prog.changes;
 	var str, i, t;
 	
-	for (i = 0, t = 1; i < 7; i++, t++) {
+	for (i = 0, t = 1; i < 6; i++, t++) {
 		str = 'change_' + t + '_';
 		
 		restore(str + 'plan', o.plan[i], $change[t] );
@@ -219,32 +219,40 @@ function restoreProg(){
 }
 
 function toggleChanges(){
-	var $lastChange=false;
 	var showAll = false;
 	var $esp;
-	for(var i=7; i>0; i--){
-		if($lastChange){
-			if(showAll || $change[i].find(".week-control input:checked").not("[id$='_all']").length>0){
+	for(var i=6; i>0; i--){
+		if(i==1){
+			showAll = true;
+		}
+		else if(showAll==false){
+			if (i == 6) {
+				if ($change[i].find(".week-control input:checked").not("[id$='_all']").length > 0) {
+					showAll = true;
+				}
+			}
+			
+			if ($change[i-1].find(".week-control input:checked").not("[id$='_all']").length > 0) {
 				showAll = true;
-				$lastChange.show();
+			}
+		}
+		
+		if(showAll){
+			$change[i].show();
+			
+			$esp = $change[i].find("#change_"+i+"_especial_date");
+			if($esp.is(':checked')){
+				$esp.parent().siblings().show();
 			}
 			else{
-				$lastChange.hide();
+				$esp.parent().siblings().val(0).hide();
 			}
 		}
-		
-		$esp = $change[i].find("#change_"+i+"_especial_date");
-		if($esp.is(':checked')){
-			$esp.parent().siblings().show();
-		}
 		else{
-			$esp.parent().siblings().val(0).hide();
-//			$change[i].find("#change_"+i+"_day").val(0);
-//			$change[i].find("#change_"+i+"_month").val(0);
-//			$change[i].find("#change_"+i+"_year").val(0);
+			$change[i].hide();
 		}
 		
-		$lastChange = $change[i];
+		
 	}
 }
 
@@ -268,8 +276,17 @@ $(".week-control input[id$='_all']").change(function(e) {
 	toggleChanges();
 });
 
-$changes.find(".week-control input:checkbox, .especial_date").not("[id$='_all']").change(function(e) {
+//To enable selection by day of week
+//descoment the line above 
+//$changes.find(".week-control input:checkbox, .especial_date").not("[id$='_all']").change(function(e) {
+//and remove the line above
+$changes.find(".especial_date").not("[id$='_all']").change(function(e) {
 	toggleChanges();
+});
+
+$changes.find(".week-control input:checkbox").not("[id$='_all']").change(function(e){
+	$(this).click();
+	return false;
 });
 
 $plan.on("change", "input, select", memoProg);
