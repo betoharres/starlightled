@@ -1,6 +1,7 @@
 class TasksController < ApplicationController
   before_action :require_user_signed_in, except: [:update]
   before_action :set_task, only: [:show, :edit, :update, :destroy]
+  before_action :set_config_file, only: [:new, :edit, :update, :create]
 
   # GET /tasks
   # GET /tasks.json
@@ -16,12 +17,12 @@ class TasksController < ApplicationController
   # GET /tasks/new
   def new
     @task = Task.new
-    @config_files = ConfigFile.where(company: current_user.company)
+    @task.execute_at = DateTime.now.utc - 3.hours
   end
 
   # GET /tasks/1/edit
   def edit
-    @config_files = ConfigFile.where(company: current_user.company)
+    @task.execute_at = @task.execute_at - 3.hours
   end
 
   # POST /tasks
@@ -67,6 +68,10 @@ class TasksController < ApplicationController
   end
 
   private
+
+    def set_config_file
+      @config_files = ConfigFile.where(company: current_user.company)
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_task
       @task = Task.find(params[:id])
