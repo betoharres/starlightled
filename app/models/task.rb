@@ -3,7 +3,8 @@ class Task < ActiveRecord::Base
   belongs_to :node
   belongs_to :company
   belongs_to :attachable, polymorphic: true
-  before_save :execute_at_to_utc
+
+  validates_presence_of :code, :node, :company, :attachable_id, :attachable_type
 
   audited allow_mass_assignment: true, associated_with: :company
 
@@ -14,11 +15,4 @@ class Task < ActiveRecord::Base
     state :done
   end
 
-  def execute_at_to_utc
-    # TODO: This must be fixed soon, it adds 3.hours because the user is setting
-    # a time imaginning the time in Brazil, but the app doesn't check where the device is.
-    # The app has to check where the Node is geolocated and get it's timezone and then
-    # add or substract the correct timezone
-    self.execute_at = (self.execute_at + 3.hours)
-  end
 end
