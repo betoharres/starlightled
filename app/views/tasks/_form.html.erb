@@ -9,7 +9,7 @@
     <%= f.input :code %>
 
     <h3><%= f.label 'Data e Hora de execução' %></h3>
-    <%= f.datetime_select :execute_at  %>
+    <%= f.datetime_select :execute_at, start_year: Date.today.year  %>
   </div>
   <hr>
 

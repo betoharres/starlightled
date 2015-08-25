@@ -26,4 +26,4 @@ en:
   waiting: "Em Espera"
   running: "Executando"
   done: "Finalizada"
-  fail: "Erro"
+  failed: "Falha"
