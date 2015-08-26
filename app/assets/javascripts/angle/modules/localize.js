@@ -45,7 +45,7 @@
     
 
     function setLanguage(options) {
-      $("[data-localize]").localize(packName, options);
+      // $("[data-localize]").localize(packName, options);
     }
 
     // Set the current clicked text as the active dropdown text
