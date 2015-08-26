@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
   before_action :require_user_signed_in, except: [:update]
   before_action :set_task, only: [:show, :edit, :update, :destroy]
-  before_action :set_config_file, only: [:new, :edit, :update, :create]
+  before_action :set_config_file, only: [:new, :edit, :create]
 
   # GET /tasks
   # GET /tasks.json
