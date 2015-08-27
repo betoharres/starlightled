@@ -15,7 +15,6 @@ class LampsController < ApplicationController
     @chart = LampStat.where(serial_num: @product.serial_number)
                      .where(date: 7.days.ago..DateTime.now)
                      .order(:date)
-                     .map(&:to_chart)
   end
 
   # GET /lamps/new
