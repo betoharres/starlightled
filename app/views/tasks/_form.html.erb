@@ -2,8 +2,8 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.label :node_id, 'Nodo' %>
-    <p><%= f.select :node_id, Node.all.where(company: current_user.company).collect {|node| [ node.identifier, node.id ] }, {include_blank: 'Selecione um Nodo'}, {class: 'chosen-select input-md form-control'} %></p>
+    <%= f.label :node_id, 'Produto' %>
+    <p><%= f.select :node_id, Product.all.where(company: current_user.company).reject{|p| p.node.nil? }.collect {|product| [ product.name, product.node.id ] }, {include_blank: 'Selecione um Produto'}, {class: 'chosen-select input-md form-control'} %></p>
     <%= f.label :attachable_id, 'Configuração' %>
     <p><%= f.select :attachable_id, @config_files.collect {|config| [ config.name, config.id ] }, {include_blank: 'Selecione uma Configuração'}, {class: 'chosen-select input-md form-control'} %></p>
     <%= f.input :code %>
