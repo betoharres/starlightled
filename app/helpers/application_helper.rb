@@ -32,4 +32,9 @@ module ApplicationHelper
     end
     chart_data
   end
+
+  def format_time_brazil(time)
+    time.in_time_zone('Brasilia').strftime("%d/%m/%Y às %H:%M:%S")
+  end
+
 end

@@ -5,12 +5,11 @@ class LampStatsController < ApplicationController
   # GET /lamp_stats
   # GET /lamp_stats.json
   def index
-    lamp_stats = LampStat.where(serial_num: @lamp.product.serial_number)
+    @chart = LampStat.where(serial_num: @lamp.product.serial_number)
                   .where(date: 7.days.ago..DateTime.now)
                   .order(:date)
 
-    @chart = lamp_stats.map(&:to_chart)
-    @list = lamp_stats.reverse_order
+    @list = @chart.reverse_order
   end
 
   # GET /lamp_stats/1
@@ -36,14 +35,17 @@ class LampStatsController < ApplicationController
     @lamp_stat = LampStat.new(lamp_stat_params)
 
     product = Product.find_by(serial_number: @lamp_stat.serial_num)
-    @tasks = Task.where("execute_at <= ?", DateTime.now.utc)
-                 .where(node: product.node,
-                        aasm_state: :waiting,
-                        company_id: product.company_id)
-                        .order(:execute_at)
-                        .first
-    @tasks = @tasks.as_json(only: [:id, :code, :attachable_id])
-                   .merge(serial: product.serial_number) if @tasks
+    if product
+      @tasks = Task.where("execute_at <= ?", DateTime.now.utc)
+                  .where(node: product.node,
+                          aasm_state: :waiting,
+                          company_id: product.company_id)
+                          .order(:execute_at)
+                          .first
+
+      @tasks = @tasks.as_json(only: [:id, :code, :attachable_id])
+                    .merge(serial: product.serial_number) if @tasks
+    end
 
     respond_to do |format|
       if @lamp_stat.save
