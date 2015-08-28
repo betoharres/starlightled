@@ -7,4 +7,4 @@
 //= require chosen-jquery
 //= require_tree ./angle/
 
-$("body").addClass("aside-float");
+// $("body").addClass("aside-float");

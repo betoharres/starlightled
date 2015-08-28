@@ -2,21 +2,16 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-body, html, section, div.wrapper, div.content-wrapper {
+html, body, section, div.wrapper, div.content-wrapper, #map-canvas {
+  padding: 0;
+  margin: 0;
   height: 100%;
   width: 100%;
 }
 
-.content-wrapper {
-  width: 120%;
-  height: 110%;
-  margin-top: -10.2%;
-  margin-left: -20.2%;
-}
-
-#map-canvas {
-  margin-top: -10.2%;
-  margin-left: -10.2%;
-  width: 130%;
-  height: 120%;
+div.wrapper section {
+  max-width: 100% !important;
+  padding-left: 0 !important;
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
 }
