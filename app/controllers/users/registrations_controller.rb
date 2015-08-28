@@ -3,7 +3,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   before_filter :configure_permitted_parameters
 
   layout 'pages', except: :edit
-  layout 'application', only: :edit
+  layout 'application-h', only: :edit
 
   def create
     @user = User.new(user_params)

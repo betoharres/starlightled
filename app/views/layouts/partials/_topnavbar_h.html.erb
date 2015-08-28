@@ -8,12 +8,12 @@
          <span class="icon-bar"></span>
          <span class="icon-bar"></span>
       </button>
-      <a href="#/" class="navbar-brand">
+      <a href="/" class="navbar-brand">
          <div class="brand-logo">
-            <img src="<%= image_path('angle/logo.png') %>" alt="App Logo" class="img-responsive" />
+            <h3 id="home-link"><strong><em class="icon-home"></em></strong></h3>
          </div>
          <div class="brand-logo-collapsed">
-            <img src="<%= image_path('angle/logo-single.png') %>" alt="App Logo" class="img-responsive" />
+            <h3 id="home-link"><strong><em class="icon-home"></em></strong></h3>
          </div>
       </a>
    </div>
@@ -23,39 +23,51 @@
       <!-- START Left navbar-->
       <ul class="nav navbar-nav">
          <li></li>
-         <li><a href="#dashboard" data-toggle="dropdown">Dashboard</a>
-            <ul class="dropdown-menu animated fadeIn">
-               <li class="<%= 'active' if controller?('dashboard') && action?('dashboard_v1') %>">
-                  <a href="/dashboard/dashboard_v1">Dashboard v1</a>
-               </li>
-               <li class="<%= 'active' if controller?('dashboard') && action?('dashboard_v2') %>">
-                  <a href="/dashboard/dashboard_v2">Dashboard v2</a>
-               </li>
-               <li class="<%= 'active' if controller?('dashboard') && action?('dashboard_v3') %>">
-                  <a href="/dashboard/dashboard_v3">Dashboard v3</a>
-               </li>
-            </ul>
+         <li>
+           <%= link_to '<em class="icon-share"></em> Redes'.html_safe, networks_path %>
          </li>
-         <li class="<%= 'active' if controller?('widgets') && action?('index') %>">
-            <a href="/widgets">Widgets</a>
+
+         <li>
+           <%= link_to '<em class="icon-bulb"></em> Luminárias'.html_safe, lamps_path %>
          </li>
+
+         <li>
+           <%= link_to '<em class="icon-feed"></em> Gateways'.html_safe, gateways_path %>
+         </li>
+
+         <li>
+           <%= link_to '<em class="icon-grid"></em> Grupos'.html_safe, '/tags' %>
+         </li>
+
+         <li>
+           <%= link_to '<em class="icon-calendar"></em> Tarefas'.html_safe, tasks_path %>
+         </li>
+
+         <li>
+           <%= link_to '<em class="icon-settings"></em> Configurações'.html_safe, config_files_path %>
+         </li>
+
       </ul>
       <!-- END Left navbar-->
       <!-- START Right Navbar-->
       <ul class="nav navbar-nav navbar-right">
-         <!-- START lock screen-->
-         <li>
-            <a href="/pages/lock" title="Lock screen">
-               <em class="icon-lock"></em>
-            </a>
-         </li>
-         <!-- END lock screen-->
          <!-- Search icon-->
-         <li>
-            <a href="#" data-search-open="">
-               <em class="icon-magnifier"></em>
-            </a>
-         </li>
+      <!--    <li> -->
+      <!--       <a href="#" data&#45;search&#45;open=""> -->
+      <!--          <em class="icon&#45;magnifier"></em> -->
+      <!--       </a> -->
+      <!--    </li> -->
+
+        <li>
+          <% if current_user %>
+        <%= link_to('<em class="icon-user"></em> '.html_safe + current_user.name, edit_user_registration_path) %>
+        <% else %>
+          <a href="/login" >
+            <em class="icon-lock"> Login</em>
+          </a>
+        <% end %>
+        </li>
+
          <!-- Fullscreen (only desktops)-->
          <li class="visible-lg">
             <a href="#" data-toggle-fullscreen="">
@@ -63,76 +75,76 @@
             </a>
          </li>
          <!-- START Alert menu-->
-         <li class="dropdown dropdown-list">
-            <a href="#" data-toggle="dropdown">
-               <em class="icon-bell"></em>
-               <div class="label label-danger">11</div>
-            </a>
+      <!--    <li class="dropdown dropdown&#45;list"> -->
+      <!--       <a href="#" data&#45;toggle="dropdown"> -->
+      <!--          <em class="icon&#45;bell"></em> -->
+      <!--          <div class="label label&#45;danger">11</div> -->
+      <!--       </a> -->
             <!-- START Dropdown menu-->
-            <ul class="dropdown-menu animated flipInX">
-               <li>
+      <!--       <ul class="dropdown&#45;menu animated flipInX"> -->
+      <!--          <li> -->
                   <!-- START list group-->
-                  <div class="list-group">
-                     <!-- list item-->
-                     <a href="#" class="list-group-item">
-                        <div class="media-box">
-                           <div class="pull-left">
-                              <em class="fa fa-twitter fa-2x text-info"></em>
-                           </div>
-                           <div class="media-box-body clearfix">
-                              <p class="m0">New followers</p>
-                              <p class="m0 text-muted">
-                                 <small>1 new follower</small>
-                              </p>
-                           </div>
-                        </div>
-                     </a>
-                     <!-- list item-->
-                     <a href="#" class="list-group-item">
-                        <div class="media-box">
-                           <div class="pull-left">
-                              <em class="fa fa-envelope fa-2x text-warning"></em>
-                           </div>
-                           <div class="media-box-body clearfix">
-                              <p class="m0">New e-mails</p>
-                              <p class="m0 text-muted">
-                                 <small>You have 10 new emails</small>
-                              </p>
-                           </div>
-                        </div>
-                     </a>
-                     <!-- list item-->
-                     <a href="#" class="list-group-item">
-                        <div class="media-box">
-                           <div class="pull-left">
-                              <em class="fa fa-tasks fa-2x text-success"></em>
-                           </div>
-                           <div class="media-box-body clearfix">
-                              <p class="m0">Pending Tasks</p>
-                              <p class="m0 text-muted">
-                                 <small>11 pending task</small>
-                              </p>
-                           </div>
-                        </div>
-                     </a>
-                     <!-- last list item -->
-                     <a href="#" class="list-group-item">
-                        <small>More notifications</small>
-                        <span class="label label-danger pull-right">14</span>
-                     </a>
-                  </div>
+      <!--             <div class="list&#45;group"> -->
+      <!--                <!&#45;&#45; list item&#45;&#45;> -->
+      <!--                <a href="#" class="list&#45;group&#45;item"> -->
+      <!--                   <div class="media&#45;box"> -->
+      <!--                      <div class="pull&#45;left"> -->
+      <!--                         <em class="fa fa&#45;twitter fa&#45;2x text&#45;info"></em> -->
+      <!--                      </div> -->
+      <!--                      <div class="media&#45;box&#45;body clearfix"> -->
+      <!--                         <p class="m0">New followers</p> -->
+      <!--                         <p class="m0 text&#45;muted"> -->
+      <!--                            <small>1 new follower</small> -->
+      <!--                         </p> -->
+      <!--                      </div> -->
+      <!--                   </div> -->
+      <!--                </a> -->
+      <!--                <!&#45;&#45; list item&#45;&#45;> -->
+      <!--                <a href="#" class="list&#45;group&#45;item"> -->
+      <!--                   <div class="media&#45;box"> -->
+      <!--                      <div class="pull&#45;left"> -->
+      <!--                         <em class="fa fa&#45;envelope fa&#45;2x text&#45;warning"></em> -->
+      <!--                      </div> -->
+      <!--                      <div class="media&#45;box&#45;body clearfix"> -->
+      <!--                         <p class="m0">New e&#45;mails</p> -->
+      <!--                         <p class="m0 text&#45;muted"> -->
+      <!--                            <small>You have 10 new emails</small> -->
+      <!--                         </p> -->
+      <!--                      </div> -->
+      <!--                   </div> -->
+      <!--                </a> -->
+      <!--                <!&#45;&#45; list item&#45;&#45;> -->
+      <!--                <a href="#" class="list&#45;group&#45;item"> -->
+      <!--                   <div class="media&#45;box"> -->
+      <!--                      <div class="pull&#45;left"> -->
+      <!--                         <em class="fa fa&#45;tasks fa&#45;2x text&#45;success"></em> -->
+      <!--                      </div> -->
+      <!--                      <div class="media&#45;box&#45;body clearfix"> -->
+      <!--                         <p class="m0">Pending Tasks</p> -->
+      <!--                         <p class="m0 text&#45;muted"> -->
+      <!--                            <small>11 pending task</small> -->
+      <!--                         </p> -->
+      <!--                      </div> -->
+      <!--                   </div> -->
+      <!--                </a> -->
+      <!--                <!&#45;&#45; last list item &#45;&#45;> -->
+      <!--                <a href="#" class="list&#45;group&#45;item"> -->
+      <!--                   <small>More notifications</small> -->
+      <!--                   <span class="label label&#45;danger pull&#45;right">14</span> -->
+      <!--                </a> -->
+      <!--             </div> -->
                   <!-- END list group-->
-               </li>
-            </ul>
+      <!--          </li> -->
+      <!--       </ul> -->
             <!-- END Dropdown menu-->
-         </li>
+      <!--    </li> -->
          <!-- END Alert menu-->
          <!-- START Contacts button-->
-         <li>
-            <a href="#" data-toggle-state="offsidebar-open" data-no-persist="true">
-               <em class="icon-notebook"></em>
-            </a>
-         </li>
+      <!--    <li> -->
+      <!--       <a href="#" data&#45;toggle&#45;state="offsidebar&#45;open" data&#45;no&#45;persist="true"> -->
+      <!--          <em class="icon&#45;notebook"></em> -->
+      <!--       </a> -->
+      <!--    </li> -->
          <!-- END Contacts menu-->
       </ul>
       <!-- END Right Navbar-->

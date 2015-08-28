@@ -3,11 +3,11 @@
  * listed below.
  *
  * --- Angle Main Stylesheet
- * 
+ *
  *= require angle/app
  *
- * --- Assets paths redefinition 
- * 
+ * --- Assets paths redefinition
+ *
  *= require fonts
  *= require vendor.assets
  *= require chosen
@@ -21,4 +21,9 @@
 .shadowed{
   -webkit-filter: drop-shadow(1px 1px 1px #a6a6a6);
   filter: drop-shadow(1px 1px 1px #a6a6a6);
+}
+
+#home-link {
+  margin-top: 12%;
+  color: white;
 }
