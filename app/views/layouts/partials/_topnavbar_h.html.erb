@@ -58,9 +58,44 @@
       <!--       </a> -->
       <!--    </li> -->
 
-        <li>
+        <li class="dropdown dropdown-list">
           <% if current_user %>
-        <%= link_to('<em class="icon-user"></em> '.html_safe + current_user.name, edit_user_registration_path) %>
+          <a href="#" data-toggle="dropdown">
+            <em class="icon-user"></em> <%= current_user.name %>
+          </a>
+        <ul class="dropdown-menu animated flipInX">
+          <li>
+            <!-- START list group-->
+            <div class="list-group">
+              <!-- list item-->
+              <a href="<%= edit_user_registration_path %>" class="list-group-item">
+                <div class="media-box">
+                    <div class="pull-left">
+                      <em class="fa fa-user fa-2x text-info"></em>
+                    </div>
+                    <div class="media-box-body clearfix">
+                      <p class="m0">Editar sua Conta</p>
+                      <p class="m0 text-muted">
+                          <small>Mude os dados do seu cadastro</small>
+                      </p>
+                    </div>
+                </div>
+              </a>
+              <!-- list item-->
+              <a href="/signout" class="list-group-item">
+                  <div class="media-box">
+                    <div class="pull-left">
+                        <em class="icon-logout"></em>
+                    </div>
+                    <div class="media-box-body clearfix">
+                      <p class="m0">Sair</p>
+                    </div>
+                  </div>
+              </a>
+            </div>
+            <!-- END list group-->
+          </li>
+        </ul>
         <% else %>
           <a href="/login" >
             <em class="icon-lock"> Login</em>
