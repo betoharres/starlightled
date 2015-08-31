@@ -6,7 +6,7 @@
 var chartData = $('#chart-temp-data').data('device');
 
 // use UTC time
-AmCharts.useUTC = true;
+AmCharts.useUTC = false;
 
 var chart = AmCharts.makeChart("chartdiv", {
     type: "stock",
@@ -84,14 +84,14 @@ var chart = AmCharts.makeChart("chartdiv", {
           periodValueTextRegular: "[[value.close]]",
           position: 'top'
         },
-      // categoryAxis: {
-      //     labelFunction: function (valueText, value, valueAxis) {
-      //         // recalculate to EST (-5 hours)
-      //         var est = new Date(value);
-      //         est.setHours(est.getHours()-3);
-      //         return AmCharts.formatDate(est, "HH:NN");
-      //     }
-      //   }
+      categoryAxis: {
+          labelFunction: function (valueText, value, valueAxis) {
+              // recalculate to EST (-5 hours)
+              var est = new Date(value);
+              est.setHours(est.getHours()-3);
+              return est
+          }
+        }
       },
       {
         title: "Consumo",
