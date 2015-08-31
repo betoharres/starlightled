@@ -6,6 +6,7 @@ gem 'rails', '4.2.3'
 gem 'pg'
 # gem 'thin'
 
+gem 'newrelic_rpm'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0.1'
 # Use Uglifier as compressor for JavaScript assets
