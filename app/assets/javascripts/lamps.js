@@ -84,14 +84,14 @@ var chart = AmCharts.makeChart("chartdiv", {
           periodValueTextRegular: "[[value.close]]",
           position: 'top'
         },
-      categoryAxis: {
-          labelFunction: function (valueText, value, valueAxis) {
-              // recalculate to EST (-5 hours)
-              var est = new Date(value);
-              est.setHours(est.getHours()-3);
-              return est
-          }
-        }
+      // categoryAxis: {
+      //     labelFunction: function (valueText, value, valueAxis) {
+      //         // recalculate to EST (-5 hours)
+      //         var est = new Date(value);
+      //         est.setHours(est.getHours()-3);
+      //         return est
+      //     }
+      //   }
       },
       {
         title: "Consumo",
