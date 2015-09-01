@@ -2,6 +2,7 @@ class TasksController < ApplicationController
   before_action :require_user_signed_in, except: [:update]
   before_action :set_task, only: [:show, :edit, :update, :destroy]
   before_action :set_config_file, only: [:new, :edit, :create]
+  before_action :set_firmware, only: [:new, :edit, :create]
 
   # GET /tasks
   # GET /tasks.json
@@ -69,9 +70,14 @@ class TasksController < ApplicationController
 
   private
 
+    def set_firmware
+      @firmwares = Firmware.where(company: current_user.company)
+    end
+
     def set_config_file
       @config_files = ConfigFile.where(company: current_user.company)
     end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_task
       @task = Task.find(params[:id])

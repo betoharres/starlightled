@@ -1,4 +1,6 @@
 class Firmware < ActiveRecord::Base
+  belongs_to :company
+  audited allow_mass_assignment: true, associated_with: :company
 
   def update(params = {})
     file = params.delete(:file)

@@ -4,9 +4,17 @@
   <div class="form-inputs">
     <%= f.label :node_id, 'Produto' %>
     <p><%= f.select :node_id, Product.all.where(company: current_user.company).reject{|p| p.node.nil? }.collect {|product| [ product.name, product.node.id ] }, {include_blank: 'Selecione um Produto'}, {class: 'chosen-select input-md form-control'} %></p>
-    <%= f.label :attachable_id, 'Configuração' %>
-    <p><%= f.select :attachable_id, @config_files.collect {|config| [ config.name, config.id ] }, {include_blank: 'Selecione uma Configuração'}, {class: 'chosen-select input-md form-control'} %></p>
-    <%= f.input :code %>
+
+    <%= f.input :code, as: :select, collection: [['Troca de Configuração da Luminária', 100],['Troca de Firmware', 200]], label: 'Tipo', include_blank: 'Tipo de Ação', class: 'chosen-select input-md form-control' %>
+
+      <div id="config_files-form", style="<%= 'display: inline' if @task.code && @task.code == 100 %>">
+        <%= f.label :attachable_id, 'Configurações' %>
+        <p><%= f.select :attachable_id, @config_files.collect {|config| [ config.name, config.id ] }, {include_blank: 'Selecione uma Configuração'}, {class: 'chosen-select input-md form-control'} %></p>
+      </div>
+      <div id="firmwares-form" style="<%= 'display: inline' if @task.code && @task.code == 200 %>">
+        <%= f.label :attachable_id, 'Firmwares' %>
+        <p><%= f.select :attachable_id, @firmwares.collect {|firmware| [ firmware.filename, firmware.id ] }, {include_blank: 'Selecione um Firmware'}, {class: 'chosen-select input-md form-control'} %></p>
+      </div>
 
     <h3><%= f.label 'Data e Hora de execução' %></h3>
     <%= f.datetime_select :execute_at, start_year: Date.today.year  %>
