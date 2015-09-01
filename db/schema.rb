@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150821163324) do
+ActiveRecord::Schema.define(version: 20150901133406) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,7 +73,10 @@ ActiveRecord::Schema.define(version: 20150821163324) do
     t.float    "version"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.integer  "company_id"
   end
+
+  add_index "firmwares", ["company_id"], name: "index_firmwares_on_company_id", using: :btree
 
   create_table "gateways", force: :cascade do |t|
     t.string   "ip"
@@ -234,6 +237,7 @@ ActiveRecord::Schema.define(version: 20150821163324) do
     t.integer  "company_id"
     t.datetime "created_at",                            null: false
     t.datetime "updated_at",                            null: false
+    t.integer  "serial_gateway",  limit: 8
   end
 
   add_index "tasks", ["attachable_type", "attachable_id"], name: "index_tasks_on_attachable_type_and_attachable_id", using: :btree
@@ -264,6 +268,7 @@ ActiveRecord::Schema.define(version: 20150821163324) do
   add_index "users", ["role_id"], name: "index_users_on_role_id", using: :btree
 
   add_foreign_key "config_files", "companies"
+  add_foreign_key "firmwares", "companies"
   add_foreign_key "nodes", "companies"
   add_foreign_key "permissions", "roles"
   add_foreign_key "roles", "companies"

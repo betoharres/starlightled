@@ -51,6 +51,7 @@ class FirmwaresController < ApplicationController
   # POST /firmwares.json
   def create
     @firmware = Firmware.new(firmware_params)
+    @firmware.company = current_user.company
 
     respond_to do |format|
       if @firmware.save
@@ -103,6 +104,5 @@ class FirmwaresController < ApplicationController
       response.headers.delete_if{|key| !white_list.include? key}
       response.headers['CHECKSUM'] = Digest::SHA1.hexdigest(@firmware.file_content)
       response.headers['SIZE'] = @firmware.file_content.size
-      # abort response.headers.to_s
     end
 end
