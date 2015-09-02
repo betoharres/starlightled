@@ -18,7 +18,7 @@
     <% @list.each do |lamp_stat| %>
       <tr>
         <td><%= lamp_stat.serial_num %></td>
-        <td><%= lamp_stat.date.to_datetime.strftime("%d/%m/%Y às %H:%M") %></td>
+        <td><%= format_time_brazil(lamp_stat.date) %></td>
         <td><%= lamp_stat.pwr %></td>
         <td><%= lamp_stat.current %></td>
         <td><%= lamp_stat.volts %></td>
