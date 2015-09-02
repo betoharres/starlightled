@@ -30,7 +30,6 @@ class TasksController < ApplicationController
   # POST /tasks.json
   def create
     @task = Task.new(task_params)
-    @task.attachable_type = 'ConfigFile'
     @task.company = current_user.company
 
     respond_to do |format|
