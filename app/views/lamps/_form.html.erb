@@ -1,5 +1,12 @@
 <%= form_for @lamp, :html => { :class => 'form-horizontal form-model' } do |f| %>
-
+<% if @lamp.errors.messages.any? %>
+  <% @lamp.errors.messages.each do |k, v| %>
+  <div class="alert alert-warning alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>Oops!</strong> <%= t(k.to_s) + v.first %>
+  </div>
+  <% end %>
+<% end %>
   <%= render partial: 'tags/tag', locals: {f: f, model: @lamp} %>
 
   <%= f.fields_for :product_attributes, @lamp.product||Product.new do |ff| %>

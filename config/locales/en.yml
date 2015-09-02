@@ -27,3 +27,20 @@ en:
   running: "Executando"
   done: "Finalizada"
   failed: "Falha"
+  cant_be_blank: " não pode ser nulo."
+  serial_duplicated: " já existe."
+  not_a_number: " não é um número."
+  node_duplicated: ' já contém um Produto.'
+  misspelled_ip: ' não está correto.'
+  font_type: "Tipo de Fonte"
+  font_subtype: "Subtipo de Fonte"
+  ip: "IP"
+  product:
+    node_id: 'O Nodo escolhido.'
+    serial_number: "Número serial"
+    tension_operation: "Tensão de operação"
+    name: "Nome"
+    model: "Modelo"
+    mac_address: "Endereço MAC"
+    product_code: "Código do Produto"
+    fabrication_date: "Data de Fabricação"
