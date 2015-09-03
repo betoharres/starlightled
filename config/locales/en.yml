@@ -44,3 +44,4 @@ en:
     mac_address: "Endereço MAC"
     product_code: "Código do Produto"
     fabrication_date: "Data de Fabricação"
+    cant_be_blank: " não pode ser nulo."
