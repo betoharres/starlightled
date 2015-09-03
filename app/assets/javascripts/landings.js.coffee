@@ -3,13 +3,80 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 initialize = ->
+  # Create an array of styles.
+  styles = [
+    { stylers: [
+      { hue: '#00aaff' }
+      { saturation: -20 }
+      { gamma: 2.15 }
+      { lightness: 10 }
+    ] }
+    # {
+    #   featureType: 'road'
+    #   elementType: 'geometry'
+    #   stylers: [
+    #     { lightness: 100 }
+    #     { visibility: 'simplified' }
+    #   ]
+    # }
+    {
+      featureType: 'road'
+      elementType: 'labels'
+      stylers: [ { visibility: 'off' } ]
+    }
+    {
+      featureType: 'road.highway'
+      elementType: 'geometry.fill'
+      stylers: [ { color: '#D3D3D3' } ]
+    }
+    {
+      featureType: 'poi'
+      elementType: 'all'
+      stylers: [ { visibility: 'off' } ]
+    }
+    {
+      featureType: 'poi.park'
+      elementType: 'geometry.fill'
+      stylers: [ { visibility: 'on' }, { color: "#BFE9DB" } ]
+    }
+    {
+      featureType: 'poi.business'
+      elementType: 'geometry.fill'
+      stylers: [ { visibility: 'on' }, { color: "#BFE9DB" } ]
+    }
+
+    {
+      featureType: 'transit'
+      elementType: 'all'
+      stylers: [ { visibility: 'off' } ]
+    }
+    {
+      featureType: 'landscape'
+      elementType: 'all'
+      stylers: [ { visibility: 'simplified' } ]
+    }
+    {
+      featureType: 'landscape'
+      elementType: 'labels'
+      stylers: [ { visibility: 'off' } ]
+    }
+  ]
+  styledMap = new (google.maps.StyledMapType)(styles, name: 'Simplificado')
   mapCanvas = document.getElementById('map-canvas')
   mapOptions =
     center: new (google.maps.LatLng)(-30.0469, -51.1987)
-    zoom: 16
-    disableDefaultUI: true
-    mapTypeId: google.maps.MapTypeId.ROADMAP
+    zoom: 18
+    # disableDefaultUI: true
+    # mapTypeId: google.maps.MapTypeId.ROADMAP
+    mapTypeControlOptions: mapTypeIds: [
+      google.maps.MapTypeId.ROADMAP
+      google.maps.MapTypeId.SATELLITE
+      google.maps.MapTypeId.HYBRID
+      'map_style'
+    ]
   map = new (google.maps.Map)(mapCanvas, mapOptions)
+  map.mapTypes.set 'map_style', styledMap
+  map.setMapTypeId 'map_style'
   $.getJSON 'networks.json', (data) ->
     allNodes = []
     allBallon = []
