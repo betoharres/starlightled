@@ -1,5 +1,6 @@
 class FirmwaresController < ApplicationController
   before_action :set_firmware, only: [:show, :edit, :update, :destroy]
+  before_filter :require_user_signed_in, except: :show
   after_action :filter_header, only: :show
 
   # GET /firmwares
