@@ -65,7 +65,7 @@
 
   <tr>
     <th class="row">Pacotes Recebidos:</th>
-    <td><%= @lamp_stat.rcvPkts %></td>
+    <td><%= ( (@lamp_stat.rcvPkts * 100) / @lamp_stat.sentPkts.to_f ).round(2) %> %</td>
   </tr>
 
   <tr>
