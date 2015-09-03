@@ -70,7 +70,7 @@ class TasksController < ApplicationController
   private
 
     def set_firmware
-      @firmwares = Firmware.where(company: current_user.company)
+      @firmwares = Firmware.all
     end
 
     def set_config_file
