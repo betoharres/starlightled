@@ -134,7 +134,11 @@ setAllMap = (map, nodes, ballons) ->
     # if (i == 0){
     # mark.setIcon('http://mt.google.com/vt/icon?psize=16&font=fonts/Roboto-Regular.ttf&color=ff330000&name=icons/spotlight/spotlight-waypoint-a.png&ax=44&ay=48&scale=1&text=G');
     # }else {
-    mark.setIcon 'http://mt.google.com/vt/icon?psize=16&font=fonts/Roboto-Regular.ttf&color=ff330000&name=icons/spotlight/spotlight-waypoint-a.png&ax=44&ay=48&scale=1&text=N'
+    if marker[3] && marker[4]
+      mark.setIcon 'http://mt.google.com/vt/icon?psize=16&font=fonts/Roboto-Regular.ttf&color=ff330000&name=icons/spotlight/spotlight-waypoint-a.png&ax=44&ay=48&scale=1&text=N'
+    else if marker[3] == false || marker[4] == false
+      mark.setIcon 'http://mt.google.com/vt/icon?psize=16&font=fonts/Roboto-Regular.ttf&color=ff330000&name=icons/spotlight/spotlight-waypoint-b.png&ax=44&ay=48&scale=1&text=N'
+      ###
     # if marker[3] && marker[4]
     #   mark.setIcon 'http://mt.google.com/vt/icon/name=icons/spotlight/generic_transit_L_8x.png&scale=1'
     # else if marker[3] && marker[4] == false
