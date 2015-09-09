@@ -99,8 +99,8 @@ var chart = AmCharts.makeChart("chartdiv", {
         percentHeight: 20,
         stockGraphs: [{
           valueField: "volume",
-          // periodValue: 'Average',
-          type: "smoothedLine",
+          lineThickness: 1,
+          type: "line",
           balloonText: "<i class=\"fa fa-bolt\"></i> [[value]] W",
           showBalloon: true,
           fillAlphas: 1
