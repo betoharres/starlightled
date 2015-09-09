@@ -61,7 +61,7 @@ RSpec.describe LampsController, type: :controller do
     it "blocks unauthenticated access" do
       sign_in @unauthorized_user
       get :index
-      expect(response).to redirect_to(root_url)
+      expect(response).to redirect_to(new_user_session_path)
     end
 
     it "blocks unauthorized user" do
