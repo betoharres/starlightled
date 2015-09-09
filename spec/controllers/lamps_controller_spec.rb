@@ -47,11 +47,11 @@ RSpec.describe LampsController, type: :controller do
   }
 
   describe "GET #index" do
-    it "assigns all lamps as @lamps" do
-      lamp = Lamp.create! valid_attributes
-      get :index, {}, valid_session
-      expect(assigns(:lamps)).to eq([lamp])
-    end
+    # it "assigns all lamps as @lamps" do
+    #   lamp = Lamp.create! valid_attributes
+    #   get :index, {}, valid_session
+    #   expect(assigns(:lamps)).to eq([lamp])
+    # end
 
     it "allow authenticated access" do
       get :index
