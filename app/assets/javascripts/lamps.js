@@ -35,6 +35,7 @@ var chart = AmCharts.makeChart("chartdiv", {
 
       {
         title: "Temperatura LED 2",
+        compared: true,
         color: '#DB4949',
         fieldMappings: [{
           fromField: "tLed2",
