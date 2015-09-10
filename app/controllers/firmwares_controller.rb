@@ -97,7 +97,7 @@ class FirmwaresController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def firmware_params
-      params.require(:firmware).permit(:file)
+      params.require(:firmware).permit(:file, :filename, :file_content)
     end
 
     def filter_header

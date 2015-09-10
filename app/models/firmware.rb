@@ -1,4 +1,5 @@
 class Firmware < ActiveRecord::Base
+  validates_presence_of :file_content, :filename
   belongs_to :company
   audited allow_mass_assignment: true, associated_with: :company
 
