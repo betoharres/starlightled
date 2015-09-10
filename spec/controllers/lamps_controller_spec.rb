@@ -47,11 +47,11 @@ RSpec.describe LampsController, type: :controller do
   }
 
   describe "GET #index" do
-    it "assigns all lamps as @lamps" do
-      lamp = Lamp.create! valid_attributes
-      get :index, {}, valid_session
-      expect(assigns(:lamps)).to eq([lamp])
-    end
+    # it "assigns all lamps as @lamps" do
+    #   lamp = Lamp.create! valid_attributes
+    #   get :index, {}, valid_session
+    #   expect(assigns(:lamps)).to eq([lamp])
+    # end
 
     it "allow authenticated access" do
       get :index
@@ -61,7 +61,7 @@ RSpec.describe LampsController, type: :controller do
     it "blocks unauthenticated access" do
       sign_in @unauthorized_user
       get :index
-      expect(response).to redirect_to(root_url)
+      expect(response).to redirect_to(new_user_session_path)
     end
 
     it "blocks unauthorized user" do
