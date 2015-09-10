@@ -41,6 +41,14 @@ RSpec.describe FirmwaresController, type: :controller do
   # FirmwaresController. Be sure to keep this updated too.
  let(:valid_session) { {} }
 
+  before :all do
+    @authorized_user = auth_user(ability: :can_all, resource: 'Firmware')
+    @unauthorized_user = auth_user(ability: :can_none, resource: 'Firmware')
+  end
+  before :each do
+    sign_in @authorized_user
+  end
+
   describe "GET #index" do
     it "assigns all firmwares as @firmwares" do
       firmware = Firmware.create! valid_attributes
@@ -88,7 +96,7 @@ RSpec.describe FirmwaresController, type: :controller do
 
       it "redirects to the created firmware" do
         post :create, {:firmware => valid_attributes}, valid_session
-        expect(response).to redirect_to(Firmware.last)
+        expect(response).to redirect_to(firmwares_path)
       end
     end
 
@@ -127,7 +135,7 @@ RSpec.describe FirmwaresController, type: :controller do
       it "redirects to the firmware" do
         firmware = Firmware.create! valid_attributes
         put :update, {:id => firmware.to_param, :firmware => valid_attributes}, valid_session
-        expect(response).to redirect_to(firmware)
+        expect(response).to redirect_to(firmwares_path)
       end
     end
 
