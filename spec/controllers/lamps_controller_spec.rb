@@ -35,8 +35,8 @@ RSpec.describe LampsController, type: :controller do
   let(:valid_session) {}
 
   before :all do
-    @authorized_user = auth_user(:can_all)
-    @unauthorized_user = auth_user(:can_none)
+    @authorized_user = auth_user(ability: :can_all, resource: 'Lamp')
+    @unauthorized_user = auth_user(ability: :can_none, resource: 'Lamp')
   end
   before :each do
     sign_in @authorized_user
