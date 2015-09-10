@@ -33,7 +33,7 @@ RSpec.describe FirmwaresController, type: :controller do
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    {filename: nil, content_type: nil, file_content: nil}
   }
 
   # This should return the minimal set of values that should be in the session
@@ -116,14 +116,18 @@ RSpec.describe FirmwaresController, type: :controller do
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        {
+          filename: "example2.bin",
+          content_type: "application/binary",
+          file_content: "<\x7F\x00 5\x04\"\x00I\x04\"\x00M\x04\"\x00Q\x04\"\x00Q\x04\"\x00Q\x04\"\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00Q\x04\"\x00Q\x04\"",
+        }
       }
 
       it "updates the requested firmware" do
         firmware = Firmware.create! valid_attributes
         put :update, {:id => firmware.to_param, :firmware => new_attributes}, valid_session
         firmware.reload
-        skip("Add assertions for updated state")
+        expect(firmware.filename).to eql new_attributes[:filename]
       end
 
       it "assigns the requested firmware as @firmware" do
