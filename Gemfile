@@ -67,7 +67,6 @@ group :test do
   gem 'shoulda-matchers'
   gem 'cucumber-rails', require: false
   gem 'database_cleaner'
-  gem 'config', '~> 1.0.0.beta3'
 end
 
 group :development do
@@ -82,3 +81,4 @@ end
 
 gem 'newrelic_rpm'
 gem 'appsignal'
+gem 'config', '~> 1.0.0.beta3'
