@@ -1,8 +1,8 @@
 # stub sign_in method https://github.com/plataformatec/devise/wiki/How-To:-Stub-authentication-in-controller-specs
 module ControllerHelpers
 
-  def auth_user(ability = :can_all)
-    permission = FactoryGirl.create(:permission, ability: ability)
+  def auth_user(ability = :can_all, resource = 'Lamp')
+    permission = FactoryGirl.create(:permission, ability: ability, resource: resource)
     authorized_user = FactoryGirl.create(:user, role: permission.role)
     authorized_user.company = FactoryGirl.create(:company, user: authorized_user)
     authorized_user
