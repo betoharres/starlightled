@@ -22,8 +22,8 @@ require 'active_support/core_ext/hash'
 RSpec.describe GatewaysController, type: :controller do
 
   before :all do
-    @authorized_user = auth_user(:can_all, 'Gateway')
-    @unauthorized_user = auth_user(:can_none, 'Gateway')
+    @authorized_user = auth_user(ability: :can_all, resource: 'Gateway')
+    @unauthorized_user = auth_user(ability: :can_none, resource: 'Gateway')
   end
   before :each do
     sign_in @authorized_user
