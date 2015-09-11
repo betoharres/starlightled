@@ -23,7 +23,7 @@ RSpec.describe ProductsController, type: :controller do
   # Product. As you add validations to Product, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    {name: "Product1", model: "ModelLamp1", serial_number: "ABI-200-XSA", mac_address: "000-XXX-XDA", product_code: "FFF", fabrication_date: Date.today, tension_operation: 50 }
+    {name: "Product1", model: "ModelLamp1", serial_number: "ABI-200-XSA", mac_address: "000-XXX-XDA", product_code: "FFF", fabrication_date: Date.today, tension_operation: 50, company_id: FactoryGirl.create(:company, user: @authorized_user).id}
   }
 
   let(:invalid_attributes) {
@@ -33,11 +33,12 @@ RSpec.describe ProductsController, type: :controller do
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # ProductsController. Be sure to keep this updated too.
-
+  before :all do
+    @authorized_user = auth_user(ability: :can_all, resource: 'Product')
+    @unauthorized_user = auth_user(ability: :can_none, resource: 'Product')
+  end
   before :each do
-    authorized_user = auth_user
-    valid_attributes.merge!(company_id: authorized_user.company.id)
-    sign_in(authorized_user)
+    sign_in @authorized_user
   end
 
   describe "GET #index" do
