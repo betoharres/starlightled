@@ -5,6 +5,7 @@ FactoryGirl.define do
     address "MyString"
     phone "MyString"
     email { Faker::Internet.email }
+    user
   end
 
 end

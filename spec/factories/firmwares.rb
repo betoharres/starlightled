@@ -2,8 +2,9 @@ FactoryGirl.define do
   factory :firmware do
     filename "MyString"
     content_type "MyString"
-    file_content ""
+    file_content "<\x7F\x00 5\x04\"\x00I\x04\"\x00M\x04\"\x00Q\x04\"\x00Q\x04\"\x00Q\x04\"\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00Q\x04\"\x00Q\x04\""
     checksum "MyString"
+    company
   end
 
 end
