@@ -1,9 +1,8 @@
 FactoryGirl.define do
   factory :task do
-    execute_at "2015-08-10 14:32:58"
-code 1
-aasm_state "MyString"
-node nil
+    execute_at DateTime.now.utc.to_s
+    code 100
+    aasm_state "waiting"
+    node
   end
-
 end

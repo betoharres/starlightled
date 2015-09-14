@@ -6,7 +6,7 @@ class Task < ActiveRecord::Base
 
   before_save :execute_at_change
 
-  validates_presence_of :code, :node, :company, :attachable_id, :attachable_type
+  validates_presence_of :execute_at, :code, :node, :company, :attachable_id, :attachable_type
 
   audited allow_mass_assignment: true, associated_with: :company, except: :aasm_state
 
