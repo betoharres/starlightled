@@ -5,14 +5,7 @@ RSpec.describe FeaturesController, type: :controller do
   describe "GET #time" do
     it "returns http success" do
       get :time
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-  describe "GET #last_record" do
-    it "returns http success" do
-      get :last_record
-      expect(response).to have_http_status(:success)
+      expect(response.body).to eq(DateTime.now.in_time_zone("Brasilia").to_datetime.to_s)
     end
   end
 
