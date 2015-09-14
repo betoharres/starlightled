@@ -2,9 +2,9 @@
 module ControllerHelpers
 
   def auth_user(options = {})
-    permission = FactoryGirl.create(:permission, ability: options[:ability], resource: options[:resource])
-    authorized_user = FactoryGirl.create(:user, role: permission.role)
-    authorized_user.company = FactoryGirl.create(:company, user: authorized_user)
+    permission ||= FactoryGirl.create(:permission, ability: options[:ability], resource: options[:resource])
+    authorized_user ||= FactoryGirl.create(:user, role: permission.role)
+    authorized_user.company ||= FactoryGirl.create(:company, user: authorized_user)
     authorized_user
   end
 
