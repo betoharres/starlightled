@@ -15,7 +15,6 @@ Rails.application.routes.draw do
   resources :tag_types
   get 'landings/index'
   get 'audits', to: 'audits#index'
-  get 'audits/:id', to: 'audits#show'
 
   resources :firmwares
   resources :permissions
