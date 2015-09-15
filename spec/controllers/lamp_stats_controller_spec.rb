@@ -52,20 +52,20 @@ RSpec.describe LampStatsController, type: :controller do
     end
   end
 
-  describe "GET #new" do
-    it "assigns a new lamp_stat as @lamp_stat" do
-      get :new, {}, valid_session
-      expect(assigns(:lamp_stat)).to be_a_new(LampStat)
-    end
-  end
+  # describe "GET #new" do
+  #   it "assigns a new lamp_stat as @lamp_stat" do
+  #     get :new, {}, valid_session
+  #     expect(assigns(:lamp_stat)).to be_a_new(LampStat)
+  #   end
+  # end
 
-  describe "GET #edit" do
-    it "assigns the requested lamp_stat as @lamp_stat" do
-      lamp_stat = LampStat.create! valid_attributes
-      get :edit, {:id => lamp_stat.to_param}, valid_session
-      expect(assigns(:lamp_stat)).to eq(lamp_stat)
-    end
-  end
+  # describe "GET #edit" do
+  #   it "assigns the requested lamp_stat as @lamp_stat" do
+  #     lamp_stat = LampStat.create! valid_attributes
+  #     get :edit, {:id => lamp_stat.to_param}, valid_session
+  #     expect(assigns(:lamp_stat)).to eq(lamp_stat)
+  #   end
+  # end
 
   describe "POST #create" do
     context "with valid params" do
@@ -81,10 +81,10 @@ RSpec.describe LampStatsController, type: :controller do
         expect(assigns(:lamp_stat)).to be_persisted
       end
 
-      it "redirects to the created lamp_stat" do
-        post :create, {:lamp_stat => valid_attributes}, valid_session
-        expect(response).to redirect_to(LampStat.last)
-      end
+      # it "redirects to the created lamp_stat" do
+      #   post :create, {:lamp_stat => valid_attributes}, valid_session
+      #   expect(response).to redirect_to(LampStat.last)
+      # end
     end
 
     context "with invalid params" do
@@ -93,67 +93,67 @@ RSpec.describe LampStatsController, type: :controller do
         expect(assigns(:lamp_stat)).to be_a_new(LampStat)
       end
 
-      it "re-renders the 'new' template" do
-        post :create, {:lamp_stat => invalid_attributes}, valid_session
-        expect(response).to render_template("new")
-      end
+      # it "re-renders the 'new' template" do
+      #   post :create, {:lamp_stat => invalid_attributes}, valid_session
+      #   expect(response).to render_template("new")
+      # end
     end
   end
 
-  describe "PUT #update" do
-    context "with valid params" do
-      let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
-      }
+  # describe "PUT #update" do
+  #   context "with valid params" do
+  #     let(:new_attributes) {
+  #       skip("Add a hash of attributes valid for your model")
+  #     }
+  #
+  #     it "updates the requested lamp_stat" do
+  #       lamp_stat = LampStat.create! valid_attributes
+  #       put :update, {:id => lamp_stat.to_param, :lamp_stat => new_attributes}, valid_session
+  #       lamp_stat.reload
+  #       skip("Add assertions for updated state")
+  #     end
+  #
+  #     it "assigns the requested lamp_stat as @lamp_stat" do
+  #       lamp_stat = LampStat.create! valid_attributes
+  #       put :update, {:id => lamp_stat.to_param, :lamp_stat => valid_attributes}, valid_session
+  #       expect(assigns(:lamp_stat)).to eq(lamp_stat)
+  #     end
+  #
+  #     it "redirects to the lamp_stat" do
+  #       lamp_stat = LampStat.create! valid_attributes
+  #       put :update, {:id => lamp_stat.to_param, :lamp_stat => valid_attributes}, valid_session
+  #       expect(response).to redirect_to(lamp_stat)
+  #     end
+  #   end
+  #
+  #   context "with invalid params" do
+  #     it "assigns the lamp_stat as @lamp_stat" do
+  #       lamp_stat = LampStat.create! valid_attributes
+  #       put :update, {:id => lamp_stat.to_param, :lamp_stat => invalid_attributes}, valid_session
+  #       expect(assigns(:lamp_stat)).to eq(lamp_stat)
+  #     end
+  #
+  #     it "re-renders the 'edit' template" do
+  #       lamp_stat = LampStat.create! valid_attributes
+  #       put :update, {:id => lamp_stat.to_param, :lamp_stat => invalid_attributes}, valid_session
+  #       expect(response).to render_template("edit")
+  #     end
+  #   end
+  # end
 
-      it "updates the requested lamp_stat" do
-        lamp_stat = LampStat.create! valid_attributes
-        put :update, {:id => lamp_stat.to_param, :lamp_stat => new_attributes}, valid_session
-        lamp_stat.reload
-        skip("Add assertions for updated state")
-      end
-
-      it "assigns the requested lamp_stat as @lamp_stat" do
-        lamp_stat = LampStat.create! valid_attributes
-        put :update, {:id => lamp_stat.to_param, :lamp_stat => valid_attributes}, valid_session
-        expect(assigns(:lamp_stat)).to eq(lamp_stat)
-      end
-
-      it "redirects to the lamp_stat" do
-        lamp_stat = LampStat.create! valid_attributes
-        put :update, {:id => lamp_stat.to_param, :lamp_stat => valid_attributes}, valid_session
-        expect(response).to redirect_to(lamp_stat)
-      end
-    end
-
-    context "with invalid params" do
-      it "assigns the lamp_stat as @lamp_stat" do
-        lamp_stat = LampStat.create! valid_attributes
-        put :update, {:id => lamp_stat.to_param, :lamp_stat => invalid_attributes}, valid_session
-        expect(assigns(:lamp_stat)).to eq(lamp_stat)
-      end
-
-      it "re-renders the 'edit' template" do
-        lamp_stat = LampStat.create! valid_attributes
-        put :update, {:id => lamp_stat.to_param, :lamp_stat => invalid_attributes}, valid_session
-        expect(response).to render_template("edit")
-      end
-    end
-  end
-
-  describe "DELETE #destroy" do
-    it "destroys the requested lamp_stat" do
-      lamp_stat = LampStat.create! valid_attributes
-      expect {
-        delete :destroy, {:id => lamp_stat.to_param}, valid_session
-      }.to change(LampStat, :count).by(-1)
-    end
-
-    it "redirects to the lamp_stats list" do
-      lamp_stat = LampStat.create! valid_attributes
-      delete :destroy, {:id => lamp_stat.to_param}, valid_session
-      expect(response).to redirect_to(lamp_stats_url)
-    end
-  end
+  # describe "DELETE #destroy" do
+  #   it "destroys the requested lamp_stat" do
+  #     lamp_stat = LampStat.create! valid_attributes
+  #     expect {
+  #       delete :destroy, {:id => lamp_stat.to_param}, valid_session
+  #     }.to change(LampStat, :count).by(-1)
+  #   end
+  #
+  #   it "redirects to the lamp_stats list" do
+  #     lamp_stat = LampStat.create! valid_attributes
+  #     delete :destroy, {:id => lamp_stat.to_param}, valid_session
+  #     expect(response).to redirect_to(lamp_stats_url)
+  #   end
+  # end
 
 end

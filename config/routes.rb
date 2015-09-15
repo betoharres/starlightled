@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   resources :lamp_stats, only: :create
   resources :lamps, shallow: true do
     get '/600milluminarias', to: 'features#last_record', format: :json
-    resources :lamp_stats
+    resources :lamp_stats, only: [:index, :show]
   end
   resources :gateways
   resources :products
