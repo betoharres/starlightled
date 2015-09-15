@@ -42,6 +42,7 @@ RSpec.describe FirmwaresController, type: :controller do
  let(:valid_session) { {} }
 
   before :all do
+    Firmware.destroy_all
     @authorized_user = auth_user(ability: :can_all, resource: 'Firmware')
     @unauthorized_user = auth_user(ability: :can_none, resource: 'Firmware')
   end
@@ -118,8 +119,6 @@ RSpec.describe FirmwaresController, type: :controller do
       let(:new_attributes) {
         {
           filename: "example2.bin",
-          content_type: "application/binary",
-          file_content: "<\x7F\x00 5\x04\"\x00I\x04\"\x00M\x04\"\x00Q\x04\"\x00Q\x04\"\x00Q\x04\"\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00Q\x04\"\x00Q\x04\"",
         }
       }
 
