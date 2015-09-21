@@ -4,7 +4,7 @@ class Node < ActiveRecord::Base
 
   belongs_to :network
   belongs_to :company
-  validates  :network, presence: true
+  validates  :network, :identifier, presence: true
 
   acts_as_taggable
   audited allow_mass_assignment: true, associated_with: :company
