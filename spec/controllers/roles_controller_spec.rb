@@ -20,15 +20,22 @@ require 'rails_helper'
 
 RSpec.describe RolesController, type: :controller do
 
+  before :all do
+    @authorized_user = auth_user(ability: :can_all, resource: 'Lamp')
+  end
+  before :each do
+    sign_in @authorized_user
+  end
+
   # This should return the minimal set of attributes required to create a valid
   # Role. As you add validations to Role, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    {name: 'MyString', company_id: @authorized_user.company.id}
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    {name: nil}
   }
 
   # This should return the minimal set of values that should be in the session
@@ -40,7 +47,7 @@ RSpec.describe RolesController, type: :controller do
     it "assigns all roles as @roles" do
       role = Role.create! valid_attributes
       get :index, {}, valid_session
-      expect(assigns(:roles)).to eq([role])
+      expect([assigns(:roles).last]).to eq([role])
     end
   end
 
@@ -103,14 +110,14 @@ RSpec.describe RolesController, type: :controller do
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        {name: 'Manager'}
       }
 
       it "updates the requested role" do
         role = Role.create! valid_attributes
         put :update, {:id => role.to_param, :role => new_attributes}, valid_session
         role.reload
-        skip("Add assertions for updated state")
+        expect(role.name).to eql new_attributes[:name]
       end
 
       it "assigns the requested role as @role" do
