@@ -21,7 +21,7 @@ require 'rails_helper'
 RSpec.describe CompaniesController, type: :controller do
 
   before :all do
-    @authorized_user = auth_user(ability: :can_all, resource: 'Lamp')
+    @authorized_user = auth_user(ability: :can_all, resource: 'Company')
   end
   before :each do
     sign_in @authorized_user
@@ -45,10 +45,9 @@ RSpec.describe CompaniesController, type: :controller do
 
   describe "GET #index" do
     it "assigns all companies as @companies" do
-      Company.destroy_all
       company = Company.create! valid_attributes
       get :index, {}, valid_session
-      expect(assigns(:companies)).to eq([company])
+      expect([assigns(:companies).last]).to eq([company])
     end
   end
 

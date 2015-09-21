@@ -21,7 +21,7 @@ require 'rails_helper'
 RSpec.describe RolesController, type: :controller do
 
   before :all do
-    @authorized_user = auth_user(ability: :can_all, resource: 'Lamp')
+    @authorized_user = auth_user(ability: :can_all, resource: 'Role')
   end
   before :each do
     sign_in @authorized_user

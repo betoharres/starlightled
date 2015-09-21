@@ -1,6 +1,5 @@
 class CompaniesController < ApplicationController
-  # before_filter :require_user_signed_in, only: [:new, :edit, :create, :update, :destroy]
-
+  before_filter :require_user_signed_in
   before_action :set_company, only: [:show, :edit, :update, :destroy]
 
   # GET /companies
