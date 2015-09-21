@@ -20,15 +20,22 @@ require 'rails_helper'
 
 RSpec.describe CompaniesController, type: :controller do
 
+  before :all do
+    @authorized_user = auth_user(ability: :can_all, resource: 'Lamp')
+  end
+  before :each do
+    sign_in @authorized_user
+  end
+
   # This should return the minimal set of attributes required to create a valid
   # Company. As you add validations to Company, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    {name: 'MyString', cnpj: '28.417.654/0001-34', address: 'MyString', email: 'test@test.com.br', user_id: @authorized_user.id}
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    {email: nil, name: nil, cnpj: nil}
   }
 
   # This should return the minimal set of values that should be in the session
@@ -38,6 +45,7 @@ RSpec.describe CompaniesController, type: :controller do
 
   describe "GET #index" do
     it "assigns all companies as @companies" do
+      Company.destroy_all
       company = Company.create! valid_attributes
       get :index, {}, valid_session
       expect(assigns(:companies)).to eq([company])
@@ -103,14 +111,14 @@ RSpec.describe CompaniesController, type: :controller do
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        {name: 'Company'}
       }
 
       it "updates the requested company" do
         company = Company.create! valid_attributes
         put :update, {:id => company.to_param, :company => new_attributes}, valid_session
         company.reload
-        skip("Add assertions for updated state")
+        expect(company.name).to eql new_attributes[:name]
       end
 
       it "assigns the requested company as @company" do
