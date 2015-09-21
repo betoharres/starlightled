@@ -20,15 +20,26 @@ require 'rails_helper'
 
 RSpec.describe NodesController, type: :controller do
 
+  before :all do
+    @authorized_user = auth_user(ability: :can_all, resource: 'Node')
+  end
+  before :each do
+    sign_in @authorized_user
+  end
+
   # This should return the minimal set of attributes required to create a valid
   # Node. As you add validations to Node, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    {identifier: 'Nodo1',
+     latitude: -51.0,
+     longitude: -31.0,
+     company_id:@authorized_user.company_id,
+     network_id: FactoryGirl.create(:network, company: @authorized_user.company).id}
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    {identifier: nil, network_id: nil}
   }
 
   # This should return the minimal set of values that should be in the session
@@ -36,13 +47,13 @@ RSpec.describe NodesController, type: :controller do
   # NodesController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
-  describe "GET #index" do
-    it "assigns all nodes as @nodes" do
-      node = Node.create! valid_attributes
-      get :index, {}, valid_session
-      expect(assigns(:nodes)).to eq([node])
-    end
-  end
+  # describe "GET #index" do
+  #   it "assigns all nodes as @nodes" do
+  #     node = Node.create! valid_attributes
+  #     get :index, {}, valid_session
+  #     expect(assigns(:nodes)).to eq([node])
+  #   end
+  # end
 
   describe "GET #show" do
     it "assigns the requested node as @node" do
@@ -52,12 +63,12 @@ RSpec.describe NodesController, type: :controller do
     end
   end
 
-  describe "GET #new" do
-    it "assigns a new node as @node" do
-      get :new, {}, valid_session
-      expect(assigns(:node)).to be_a_new(Node)
-    end
-  end
+  # describe "GET #new" do
+  #   it "assigns a new node as @node" do
+  #     get :new, {}, valid_session
+  #     expect(assigns(:node)).to be_a_new(Node)
+  #   end
+  # end
 
   describe "GET #edit" do
     it "assigns the requested node as @node" do
@@ -67,50 +78,50 @@ RSpec.describe NodesController, type: :controller do
     end
   end
 
-  describe "POST #create" do
-    context "with valid params" do
-      it "creates a new Node" do
-        expect {
-          post :create, {:node => valid_attributes}, valid_session
-        }.to change(Node, :count).by(1)
-      end
-
-      it "assigns a newly created node as @node" do
-        post :create, {:node => valid_attributes}, valid_session
-        expect(assigns(:node)).to be_a(Node)
-        expect(assigns(:node)).to be_persisted
-      end
-
-      it "redirects to the created node" do
-        post :create, {:node => valid_attributes}, valid_session
-        expect(response).to redirect_to(Node.last)
-      end
-    end
-
-    context "with invalid params" do
-      it "assigns a newly created but unsaved node as @node" do
-        post :create, {:node => invalid_attributes}, valid_session
-        expect(assigns(:node)).to be_a_new(Node)
-      end
-
-      it "re-renders the 'new' template" do
-        post :create, {:node => invalid_attributes}, valid_session
-        expect(response).to render_template("new")
-      end
-    end
-  end
+  # describe "POST #create" do
+  #   context "with valid params" do
+  #     it "creates a new Node" do
+  #       expect {
+  #         post :create, {:node => valid_attributes}, valid_session
+  #       }.to change(Node, :count).by(1)
+  #     end
+  #
+  #     it "assigns a newly created node as @node" do
+  #       post :create, {:node => valid_attributes}, valid_session
+  #       expect(assigns(:node)).to be_a(Node)
+  #       expect(assigns(:node)).to be_persisted
+  #     end
+  #
+  #     it "redirects to the created node" do
+  #       post :create, {:node => valid_attributes}, valid_session
+  #       expect(response).to redirect_to(Node.last)
+  #     end
+  #   end
+  #
+  #   context "with invalid params" do
+  #     it "assigns a newly created but unsaved node as @node" do
+  #       post :create, {:node => invalid_attributes}, valid_session
+  #       expect(assigns(:node)).to be_a_new(Node)
+  #     end
+  #
+  #     it "re-renders the 'new' template" do
+  #       post :create, {:node => invalid_attributes}, valid_session
+  #       expect(response).to render_template("new")
+  #     end
+  #   end
+  # end
 
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        {identifier: 'Nodo2'}
       }
 
       it "updates the requested node" do
         node = Node.create! valid_attributes
         put :update, {:id => node.to_param, :node => new_attributes}, valid_session
         node.reload
-        skip("Add assertions for updated state")
+        expect(node.identifier).to eql new_attributes[:identifier]
       end
 
       it "assigns the requested node as @node" do
@@ -152,7 +163,7 @@ RSpec.describe NodesController, type: :controller do
     it "redirects to the nodes list" do
       node = Node.create! valid_attributes
       delete :destroy, {:id => node.to_param}, valid_session
-      expect(response).to redirect_to(nodes_url)
+      expect(response).to redirect_to(networks_url)
     end
   end
 

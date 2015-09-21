@@ -20,15 +20,22 @@ require 'rails_helper'
 
 RSpec.describe NetworksController, type: :controller do
 
+  before :all do
+    @authorized_user = auth_user(ability: :can_all, resource: 'Network')
+  end
+  before :each do
+    sign_in @authorized_user
+  end
+
   # This should return the minimal set of attributes required to create a valid
   # Network. As you add validations to Network, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    {name: 'Rede 1', company_id: @authorized_user.company.id}
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    {name: nil, company_id: nil}
   }
 
   # This should return the minimal set of values that should be in the session
@@ -103,14 +110,14 @@ RSpec.describe NetworksController, type: :controller do
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        {name: 'Rede 2'}
       }
 
       it "updates the requested network" do
         network = Network.create! valid_attributes
         put :update, {:id => network.to_param, :network => new_attributes}, valid_session
         network.reload
-        skip("Add assertions for updated state")
+        expect(network.name).to eql new_attributes[:name]
       end
 
       it "assigns the requested network as @network" do
