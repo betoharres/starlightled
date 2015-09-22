@@ -1,5 +1,6 @@
 class ConfigFilesController < ApplicationController
   before_action :set_config_file, only: [:show, :edit, :update, :destroy]
+  before_filter :require_user_signed_in
 
   # GET /config_files
   # GET /config_files.json

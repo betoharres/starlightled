@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
     else
       if role = current_user.role
         # TODO move the modification to an initializer with all the models in a array
-        model_name = params[:controller].singularize.capitalize
+        model_name = params[:controller].singularize.camelize
         ability_number = Permission.abilities[role.permissions.where(
           resource: model_name).last.ability]
           case params[:action]
