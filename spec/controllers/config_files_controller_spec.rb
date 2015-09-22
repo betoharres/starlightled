@@ -20,15 +20,93 @@ require 'rails_helper'
 
 RSpec.describe ConfigFilesController, type: :controller do
 
+  before :all do
+    @authorized_user = auth_user(ability: :can_all, resource: 'ConfigFile')
+  end
+  before :each do
+    sign_in @authorized_user
+  end
+
   # This should return the minimal set of attributes required to create a valid
   # ConfigFile. As you add validations to ConfigFile, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+
+    {
+      name: "Teste",
+      description: nil,
+      version: nil,
+      content: {"prog"=>
+          {"ver"=>"1",
+          "plans"=>
+            {"off"=>
+              {"extMem"=>[0, 0],
+              "boardLed1"=>[0, 0],
+              "boardLed2"=>[0, 0],
+              "sourceTemp"=>[0, 0],
+              "lightSensor"=>[0, 0],
+              "ucontrolBoardLed1"=>[0, 0],
+              "ucontrolBoardLed2"=>[0, 0]},
+            "delay"=>[8, 3],
+            "dimer"=>[30, 40]},
+          "changes"=>
+            {"day"=>[0, 0, 0, 0, 0, 0],
+            "hou"=>[0, 0, 0, 0, 0, 0],
+            "min"=>[0, 0, 0, 0, 0, 0],
+            "mon"=>[0, 0, 0, 0, 0, 0],
+            "sec"=>[0, 0, 0, 0, 0, 0],
+            "yea"=>[0, 0, 0, 0, 0, 0],
+            "mode"=>[1, 1, 1, 1, 1, 1],
+            "plan"=>[1, 2, 1, 1, 1, 1],
+            "week"=>
+              {"fri"=>[1, 0, 0, 0, 0, 0],
+              "mon"=>[1, 0, 0, 0, 0, 0],
+              "sat"=>[1, 0, 0, 0, 0, 0],
+              "sun"=>[1, 1, 0, 0, 0, 0],
+              "thu"=>[1, 1, 0, 0, 0, 0],
+              "tue"=>[1, 0, 0, 0, 0, 0],
+              "wed"=>[1, 1, 0, 0, 0, 0]}}}}.to_json,
+        company_id: @authorized_user.company.id
+    }
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    {
+      name: nil,
+      description: nil,
+      version: nil,
+      content: {"prog"=>
+          {"ver"=>"1",
+          "plans"=>
+            {"off"=>
+              {"extMem"=>[0, 0],
+              "boardLed1"=>[0, 0],
+              "boardLed2"=>[0, 0],
+              "sourceTemp"=>[0, 0],
+              "lightSensor"=>[0, 0],
+              "ucontrolBoardLed1"=>[0, 0],
+              "ucontrolBoardLed2"=>[0, 0]},
+            "delay"=>[8, 3],
+            "dimer"=>[30, 40]},
+          "changes"=>
+            {"day"=>[0, 0, 0, 0, 0, 0],
+            "hou"=>[0, 0, 0, 0, 0, 0],
+            "min"=>[0, 0, 0, 0, 0, 0],
+            "mon"=>[0, 0, 0, 0, 0, 0],
+            "sec"=>[0, 0, 0, 0, 0, 0],
+            "yea"=>[0, 0, 0, 0, 0, 0],
+            "mode"=>[1, 1, 1, 1, 1, 1],
+            "plan"=>[1, 2, 1, 1, 1, 1],
+            "week"=>
+              {"fri"=>[1, 0, 0, 0, 0, 0],
+              "mon"=>[1, 0, 0, 0, 0, 0],
+              "sat"=>[1, 0, 0, 0, 0, 0],
+              "sun"=>[1, 1, 0, 0, 0, 0],
+              "thu"=>[1, 1, 0, 0, 0, 0],
+              "tue"=>[1, 0, 0, 0, 0, 0],
+              "wed"=>[1, 1, 0, 0, 0, 0]}}}}.to_json,
+        company_id: @authorized_user.company.id
+    }
   }
 
   # This should return the minimal set of values that should be in the session
@@ -71,7 +149,7 @@ RSpec.describe ConfigFilesController, type: :controller do
     context "with valid params" do
       it "creates a new ConfigFile" do
         expect {
-          post :create, {:config_file => valid_attributes}, valid_session
+         post :create, {:config_file => valid_attributes}, valid_session
         }.to change(ConfigFile, :count).by(1)
       end
 
@@ -103,14 +181,14 @@ RSpec.describe ConfigFilesController, type: :controller do
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        {name: 'Teste 2'}
       }
 
       it "updates the requested config_file" do
         config_file = ConfigFile.create! valid_attributes
         put :update, {:id => config_file.to_param, :config_file => new_attributes}, valid_session
         config_file.reload
-        skip("Add assertions for updated state")
+        expect(config_file.name).to eql new_attributes[:name]
       end
 
       it "assigns the requested config_file as @config_file" do
