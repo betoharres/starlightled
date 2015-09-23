@@ -20,15 +20,54 @@ require 'rails_helper'
 
 RSpec.describe LampStatsController, type: :controller do
 
+  before :all do
+    @authorized_user = auth_user(ability: :can_all, resource: 'Lamp')
+  end
+  before :each do
+    sign_in @authorized_user
+  end
+
   # This should return the minimal set of attributes required to create a valid
   # LampStat. As you add validations to LampStat, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    {
+     :serial_num=>123,
+     :date=>DateTime.now,
+     :pwr=>31,
+     :current=>0.0,
+     :volts=>0.0,
+     :tCom=>28.6,
+     :tLed1=>26.7,
+     :tLed2=>26.9,
+     :sLum=>330,
+     :rssiDev=>-37,
+     :lqiDev=>141,
+     :correlationDev=>107,
+     :rssi=>-36,
+     :lqi=>144,
+     :correlation=>108,
+     :sentPkts=>819,
+     :rcvPkts=>816,
+     :lastReboot=>3119,
+     :txPwr=>7,
+     :ctrlRestart=>32784,
+     :vFirmware=>7,
+     :vCmd=>7,
+     :cksCfg=>2819,
+     :appCksErr=>0,
+     :cmdNotImp=>0,
+     :online=>false,
+     :communicating=>true,
+     :sunrise=>"7:06",
+     :sunset=>"17:43",
+     :alerts=>0,
+     :errorsDev=>0
+    }
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    {serial_num: nil}
   }
 
   # This should return the minimal set of values that should be in the session
@@ -39,8 +78,9 @@ RSpec.describe LampStatsController, type: :controller do
   describe "GET #index" do
     it "assigns all lamp_stats as @lamp_stats" do
       lamp_stat = LampStat.create! valid_attributes
-      get :index, {}, valid_session
-      expect(assigns(:lamp_stats)).to eq([lamp_stat])
+      lamp = FactoryGirl.create(:lamp)
+      get :index, {lamp_id: lamp.id }, valid_session
+      expect(assigns(:chart)).to eq([lamp_stat])
     end
   end
 
