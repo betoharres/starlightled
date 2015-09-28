@@ -76,6 +76,7 @@ end
 
 group :production do
   gem 'puma'
+  gem 'dalli'
   gem 'rails_12factor'
 end
 
