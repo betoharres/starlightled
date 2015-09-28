@@ -138,6 +138,7 @@ GEM
       mime-types (>= 1.16, < 3)
       nokogiri (~> 1.5)
       rails (>= 3, < 5)
+    dalli (2.7.4)
     database_cleaner (1.5.0)
     debug_inspector (0.0.2)
     deep_merge (1.0.1)
@@ -354,6 +355,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   config (~> 1.0.0.beta3)
   cucumber-rails
+  dalli
   database_cleaner
   devise!
   dotenv-rails
