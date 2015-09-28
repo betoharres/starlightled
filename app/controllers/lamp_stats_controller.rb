@@ -34,22 +34,12 @@ class LampStatsController < ApplicationController
     # So any POST with a valid serial_num will return it's tasks
     @lamp_stat = LampStat.new(lamp_stat_params)
 
-    product = Product.find_by(serial_number: @lamp_stat.serial_num)
-    if product
-      @tasks = Task.where("execute_at <= ?", DateTime.now.utc)
-                  .where(node: product.node,
-                          aasm_state: :waiting,
-                          company_id: product.company_id)
-                          .order(:execute_at)
-                          .first
-
-      @tasks = @tasks.as_json(only: [:id, :code, :attachable_id])
-                    .merge(serial: product.serial_number) if @tasks
-    end
-
     respond_to do |format|
       if @lamp_stat.save
-        format.html { redirect_to @lamp_stat, notice: 'Lamp stat was successfully created.' }
+        @tasks = Task.cache_tasks @lamp_stat.serial_num
+        @tasks = @tasks.as_json(only: [:id, :code, :attachable_id])
+              .merge(serial: @lamp_stat.serial_num) if @tasks
+        format.html { redirect_to @lamp_stat, notice: 'Status foi criado com sucesso' }
         @tasks ? format.json {render json: @tasks, status: :created} : format.json {head :no_content}
       else
         format.html { render :new }
