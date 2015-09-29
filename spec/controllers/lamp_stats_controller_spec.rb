@@ -115,7 +115,7 @@ RSpec.describe LampStatsController, type: :controller do
         }.to change(LampStat, :count).by(1)
       end
 
-      it "assigns a newly created lamp_stat as @lamp_stat" do
+      it "assigns a newly created lamp_stat as @lamp_stat with pending task" do
         product = FactoryGirl.create(:product, serial_number: 123)
         task = FactoryGirl.create(:task, node: product.node, company: product.company)
         post :create, {:lamp_stat => valid_attributes}, valid_session
