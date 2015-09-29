@@ -117,10 +117,12 @@ RSpec.describe LampStatsController, type: :controller do
 
       it "assigns a newly created lamp_stat as @lamp_stat" do
         product = FactoryGirl.create(:product, serial_number: 123)
-        FactoryGirl.create(:task, node: product.node, company: product.company)
+        task = FactoryGirl.create(:task, node: product.node, company: product.company)
         post :create, {:lamp_stat => valid_attributes}, valid_session
         expect(assigns(:lamp_stat)).to be_a(LampStat)
         expect(assigns(:lamp_stat)).to be_persisted
+        expect(assigns(:tasks)).to be_a(Hash)
+        expect(assigns(:tasks)["id"]).to eq(task.id)
       end
 
       # it "redirects to the created lamp_stat" do

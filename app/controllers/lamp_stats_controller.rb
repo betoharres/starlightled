@@ -38,7 +38,7 @@ class LampStatsController < ApplicationController
       if @lamp_stat.save
         @tasks = Task.cache_tasks @lamp_stat.serial_num
         @tasks = @tasks.as_json(only: [:id, :code, :attachable_id])
-              .merge(serial: @lamp_stat.serial_num) if @tasks
+                       .merge(serial: @lamp_stat.serial_num) if @tasks
         format.html { redirect_to @lamp_stat, notice: 'Status foi criado com sucesso' }
         @tasks ? format.json {render json: @tasks, status: :created} : format.json {head :no_content}
       else
