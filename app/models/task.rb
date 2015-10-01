@@ -5,6 +5,8 @@ class Task < ActiveRecord::Base
   belongs_to :attachable, polymorphic: true
 
   before_save :execute_at_change
+  after_save :flush_cache
+  after_update :flush_cache
   after_commit :flush_cache
 
   validates_presence_of :execute_at, :code, :node, :company, :attachable_id, :attachable_type
