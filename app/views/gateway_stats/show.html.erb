@@ -1,0 +1,89 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Serial num:</strong>
+  <%= @gateway_stat.serial_num %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @gateway_stat.date %>
+</p>
+
+<p>
+  <strong>Onlinedev:</strong>
+  <%= @gateway_stat.onlineDev %>
+</p>
+
+<p>
+  <strong>Signal:</strong>
+  <%= @gateway_stat.signal %>
+</p>
+
+<p>
+  <strong>Lqi:</strong>
+  <%= @gateway_stat.lqi %>
+</p>
+
+<p>
+  <strong>Rssi:</strong>
+  <%= @gateway_stat.rssi %>
+</p>
+
+<p>
+  <strong>Correlation:</strong>
+  <%= @gateway_stat.correlation %>
+</p>
+
+<p>
+  <strong>Rcvpkts:</strong>
+  <%= @gateway_stat.rcvPkts %>
+</p>
+
+<p>
+  <strong>Sentpkts:</strong>
+  <%= @gateway_stat.sentPkts %>
+</p>
+
+<p>
+  <strong>Lastreboot:</strong>
+  <%= @gateway_stat.lastReboot %>
+</p>
+
+<p>
+  <strong>Temp:</strong>
+  <%= @gateway_stat.temp %>
+</p>
+
+<p>
+  <strong>Battery:</strong>
+  <%= @gateway_stat.battery %>
+</p>
+
+<p>
+  <strong>Vkl:</strong>
+  <%= @gateway_stat.vKl %>
+</p>
+
+<p>
+  <strong>Vzigbee:</strong>
+  <%= @gateway_stat.vZigbee %>
+</p>
+
+<p>
+  <strong>Errorscount:</strong>
+  <%= @gateway_stat.errorsCount %>
+</p>
+
+<p>
+  <strong>Alerts:</strong>
+  <%= @gateway_stat.alerts %>
+</p>
+
+<p>
+  <strong>Acpwr:</strong>
+  <%= @gateway_stat.acPwr %>
+</p>
+
+<%= link_to 'Edit', edit_gateway_stat_path(@gateway_stat) %> |
+<%= link_to 'Back', gateway_stats_path %>

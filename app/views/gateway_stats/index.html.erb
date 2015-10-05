@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Gateway Stats</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Serial num</th>
+      <th>Date</th>
+      <th>Onlinedev</th>
+      <th>Signal</th>
+      <th>Lqi</th>
+      <th>Rssi</th>
+      <th>Correlation</th>
+      <th>Rcvpkts</th>
+      <th>Sentpkts</th>
+      <th>Lastreboot</th>
+      <th>Temp</th>
+      <th>Battery</th>
+      <th>Vkl</th>
+      <th>Vzigbee</th>
+      <th>Errorscount</th>
+      <th>Alerts</th>
+      <th>Acpwr</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @gateway_stats.each do |gateway_stat| %>
+      <tr>
+        <td><%= gateway_stat.serial_num %></td>
+        <td><%= gateway_stat.date %></td>
+        <td><%= gateway_stat.onlineDev %></td>
+        <td><%= gateway_stat.signal %></td>
+        <td><%= gateway_stat.lqi %></td>
+        <td><%= gateway_stat.rssi %></td>
+        <td><%= gateway_stat.correlation %></td>
+        <td><%= gateway_stat.rcvPkts %></td>
+        <td><%= gateway_stat.sentPkts %></td>
+        <td><%= gateway_stat.lastReboot %></td>
+        <td><%= gateway_stat.temp %></td>
+        <td><%= gateway_stat.battery %></td>
+        <td><%= gateway_stat.vKl %></td>
+        <td><%= gateway_stat.vZigbee %></td>
+        <td><%= gateway_stat.errorsCount %></td>
+        <td><%= gateway_stat.alerts %></td>
+        <td><%= gateway_stat.acPwr %></td>
+        <td><%= link_to 'Show', gateway_stat %></td>
+        <td><%= link_to 'Edit', edit_gateway_stat_path(gateway_stat) %></td>
+        <td><%= link_to 'Destroy', gateway_stat, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Gateway stat', new_gateway_stat_path %>
