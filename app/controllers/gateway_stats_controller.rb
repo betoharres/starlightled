@@ -27,9 +27,10 @@ class GatewayStatsController < ApplicationController
     @gateway_stat = GatewayStat.new(gateway_stat_params)
 
     respond_to do |format|
+      @tasks = Task.cache_tasks @gateway_stat.serial_num
       if @gateway_stat.save
         format.html { redirect_to @gateway_stat, notice: 'Gateway stat was successfully created.' }
-        format.json { render :show, status: :created, location: @gateway_stat }
+        @tasks ? format.json {render json: @tasks, status: :created} : format.json {head :no_content}
       else
         format.html { render :new }
         format.json { render json: @gateway_stat.errors, status: :unprocessable_entity }
