@@ -3,6 +3,8 @@ require 'rails_helper'
 RSpec.describe LampStatsController, type: :controller do
 
   before :all do
+    Product.destroy_all
+    Lamp.destroy_all
     @authorized_user = auth_user(ability: :can_all, resource: 'Lamp')
   end
   before :each do
