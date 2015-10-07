@@ -29,7 +29,7 @@ class GatewayStatsController < ApplicationController
     respond_to do |format|
       @tasks = Task.cache_tasks @gateway_stat.serial_num
       @tasks = @tasks.as_json(only: [:id, :code, :attachable_id])
-                     .merge(serial: @lamp_stat.serial_num) if @tasks
+                     .merge(serial: @gateway_stat.serial_num) if @tasks
       if @gateway_stat.save
         format.html { redirect_to @gateway_stat, notice: 'Gateway stat was successfully created.' }
         @tasks ? format.json {render json: @tasks, status: :created} : format.json {head :no_content}
