@@ -55,6 +55,7 @@ module Starlight
                                  'audits.js',
                                  'products.js',
                                  'lamp_stats.js',
+                                 'gateway_stats.js',
                                  'tags.js',
                                  'config_files.js',
                                  'tasks.js',
@@ -72,6 +73,7 @@ module Starlight
                                  'audits.css',
                                  'products.css',
                                  'lamp_stats.css',
+                                 'gateway_stats.css',
                                  'tags.css',
                                  'config_files.css',
                                  'tasks.css'

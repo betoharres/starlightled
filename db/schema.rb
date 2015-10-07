@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150901133406) do
+ActiveRecord::Schema.define(version: 20151005182835) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,6 +77,28 @@ ActiveRecord::Schema.define(version: 20150901133406) do
   end
 
   add_index "firmwares", ["company_id"], name: "index_firmwares_on_company_id", using: :btree
+
+  create_table "gateway_stats", force: :cascade do |t|
+    t.integer  "serial_num",  limit: 8
+    t.datetime "date"
+    t.integer  "onlineDev",   limit: 2
+    t.integer  "signal",      limit: 2
+    t.integer  "lqi",         limit: 2
+    t.integer  "rssi",        limit: 2
+    t.integer  "correlation", limit: 2
+    t.integer  "rcvPkts"
+    t.integer  "sentPkts",    limit: 2
+    t.integer  "lastReboot"
+    t.float    "temp"
+    t.integer  "battery",     limit: 2
+    t.integer  "vKl",         limit: 2
+    t.integer  "vZigbee",     limit: 2
+    t.integer  "errorsCount", limit: 2
+    t.integer  "alerts",      limit: 2
+    t.boolean  "acPwr"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
 
   create_table "gateways", force: :cascade do |t|
     t.string   "ip"
@@ -237,7 +259,6 @@ ActiveRecord::Schema.define(version: 20150901133406) do
     t.integer  "company_id"
     t.datetime "created_at",                            null: false
     t.datetime "updated_at",                            null: false
-    t.integer  "serial_gateway",  limit: 8
   end
 
   add_index "tasks", ["attachable_type", "attachable_id"], name: "index_tasks_on_attachable_type_and_attachable_id", using: :btree

@@ -1,0 +1,1 @@
+json.extract! @gateway_stat, :id, :serial_num, :date, :onlineDev, :signal, :lqi, :rssi, :correlation, :rcvPkts, :sentPkts, :lastReboot, :temp, :battery, :vKl, :vZigbee, :errorsCount, :alerts, :acPwr, :created_at, :updated_at

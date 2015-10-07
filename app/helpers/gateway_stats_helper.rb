@@ -1,0 +1,2 @@
+module GatewayStatsHelper
+end
