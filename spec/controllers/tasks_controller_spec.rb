@@ -25,6 +25,7 @@ RSpec.describe TasksController, type: :controller do
 
     @network ||= FactoryGirl.create(:network, company: @authorized_user.company)
     @node ||= FactoryGirl.create(:node, network: @network)
+    @product ||= FactoryGirl.create(:product, node: @node)
     @firmware ||= FactoryGirl.create(:firmware, company: @authorized_user.company)
   end
   before :each do
