@@ -109,14 +109,14 @@ RSpec.describe LampStatsController, type: :controller do
         post :create, {:lamp_stat => valid_attributes}, valid_session
         expect(assigns(:lamp_stat)).to be_a(LampStat)
         expect(assigns(:lamp_stat)).to be_persisted
-        expect(assigns(:tasks)).to be_a(Hash)
-        expect(assigns(:tasks)["id"]).to eq(task.id)
+        # expect(assigns(:tasks)).to be_a(Hash)
+        # expect(assigns(:tasks)["id"]).to eq(task.id)
       end
 
-      # it "redirects to the created lamp_stat" do
-      #   post :create, {:lamp_stat => valid_attributes}, valid_session
-      #   expect(response).to redirect_to(LampStat.last)
-      # end
+      it "redirects to the created lamp_stat" do
+        post :create, {:lamp_stat => valid_attributes}, valid_session
+        expect(response).to redirect_to(LampStat.last)
+      end
     end
 
     context "with invalid params" do
