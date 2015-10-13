@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151005182835) do
+ActiveRecord::Schema.define(version: 20151013143412) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -79,7 +79,7 @@ ActiveRecord::Schema.define(version: 20151005182835) do
   add_index "firmwares", ["company_id"], name: "index_firmwares_on_company_id", using: :btree
 
   create_table "gateway_stats", force: :cascade do |t|
-    t.integer  "serial_num",  limit: 8
+    t.integer  "serial_num",  limit: 8, null: false
     t.datetime "date"
     t.integer  "onlineDev",   limit: 2
     t.integer  "signal",      limit: 2
@@ -108,7 +108,7 @@ ActiveRecord::Schema.define(version: 20151005182835) do
   end
 
   create_table "lamp_stats", force: :cascade do |t|
-    t.integer  "serial_num",     limit: 8
+    t.integer  "serial_num",     limit: 8,  null: false
     t.datetime "date"
     t.integer  "pwr",            limit: 2
     t.float    "current"
