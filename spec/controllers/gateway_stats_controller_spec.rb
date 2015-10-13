@@ -24,11 +24,29 @@ RSpec.describe GatewayStatsController, type: :controller do
   # GatewayStat. As you add validations to GatewayStat, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    {
+     serial_num:5,
+     date: DateTime.now,
+     onlineDev:2,
+     signal:20,
+     lqi:70,
+     rssi:-65,
+     correlation:80,
+     rcvPkts:99,
+     sentPkts:100,
+     lastReboot:4200,
+     temp:25.6,
+     battery:100,
+     vKl:6,
+     vZigbee:6,
+     errorsCount:0,
+     alerts:0,
+     acPwr:true,
+    }
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    {serial_num: nil}
   }
 
   # This should return the minimal set of values that should be in the session
@@ -52,20 +70,20 @@ RSpec.describe GatewayStatsController, type: :controller do
     end
   end
 
-  describe "GET #new" do
-    it "assigns a new gateway_stat as @gateway_stat" do
-      get :new, {}, valid_session
-      expect(assigns(:gateway_stat)).to be_a_new(GatewayStat)
-    end
-  end
+  # describe "GET #new" do
+  #   it "assigns a new gateway_stat as @gateway_stat" do
+  #     get :new, {}, valid_session
+  #     expect(assigns(:gateway_stat)).to be_a_new(GatewayStat)
+  #   end
+  # end
 
-  describe "GET #edit" do
-    it "assigns the requested gateway_stat as @gateway_stat" do
-      gateway_stat = GatewayStat.create! valid_attributes
-      get :edit, {:id => gateway_stat.to_param}, valid_session
-      expect(assigns(:gateway_stat)).to eq(gateway_stat)
-    end
-  end
+  # describe "GET #edit" do
+  #   it "assigns the requested gateway_stat as @gateway_stat" do
+  #     gateway_stat = GatewayStat.create! valid_attributes
+  #     get :edit, {:id => gateway_stat.to_param}, valid_session
+  #     expect(assigns(:gateway_stat)).to eq(gateway_stat)
+  #   end
+  # end
 
   describe "POST #create" do
     context "with valid params" do
@@ -93,67 +111,67 @@ RSpec.describe GatewayStatsController, type: :controller do
         expect(assigns(:gateway_stat)).to be_a_new(GatewayStat)
       end
 
-      it "re-renders the 'new' template" do
-        post :create, {:gateway_stat => invalid_attributes}, valid_session
-        expect(response).to render_template("new")
-      end
+      # it "re-renders the 'new' template" do
+      #   post :create, {:gateway_stat => invalid_attributes}, valid_session
+      #   expect(response).to render_template("new")
+      # end
     end
   end
 
-  describe "PUT #update" do
-    context "with valid params" do
-      let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
-      }
+  # describe "PUT #update" do
+  #   context "with valid params" do
+  #     let(:new_attributes) {
+  #       skip("Add a hash of attributes valid for your model")
+  #     }
+  #
+  #     it "updates the requested gateway_stat" do
+  #       gateway_stat = GatewayStat.create! valid_attributes
+  #       put :update, {:id => gateway_stat.to_param, :gateway_stat => new_attributes}, valid_session
+  #       gateway_stat.reload
+  #       skip("Add assertions for updated state")
+  #     end
+  #
+  #     it "assigns the requested gateway_stat as @gateway_stat" do
+  #       gateway_stat = GatewayStat.create! valid_attributes
+  #       put :update, {:id => gateway_stat.to_param, :gateway_stat => valid_attributes}, valid_session
+  #       expect(assigns(:gateway_stat)).to eq(gateway_stat)
+  #     end
+  #
+  #     it "redirects to the gateway_stat" do
+  #       gateway_stat = GatewayStat.create! valid_attributes
+  #       put :update, {:id => gateway_stat.to_param, :gateway_stat => valid_attributes}, valid_session
+  #       expect(response).to redirect_to(gateway_stat)
+  #     end
+  #   end
+  #
+  #   context "with invalid params" do
+  #     it "assigns the gateway_stat as @gateway_stat" do
+  #       gateway_stat = GatewayStat.create! valid_attributes
+  #       put :update, {:id => gateway_stat.to_param, :gateway_stat => invalid_attributes}, valid_session
+  #       expect(assigns(:gateway_stat)).to eq(gateway_stat)
+  #     end
+  #
+  #     it "re-renders the 'edit' template" do
+  #       gateway_stat = GatewayStat.create! valid_attributes
+  #       put :update, {:id => gateway_stat.to_param, :gateway_stat => invalid_attributes}, valid_session
+  #       expect(response).to render_template("edit")
+  #     end
+  #   end
+  # end
 
-      it "updates the requested gateway_stat" do
-        gateway_stat = GatewayStat.create! valid_attributes
-        put :update, {:id => gateway_stat.to_param, :gateway_stat => new_attributes}, valid_session
-        gateway_stat.reload
-        skip("Add assertions for updated state")
-      end
-
-      it "assigns the requested gateway_stat as @gateway_stat" do
-        gateway_stat = GatewayStat.create! valid_attributes
-        put :update, {:id => gateway_stat.to_param, :gateway_stat => valid_attributes}, valid_session
-        expect(assigns(:gateway_stat)).to eq(gateway_stat)
-      end
-
-      it "redirects to the gateway_stat" do
-        gateway_stat = GatewayStat.create! valid_attributes
-        put :update, {:id => gateway_stat.to_param, :gateway_stat => valid_attributes}, valid_session
-        expect(response).to redirect_to(gateway_stat)
-      end
-    end
-
-    context "with invalid params" do
-      it "assigns the gateway_stat as @gateway_stat" do
-        gateway_stat = GatewayStat.create! valid_attributes
-        put :update, {:id => gateway_stat.to_param, :gateway_stat => invalid_attributes}, valid_session
-        expect(assigns(:gateway_stat)).to eq(gateway_stat)
-      end
-
-      it "re-renders the 'edit' template" do
-        gateway_stat = GatewayStat.create! valid_attributes
-        put :update, {:id => gateway_stat.to_param, :gateway_stat => invalid_attributes}, valid_session
-        expect(response).to render_template("edit")
-      end
-    end
-  end
-
-  describe "DELETE #destroy" do
-    it "destroys the requested gateway_stat" do
-      gateway_stat = GatewayStat.create! valid_attributes
-      expect {
-        delete :destroy, {:id => gateway_stat.to_param}, valid_session
-      }.to change(GatewayStat, :count).by(-1)
-    end
-
-    it "redirects to the gateway_stats list" do
-      gateway_stat = GatewayStat.create! valid_attributes
-      delete :destroy, {:id => gateway_stat.to_param}, valid_session
-      expect(response).to redirect_to(gateway_stats_url)
-    end
-  end
+  # describe "DELETE #destroy" do
+  #   it "destroys the requested gateway_stat" do
+  #     gateway_stat = GatewayStat.create! valid_attributes
+  #     expect {
+  #       delete :destroy, {:id => gateway_stat.to_param}, valid_session
+  #     }.to change(GatewayStat, :count).by(-1)
+  #   end
+  #
+  #   it "redirects to the gateway_stats list" do
+  #     gateway_stat = GatewayStat.create! valid_attributes
+  #     delete :destroy, {:id => gateway_stat.to_param}, valid_session
+  #     expect(response).to redirect_to(gateway_stats_url)
+  #   end
+  # end
 
 end

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :gateway_stats
+  resources :gateway_stats, only: [:index, :show, :create]
   get 'time/gmt'
 
   get 'time/timezone'
