@@ -53,6 +53,7 @@ gem 'bootstrap-glyphicons'
 gem 'chosen-rails'
 gem 'acts-as-taggable-on', '~> 3.4'
 gem 'aasm'
+gem 'devise_token_auth'
 
 group :development, :test do
   gem 'rspec-rails'
