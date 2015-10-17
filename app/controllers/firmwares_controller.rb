@@ -1,6 +1,6 @@
 class FirmwaresController < ApplicationController
   before_action :set_firmware, only: [:show, :edit, :update, :destroy]
-  before_filter :require_user_signed_in, except: :show
+  # before_filter :require_user_signed_in, except: :show
   after_action :filter_header, only: :show
 
   # GET /firmwares
@@ -69,7 +69,7 @@ class FirmwaresController < ApplicationController
   # PATCH/PUT /firmwares/1.json
   def update
     respond_to do |format|
-      if @firmware.update(firmware_params)
+      if @firmware.update(firmware_params) && firmware_params.has_key?(:file)
         format.html { redirect_to firmwares_path, notice: 'Firmware was successfully updated.' }
         format.json { render :show, status: :ok, location: @firmware }
       else
@@ -90,6 +90,13 @@ class FirmwaresController < ApplicationController
   end
 
   private
+    def filter_header
+      white_list = %w(CHECKSUM PARTIAL-CHECKSUM)
+      response.headers.delete_if{|key| !white_list.include? key}
+      response.headers['CHECKSUM'] = Digest::SHA1.hexdigest(@firmware.file_content)
+      response.headers['SIZE'] = @firmware.file_content.size
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_firmware
       @firmware = Firmware.find(params[:id])
@@ -97,13 +104,6 @@ class FirmwaresController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def firmware_params
-      params.require(:firmware).permit(:file, :filename, :file_content)
-    end
-
-    def filter_header
-      white_list = %w(CHECKSUM PARTIAL-CHECKSUM)
-      response.headers.delete_if{|key| !white_list.include? key}
-      response.headers['CHECKSUM'] = Digest::SHA1.hexdigest(@firmware.file_content)
-      response.headers['SIZE'] = @firmware.file_content.size
+      params.require(:firmware).permit(:file, :filename)
     end
 end
