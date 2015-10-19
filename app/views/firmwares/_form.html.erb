@@ -1,18 +1,12 @@
 <%= simple_form_for(@firmware) do |f| %>
   <%= f.error_notification %>
 
-  <% unless @firmware.new_record? %>
-    <div class="form-inputs">
-      <%= f.input :filename %>
-    </div>
-  <% end %>
-
   <div class="form-inputs">
     <%= f.file_field :file %>
   </div>
 
   <br>
   <div class="form-actions">
-    <%= f.button :submit, class: 'btn btn-lg btn-primary' %>
+    <%= f.button :submit, class: 'btn btn-lg btn-block btn-primary' %>
   </div>
 <% end %>

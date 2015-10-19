@@ -91,6 +91,7 @@ RSpec.describe FirmwaresController, type: :controller do
       let(:new_attributes) {
         {
           file: Rack::Test::UploadedFile.new(File.open(File.join(Rails.root, '/tmp/test/example2.bin'))),
+          filename: 'example2.bin',
           checksum: Digest::SHA1.hexdigest(Rack::Test::UploadedFile.new(File.open(File.join(Rails.root, '/tmp/test/example2.bin'))).read)
         }
       }
@@ -99,6 +100,7 @@ RSpec.describe FirmwaresController, type: :controller do
         firmware = Firmware.create! valid_attributes
         put :update, {:id => firmware.to_param, :firmware => new_attributes }, valid_session
         firmware.reload
+        expect(firmware.filename).to eql new_attributes[:filename]
         expect(firmware.checksum).to eql new_attributes[:checksum]
       end
 
