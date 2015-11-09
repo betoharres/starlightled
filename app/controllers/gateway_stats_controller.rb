@@ -4,7 +4,7 @@ class GatewayStatsController < ApplicationController
   # GET /gateway_stats
   # GET /gateway_stats.json
   def index
-    @gateway_stats = GatewayStat.all
+    @gateway_stats = GatewayStat.all.where(created_at: 24.hours.from_now)
   end
 
   # GET /gateway_stats/1
