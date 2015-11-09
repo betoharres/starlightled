@@ -30,4 +30,11 @@
     <td><%= @task.node.product.name %></td>
   </tr>
 
+  <% if @task.description %>
+    <tr>
+      <th class="row">Descricao:</th>
+      <td><%= @task.description %></td>
+    </tr>
+  <% end %>
+
 </table>
