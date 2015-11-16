@@ -34,6 +34,7 @@ RSpec.describe ProductsController, type: :controller do
   # in order to pass any filters (e.g. authentication) defined in
   # ProductsController. Be sure to keep this updated too.
   before :all do
+    Product.delete_all
     @authorized_user = auth_user(ability: :can_all, resource: 'Product')
     @unauthorized_user = auth_user(ability: :can_none, resource: 'Product')
   end
