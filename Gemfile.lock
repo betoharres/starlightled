@@ -184,6 +184,7 @@ GEM
       guard (~> 2.0)
       guard-compat (~> 1.0)
       spork (>= 0.8.4)
+    hashie (3.4.3)
     hike (1.2.3)
     i18n (0.7.0)
     jbuilder (2.3.1)
@@ -216,6 +217,9 @@ GEM
     notiffany (0.0.7)
       nenv (~> 0.1)
       shellany (~> 0.0)
+    omniauth (1.2.2)
+      hashie (>= 1.2, < 4)
+      rack (~> 1.0)
     orm_adapter (0.5.0)
     pg (0.18.3)
     pry (0.10.1)
@@ -370,6 +374,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   newrelic_rpm
+  omniauth
   pg
   pry-rails
   puma
@@ -389,4 +394,4 @@ DEPENDENCIES
   validates_formatting_of
 
 BUNDLED WITH
-   1.10.3
+   1.10.6

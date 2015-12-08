@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151013143412) do
+ActiveRecord::Schema.define(version: 20151207173401) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,9 +45,10 @@ ActiveRecord::Schema.define(version: 20151013143412) do
     t.string   "address"
     t.string   "phone"
     t.string   "email"
-    t.integer  "user_id",    null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "user_id",     null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "company_key"
   end
 
   add_index "companies", ["user_id"], name: "index_companies_on_user_id", using: :btree
@@ -77,6 +78,34 @@ ActiveRecord::Schema.define(version: 20151013143412) do
   end
 
   add_index "firmwares", ["company_id"], name: "index_firmwares_on_company_id", using: :btree
+
+  create_table "gateway_auths", force: :cascade do |t|
+    t.string   "provider",                                      null: false
+    t.string   "uid",                              default: "", null: false
+    t.integer  "serial_number",          limit: 8,              null: false
+    t.string   "encrypted_password",               default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",                    default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email"
+    t.string   "email"
+    t.text     "tokens"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "gateway_auths", ["email"], name: "index_gateway_auths_on_email", using: :btree
+  add_index "gateway_auths", ["reset_password_token"], name: "index_gateway_auths_on_reset_password_token", unique: true, using: :btree
+  add_index "gateway_auths", ["serial_number"], name: "index_gateway_auths_on_serial_number", using: :btree
+  add_index "gateway_auths", ["uid", "provider"], name: "index_gateway_auths_on_uid_and_provider", unique: true, using: :btree
 
   create_table "gateway_stats", force: :cascade do |t|
     t.integer  "serial_num",  limit: 8, null: false
