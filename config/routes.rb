@@ -52,4 +52,7 @@ Rails.application.routes.draw do
     get    "account" => "users/registrations#edit",   as: :edit_user_registration
   end
 
+  mount_devise_token_auth_for 'Gateway', at: 'gateway_auth',
+                                  controllers: {sessions: 'overrides/sessions'},
+                                  skip: [:omniauth_callbacks, :registrations]
 end

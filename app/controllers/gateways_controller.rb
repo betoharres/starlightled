@@ -27,6 +27,8 @@ class GatewaysController < ApplicationController
   # POST /gateways.json
   def create
     @gateway = Gateway.new(gateway_params)
+    @gateway.uid = gateway_params[:email]
+    @gateway.provider = 'email'
     @gateway.product.company_id = current_user.company.id if @gateway.product
     current_user.company.tag(@gateway, with: gateway_params[:tag_list], on: current_user.company.name.parameterize.underscore.to_sym)
 
@@ -76,6 +78,6 @@ class GatewaysController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def gateway_params
-      params.require(:gateway).permit(:ip, :url_connection, :tag_list, product_attributes: [:name, :model, :serial_number, :mac_address, :product_code, :fabrication_date, :tension_operation, :node_id])
+      params.require(:gateway).permit(:email, :password, :password_confirmation, :ip, :url_connection, :tag_list, product_attributes: [:name, :model, :serial_number, :mac_address, :product_code, :fabrication_date, :tension_operation, :node_id])
     end
 end

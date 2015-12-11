@@ -54,6 +54,7 @@ gem 'chosen-rails'
 gem 'acts-as-taggable-on', '~> 3.4'
 gem 'aasm'
 gem 'devise_token_auth'
+gem 'omniauth'
 
 group :development, :test do
   gem 'rspec-rails'
