@@ -1,10 +1,9 @@
-class DeviseTokenAuthCreateGatewayAuths < ActiveRecord::Migration
+class ChangeGatewaysTable < ActiveRecord::Migration
   def change
-    create_table(:gateway_auths) do |t|
+    change_table(:gateways) do |t|
       ## Required
-      t.string :provider, :null => false
+      t.string :provider, :null => false, default: "email"
       t.string :uid, :null => false, :default => ""
-      t.bigint :serial_number, index: true, null: false
 
       ## Database authenticatable
       t.string :encrypted_password, :null => false, :default => ""
@@ -39,14 +38,11 @@ class DeviseTokenAuthCreateGatewayAuths < ActiveRecord::Migration
 
       ## Tokens
       t.text :tokens
-
-      t.timestamps
     end
 
-    add_index :gateway_auths, :email
-    add_index :gateway_auths, [:uid, :provider],     :unique => true
-    add_index :gateway_auths, :reset_password_token, :unique => true
-    # add_index :gateway_auths, :confirmation_token,   :unique => true
-    # add_index :gateway_auths, :unlock_token,         :unique => true
+    add_index :gateways, :email
+    add_index :gateways, [:uid, :provider],     :unique => true
+    add_index :gateways, :reset_password_token, :unique => true
+
   end
 end
