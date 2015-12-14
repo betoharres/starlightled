@@ -127,7 +127,6 @@ ActiveRecord::Schema.define(version: 20151208170503) do
 
   add_index "gateways", ["email"], name: "index_gateways_on_email", using: :btree
   add_index "gateways", ["reset_password_token"], name: "index_gateways_on_reset_password_token", unique: true, using: :btree
-  add_index "gateways", ["uid", "provider"], name: "index_gateways_on_uid_and_provider", unique: true, using: :btree
 
   create_table "lamp_stats", force: :cascade do |t|
     t.integer  "serial_num",     limit: 8,  null: false

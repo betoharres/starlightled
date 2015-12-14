@@ -41,7 +41,9 @@ class ChangeGatewaysTable < ActiveRecord::Migration
     end
 
     add_index :gateways, :email
-    add_index :gateways, [:uid, :provider],     :unique => true
+    # This is not going to run because uid will be always blank when adding
+    # this column to all Gateways records, resulting in unique error
+    # add_index :gateways, [:uid, :provider],     :unique => true
     add_index :gateways, :reset_password_token, :unique => true
 
   end
