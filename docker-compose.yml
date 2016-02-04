@@ -1,0 +1,19 @@
+server:
+  build: ./nginx/
+  container_name: starlight_server
+  ports:
+    - "80:80"
+  links:
+    - web:web
+db:
+  image: postgres
+web:
+  build: .
+  command: bin/rails server -e staging -p 3000 -b 0.0.0.0
+  env_file: .env
+  volumes:
+    - .:/myapp
+  ports:
+    - "3000:3000"
+  links:
+    - db
