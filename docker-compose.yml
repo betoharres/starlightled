@@ -1,8 +1,8 @@
 server:
   build: ./nginx/
-  container_name: starlight_server
   ports:
     - "80:80"
+    - "443:443"
   links:
     - web:web
 db:
