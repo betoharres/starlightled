@@ -3,9 +3,11 @@ module Overrides
     before_action :configure_permitted_parameters
 
     def create
-      unless Company.find_by(company_key: params[:company_key].to_s) &&
-              Product.find_by(serial_number: params[:serial_number])
-        raise 'Invalid company_key or serial_number'
+      gateway = Product.find_by(serial_number: params[:serial_number],
+                          company_id: params[:company_key])
+
+      unless gateway && gateway.productable_type == 'Gateway'
+        raise "Invalid company_key or serial_number - #{gateway.inspect}"
       end
       super
     end
