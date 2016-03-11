@@ -1,6 +1,6 @@
 module Api
   module V1
-    class TimeController < Api::V1::ApplicationController
+    class TimeController < ApplicationController
       include DeviseTokenAuth::Concerns::SetUserByToken
       before_action :authenticate_gateway!
 
