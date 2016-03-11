@@ -7,7 +7,7 @@ module Overrides
                           company_id: params[:company_key])
 
       unless gateway && gateway.productable_type == 'Gateway'
-        raise "Invalid company_key or serial_number - #{gateway.inspect}"
+        render status: :unauthorized
       end
       super
     end

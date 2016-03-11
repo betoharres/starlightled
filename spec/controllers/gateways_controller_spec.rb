@@ -33,7 +33,7 @@ RSpec.describe GatewaysController, type: :controller do
   # Gateway. As you add validations to Gateway, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    {password: 12345678, password_confirmation: 12345678, ip: "70.11.214.35", url_connection: "localhost", product_attributes: {name: "Product", model: "ModelGateway", serial_number: rand(1000..50000), mac_address: "000-XXX-XDA", product_code: "FFF", fabrication_date: Date.today, tension_operation: 50, company_id: FactoryGirl.create(:company, user: @authorized_user).id}}
+    {email: 'gateway@test.com.br', password: 12345678, password_confirmation: 12345678, ip: "70.11.214.35", url_connection: "localhost", product_attributes: {name: "Product", model: "ModelGateway", serial_number: rand(1000..50000), mac_address: "000-XXX-XDA", product_code: "FFF", fabrication_date: Date.today, tension_operation: 50, company_id: FactoryGirl.create(:company, user: @authorized_user).id}}
   }
 
   let(:invalid_attributes) {

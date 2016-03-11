@@ -1,4 +1,5 @@
 class LampStatsController < ApplicationController
+  before_filter :require_user_signed_in
   before_action :set_lamp_stat, only: [:show, :edit, :update, :destroy]
   before_action :set_lamp     , only: [:index]
 

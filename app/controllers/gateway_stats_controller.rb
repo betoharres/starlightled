@@ -1,4 +1,5 @@
 class GatewayStatsController < ApplicationController
+  before_filter :require_user_signed_in
   before_action :set_gateway_stat, only: [:show, :edit, :update, :destroy]
 
   # GET /gateway_stats

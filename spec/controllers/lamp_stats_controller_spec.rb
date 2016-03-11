@@ -5,8 +5,9 @@ RSpec.describe LampStatsController, type: :controller do
   before :all do
     Product.destroy_all
     Lamp.destroy_all
-    @authorized_user = auth_user(ability: :can_all, resource: 'Lamp')
+    @authorized_user = auth_user(ability: :can_all, resource: 'LampStat')
   end
+
   before :each do
     sign_in @authorized_user
   end

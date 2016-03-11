@@ -20,6 +20,15 @@ require 'rails_helper'
 
 RSpec.describe PermissionsController, type: :controller do
 
+  before :all do
+    Permission.destroy_all
+    @authorized_user = auth_user(ability: :can_all, resource: 'Permission')
+  end
+
+  before :each do
+    sign_in @authorized_user
+  end
+
   # This should return the minimal set of attributes required to create a valid
   # Permission. As you add validations to Permission, be sure to
   # adjust the attributes here as well.

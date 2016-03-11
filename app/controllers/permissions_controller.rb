@@ -1,5 +1,6 @@
 class PermissionsController < ApplicationController
   before_action :set_permission, only: [:show, :edit, :update, :destroy]
+  before_filter :require_user_signed_in
 
   # GET /permissions
   # GET /permissions.json

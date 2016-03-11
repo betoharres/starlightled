@@ -20,5 +20,6 @@ RUN bundle install --jobs=4
 
 # copy over remaining app files
 ADD . $APP_HOME
+RUN touch tmp/pids/puma.pid
 
 EXPOSE 3000
