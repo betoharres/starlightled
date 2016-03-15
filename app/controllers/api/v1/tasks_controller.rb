@@ -1,6 +1,6 @@
 module Api
   module V1
-    class TasksController < ApplicationController
+    class TasksController < BaseController
       before_action :authenticate_gateway!, only: :update
       before_action :set_task, only: [:show, :edit, :update, :destroy]
       before_action :set_config_file, only: [:new, :edit, :create]

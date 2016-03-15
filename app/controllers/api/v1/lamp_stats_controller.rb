@@ -1,6 +1,6 @@
 module Api
   module V1
-    class LampStatsController < ApplicationController
+    class LampStatsController < BaseController
       before_action :authenticate_gateway!, only: [:create]
       before_action :set_lamp_stat, only: [:show, :edit, :update, :destroy]
       before_action :set_lamp     , only: [:index]

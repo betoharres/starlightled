@@ -1,6 +1,6 @@
 module Api
   module V1
-    class GatewayStatsController < ApplicationController
+    class GatewayStatsController < BaseController
       before_action :authenticate_gateway!, only: [:create]
       before_filter :require_user_signed_in, except: [:create]
       before_action :set_gateway_stat, only: [:show, :edit, :update, :destroy]
