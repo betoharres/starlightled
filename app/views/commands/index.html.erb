@@ -13,7 +13,7 @@
   <tbody>
     <% @commands.each do |command| %>
       <tr>
-        <td><%= link_to command.name.to_s, command.name, class: 'btn btn-link btn-lg' %></td>
+        <td><%= link_to command.name.to_s, command, class: 'btn btn-link btn-lg' %></td>
         <td><%= link_to 'Visualizar', command, class: 'btn btn-default btn-lg' %></td>
         <td><%= link_to 'Editar', edit_command_path(command), class: 'btn btn-warning btn-lg' %></td>
         <td><%= link_to 'Deletar', command, method: :delete, data: { confirm: 'Tem certeza?' }, class: 'btn btn-danger btn-lg' %></td>
