@@ -3,6 +3,7 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
   before_action :set_config_file, only: [:new, :edit, :create]
   before_action :set_firmware, only: [:new, :edit, :create]
+  before_action :set_command, only: [:new, :edit, :create]
 
   # GET /tasks
   # GET /tasks.json
@@ -75,6 +76,10 @@ class TasksController < ApplicationController
 
     def set_config_file
       @config_files = ConfigFile.where(company: current_user.company)
+    end
+
+    def set_command
+      @commands = Command.where(company: current_user.company)
     end
 
     # Use callbacks to share common setup or constraints between actions.
