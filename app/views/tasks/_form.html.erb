@@ -8,11 +8,14 @@
     <hr>
 
     <%= f.label :code, 'Tipo de Ação' %>
-    <%= f.select :code, [['Troca de Configuração da Luminária', 100],['Troca de Firmware', 200]], {include_blank: 'Selecione uma Ação'}, {class: 'chosen-select'} %>
+    <%= f.select :code, [['Troca de Configuração da Luminária', 100],
+                         ['Troca de Firmware', 200],
+                         ['Enviar Comando', 300]], {include_blank: 'Selecione uma Ação'}, {class: 'chosen-select'} %>
 
     <%= f.input :attachable_type, as: :hidden %>
 
-    <%= content_tag :div, "", id: "code-data", data: {firmware: @firmwares.collect {|firmware| [ firmware.filename, firmware.id ] }, config_file: @config_files.collect {|config| [ config.name, config.id ] }} %>
+    <%= content_tag :div, "", id: "code-data", data: {firmware: @firmwares.collect {|firmware| [ firmware.filename, firmware.id ] }, config_file: @config_files.collect {|config| [ config.name, config.id ] },
+       command: @commands.collect {|command| [ command.name, config.id ]}} %>
 
     <hr>
 

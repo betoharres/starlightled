@@ -19,6 +19,14 @@ $('#task_code').on 'change', ->
       $('#task_attachable_id').append($('<option>', {value: v[1],text: v[0]}))
     $('#task_attachable_id').trigger("chosen:updated")
     $('#task_attachable_type').val('Firmware')
+  else if $('#task_code').val() == '300'
+    $('#attachable-select').show()
+    $('#task_attachable_id').empty()
+    $('#task_attachable_id').append($('<option>', {value: '',text: 'Selecione um Comando'}))
+    $.each $('#code-data').data('command'), (k, v) ->
+      $('#task_attachable_id').append($('<option>', {value: v[1],text: v[0]}))
+    $('#task_attachable_id').trigger("chosen:updated")
+    $('#task_attachable_type').val('Command')
   else
     $('#attachable-select').hide()
     $('#task_attachable_id').empty()

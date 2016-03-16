@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :tag_types
   resources :permissions
   resources :roles
+  resources :commands
 
   resources :gateway_stats, only: [:index, :show]
   resources :lamps, shallow: true do

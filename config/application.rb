@@ -60,6 +60,7 @@ module Starlight
                                  'tags.js',
                                  'config_files.js',
                                  'tasks.js',
+                                 'commands.js',
                                  # Stylesheets
                                  'permissions.css',
                                  'roles.css',
@@ -77,7 +78,8 @@ module Starlight
                                  'gateway_stats.css',
                                  'tags.css',
                                  'config_files.css',
-                                 'tasks.css'
+                                 'tasks.css',
+                                 'commands.css'
                                 ]
 
 
