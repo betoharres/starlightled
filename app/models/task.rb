@@ -11,7 +11,7 @@ class Task < ActiveRecord::Base
 
   validates_presence_of :execute_at, :code, :node, :company, :attachable_id, :attachable_type
 
-  audited allow_mass_assignment: true, associated_with: :company, except: [:aasm_state, :descrption]
+  # audited allow_mass_assignment: true, associated_with: :company, except: [:aasm_state, :descrption]
 
   aasm do
     state :waiting, :initial => true
