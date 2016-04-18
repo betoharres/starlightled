@@ -14,6 +14,21 @@
     </a>
   </div>
 <% end %>
+
+<% if @alarms.count > 0 %>
+  <div class="panel panel-danger">
+    <div class="panel-heading">Alarmes</div>
+    <div class="panel-body">
+    <% @alarms.each do |alarm| %>
+      <p><%= link_to alarm.title, alarm, class: 'btn btn-danger' %></p>
+    <% end %>
+    </div>
+    <div class="panel-footer">
+      <%= "<span class=\"badge\">#{@alarms.count}</span> Alarmes" %>
+    </div>
+  </div>
+<% end %>
+
 <div class="fieldset">
   <dl>
       <% if @product.node %>

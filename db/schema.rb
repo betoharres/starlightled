@@ -11,10 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160316181036) do
+ActiveRecord::Schema.define(version: 20160415195310) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "alarms", force: :cascade do |t|
+    t.integer  "code",        limit: 2
+    t.string   "title"
+    t.string   "description"
+    t.integer  "company_id"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
+  add_index "alarms", ["company_id"], name: "index_alarms_on_company_id", using: :btree
 
   create_table "audits", force: :cascade do |t|
     t.integer  "auditable_id"
@@ -319,6 +330,7 @@ ActiveRecord::Schema.define(version: 20160316181036) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["role_id"], name: "index_users_on_role_id", using: :btree
 
+  add_foreign_key "alarms", "companies"
   add_foreign_key "commands", "companies"
   add_foreign_key "config_files", "companies"
   add_foreign_key "firmwares", "companies"

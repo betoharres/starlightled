@@ -61,6 +61,7 @@ module Starlight
                                  'config_files.js',
                                  'tasks.js',
                                  'commands.js',
+                                 'alarms.js',
                                  # Stylesheets
                                  'permissions.css',
                                  'roles.css',
@@ -79,7 +80,8 @@ module Starlight
                                  'tags.css',
                                  'config_files.css',
                                  'tasks.css',
-                                 'commands.css'
+                                 'commands.css',
+                                 'alarms.css'
                                 ]
 
 

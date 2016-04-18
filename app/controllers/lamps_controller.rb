@@ -15,6 +15,13 @@ class LampsController < ApplicationController
     @chart = LampStat.where(serial_num: @product.serial_number)
                      .where(date: 7.days.ago..DateTime.now)
                      .order(:date)
+
+    alarms = Alarm.all.where(company: current_user.company)
+    last_status = @chart.last
+    @alarms = []
+    alarms.each do |alarm|
+      @alarms << alarm if ( last_status.ctrlRestart & alarm.code)
+    end
   end
 
   # GET /lamps/new

@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<div class="fieldset">
+  <dl>
+      <dd><pre class="prettyprint">Codigo</pre></dd>
+      <dt class="label label-default"><%= @alarm.code %></dt>
+  </dl>
+</div>
+
+<div class="fieldset">
+  <dl>
+      <dd><pre class="prettyprint">Titulo</pre></dd>
+      <dt class="label label-default"><%= @alarm.title %></dt>
+  </dl>
+</div>
+
+<div class="fieldset">
+  <dl>
+      <dd><pre class="prettyprint">Descricao</pre></dd>
+      <dt class="label label-default"><%= @alarm.description %></dt>
+  </dl>
+</div>
+
+<%= link_to 'Editar', edit_alarm_path(@alarm), class: 'btn btn-warning btn-lg' %> |
