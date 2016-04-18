@@ -17,7 +17,7 @@ class LampsController < ApplicationController
                      .order(:date)
 
     @alarms = []
-    alarms = Alarm.where(company: current_user.company)
+    alarms = Alarm.where(company_id: current_user.company.id)
     if alarms
       last_status = @chart.last
       alarms.each do |alarm|
