@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @config_file.name %>
+</p>
+
+<p>
+  <strong>Version:</strong>
+  <%= @config_file.version %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @config_file.content %>
+</p>
+
+<p>
+  <strong>Company:</strong>
+  <%= @config_file.company %>
+</p>
+
+<%= link_to 'Edit', edit_config_file_path(@config_file) %> |
+<%= link_to 'Back', config_files_path %>
