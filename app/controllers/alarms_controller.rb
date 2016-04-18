@@ -5,7 +5,7 @@ class AlarmsController < ApplicationController
   # GET /alarms
   # GET /alarms.json
   def index
-    @alarms = Alarm.all.where(company: current_user.company)
+    @alarms = Alarm.all.where(company_id: current_user.company.id)
   end
 
   # GET /alarms/1
