@@ -16,11 +16,13 @@ class LampsController < ApplicationController
                      .where(date: 7.days.ago..DateTime.now)
                      .order(:date)
 
-    alarms = Alarm.all.where(company: current_user.company)
-    last_status = @chart.last
     @alarms = []
-    alarms.each do |alarm|
-      @alarms << alarm if ( last_status.ctrlRestart & alarm.code)
+    alarms = Alarm.where(company: current_user.company)
+    if alarms
+      last_status = @chart.last
+      alarms.each do |alarm|
+        @alarms << alarm if ( last_status.ctrlRestart & alarm.code)
+      end
     end
   end
 
