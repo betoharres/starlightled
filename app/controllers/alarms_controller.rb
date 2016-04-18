@@ -26,7 +26,7 @@ class AlarmsController < ApplicationController
   # POST /alarms.json
   def create
     @alarm = Alarm.new(alarm_params)
-    @alarm.company = current_user.company
+    @alarm.company_id = current_user.company.id
 
     respond_to do |format|
       if @alarm.save
