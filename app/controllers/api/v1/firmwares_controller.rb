@@ -98,6 +98,7 @@ module Api
           response.headers.delete_if{|key| !white_list.include? key}
           response.headers['CHECKSUM'] = Digest::SHA1.hexdigest(@firmware.file_content)
           response.headers['SIZE'] = @firmware.file_content.size
+          response.headers.delete('Set-Cookie')
         end
 
         # Use callbacks to share common setup or constraints between actions.
