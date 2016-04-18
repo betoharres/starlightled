@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
-<h1><%= link_to "<em class=\"icon-flag\"></em> Alarmes > Alarm ##{@alarm.id}".html_safe, alarms_path %></h1>
+<h1><%= link_to "<em class=\"icon-flag\"></em> Alarmes".html_safe, alarms_path %>
+ <%= "> Alarm ##{@alarm.id}" %>
+</h1>
 
 <div class="fieldset">
   <dl>
