@@ -13,12 +13,13 @@ Rails.application.routes.draw do
   resources :roles
   resources :commands
 
-  resources :gateway_stats, only: [:index, :show]
+  resources :gateway_stats, only: [:index, :show, :create]
   resources :lamps, shallow: true do
     get '/600milluminarias', to: 'features#last_record', format: :json
     resources :lamp_stats, only: [:index, :show]
   end
 
+  resources :lamp_stats, only: [:create]
   resources :gateways
   resources :products
   resources :companies
