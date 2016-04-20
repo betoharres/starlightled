@@ -38,9 +38,7 @@
         <% end %>
         </td>
         <td>
-          <%= link_to lamp_path(lamp), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Confirmar?')) }, :class => 'btn btn-xs', :title => "Excluir" do %>
-            <%= glyph 'remove' %>
-          <%- end -%>
+          <td><%= link_to 'Deletar', lamp, method: :delete, data: { confirm: 'Tem certeza?' }, class: 'btn btn-danger btn-lg' %></td>
         </td>
       </tr>
     <% end %>
