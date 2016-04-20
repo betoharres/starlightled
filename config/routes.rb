@@ -24,6 +24,8 @@ Rails.application.routes.draw do
   resources :products
   resources :companies
   resources :firmwares
+  get 'time/gmt'
+  get 'time/timezone'
 
   resources :networks, shallow: true do
     resources :nodes
