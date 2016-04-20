@@ -13,10 +13,7 @@
       <th>Endereço MAC</th>
       <th>Código do produto</th>
       <th>Data de fabricação</th>
-      <!-- <th><!&#45;&#45;<%= model_class.human_attribute_name(:font_type) %>&#45;&#45;>Tipo de fonte</th> -->
-      <!-- <th><!&#45;&#45;<%= model_class.human_attribute_name(:font_subtype) %>&#45;&#45;>Subtipo de fonte</th> -->
-      <!-- <th><!&#45;&#45;<%= model_class.human_attribute_name(:created_at) %>&#45;&#45;>Criado em</th> -->
-      <th><!--<%=t '.actions', :default => t("helpers.actions") %>-->Visualizar</th>
+      <th>Visualizar</th>
       <th><!--<%=t '.actions', :default => t("helpers.actions") %>-->Remover</th>
     </tr>
   </thead>
@@ -37,9 +34,7 @@
           <%= glyph 'info-sign' %>
         <% end %>
         </td>
-        <td>
-          <td><%= link_to 'Deletar', lamp, method: :delete, data: { confirm: 'Tem certeza?' }, class: 'btn btn-danger' %></td>
-        </td>
+        <td><%= link_to 'Deletar', lamp, method: :delete, data: { confirm: 'Tem certeza?' }, class: 'btn btn-danger' %></td>
       </tr>
     <% end %>
   </tbody>
