@@ -11,10 +11,21 @@ class LampsController < ApplicationController
   # GET /lamps/1
   # GET /lamps/1.json
   def show
+    old_serials = {71055922=> 49, 71057043 => 48, 71057096 => 10, 71065718 => 14}
+
     @product = @lamp.product
-    @chart = LampStat.where(serial_num: @product.serial_number)
-                     .where(date: 7.days.ago..DateTime.now)
-                     .order(:date)
+    serial = @product.serial_number
+
+    if old_serials[serial]
+     @chart = LampStat.where(serial_num: serial)
+                      .where(serial_num: old_serials[serial])
+                      .where(date: 7.days.ago..DateTime.now)
+                      .order(:date) 
+    else
+      @chart = LampStat.where(serial_num: serial)
+                      .where(date: 7.days.ago..DateTime.now)
+                      .order(:date)
+    end
 
     @alarms = []
     alarms = Alarm.where(company_id: current_user.company.id)

@@ -1,6 +1,6 @@
 class CommandsController < ApplicationController
   before_action :set_command, only: [:show, :edit, :update, :destroy]
-  before_filter :require_user_signed_in
+  before_filter :require_user_signed_in, except: [:show]
 
   # GET /commands
   # GET /commands.json

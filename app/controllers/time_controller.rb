@@ -1,5 +1,4 @@
 class TimeController < ApplicationController
-  before_action :require_user_signed_in
 
   def gmt
     time = DateTime.now.utc.to_s

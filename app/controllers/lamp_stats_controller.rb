@@ -1,14 +1,24 @@
 class LampStatsController < ApplicationController
-  before_filter :require_user_signed_in
+  before_filter :require_user_signed_in, except: [:create]
   before_action :set_lamp_stat, only: [:show, :edit, :update, :destroy]
   before_action :set_lamp     , only: [:index]
 
   # GET /lamp_stats
   # GET /lamp_stats.json
   def index
-    @chart = LampStat.where(serial_num: @lamp.product.serial_number)
-                  .where(date: 7.days.ago..DateTime.now)
-                  .order(:date)
+    old_serials = {71055922=> 49, 71057043 => 48, 71057096 => 10, 71065718 => 14}
+    serial = @lamp.product.serial_number
+
+    if old_serials[serial]
+      @chart = lampstat.where(serial_num: serial)
+                    .where(serial_num: old_serials[serial])
+                    .where(date: 7.days.ago..datetime.now)
+                    .order(:date)
+    else
+      @chart = lampstat.where(serial_num: serial)
+                      .where(date: 7.days.ago..datetime.now)
+                      .order(:date)
+    end
 
     @list = @chart.reverse_order
   end
