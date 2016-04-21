@@ -12,11 +12,11 @@ class LampStatsController < ApplicationController
     if old_serials[serial]
       @chart = LampStat.where(serial_num: serial)
                     .where(serial_num: old_serials[serial])
-                    .where(date: 7.days.ago..datetime.now)
+                    .where(date: 7.days.ago..DateTime.now)
                     .order(:date)
     else
       @chart = LampStat.where(serial_num: serial)
-                      .where(date: 7.days.ago..datetime.now)
+                      .where(date: 7.days.ago..DateTime.now)
                       .order(:date)
     end
 
