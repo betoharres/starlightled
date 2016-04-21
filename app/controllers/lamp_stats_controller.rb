@@ -6,12 +6,11 @@ class LampStatsController < ApplicationController
   # GET /lamp_stats
   # GET /lamp_stats.json
   def index
-    old_serials = {71055922=> 49, 71057043 => 48, 71057096 => 10, 71065718 => 14}
+    old_serials = {71055922 => 49, 71057043 => 48, 71057096 => 10, 71065718 => 14}
     serial = @lamp.product.serial_number
 
     if old_serials[serial]
-      @chart = LampStat.where(serial_num: serial)
-                    .where(serial_num: old_serials[serial])
+      @chart = LampStat.where(serial_num: [serial, old_serials[serial]])
                     .where(date: 7.days.ago..DateTime.now)
                     .order(:date)
     else
