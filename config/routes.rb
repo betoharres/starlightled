@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :event_codes
   resources :alarms
   get 'features/last_record', to: 'features#last_record'
   get 'tags/', to: 'tags#index'
