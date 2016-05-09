@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Params</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Code</th>
+      <th>Description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @params.each do |param| %>
+      <tr>
+        <td><%= param.name %></td>
+        <td><%= param.code %></td>
+        <td><%= param.description %></td>
+        <td><%= link_to 'Show', param %></td>
+        <td><%= link_to 'Edit', edit_param_path(param) %></td>
+        <td><%= link_to 'Destroy', param, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Param', new_param_path %>
