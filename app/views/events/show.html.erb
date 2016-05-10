@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Active:</strong>
+  <%= @event.active %>
+</p>
+
+<p>
+  <strong>Node:</strong>
+  <%= @event.node %>
+</p>
+
+<p>
+  <strong>Event code:</strong>
+  <%= @event.event_code %>
+</p>
+
+<p>
+  <strong>Param:</strong>
+  <%= @event.param %>
+</p>
+
+<p>
+  <strong>Serial number:</strong>
+  <%= @event.serial_number %>
+</p>
+
+<%= link_to 'Edit', edit_event_path(@event) %> |
+<%= link_to 'Back', events_path %>

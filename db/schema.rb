@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160415195310) do
+ActiveRecord::Schema.define(version: 20160509191512) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -86,6 +86,28 @@ ActiveRecord::Schema.define(version: 20160415195310) do
 
   add_index "config_files", ["company_id"], name: "index_config_files_on_company_id", using: :btree
   add_index "config_files", ["content"], name: "index_config_files_on_content", using: :gin
+
+  create_table "event_codes", force: :cascade do |t|
+    t.integer  "code",       limit: 2, null: false
+    t.string   "name",                 null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.boolean  "active",                  default: true
+    t.integer  "node_id",                                null: false
+    t.integer  "event_code_id",                          null: false
+    t.integer  "param_id",                               null: false
+    t.integer  "serial_number", limit: 8,                null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+  end
+
+  add_index "events", ["event_code_id"], name: "index_events_on_event_code_id", using: :btree
+  add_index "events", ["node_id"], name: "index_events_on_node_id", using: :btree
+  add_index "events", ["param_id"], name: "index_events_on_param_id", using: :btree
+  add_index "events", ["serial_number"], name: "index_events_on_serial_number", using: :btree
 
   create_table "firmwares", force: :cascade do |t|
     t.string   "filename"
@@ -216,6 +238,14 @@ ActiveRecord::Schema.define(version: 20160415195310) do
   add_index "nodes", ["company_id"], name: "index_nodes_on_company_id", using: :btree
   add_index "nodes", ["network_id"], name: "index_nodes_on_network_id", using: :btree
 
+  create_table "params", force: :cascade do |t|
+    t.string   "name",                  null: false
+    t.integer  "code",        limit: 2, null: false
+    t.text     "description"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
   create_table "permissions", force: :cascade do |t|
     t.string   "resource"
     t.integer  "ability"
@@ -333,6 +363,9 @@ ActiveRecord::Schema.define(version: 20160415195310) do
   add_foreign_key "alarms", "companies"
   add_foreign_key "commands", "companies"
   add_foreign_key "config_files", "companies"
+  add_foreign_key "events", "event_codes"
+  add_foreign_key "events", "nodes"
+  add_foreign_key "events", "params"
   add_foreign_key "firmwares", "companies"
   add_foreign_key "nodes", "companies"
   add_foreign_key "permissions", "roles"

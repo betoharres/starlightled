@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :events
   resources :params
   resources :event_codes
   resources :alarms
