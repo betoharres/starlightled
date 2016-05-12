@@ -6,6 +6,7 @@ class CreateEvents < ActiveRecord::Migration
       t.references :event_code, index: true, foreign_key: true, null: false
       t.references :param, index: true, foreign_key: true, null: false
       t.integer :serial_number, limit: 8, unique: true, index: true, null: false
+      t.references :company, index: true, foreign_key: true, null: false
 
       t.timestamps null: false
     end

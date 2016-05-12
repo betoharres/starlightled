@@ -90,9 +90,12 @@ ActiveRecord::Schema.define(version: 20160509191512) do
   create_table "event_codes", force: :cascade do |t|
     t.integer  "code",       limit: 2, null: false
     t.string   "name",                 null: false
+    t.integer  "company_id",           null: false
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
   end
+
+  add_index "event_codes", ["company_id"], name: "index_event_codes_on_company_id", using: :btree
 
   create_table "events", force: :cascade do |t|
     t.boolean  "active",                  default: true
@@ -100,10 +103,12 @@ ActiveRecord::Schema.define(version: 20160509191512) do
     t.integer  "event_code_id",                          null: false
     t.integer  "param_id",                               null: false
     t.integer  "serial_number", limit: 8,                null: false
+    t.integer  "company_id",                             null: false
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
   end
 
+  add_index "events", ["company_id"], name: "index_events_on_company_id", using: :btree
   add_index "events", ["event_code_id"], name: "index_events_on_event_code_id", using: :btree
   add_index "events", ["node_id"], name: "index_events_on_node_id", using: :btree
   add_index "events", ["param_id"], name: "index_events_on_param_id", using: :btree
@@ -242,9 +247,12 @@ ActiveRecord::Schema.define(version: 20160509191512) do
     t.string   "name",                  null: false
     t.integer  "code",        limit: 2, null: false
     t.text     "description"
+    t.integer  "company_id",            null: false
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
   end
+
+  add_index "params", ["company_id"], name: "index_params_on_company_id", using: :btree
 
   create_table "permissions", force: :cascade do |t|
     t.string   "resource"
@@ -363,11 +371,14 @@ ActiveRecord::Schema.define(version: 20160509191512) do
   add_foreign_key "alarms", "companies"
   add_foreign_key "commands", "companies"
   add_foreign_key "config_files", "companies"
+  add_foreign_key "event_codes", "companies"
+  add_foreign_key "events", "companies"
   add_foreign_key "events", "event_codes"
   add_foreign_key "events", "nodes"
   add_foreign_key "events", "params"
   add_foreign_key "firmwares", "companies"
   add_foreign_key "nodes", "companies"
+  add_foreign_key "params", "companies"
   add_foreign_key "permissions", "roles"
   add_foreign_key "roles", "companies"
   add_foreign_key "tag_types", "companies"
