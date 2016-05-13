@@ -31,7 +31,7 @@ class LampsController < ApplicationController
     if alarms
       last_status = @chart.last
       alarms.each do |alarm|
-        @alarms << alarm if ( last_status.ctrlRestart & alarm.code)
+        @alarms << alarm if ( last_status.ctrlRestart & alarm.code ) != 0
       end
     end
   end
