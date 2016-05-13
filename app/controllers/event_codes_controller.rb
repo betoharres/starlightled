@@ -25,6 +25,7 @@ class EventCodesController < ApplicationController
   # POST /event_codes.json
   def create
     @event_code = EventCode.new(event_code_params)
+    @event_code.company = current_user.company
 
     respond_to do |format|
       if @event_code.save

@@ -1,12 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Event Codes</h1>
+<h1>Codigos de Evento</h1>
 
 <table>
-  <thead>
+  <table class="table table-striped">
     <tr>
-      <th>Code</th>
-      <th>Name</th>
+      <th>Nome</th>
+      <th>Codigo</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -14,8 +14,8 @@
   <tbody>
     <% @event_codes.each do |event_code| %>
       <tr>
-        <td><%= event_code.code %></td>
         <td><%= event_code.name %></td>
+        <td><%= event_code.code %></td>
         <td><%= link_to 'Show', event_code %></td>
         <td><%= link_to 'Edit', edit_event_code_path(event_code) %></td>
         <td><%= link_to 'Destroy', event_code, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -26,4 +26,4 @@
 
 <br>
 
-<%= link_to 'New Event code', new_event_code_path %>
+<%= link_to 'Novo Codigo de Evento', new_event_code_path, class: 'btn btn-primary' %>

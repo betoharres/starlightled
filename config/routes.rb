@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :events
+  resources :events, except: [:new, :edit, :update]
   resources :params
   resources :event_codes
   resources :alarms
@@ -59,6 +59,7 @@ Rails.application.routes.draw do
       resources :tasks, only: [:update], format: :json
       resources :gateway_stats, only: [:create],format: :json
       resources :lamp_stats, only: :create, format: :json
+      resources :events, only: [:create]
       get 'time/gmt'
       get 'time/timezone'
     end
