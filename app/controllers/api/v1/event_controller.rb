@@ -32,7 +32,7 @@ module Api
         @event.event_code = Event.find_by(code: event_params[:code])
         @event.param = Param.find_by(code: event_params[:param_code])
         @event.node = Product.find_by(serial_number: event_params[:serial_number]).node
-        @event.company = current_gateway.company
+        @event.company_id = current_gateway.company.id
 
         respond_to do |format|
           if @event.save

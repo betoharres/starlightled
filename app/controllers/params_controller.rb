@@ -25,7 +25,7 @@ class ParamsController < ApplicationController
   # POST /params.json
   def create
     @param = Param.new(param_params)
-    @param.company = current_user.company
+    @param.company_id = current_user.company.id
 
     respond_to do |format|
       if @param.save
