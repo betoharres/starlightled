@@ -5,9 +5,9 @@
 <table>
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Code</th>
-      <th>Description</th>
+      <th>Nome</th>
+      <th>Codigo</th>
+      <th>Descricao</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -18,9 +18,9 @@
         <td><%= param.name %></td>
         <td><%= param.code %></td>
         <td><%= param.description %></td>
-        <td><%= link_to 'Show', param %></td>
-        <td><%= link_to 'Edit', edit_param_path(param) %></td>
-        <td><%= link_to 'Destroy', param, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Visualizar', param, class: 'btn btn-primary' %></td>
+        <td><%= link_to 'Editar', edit_param_path(param), class: 'btn btn-warning' %></td>
+        <td><%= link_to 'Deletar', param, class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +28,4 @@
 
 <br>
 
-<%= link_to 'New Param', new_param_path %>
+<%= link_to 'Novo Parametros', new_param_path, class: 'btn btn-success btn-lg' %>

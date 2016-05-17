@@ -16,9 +16,9 @@
       <tr>
         <td><%= event_code.name %></td>
         <td><%= event_code.code %></td>
-        <td><%= link_to 'Show', event_code %></td>
-        <td><%= link_to 'Edit', edit_event_code_path(event_code) %></td>
-        <td><%= link_to 'Destroy', event_code, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Visualizar', event_code, class: 'btn btn-primary' %></td>
+        <td><%= link_to 'Editar', edit_event_code_path(event_code), class: 'btn btn-warning' %></td>
+        <td><%= link_to 'Deletar', event_code, class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +26,4 @@
 
 <br>
 
-<%= link_to 'Novo Codigo de Evento', new_event_code_path, class: 'btn btn-primary' %>
+<%= link_to 'Novo Codigo de Evento', new_event_code_path, class: 'btn btn-sucess btn-lg' %>
