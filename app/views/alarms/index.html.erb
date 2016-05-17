@@ -18,9 +18,9 @@
         <td><%= alarm.code %></td>
         <td><%= alarm.title %></td>
         <td><%= alarm.description %></td>
-        <td><%= link_to 'Show', alarm %></td>
-        <td><%= link_to 'Edit', edit_alarm_path(alarm) %></td>
-        <td><%= link_to 'Destroy', alarm, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Visualizar', alarm, class: 'btn btn-info' %></td>
+        <td><%= link_to 'Editar', edit_alarm_path(alarm), class: 'btn btn-warning' %></td>
+        <td><%= link_to 'Deletar', alarm, class: 'btn btn-danger', method: :delete, data: { confirm: 'Tem certeza?' } %></td>
       </tr>
     <% end %>
   </tbody>

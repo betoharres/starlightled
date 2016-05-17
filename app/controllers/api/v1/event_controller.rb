@@ -29,6 +29,9 @@ module Api
       # POST /events.json
       def create
         @event = Event.new(event_params)
+        @event.event_code = Event.find_by(code: event_params[:code])
+        @event.param = Param.find_by(code: event_params[:param_code])
+        @event.node = Product.find_by(serial_number: event_params[:serial_number]).node
         @event.company = current_gateway.company
 
         respond_to do |format|
@@ -74,7 +77,7 @@ module Api
 
         # Never trust parameters from the scary internet, only allow the white list through.
         def event_params
-          params.require(:event).permit(:event_code, :param_code, :serial_number)
+          params.require(:event).permit(:code, :param_code, :serial_number)
         end
     end
   end
