@@ -77,7 +77,7 @@ module Api
 
         # Never trust parameters from the scary internet, only allow the white list through.
         def event_params
-          params.require(:event).permit(:code, :param_code, :serial_number)
+          params.require(:event).permit(:code, :param_code, :serial_number, :date)
         end
     end
   end

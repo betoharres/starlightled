@@ -58,6 +58,58 @@
          <li>
            <%= link_to '<em class="icon-flag"></em> Alarmes'.html_safe, alarms_path %>
          </li>
+
+        <li class="dropdown dropdown-list">
+          <a href="#" data-toggle="dropdown">
+            <em class="icon-notebook"></em> Eventos
+          </a>
+          <ul class="dropdown-menu animated flipInX">
+            <li>
+              <!-- START list group-->
+              <div class="list-group">
+                <!-- list item-->
+                <a href="<%= events_path %>" class="list-group-item">
+                  <div class="media-box">
+                      <div class="pull-left">
+                        <em class="fa fa-database fa-2x"></em>
+                      </div>
+                      <div class="media-box-body clearfix">
+                        <p class="m0">Lista de Eventos</p>
+                        <p class="m0 text-muted">
+                            <small>Veja todos os eventos registrados</small>
+                        </p>
+                      </div>
+                  </div>
+                </a>
+                <!-- list item-->
+                <a href="<% event_codes_path %>" class="list-group-item">
+                  <div class="media-box">
+                    <div class="pull-left">
+                        <em class="fa fa-barcode"></em>
+                    </div>
+                    <div class="media-box-body clearfix">
+                      <p class="m0">Codigos de Eventos</p>
+                    </div>
+                  </div>
+                </a>
+                <a href="<% params_path %>" class="list-group-item">
+                  <div class="media-box">
+                    <div class="pull-left">
+                        <em class="fa fa-info"></em>
+                    </div>
+                    <div class="media-box-body clearfix">
+                      <p class="m0">Parametros</p>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <!-- END list group-->
+            </li>
+          </ul>
+        </li>
+
+
+
       </ul>
       <!-- END Left navbar-->
       <!-- START Right Navbar-->
