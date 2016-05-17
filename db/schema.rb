@@ -98,6 +98,7 @@ ActiveRecord::Schema.define(version: 20160509191512) do
   add_index "event_codes", ["company_id"], name: "index_event_codes_on_company_id", using: :btree
 
   create_table "events", force: :cascade do |t|
+    t.datetime "date"
     t.boolean  "active",                  default: true
     t.integer  "node_id",                                null: false
     t.integer  "event_code_id",                          null: false
@@ -244,15 +245,17 @@ ActiveRecord::Schema.define(version: 20160509191512) do
   add_index "nodes", ["network_id"], name: "index_nodes_on_network_id", using: :btree
 
   create_table "params", force: :cascade do |t|
-    t.string   "name",                  null: false
-    t.integer  "code",        limit: 2, null: false
     t.text     "description"
-    t.integer  "company_id",            null: false
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
+    t.string   "name",                    null: false
+    t.integer  "code",          limit: 2, null: false
+    t.integer  "company_id",              null: false
+    t.integer  "event_code_id",           null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   add_index "params", ["company_id"], name: "index_params_on_company_id", using: :btree
+  add_index "params", ["event_code_id"], name: "index_params_on_event_code_id", using: :btree
 
   create_table "permissions", force: :cascade do |t|
     t.string   "resource"
@@ -379,6 +382,7 @@ ActiveRecord::Schema.define(version: 20160509191512) do
   add_foreign_key "firmwares", "companies"
   add_foreign_key "nodes", "companies"
   add_foreign_key "params", "companies"
+  add_foreign_key "params", "event_codes"
   add_foreign_key "permissions", "roles"
   add_foreign_key "roles", "companies"
   add_foreign_key "tag_types", "companies"
