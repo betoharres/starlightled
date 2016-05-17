@@ -28,7 +28,7 @@ module Api
       # POST /events
       # POST /events.json
       def create
-        @event = Event.new(event_params)
+        @event = Event.new
         @event.event_code = EventCode.find_by(code: event_params[:code])
         @event.param = Param.find_by(code: event_params[:param_code])
         @event.node = Product.find_by(serial_number: event_params[:serial_number]).node
